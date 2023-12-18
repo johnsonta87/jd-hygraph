@@ -1,0 +1,14 @@
+query GetAllPortfolios {
+  portfolios {
+      id
+      slug
+      title
+      updatedAt
+      year
+      showcaseImage {
+        id
+        fileName
+        url
+      }
+  }
+}
