@@ -854,8 +854,10 @@ export type Homepage = Entity & Node & {
   publishedBy?: Maybe<User>;
   scheduledIn: Array<ScheduledOperation>;
   services?: Maybe<ServicesList>;
+  slug?: Maybe<Scalars['String']['output']>;
   /** System stage field */
   stage: Stage;
+  title?: Maybe<Scalars['String']['output']>;
   /** The time the document was updated */
   updatedAt: Scalars['DateTime']['output'];
   /** User that last updated this document */
@@ -938,6 +940,8 @@ export type HomepageCreateInput = {
   createdAt?: InputMaybe<Scalars['DateTime']['input']>;
   general?: InputMaybe<MainPageIntroCreateOneInlineInput>;
   services?: InputMaybe<ServicesListCreateOneInlineInput>;
+  slug?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
   updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
 };
 
@@ -1032,6 +1036,44 @@ export type HomepageManyWhereInput = {
   scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
   services?: InputMaybe<ServicesListWhereInput>;
+  slug?: InputMaybe<Scalars['String']['input']>;
+  /** All values containing the given string. */
+  slug_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values ending with the given string. */
+  slug_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are contained in given list. */
+  slug_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  slug_not?: InputMaybe<Scalars['String']['input']>;
+  /** All values not containing the given string. */
+  slug_not_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values not ending with the given string */
+  slug_not_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are not contained in given list. */
+  slug_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** All values not starting with the given string. */
+  slug_not_starts_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values starting with the given string. */
+  slug_starts_with?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  /** All values containing the given string. */
+  title_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values ending with the given string. */
+  title_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are contained in given list. */
+  title_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  title_not?: InputMaybe<Scalars['String']['input']>;
+  /** All values not containing the given string. */
+  title_not_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values not ending with the given string */
+  title_not_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are not contained in given list. */
+  title_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** All values not starting with the given string. */
+  title_not_starts_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values starting with the given string. */
+  title_starts_with?: InputMaybe<Scalars['String']['input']>;
   updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
   /** All values greater than the given value. */
   updatedAt_gt?: InputMaybe<Scalars['DateTime']['input']>;
@@ -1057,6 +1099,10 @@ export enum HomepageOrderByInput {
   ID_DESC = 'id_DESC',
   PUBLISHEDAT_ASC = 'publishedAt_ASC',
   PUBLISHEDAT_DESC = 'publishedAt_DESC',
+  SLUG_ASC = 'slug_ASC',
+  SLUG_DESC = 'slug_DESC',
+  TITLE_ASC = 'title_ASC',
+  TITLE_DESC = 'title_DESC',
   UPDATEDAT_ASC = 'updatedAt_ASC',
   UPDATEDAT_DESC = 'updatedAt_DESC'
 }
@@ -1064,6 +1110,8 @@ export enum HomepageOrderByInput {
 export type HomepageUpdateInput = {
   general?: InputMaybe<MainPageIntroUpdateOneInlineInput>;
   services?: InputMaybe<ServicesListUpdateOneInlineInput>;
+  slug?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type HomepageUpdateManyInlineInput = {
@@ -1206,6 +1254,44 @@ export type HomepageWhereInput = {
   scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
   services?: InputMaybe<ServicesListWhereInput>;
+  slug?: InputMaybe<Scalars['String']['input']>;
+  /** All values containing the given string. */
+  slug_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values ending with the given string. */
+  slug_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are contained in given list. */
+  slug_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  slug_not?: InputMaybe<Scalars['String']['input']>;
+  /** All values not containing the given string. */
+  slug_not_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values not ending with the given string */
+  slug_not_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are not contained in given list. */
+  slug_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** All values not starting with the given string. */
+  slug_not_starts_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values starting with the given string. */
+  slug_starts_with?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  /** All values containing the given string. */
+  title_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values ending with the given string. */
+  title_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are contained in given list. */
+  title_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  title_not?: InputMaybe<Scalars['String']['input']>;
+  /** All values not containing the given string. */
+  title_not_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values not ending with the given string */
+  title_not_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are not contained in given list. */
+  title_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** All values not starting with the given string. */
+  title_not_starts_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values starting with the given string. */
+  title_starts_with?: InputMaybe<Scalars['String']['input']>;
   updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
   /** All values greater than the given value. */
   updatedAt_gt?: InputMaybe<Scalars['DateTime']['input']>;
@@ -1241,6 +1327,8 @@ export type HomepageWhereStageInput = {
 /** References Homepage record uniquely */
 export type HomepageWhereUniqueInput = {
   id?: InputMaybe<Scalars['ID']['input']>;
+  slug?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
 };
 
 export enum ImageFit {
@@ -6177,6 +6265,13 @@ export enum _SystemDateTimeFieldVariation {
   LOCALIZATION = 'localization'
 }
 
+export type GetHomepageQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetHomepageQuery = { homepage?: { slug?: string | null, title?: string | null, general?: { mainHeading?: string | null, introSubheading?: { html: string } | null, showcaseImage?: { url: string, fileName: string } | null } | null, services?: { id: string, showListOfServices?: boolean | null, title?: string | null } | null } | null };
+
+export type HomepageFragmentFieldsFragment = { slug?: string | null, title?: string | null, general?: { mainHeading?: string | null, introSubheading?: { html: string } | null, showcaseImage?: { url: string, fileName: string } | null } | null, services?: { id: string, showListOfServices?: boolean | null, title?: string | null } | null };
+
 export type GetAllPortfoliosQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -6189,10 +6284,38 @@ export type GetPortfoliosByCategoryQueryVariables = Exact<{
 
 export type GetPortfoliosByCategoryQuery = { portfolios: Array<{ id: string, slug?: string | null, title?: string | null, updatedAt: any, year?: string | null, showcaseImage?: { id: string, fileName: string, url: string } | null, portfolioCategory?: { id: string, name: string } | null }> };
 
-export type PortfolioFragmentFragment = { id: string, slug?: string | null, title?: string | null, updatedAt: any, year?: string | null, showcaseImage?: { id: string, fileName: string, url: string } | null, portfolioCategory?: { id: string, name: string } | null };
+export type PortfolioFragmentFieldsFragment = { id: string, slug?: string | null, title?: string | null, updatedAt: any, year?: string | null, showcaseImage?: { id: string, fileName: string, url: string } | null, portfolioCategory?: { id: string, name: string } | null };
 
-export const PortfolioFragmentFragmentDoc = gql`
-    fragment PortfolioFragment on Portfolio {
+export type GetAllServicesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetAllServicesQuery = { services: Array<{ name?: string | null, portfolioCategory?: { id: string, name: string } | null }> };
+
+export type ServicesFragmentFieldsFragment = { name?: string | null, portfolioCategory?: { id: string, name: string } | null };
+
+export const HomepageFragmentFieldsFragmentDoc = gql`
+    fragment HomepageFragmentFields on Homepage {
+  slug
+  title
+  general {
+    mainHeading
+    introSubheading {
+      html
+    }
+    showcaseImage {
+      url
+      fileName
+    }
+  }
+  services {
+    id
+    showListOfServices
+    title
+  }
+}
+    `;
+export const PortfolioFragmentFieldsFragmentDoc = gql`
+    fragment PortfolioFragmentFields on Portfolio {
   id
   slug
   title
@@ -6209,13 +6332,61 @@ export const PortfolioFragmentFragmentDoc = gql`
   }
 }
     `;
-export const GetAllPortfoliosDocument = gql`
-    query GetAllPortfolios {
-  portfolios {
-    ...PortfolioFragment
+export const ServicesFragmentFieldsFragmentDoc = gql`
+    fragment ServicesFragmentFields on Service {
+  name
+  portfolioCategory {
+    id
+    name
   }
 }
-    ${PortfolioFragmentFragmentDoc}`;
+    `;
+export const GetHomepageDocument = gql`
+    query GetHomepage {
+  homepage(where: {title: "Homepage"}, stage: PUBLISHED) {
+    ...HomepageFragmentFields
+  }
+}
+    ${HomepageFragmentFieldsFragmentDoc}`;
+
+/**
+ * __useGetHomepageQuery__
+ *
+ * To run a query within a React component, call `useGetHomepageQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetHomepageQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetHomepageQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetHomepageQuery(baseOptions?: Apollo.QueryHookOptions<GetHomepageQuery, GetHomepageQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetHomepageQuery, GetHomepageQueryVariables>(GetHomepageDocument, options);
+      }
+export function useGetHomepageLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetHomepageQuery, GetHomepageQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetHomepageQuery, GetHomepageQueryVariables>(GetHomepageDocument, options);
+        }
+export function useGetHomepageSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetHomepageQuery, GetHomepageQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetHomepageQuery, GetHomepageQueryVariables>(GetHomepageDocument, options);
+        }
+export type GetHomepageQueryHookResult = ReturnType<typeof useGetHomepageQuery>;
+export type GetHomepageLazyQueryHookResult = ReturnType<typeof useGetHomepageLazyQuery>;
+export type GetHomepageSuspenseQueryHookResult = ReturnType<typeof useGetHomepageSuspenseQuery>;
+export type GetHomepageQueryResult = Apollo.QueryResult<GetHomepageQuery, GetHomepageQueryVariables>;
+export const GetAllPortfoliosDocument = gql`
+    query GetAllPortfolios {
+  portfolios(orderBy: createdAt_ASC, stage: PUBLISHED) {
+    ...PortfolioFragmentFields
+  }
+}
+    ${PortfolioFragmentFieldsFragmentDoc}`;
 
 /**
  * __useGetAllPortfoliosQuery__
@@ -6250,11 +6421,15 @@ export type GetAllPortfoliosSuspenseQueryHookResult = ReturnType<typeof useGetAl
 export type GetAllPortfoliosQueryResult = Apollo.QueryResult<GetAllPortfoliosQuery, GetAllPortfoliosQueryVariables>;
 export const GetPortfoliosByCategoryDocument = gql`
     query GetPortfoliosByCategory($portfolioCategory: String!) {
-  portfolios(where: {portfolioCategory: {name: $portfolioCategory}}) {
-    ...PortfolioFragment
+  portfolios(
+    where: {portfolioCategory: {name: $portfolioCategory}}
+    stage: PUBLISHED
+    orderBy: createdAt_ASC
+  ) {
+    ...PortfolioFragmentFields
   }
 }
-    ${PortfolioFragmentFragmentDoc}`;
+    ${PortfolioFragmentFieldsFragmentDoc}`;
 
 /**
  * __useGetPortfoliosByCategoryQuery__
@@ -6288,3 +6463,42 @@ export type GetPortfoliosByCategoryQueryHookResult = ReturnType<typeof useGetPor
 export type GetPortfoliosByCategoryLazyQueryHookResult = ReturnType<typeof useGetPortfoliosByCategoryLazyQuery>;
 export type GetPortfoliosByCategorySuspenseQueryHookResult = ReturnType<typeof useGetPortfoliosByCategorySuspenseQuery>;
 export type GetPortfoliosByCategoryQueryResult = Apollo.QueryResult<GetPortfoliosByCategoryQuery, GetPortfoliosByCategoryQueryVariables>;
+export const GetAllServicesDocument = gql`
+    query GetAllServices {
+  services(first: 20, orderBy: createdAt_ASC, stage: PUBLISHED) {
+    ...ServicesFragmentFields
+  }
+}
+    ${ServicesFragmentFieldsFragmentDoc}`;
+
+/**
+ * __useGetAllServicesQuery__
+ *
+ * To run a query within a React component, call `useGetAllServicesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetAllServicesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetAllServicesQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetAllServicesQuery(baseOptions?: Apollo.QueryHookOptions<GetAllServicesQuery, GetAllServicesQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetAllServicesQuery, GetAllServicesQueryVariables>(GetAllServicesDocument, options);
+      }
+export function useGetAllServicesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetAllServicesQuery, GetAllServicesQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetAllServicesQuery, GetAllServicesQueryVariables>(GetAllServicesDocument, options);
+        }
+export function useGetAllServicesSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetAllServicesQuery, GetAllServicesQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetAllServicesQuery, GetAllServicesQueryVariables>(GetAllServicesDocument, options);
+        }
+export type GetAllServicesQueryHookResult = ReturnType<typeof useGetAllServicesQuery>;
+export type GetAllServicesLazyQueryHookResult = ReturnType<typeof useGetAllServicesLazyQuery>;
+export type GetAllServicesSuspenseQueryHookResult = ReturnType<typeof useGetAllServicesSuspenseQuery>;
+export type GetAllServicesQueryResult = Apollo.QueryResult<GetAllServicesQuery, GetAllServicesQueryVariables>;

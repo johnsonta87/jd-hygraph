@@ -1,0 +1,28 @@
+query GetHomepage {
+  homepage(
+    where: {title: "Homepage"}
+    stage: PUBLISHED
+) {
+    ...HomepageFragmentFields
+  }
+}
+
+fragment HomepageFragmentFields on Homepage {
+  slug
+  title
+  general {
+    mainHeading
+    introSubheading {
+      html
+    }
+    showcaseImage {
+      url
+      fileName
+    }
+  }
+  services {
+    id
+    showListOfServices
+    title
+  }
+}

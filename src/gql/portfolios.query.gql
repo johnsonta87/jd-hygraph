@@ -1,17 +1,26 @@
 query GetAllPortfolios {
-  portfolios {
-    ...PortfolioFragment
+  portfolios(
+  orderBy: createdAt_ASC
+  stage: PUBLISHED
+) {
+    ...PortfolioFragmentFields
   }
 }
 
-query GetPortfoliosByCategory($portfolioCategory: String!) {
-  portfolios(where:{ portfolioCategory: { name: $portfolioCategory}}) {
-    ...PortfolioFragment
+query GetPortfoliosByCategory(
+  $portfolioCategory: String!
+) {
+  portfolios(
+    where:{ portfolioCategory: { name: $portfolioCategory}},
+    stage: PUBLISHED
+    orderBy: createdAt_ASC
+  ) {
+    ...PortfolioFragmentFields
   }
 }
 
 
-fragment PortfolioFragment on Portfolio {
+fragment PortfolioFragmentFields on Portfolio {
   id
   slug
   title

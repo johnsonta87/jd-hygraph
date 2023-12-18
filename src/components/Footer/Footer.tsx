@@ -4,16 +4,7 @@ type Props = {};
 
 export function Footer({ ...props }: Props) {
   return (
-    <Box
-      mt={24}
-      px={0}
-      py={4}
-      w="100%"
-      mb={8}
-      bg="white"
-      boxShadow="md"
-      {...props}
-    >
+    <Box mt={24} px={0} py={4} w="100%" bg="white" boxShadow="md" {...props}>
       <Container maxW="1274px">
         <Flex
           align="center"

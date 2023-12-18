@@ -1,5 +1,5 @@
 "use client";
-import { useGetPortfoliosByCategoryQuery as GetPortfoliosByCategory } from "@/__generated__/graphql";
+import { useGetPortfoliosByCategoryQuery as GetPortfoliosByCategoryQuery } from "@/__generated__/graphql";
 import { Box, Grid, GridItem, Spinner, Text } from "@chakra-ui/react";
 import BaseImageCaption from "../Image/BaseImageCaption";
 
@@ -9,10 +9,13 @@ type Props = {
 };
 
 export function PortfolioList({ category, variant }: Props) {
-  const { loading, data } = GetPortfoliosByCategory(category);
-  const portfolios = data?.portfolios;
+  const { loading, error, data } = GetPortfoliosByCategoryQuery({
+    variables: { portfolioCategory: category },
+  });
+  const { portfolios } = data || {};
 
   if (loading) return <Spinner size="xl" />;
+  if (error) return `Error! ${error}`;
 
   if (variant === "twoColumns")
     return (

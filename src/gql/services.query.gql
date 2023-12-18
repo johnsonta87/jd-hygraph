@@ -1,0 +1,17 @@
+query GetAllServices {
+  services(
+    first: 20
+    orderBy: createdAt_ASC
+    stage: PUBLISHED
+) {
+    ...ServicesFragmentFields
+  }
+}
+
+fragment ServicesFragmentFields on Service {
+  name
+  portfolioCategory {
+    id
+    name
+  }
+}
