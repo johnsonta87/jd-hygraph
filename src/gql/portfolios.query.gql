@@ -1,14 +1,17 @@
 query GetAllPortfolios {
   portfolios {
+    id
+    slug
+    title
+    updatedAt
+    year
+    showcaseImage {
       id
-      slug
-      title
-      updatedAt
-      year
-      showcaseImage {
-        id
-        fileName
-        url
-      }
+      fileName
+      url
+    }
+    portfolioCategory {
+      name
+    }
   }
 }

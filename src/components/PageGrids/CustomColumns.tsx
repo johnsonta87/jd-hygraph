@@ -18,7 +18,7 @@ export function CustomColumns({
     <Grid
       templateAreas={`"side main"`}
       gridTemplateColumns={"260px 1fr"}
-      gap="12"
+      gap={{ base: "6", md: "12" }}
     >
       <GridItem area={"side"}></GridItem>
       <GridItem area={"main"}></GridItem>

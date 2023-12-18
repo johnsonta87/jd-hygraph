@@ -2,8 +2,7 @@ overwrite: true
 schema: "https://api-ca-central-1.hygraph.com/v2/clq9udjxofy8501td7ii2dm12/master"
 documents: "src/gql/**/*.gql"
 generates:
-  src/gqlgen/:
-    preset: "client"
+  src/__generated__/graphql.ts:
     plugins:
       - typescript
       - typescript-operations
@@ -16,7 +15,3 @@ generates:
         # withHooks: true,
         # withMutationFn: true,
       }
-
-  ./graphql.schema.json:
-    plugins:
-      - "introspection"

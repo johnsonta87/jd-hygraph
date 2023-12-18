@@ -1,31 +1,62 @@
-import {
-  GetAllPortfoliosDocument,
-  GetAllPortfoliosQuery,
-} from "@/gqlgen/graphql";
-import { useQuery } from "@apollo/client";
-import { Grid, GridItem } from "@chakra-ui/react";
-import BaseImage from "../Image/BaseImage";
+"use client"
+import { useGetAllPortfoliosQuery as GetAllPortfolio, Portfolio } from "@/__generated__/graphql";
+import { Box, Grid, GridItem, Text } from "@chakra-ui/react";
+import BaseImageCaption from "../Image/BaseImageCaption";
+import { Spinner } from '@chakra-ui/react'
 
 type Props = {
-  variant: "default" | "custom";
+  variant: "default" | "twoColumns";
 };
 
-export async function PortfolioList({ variant }: Props) {
-  const { loading, data } = useQuery<GetAllPortfoliosQuery>(
-    GetAllPortfoliosDocument
-  );
-  console.log(data);
-
+export function PortfolioList({ variant }: Props) {
+  const { loading, data } = GetAllPortfolio();
   const portfolios = data?.portfolios;
 
-  return (
-    <Grid>
-      {loading && <p>Loading...</p>}
+  if(loading) return <Spinner size='xl' />;
 
-      {portfolios &&
+
+  if(variant === "twoColumns") return (
+    <Box>
+      <Text fontSize="4xl" mb="8">Portfolio</Text>
+
+    <Grid
+    gridTemplateColumns={{ base: "1fr", md: "50% 1fr"}}
+    gap={{ base: "6", md: "12" }}>
+
+{portfolios &&
         portfolios.map((p, index: number) => (
-          <GridItem key={index} area={"side"}>
-            <BaseImage
+          <GridItem key={index}>
+            <BaseImageCaption
+              src={p.showcaseImage?.url || ""}
+              title={p.title || ""}
+              caption={p.title || ""}
+              year={p.year || ""}
+              category={p.portfolioCategory?.name || ""}
+            />
+          </GridItem>
+        ))}
+    </Grid>
+    </Box>
+  )
+
+  return (
+    <Box>
+
+    <Grid
+      templateAreas={`"side main"`}
+      gridTemplateColumns={"260px 1fr"}
+    gap={{ base: "6", md: "12" }}>
+
+<GridItem area={"side"}>
+      <Text fontSize="4xl" mb="8">Portfolio</Text>
+      </GridItem>
+<GridItem area={"main"}>
+
+<Grid gap={{ base: "6", md: "12" }}>
+{portfolios &&
+        portfolios.map((p, index: number) => (
+          <GridItem key={index}>
+            <BaseImageCaption
               src={p.showcaseImage?.url || ""}
               title={p.title || ""}
               caption={p.title || ""}
@@ -33,6 +64,9 @@ export async function PortfolioList({ variant }: Props) {
             />
           </GridItem>
         ))}
+        </Grid>
+        </GridItem>
     </Grid>
+    </Box>
   );
 }
