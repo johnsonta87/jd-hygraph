@@ -1,17 +1,29 @@
 query GetAllPortfolios {
   portfolios {
+    ...PortfolioFragment
+  }
+}
+
+query GetPortfoliosByCategory($portfolioCategory: String!) {
+  portfolios(where:{ portfolioCategory: { name: $portfolioCategory}}) {
+    ...PortfolioFragment
+  }
+}
+
+
+fragment PortfolioFragment on Portfolio {
+  id
+  slug
+  title
+  updatedAt
+  year
+  showcaseImage {
     id
-    slug
-    title
-    updatedAt
-    year
-    showcaseImage {
-      id
-      fileName
-      url
-    }
-    portfolioCategory {
-      name
-    }
+    fileName
+    url
+  }
+  portfolioCategory {
+    id
+    name
   }
 }
