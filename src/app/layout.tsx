@@ -1,10 +1,7 @@
 import { Footer, Navbar } from "@/components";
 import { Container } from "@chakra-ui/react";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import { Providers } from "./providers";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Jenny Diep",
@@ -18,7 +15,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body>
         <Providers>
           <Navbar />
           <Container maxW="1274px" color="black">

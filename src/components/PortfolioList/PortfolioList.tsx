@@ -1,6 +1,6 @@
 "use client";
 import { useGetPortfoliosByCategoryQuery as GetPortfoliosByCategoryQuery } from "@/__generated__/graphql";
-import { Box, Grid, GridItem, Spinner, Text } from "@chakra-ui/react";
+import { Box, Grid, GridItem, Spinner } from "@chakra-ui/react";
 import BaseImageCaption from "../Image/BaseImageCaption";
 
 type Props = {
@@ -41,9 +41,7 @@ export function PortfolioList({ category, variant }: Props) {
 
   return (
     <Box>
-      <Grid
-        gap={{ base: "6", md: "12" }}
-      >
+      <Grid gap={{ base: "6", md: "12" }}>
         <GridItem>
           <Grid gap={{ base: "6", md: "12" }} mb={6}>
             {portfolios && portfolios[0] && (

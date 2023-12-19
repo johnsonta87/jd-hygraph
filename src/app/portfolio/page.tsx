@@ -1,34 +1,58 @@
-import { Tabs, TabList, TabIndicator, TabPanels, TabPanel } from '@chakra-ui/react';
-import { PortfolioList } from '../../components/'
-import { NextPage } from "next";
+"use client";
+import { PortfolioList } from "@/components";
+import {
+  Tab,
+  TabIndicator,
+  TabList,
+  TabPanel,
+  TabPanels,
+  Tabs,
+  Text,
+} from "@chakra-ui/react";
+import { useState } from "react";
 
-const PortfolioIndex: NextPage = () => {
+type Props = {
+  variant: "primary" | "secondary";
+};
+
+const PortfolioIndex = (props: Props) => {
+  const [category, setCategory] = useState("Product design");
+
   return (
-    <Tabs align="start" variant="line">
-      <TabList borderColor="clay">
-        {/* {tabs.map((tab, index) => (
+    <>
+      <Text as="h1" mb="8">
+        Portfolio
+      </Text>
+
+      <Tabs align="center" variant="line">
+        <TabList borderColor="clay">
           <Tab
-            key={index}
             _selected={{ color: "clay" }}
             onClick={() => {
-              setActiveTab(index);
+              setCategory("Product design");
             }}
           >
-            {tab.title}
+            Product design
           </Tab>
-        ))} */}
-      </TabList>
-      <TabIndicator mt="-3px" height="2px" bg="clay" borderRadius="1px" />
+          <Tab
+            _selected={{ color: "clay" }}
+            onClick={() => {
+              setCategory("Branding design");
+            }}
+          >
+            Branding design
+          </Tab>
+        </TabList>
+        <TabIndicator mt="-3px" height="2px" bg="clay" borderRadius="1px" />
 
-      <TabPanels mt={20}>
-        {/* {tabs.map((tab, index) => (
-          <TabPanel key={index}>
-            <PortfolioList variant="secondary" category="Product design" />
+        <TabPanels mt={20}>
+          <TabPanel>
+            <PortfolioList variant="secondary" category={category} />
           </TabPanel>
-        ))} */}
-      </TabPanels>
+        </TabPanels>
       </Tabs>
-  )
+    </>
+  );
 };
 
 export default PortfolioIndex;
