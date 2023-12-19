@@ -3,7 +3,7 @@ import { useGetHomepageQuery as GetHomepageQuery } from "@/__generated__/graphql
 import { PortfolioList, ServicesList } from "@/components";
 import { PageHero } from "@/components/PageHero/PageHero";
 import PortfolioSwitcher from "@/components/PortfolioSwitcher/PortfolioSwitcher";
-import { Divider, Spinner } from "@chakra-ui/react";
+import { Box, Divider, Spinner } from "@chakra-ui/react";
 import { NextPage } from "next";
 
 const Home: NextPage = () => {
@@ -15,7 +15,7 @@ const Home: NextPage = () => {
   if (error) return `Error! ${error}`;
 
   return (
-    <div>
+    <Box>
       <PageHero
         variant={variant || "primary"}
         title={general?.mainHeading || ""}
@@ -34,7 +34,7 @@ const Home: NextPage = () => {
       )}
 
       <PortfolioSwitcher variant={variant || "primary"} />
-    </div>
+    </Box>
   );
 };
 
