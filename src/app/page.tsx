@@ -2,6 +2,7 @@
 import { useGetHomepageQuery as GetHomepageQuery } from "@/__generated__/graphql";
 import { PortfolioList, ServicesList } from "@/components";
 import { PageHero } from "@/components/PageHero/PageHero";
+import PortfolioSwitcher from "@/components/PortfolioSwitcher/PortfolioSwitcher";
 import { Divider, Spinner } from "@chakra-ui/react";
 import { NextPage } from "next";
 
@@ -26,7 +27,7 @@ const Home: NextPage = () => {
         <ServicesList heading={services.title || ""} />
       )}
       <Divider my={12} />
-      <PortfolioList variant="default" category="Product design" />
+      <PortfolioSwitcher variant="default" />
     </div>
   );
 };

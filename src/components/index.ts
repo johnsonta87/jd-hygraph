@@ -12,4 +12,5 @@ export * from "./Quote/Quote";
 export * from "./ServicesList/ServicesList";
 export * from "./Spacer/Spacer";
 export * from "./Typography/Typography";
+export * from "./PortfolioSwitcher/PortfolioSwitcher";
 

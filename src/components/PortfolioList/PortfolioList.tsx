@@ -4,7 +4,7 @@ import { Box, Grid, GridItem, Spinner, Text } from "@chakra-ui/react";
 import BaseImageCaption from "../Image/BaseImageCaption";
 
 type Props = {
-  category: "Product design" | "Branding design";
+  category: string;
   variant: "default" | "twoColumns";
 };
 
@@ -58,7 +58,7 @@ export function PortfolioList({ category, variant }: Props) {
         </GridItem>
         <GridItem area={"main"}>
           <Grid gap={{ base: "6", md: "12" }} mb={6}>
-            {portfolios && (
+            {portfolios && portfolios[0] && (
               <GridItem>
                 <BaseImageCaption
                   src={portfolios[0].showcaseImage?.url || ""}
