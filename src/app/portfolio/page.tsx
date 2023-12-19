@@ -1,7 +1,8 @@
+import { Tabs, TabList, TabIndicator, TabPanels, TabPanel } from '@chakra-ui/react';
 import { PortfolioList } from '../../components/'
+import { NextPage } from "next";
 
-export default function PortfolioIndex({ ...props }) {
-
+const PortfolioIndex: NextPage = () => {
   return (
     <Tabs align="start" variant="line">
       <TabList borderColor="clay">
@@ -20,12 +21,14 @@ export default function PortfolioIndex({ ...props }) {
       <TabIndicator mt="-3px" height="2px" bg="clay" borderRadius="1px" />
 
       <TabPanels mt={20}>
-        {tabs.map((tab, index) => (
+        {/* {tabs.map((tab, index) => (
           <TabPanel key={index}>
             <PortfolioList variant="secondary" category="Product design" />
           </TabPanel>
-        ))}
+        ))} */}
       </TabPanels>
       </Tabs>
   )
-}
+};
+
+export default PortfolioIndex;
