@@ -10,6 +10,7 @@ query GetHomepage {
 fragment HomepageFragmentFields on Homepage {
   slug
   title
+  variant
   general {
     mainHeading
     introSubheading {

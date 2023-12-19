@@ -860,6 +860,7 @@ export type Homepage = Entity & Node & {
   updatedAt: Scalars['DateTime'];
   /** User that last updated this document */
   updatedBy?: Maybe<User>;
+  variant: HomepageVariant;
 };
 
 
@@ -941,6 +942,7 @@ export type HomepageCreateInput = {
   slug?: InputMaybe<Scalars['String']>;
   title?: InputMaybe<Scalars['String']>;
   updatedAt?: InputMaybe<Scalars['DateTime']>;
+  variant: HomepageVariant;
 };
 
 export type HomepageCreateManyInlineInput = {
@@ -1088,6 +1090,13 @@ export type HomepageManyWhereInput = {
   /** All values that are not contained in given list. */
   updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
   updatedBy?: InputMaybe<UserWhereInput>;
+  variant?: InputMaybe<HomepageVariant>;
+  /** All values that are contained in given list. */
+  variant_in?: InputMaybe<Array<InputMaybe<HomepageVariant>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  variant_not?: InputMaybe<HomepageVariant>;
+  /** All values that are not contained in given list. */
+  variant_not_in?: InputMaybe<Array<InputMaybe<HomepageVariant>>>;
 };
 
 export enum HomepageOrderByInput {
@@ -1102,7 +1111,9 @@ export enum HomepageOrderByInput {
   TITLE_ASC = 'title_ASC',
   TITLE_DESC = 'title_DESC',
   UPDATEDAT_ASC = 'updatedAt_ASC',
-  UPDATEDAT_DESC = 'updatedAt_DESC'
+  UPDATEDAT_DESC = 'updatedAt_DESC',
+  VARIANT_ASC = 'variant_ASC',
+  VARIANT_DESC = 'variant_DESC'
 }
 
 export type HomepageUpdateInput = {
@@ -1110,6 +1121,7 @@ export type HomepageUpdateInput = {
   services?: InputMaybe<ServicesListUpdateOneInlineInput>;
   slug?: InputMaybe<Scalars['String']>;
   title?: InputMaybe<Scalars['String']>;
+  variant?: InputMaybe<HomepageVariant>;
 };
 
 export type HomepageUpdateManyInlineInput = {
@@ -1176,6 +1188,11 @@ export type HomepageUpsertWithNestedWhereUniqueInput = {
   /** Unique document search */
   where: HomepageWhereUniqueInput;
 };
+
+export enum HomepageVariant {
+  PRIMARY = 'primary',
+  SECONDARY = 'secondary'
+}
 
 /** This contains a set of filters that can be used to compare values internally */
 export type HomepageWhereComparatorInput = {
@@ -1306,6 +1323,13 @@ export type HomepageWhereInput = {
   /** All values that are not contained in given list. */
   updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
   updatedBy?: InputMaybe<UserWhereInput>;
+  variant?: InputMaybe<HomepageVariant>;
+  /** All values that are contained in given list. */
+  variant_in?: InputMaybe<Array<InputMaybe<HomepageVariant>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  variant_not?: InputMaybe<HomepageVariant>;
+  /** All values that are not contained in given list. */
+  variant_not_in?: InputMaybe<Array<InputMaybe<HomepageVariant>>>;
 };
 
 /** The document in stages filter allows specifying a stage entry to cross compare the same document between different stages */
@@ -1327,6 +1351,7 @@ export type HomepageWhereUniqueInput = {
   id?: InputMaybe<Scalars['ID']>;
   slug?: InputMaybe<Scalars['String']>;
   title?: InputMaybe<Scalars['String']>;
+  variant?: InputMaybe<HomepageVariant>;
 };
 
 export enum ImageFit {
@@ -6266,9 +6291,9 @@ export enum _SystemDateTimeFieldVariation {
 export type GetHomepageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetHomepageQuery = { homepage?: { slug?: string | null, title?: string | null, general?: { mainHeading?: string | null, introSubheading?: { html: string } | null, showcaseImage?: { url: string, fileName: string } | null } | null, services?: { id: string, showListOfServices?: boolean | null, title?: string | null } | null } | null };
+export type GetHomepageQuery = { homepage?: { slug?: string | null, title?: string | null, variant: HomepageVariant, general?: { mainHeading?: string | null, introSubheading?: { html: string } | null, showcaseImage?: { url: string, fileName: string } | null } | null, services?: { id: string, showListOfServices?: boolean | null, title?: string | null } | null } | null };
 
-export type HomepageFragmentFieldsFragment = { slug?: string | null, title?: string | null, general?: { mainHeading?: string | null, introSubheading?: { html: string } | null, showcaseImage?: { url: string, fileName: string } | null } | null, services?: { id: string, showListOfServices?: boolean | null, title?: string | null } | null };
+export type HomepageFragmentFieldsFragment = { slug?: string | null, title?: string | null, variant: HomepageVariant, general?: { mainHeading?: string | null, introSubheading?: { html: string } | null, showcaseImage?: { url: string, fileName: string } | null } | null, services?: { id: string, showListOfServices?: boolean | null, title?: string | null } | null };
 
 export type GetAllPortfoliosQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -6295,6 +6320,7 @@ export const HomepageFragmentFieldsFragmentDoc = gql`
     fragment HomepageFragmentFields on Homepage {
   slug
   title
+  variant
   general {
     mainHeading
     introSubheading {

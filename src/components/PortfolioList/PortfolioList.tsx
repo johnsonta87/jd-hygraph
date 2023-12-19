@@ -5,25 +5,20 @@ import BaseImageCaption from "../Image/BaseImageCaption";
 
 type Props = {
   category: string;
-  variant: "default" | "twoColumns";
+  variant: "primary" | "secondary";
 };
 
 export function PortfolioList({ category, variant }: Props) {
-  const { loading, error, data } = GetPortfoliosByCategoryQuery({
+  const { loading, data } = GetPortfoliosByCategoryQuery({
     variables: { portfolioCategory: category },
   });
   const { portfolios } = data || {};
 
   if (loading) return <Spinner size="xl" />;
-  if (error) return `Error! ${error}`;
 
-  if (variant === "twoColumns")
+  if (variant === "secondary")
     return (
       <Box>
-        <Text fontSize="4xl" mb="8">
-          Portfolio
-        </Text>
-
         <Grid
           gridTemplateColumns={{ base: "1fr", md: "50% 1fr" }}
           gap={{ base: "6", md: "12" }}
@@ -47,16 +42,9 @@ export function PortfolioList({ category, variant }: Props) {
   return (
     <Box>
       <Grid
-        templateAreas={`"side main"`}
-        gridTemplateColumns={"260px 1fr"}
         gap={{ base: "6", md: "12" }}
       >
-        <GridItem area={"side"}>
-          <Text fontSize="4xl" mb="8">
-            Portfolio
-          </Text>
-        </GridItem>
-        <GridItem area={"main"}>
+        <GridItem>
           <Grid gap={{ base: "6", md: "12" }} mb={6}>
             {portfolios && portfolios[0] && (
               <GridItem>

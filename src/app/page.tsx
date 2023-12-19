@@ -9,7 +9,7 @@ import { NextPage } from "next";
 const Home: NextPage = () => {
   const { loading, error, data } = GetHomepageQuery();
   const { homepage } = data || {};
-  const { general, services } = homepage || {};
+  const { general, services, variant } = homepage || {};
 
   if (loading) return <Spinner size="xl" />;
   if (error) return `Error! ${error}`;
@@ -17,17 +17,23 @@ const Home: NextPage = () => {
   return (
     <div>
       <PageHero
-        variant="default"
+        variant={variant || "primary"}
         title={general?.mainHeading || ""}
         subtitle={general?.introSubheading?.html || ""}
         image={general?.showcaseImage?.url || ""}
       />
-      <Divider my={12} />
-      {services?.showListOfServices && (
-        <ServicesList heading={services.title || ""} />
+
+      {variant === "primary" && (
+        <>
+          <Divider my={12} />
+            {services?.showListOfServices && (
+              <ServicesList heading={services.title || ""} />
+            )}
+          <Divider my={12} />
+        </>
       )}
-      <Divider my={12} />
-      <PortfolioSwitcher variant="default" />
+
+      <PortfolioSwitcher variant={variant || "primary"} />
     </div>
   );
 };
