@@ -13,7 +13,12 @@ const Home: NextPage = () => {
 
   if (loading)
     return (
-      <Flex w="100%" justifyContent="center" alignItems="center">
+      <Flex
+        w="100%"
+        h="calc(100vh - 335px)"
+        justifyContent="center"
+        alignItems="center"
+      >
         <Spinner size="xl" mx="auto" />
       </Flex>
     );

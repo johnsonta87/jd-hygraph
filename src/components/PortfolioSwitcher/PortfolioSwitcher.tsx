@@ -62,6 +62,7 @@ const PortfolioSwitcher = ({ variant }: Props) => {
                     as="button"
                     textTransform="uppercase"
                     textAlign="left"
+                    letterSpacing="5px"
                     justifyContent="flex-start"
                     p="0"
                     color="black"
@@ -75,7 +76,6 @@ const PortfolioSwitcher = ({ variant }: Props) => {
                       bg={`${
                         category === pCategory.name ? "clay" : "transparent"
                       }`}
-                      border
                       borderWidth="1px"
                       borderColor="clay"
                     />

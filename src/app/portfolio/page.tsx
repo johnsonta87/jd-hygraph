@@ -25,7 +25,12 @@ const PortfolioIndex = (props: Props) => {
 
   if (loading)
     return (
-      <Flex w="100%" justifyContent="center" alignItems="center">
+      <Flex
+        w="100%"
+        h="calc(100vh - 335px)"
+        justifyContent="center"
+        alignItems="center"
+      >
         <Spinner size="xl" mx="auto" />
       </Flex>
     );
@@ -45,6 +50,7 @@ const PortfolioIndex = (props: Props) => {
               as="button"
               textTransform="uppercase"
               fontSize="1.313rem"
+              letterSpacing="5px"
               _selected={{ color: "clay" }}
               onClick={() => setCategory(category.name)}
             >

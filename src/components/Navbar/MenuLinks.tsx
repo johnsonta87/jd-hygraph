@@ -15,20 +15,13 @@ export function MenuLinks({ isOpen, ...props }: Props) {
         justify={["center", "space-between", "flex-end", "flex-end"]}
         direction={["column", "row", "row", "row"]}
         gap="56px"
+        fontSize="1.125rem"
         pt={[4, 4, 0, 0]}
       >
-        <MenuItem fontSize="1.125rem" to="/">
-          Home
-        </MenuItem>
-        <MenuItem fontSize="1.125rem" to="/portfolio">
-          Portfolio
-        </MenuItem>
-        <MenuItem fontSize="1.125rem" to="/about">
-          About me
-        </MenuItem>
-        <MenuItem fontSize="1.125rem" to="/contact">
-          Contact
-        </MenuItem>
+        <MenuItem to="/">Home</MenuItem>
+        <MenuItem to="/portfolio">Portfolio</MenuItem>
+        <MenuItem to="/about">About me</MenuItem>
+        <MenuItem to="/contact">Contact</MenuItem>
       </Stack>
     </Box>
   );

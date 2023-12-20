@@ -36,6 +36,7 @@ export const theme = extendTheme({
       },
       p: {
         fontSize: "1.125rem",
+        letterSpacing: "2px",
       },
     }),
   },
