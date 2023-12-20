@@ -14,6 +14,7 @@ export function MenuLinks({ isOpen, ...props }: Props) {
         align="center"
         justify={["center", "space-between", "flex-end", "flex-end"]}
         direction={["column", "row", "row", "row"]}
+        gap="56px"
         pt={[4, 4, 0, 0]}
       >
         <MenuItem fontSize="1.125rem" to="/">

@@ -34,11 +34,11 @@ const BaseImageCaption = ({
         <Flex
           justifyContent="space-between"
           alignItems="center"
-          pt="0.75rem"
-          px="4"
+          pt="0.75rem "
+          px="8px"
         >
           {caption && (
-            <Text as="span" fontSize="1.125rem">
+            <Text as="span" fontSize="1.125rem" lineHeight={4}>
               {caption}
             </Text>
           )}
@@ -49,7 +49,7 @@ const BaseImageCaption = ({
               {year}
             </Text>
           ) : (
-            <Text as="span" textAlign="right" fontSize="lg">
+            <Text as="span" textAlign="right" fontSize="lg" pl={4}>
               {year}
             </Text>
           )}

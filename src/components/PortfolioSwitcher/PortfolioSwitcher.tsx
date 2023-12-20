@@ -2,8 +2,10 @@
 import { useGetPortfolioCategoriesQuery as GetPortfolioCategoriesQuery } from "@/__generated__/graphql";
 import {
   Box,
+  Flex,
   Grid,
   GridItem,
+  Spinner,
   Tab,
   TabList,
   Tabs,
@@ -17,11 +19,18 @@ type Props = {
 };
 
 const PortfolioSwitcher = ({ variant }: Props) => {
-  const { data } = GetPortfolioCategoriesQuery();
+  const { loading, data } = GetPortfolioCategoriesQuery();
   const { portfolioCategories } = data || {};
   const [category, setCategory] = useState(
     (portfolioCategories && portfolioCategories[0].name) || "Product design"
   );
+
+  if (loading)
+    return (
+      <Flex w="100%" justifyContent="center" alignItems="center">
+        <Spinner size="xl" mx="auto" />
+      </Flex>
+    );
 
   return (
     <Box>

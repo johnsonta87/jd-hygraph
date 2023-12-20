@@ -22,7 +22,7 @@ export function PortfolioList({ category, variant, hideCategoryName }: Props) {
       <Box>
         <Grid
           gridTemplateColumns={{ base: "1fr", md: "50% 1fr" }}
-          gap={{ base: "6", md: "12" }}
+          gap={{ base: "6", md: "32px" }}
         >
           {portfolios &&
             portfolios.map((p, index: number) => (
@@ -45,9 +45,9 @@ export function PortfolioList({ category, variant, hideCategoryName }: Props) {
 
   return (
     <Box>
-      <Grid gap={{ base: "6", md: "12" }}>
+      <Grid gap={{ base: "6", md: "32px" }}>
         <GridItem>
-          <Grid gap={{ base: "6", md: "12" }} mb={6}>
+          <Grid gap={{ base: "6", md: "32px" }} mb={6}>
             {portfolios && portfolios[0] && (
               <GridItem>
                 <BaseImageCaption
