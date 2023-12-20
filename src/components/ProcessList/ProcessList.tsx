@@ -41,7 +41,7 @@ const ProcessList = (props: Props) => {
                       as="span"
                       fontSize="1.125rem"
                       dangerouslySetInnerHTML={{
-                        __html: process?.content?.html,
+                        __html: process?.content?.html || "",
                       }}
                     />
                   </Box>

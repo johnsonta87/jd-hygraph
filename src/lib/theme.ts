@@ -13,6 +13,9 @@ export const theme = extendTheme({
       h1: {
         fontSize: "3rem",
       },
+      h2: {
+        fontSize: "3rem",
+      },
       p: {
         fontSize: "1.125rem",
       },

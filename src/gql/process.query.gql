@@ -6,6 +6,15 @@ query GetAllProcess {
   }
 }
 
+query GetMyProcessSection {
+  myProcessSection(where: { title: "My Process" }) {
+    title
+    showList
+    image {
+      url
+    }
+  }
+}
 
 fragment ProcessFragmentFields on Process {
   id
