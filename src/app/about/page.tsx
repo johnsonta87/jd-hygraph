@@ -4,7 +4,15 @@ import ContactLinks, {
   ContactLinksType,
 } from "@/components/ContactLinks/ContactLinks";
 import { PageHero } from "@/components/PageHero/PageHero";
-import { Box, Divider, Flex, Image, Spinner, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Container,
+  Divider,
+  Flex,
+  Image,
+  Spinner,
+  Text,
+} from "@chakra-ui/react";
 import ProcessList, {
   MyProcessListType,
 } from "../../components/ProcessList/ProcessList";
@@ -35,7 +43,7 @@ const AboutPage = (props: Props) => {
     );
 
   return (
-    <>
+    <Container maxW="1274px" color="black">
       <PageHero
         variant="primary"
         title={pageHero?.mainHeading || ""}
@@ -81,7 +89,7 @@ const AboutPage = (props: Props) => {
           list={pageContactSection as ContactLinksType[]}
         />
       )}
-    </>
+    </Container>
   );
 };
 

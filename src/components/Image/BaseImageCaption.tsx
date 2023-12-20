@@ -33,23 +33,24 @@ const BaseImageCaption = ({
       {caption && (
         <Flex
           justifyContent="space-between"
-          alignItems="center"
+          alignItems="start"
           pt="0.75rem "
           px="8px"
+          fontSize="1rem"
         >
           {caption && (
-            <Text as="span" fontSize="1.125rem" lineHeight={4}>
+            <Text as="span" lineHeight={4}>
               {caption}
             </Text>
           )}
           {category ? (
-            <Text as="span" textAlign="right" fontSize="1rem">
+            <Text as="span" textAlign="right">
               {category}
               <br />
               {year}
             </Text>
           ) : (
-            <Text as="span" textAlign="right" fontSize="lg" pl={4}>
+            <Text as="span" textAlign="right" pl={4}>
               {year}
             </Text>
           )}

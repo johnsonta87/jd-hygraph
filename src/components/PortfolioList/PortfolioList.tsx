@@ -1,5 +1,8 @@
 "use client";
-import { useGetPortfoliosByCategoryQuery as GetPortfoliosByCategoryQuery } from "@/__generated__/graphql";
+import {
+  useGetAllPortfoliosQuery as GetAllPortfoliosQuery,
+  useGetPortfoliosByCategoryQuery as GetPortfoliosByCategoryQuery,
+} from "@/__generated__/graphql";
 import { Box, Grid, GridItem, Spinner } from "@chakra-ui/react";
 import BaseImageCaption from "../Image/BaseImageCaption";
 
@@ -13,9 +16,11 @@ export function PortfolioList({ category, variant, hideCategoryName }: Props) {
   const { loading, data } = GetPortfoliosByCategoryQuery({
     variables: { portfolioCategory: category },
   });
+  const { loading: allLoading, data: allQuery } = GetAllPortfoliosQuery();
   const { portfolios } = data || {};
+  const { portfolios: allPortfolios } = allQuery || {};
 
-  if (loading) return <Spinner size="xl" />;
+  if (loading || allLoading) return <Spinner size="xl" />;
 
   if (variant === "secondary")
     return (
@@ -24,21 +29,37 @@ export function PortfolioList({ category, variant, hideCategoryName }: Props) {
           gridTemplateColumns={{ base: "1fr", md: "50% 1fr" }}
           gap={{ base: "6", md: "32px" }}
         >
-          {portfolios &&
-            portfolios.map((p, index: number) => (
-              <GridItem key={index}>
-                <BaseImageCaption
-                  src={p.showcaseImage?.url || ""}
-                  title={p.title || ""}
-                  caption={p.title || ""}
-                  year={p.year || ""}
-                  category={
-                    hideCategoryName ? "" : p.portfolioCategory?.name || ""
-                  }
-                  height="369px"
-                />
-              </GridItem>
-            ))}
+          {category === "All"
+            ? allPortfolios &&
+              allPortfolios.map((p, index: number) => (
+                <GridItem key={index}>
+                  <BaseImageCaption
+                    src={p.showcaseImage?.url || ""}
+                    title={p.title || ""}
+                    caption={p.title || ""}
+                    year={p.year || ""}
+                    category={
+                      hideCategoryName ? "" : p.portfolioCategory?.name || ""
+                    }
+                    height="369px"
+                  />
+                </GridItem>
+              ))
+            : portfolios &&
+              portfolios.map((p, index: number) => (
+                <GridItem key={index}>
+                  <BaseImageCaption
+                    src={p.showcaseImage?.url || ""}
+                    title={p.title || ""}
+                    caption={p.title || ""}
+                    year={p.year || ""}
+                    category={
+                      hideCategoryName ? "" : p.portfolioCategory?.name || ""
+                    }
+                    height="369px"
+                  />
+                </GridItem>
+              ))}
         </Grid>
       </Box>
     );

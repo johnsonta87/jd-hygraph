@@ -566,6 +566,7 @@ export type Aggregate = {
 
 /** Asset system model */
 export type Asset = Entity & Node & {
+  bannerImageHomepage: Array<Homepage>;
   /** The time the document was created */
   createdAt: Scalars['DateTime'];
   /** User that created this document */
@@ -606,6 +607,20 @@ export type Asset = Entity & Node & {
   url: Scalars['String'];
   /** The file width */
   width?: Maybe<Scalars['Float']>;
+};
+
+
+/** Asset system model */
+export type AssetBannerImageHomepageArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: InputMaybe<Array<Locale>>;
+  orderBy?: InputMaybe<HomepageOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<HomepageWhereInput>;
 };
 
 
@@ -720,6 +735,7 @@ export type AssetConnection = {
 };
 
 export type AssetCreateInput = {
+  bannerImageHomepage?: InputMaybe<HomepageCreateManyInlineInput>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   fileContactLink?: InputMaybe<ContactLinkCreateManyInlineInput>;
   fileName: Scalars['String'];
@@ -792,6 +808,9 @@ export type AssetManyWhereInput = {
   OR?: InputMaybe<Array<AssetWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']>;
+  bannerImageHomepage_every?: InputMaybe<HomepageWhereInput>;
+  bannerImageHomepage_none?: InputMaybe<HomepageWhereInput>;
+  bannerImageHomepage_some?: InputMaybe<HomepageWhereInput>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   createdAt_gt?: InputMaybe<Scalars['DateTime']>;
@@ -902,6 +921,7 @@ export type AssetTransformationInput = {
 };
 
 export type AssetUpdateInput = {
+  bannerImageHomepage?: InputMaybe<HomepageUpdateManyInlineInput>;
   fileContactLink?: InputMaybe<ContactLinkUpdateManyInlineInput>;
   fileName?: InputMaybe<Scalars['String']>;
   handle?: InputMaybe<Scalars['String']>;
@@ -1052,6 +1072,9 @@ export type AssetWhereInput = {
   OR?: InputMaybe<Array<AssetWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']>;
+  bannerImageHomepage_every?: InputMaybe<HomepageWhereInput>;
+  bannerImageHomepage_none?: InputMaybe<HomepageWhereInput>;
+  bannerImageHomepage_some?: InputMaybe<HomepageWhereInput>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   createdAt_gt?: InputMaybe<Scalars['DateTime']>;
@@ -1783,6 +1806,7 @@ export type EntityWhereInput = {
 };
 
 export type Homepage = Entity & Node & {
+  bannerImage?: Maybe<Asset>;
   /** The time the document was created */
   createdAt: Scalars['DateTime'];
   /** User that created this document */
@@ -1809,6 +1833,12 @@ export type Homepage = Entity & Node & {
   /** User that last updated this document */
   updatedBy?: Maybe<User>;
   variant: HomepageVariant;
+};
+
+
+export type HomepageBannerImageArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  locales?: InputMaybe<Array<Locale>>;
 };
 
 
@@ -1884,6 +1914,7 @@ export type HomepageConnection = {
 };
 
 export type HomepageCreateInput = {
+  bannerImage?: InputMaybe<AssetCreateOneInlineInput>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   general?: InputMaybe<MainPageIntroCreateOneInlineInput>;
   services?: InputMaybe<ServicesListCreateOneInlineInput>;
@@ -1925,6 +1956,7 @@ export type HomepageManyWhereInput = {
   OR?: InputMaybe<Array<HomepageWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']>;
+  bannerImage?: InputMaybe<AssetWhereInput>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   createdAt_gt?: InputMaybe<Scalars['DateTime']>;
@@ -2065,6 +2097,7 @@ export enum HomepageOrderByInput {
 }
 
 export type HomepageUpdateInput = {
+  bannerImage?: InputMaybe<AssetUpdateOneInlineInput>;
   general?: InputMaybe<MainPageIntroUpdateOneInlineInput>;
   services?: InputMaybe<ServicesListUpdateOneInlineInput>;
   slug?: InputMaybe<Scalars['String']>;
@@ -2158,6 +2191,7 @@ export type HomepageWhereInput = {
   OR?: InputMaybe<Array<HomepageWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']>;
+  bannerImage?: InputMaybe<AssetWhereInput>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   createdAt_gt?: InputMaybe<Scalars['DateTime']>;
@@ -8142,9 +8176,9 @@ export type AboutPageMainFieldsFragment = { id: string, contactSectionTitle?: st
 export type GetHomepageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetHomepageQuery = { homepage?: { slug?: string | null, title?: string | null, variant: HomepageVariant, general?: { mainHeading?: string | null, introSubheading?: { html: string } | null, showcaseImage?: { url: string, fileName: string } | null } | null, services?: { id: string, showListOfServices?: boolean | null, title?: string | null } | null } | null };
+export type GetHomepageQuery = { homepage?: { slug?: string | null, title?: string | null, variant: HomepageVariant, bannerImage?: { url: string } | null, general?: { mainHeading?: string | null, introSubheading?: { html: string } | null, showcaseImage?: { url: string, fileName: string } | null } | null, services?: { id: string, showListOfServices?: boolean | null, title?: string | null } | null } | null };
 
-export type HomepageFragmentFieldsFragment = { slug?: string | null, title?: string | null, variant: HomepageVariant, general?: { mainHeading?: string | null, introSubheading?: { html: string } | null, showcaseImage?: { url: string, fileName: string } | null } | null, services?: { id: string, showListOfServices?: boolean | null, title?: string | null } | null };
+export type HomepageFragmentFieldsFragment = { slug?: string | null, title?: string | null, variant: HomepageVariant, bannerImage?: { url: string } | null, general?: { mainHeading?: string | null, introSubheading?: { html: string } | null, showcaseImage?: { url: string, fileName: string } | null } | null, services?: { id: string, showListOfServices?: boolean | null, title?: string | null } | null };
 
 export type GetAllPortfoliosQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -8225,6 +8259,9 @@ export const HomepageFragmentFieldsFragmentDoc = gql`
   slug
   title
   variant
+  bannerImage {
+    url
+  }
   general {
     mainHeading
     introSubheading {

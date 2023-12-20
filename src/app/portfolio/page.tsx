@@ -2,6 +2,7 @@
 import { useGetPortfolioCategoriesQuery as GetPortfolioCategoriesQuery } from "@/__generated__/graphql";
 import { PortfolioList } from "@/components";
 import {
+  Container,
   Flex,
   Spinner,
   Tab,
@@ -36,7 +37,7 @@ const PortfolioIndex = (props: Props) => {
     );
 
   return (
-    <>
+    <Container maxW="1274px" color="black">
       <Text as="h1" mb="8">
         Portfolio
       </Text>
@@ -70,7 +71,7 @@ const PortfolioIndex = (props: Props) => {
           </TabPanel>
         </TabPanels>
       </Tabs>
-    </>
+    </Container>
   );
 };
 

@@ -11,6 +11,9 @@ fragment HomepageFragmentFields on Homepage {
   slug
   title
   variant
+  bannerImage {
+    url
+  }
   general {
     mainHeading
     introSubheading {

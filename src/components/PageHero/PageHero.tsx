@@ -2,18 +2,27 @@ import { Box, Divider, Flex, Image, Text } from "@chakra-ui/react";
 
 type Props = {
   variant: "primary" | "secondary";
+  bannerImage?: string;
   title: string;
   subtitle: HTMLElement | string;
   image: string;
 };
 
-export function PageHero({ variant, title, subtitle, image }: Props) {
+export function PageHero({
+  variant,
+  bannerImage,
+  title,
+  subtitle,
+  image,
+}: Props) {
   if (variant === "secondary")
     return (
       <>
-        <Text as="h1" mb="8">
-          Jenny Diep
-        </Text>
+        {!bannerImage && (
+          <Text as="h1" mb="8">
+            Jenny Diep
+          </Text>
+        )}
 
         <Flex
           w="100%"
