@@ -27,7 +27,11 @@ export function ServicesList({ heading }: Props) {
       gap={{ base: "6", md: "12" }}
     >
       <GridItem area={"side"}>
-        {heading && <Text fontSize="lg">{heading}</Text>}
+        {heading && (
+          <Text as="h3" fontSize="lg">
+            {heading}
+          </Text>
+        )}
       </GridItem>
 
       <GridItem area={"main"}>

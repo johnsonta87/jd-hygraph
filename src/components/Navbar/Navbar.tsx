@@ -14,7 +14,7 @@ export const Navbar = (props: Props) => {
 
   return (
     <NavbarContainer {...props}>
-      <BaseLogo text="Jenny" />
+      <BaseLogo text="Jenny Diep" />
       <MenuToggle toggle={toggle} isOpen={isOpen} />
       <MenuLinks isOpen={isOpen} />
     </NavbarContainer>

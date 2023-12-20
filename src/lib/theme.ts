@@ -10,6 +10,16 @@ export const theme = extendTheme({
         fontSize: "1.125rem",
         fontFamily: "FoundersGrotesk, Raleway",
       },
+      '&::-webkit-scrollbar': {
+        width: '6px',
+      },
+      '&::-webkit-scrollbar-track': {
+        width: '6px',
+      },
+      '&::-webkit-scrollbar-thumb': {
+        background: "#000",
+        borderRadius: '6px',
+      },
       h1: {
         fontFamily: "Juana",
         fontSize: "3rem",
@@ -19,6 +29,10 @@ export const theme = extendTheme({
         fontFamily: "Juana",
         fontSize: "3rem",
         lineHeight: "1.5em",
+      },
+      h3: {
+        fontFamily: "Juana",
+        fontSize: "1.5rem",
       },
       p: {
         fontSize: "1.125rem",

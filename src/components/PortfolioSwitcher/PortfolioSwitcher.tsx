@@ -32,21 +32,45 @@ const PortfolioSwitcher = ({ variant }: Props) => {
           gap={{ base: "6", md: "12" }}
         >
           <GridItem area={"side"}>
-            <Text fontSize="4xl" mb="8">
+            <Text as="h2" mb="8">
               Portfolio
             </Text>
 
-            <Tabs>
-              <TabList border="none" flexDirection="column" w={300}>
-                {portfolioCategories?.map((category) => (
+            <Tabs display="flex">
+              <TabList
+                border="none"
+                flexDirection="column"
+                justifyContent="start"
+                gap={4}
+                w={300}
+              >
+                {portfolioCategories?.map((pCategory) => (
                   <Tab
-                    key={category.id}
+                    key={pCategory.id}
                     border="none"
+                    w="auto"
+                    flexBasis="auto"
                     as="button"
                     textTransform="uppercase"
-                    onClick={() => setCategory(category.name)}
+                    textAlign="left"
+                    justifyContent="flex-start"
+                    p="0"
+                    color="black"
+                    onClick={() => setCategory(pCategory.name)}
                   >
-                    {category.name}
+                    <Box
+                      as="span"
+                      w="12px"
+                      h="32px"
+                      mr={2}
+                      bg={`${
+                        category === pCategory.name ? "clay" : "transparent"
+                      }`}
+                      border
+                      borderWidth="1px"
+                      borderColor="clay"
+                    />
+                    {pCategory.name}
                   </Tab>
                 ))}
               </TabList>

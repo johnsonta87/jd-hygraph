@@ -13,11 +13,11 @@ const BaseLogo = ({ text, ...props }: Props) => {
 
   return (
     <Box {...props}>
-      <Link href="/" _hover={{ textDecoration: "none" }}>
-        <Text fontSize="lg" fontWeight="bold">
+      <Text as="h1" fontSize="2rem">
+        <Link href="/" _hover={{ textDecoration: "none" }} fontSize="2rem">
           {text}
-        </Text>
-      </Link>
+        </Link>
+      </Text>
     </Box>
   );
 };
