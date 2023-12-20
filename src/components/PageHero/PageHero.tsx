@@ -41,7 +41,11 @@ export function PageHero({ variant, title, subtitle, image }: Props) {
   return (
     <Flex w="100%" align="center" justify="space-between" gap={12}>
       <Box flexBasis="50%">
-        {title && <Text as="h1">{title}</Text>}
+        {title && (
+          <Text as="h1" mb="12px">
+            {title}
+          </Text>
+        )}
         {subtitle && (
           <Text
             as="div"
