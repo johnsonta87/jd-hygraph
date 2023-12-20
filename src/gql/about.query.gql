@@ -23,4 +23,30 @@ fragment AboutPageMainFields on AboutPage {
       html
     }
   }
+  myProcessSection {
+    id
+    name
+    icon {
+      url
+      fileName
+    }
+    content {
+      html
+    }
+  }
+  contactSectionTitle
+  pageContactSection {
+    id
+    title
+    link
+    file {
+      fileName
+      url
+    }
+    icon {
+      url
+      fileName
+    }
+    isExternal
+  }
 }

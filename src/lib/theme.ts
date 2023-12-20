@@ -11,10 +11,10 @@ export const theme = extendTheme({
         fontFamily: "FoundersGrotesk, Raleway",
       },
       '&::-webkit-scrollbar': {
-        width: '6px',
+        width: '10px',
       },
       '&::-webkit-scrollbar-track': {
-        width: '6px',
+        width: '10px',
       },
       '&::-webkit-scrollbar-thumb': {
         background: "#000",

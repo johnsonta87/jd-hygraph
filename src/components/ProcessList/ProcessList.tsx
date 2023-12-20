@@ -1,39 +1,46 @@
 "use client";
-import { useGetAllProcessQuery as GetAllProcessQuery } from "@/__generated__/graphql";
-import {
-  Box,
-  Flex,
-  List,
-  ListIcon,
-  ListItem,
-  Spinner,
-  Text,
-} from "@chakra-ui/react";
+import { Box, Flex, Image, List, ListItem, Text } from "@chakra-ui/react";
 
-type Props = {};
+export type MyProcessListType = {
+  id: string;
+  name: string;
+  icon?: {
+    url: string;
+    fileName: string;
+  };
+  content?: {
+    html: string;
+  };
+};
 
-const ProcessList = (props: Props) => {
-  const { loading, data } = GetAllProcessQuery();
-  const { myProcessLists } = data || {};
+type Props = {
+  list: MyProcessListType[];
+};
 
-  if (loading) return <Spinner size="xl" mx-auto />;
-
+const ProcessList = ({ list }: Props) => {
   return (
-    <Box>
-      <List spacing="40px">
-        {myProcessLists?.map((process) => {
+    <List spacing="40px">
+      {list &&
+        list?.map((listItem) => {
           return (
-            <ListItem key={process?.id}>
-              <Flex justifyContent="start" alignItems="start">
-                <ListIcon mt={2} color="green.500" />
+            <ListItem key={listItem?.id}>
+              <Flex justifyContent="start" alignItems="start" gap="4">
+                {listItem.icon?.url && (
+                  <Image
+                    borderRadius="full"
+                    boxSize="48px"
+                    src={listItem.icon.url}
+                    alt={`${listItem.name} icon`}
+                  />
+                )}
                 <Flex
                   justifyContent="center"
                   flexDirection="column"
                   alignItems="start"
                 >
                   <Box mb="12px">
-                    <Text as="h3" fontSize="1.313rem" textTransform="uppercase">
-                      {process?.name}
+                    <Text fontSize="1.313rem" textTransform="uppercase">
+                      {listItem.name}
                     </Text>
                   </Box>
                   <Box>
@@ -41,7 +48,7 @@ const ProcessList = (props: Props) => {
                       as="span"
                       fontSize="1.125rem"
                       dangerouslySetInnerHTML={{
-                        __html: process?.content?.html || "",
+                        __html: listItem.content?.html || "",
                       }}
                     />
                   </Box>
@@ -50,8 +57,7 @@ const ProcessList = (props: Props) => {
             </ListItem>
           );
         })}
-      </List>
-    </Box>
+    </List>
   );
 };
 

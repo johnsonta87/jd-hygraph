@@ -1,15 +1,26 @@
 "use client";
 import { useGetAboutPageQuery as GetAboutPageQuery } from "@/__generated__/graphql";
+import ContactLinks, {
+  ContactLinksType,
+} from "@/components/ContactLinks/ContactLinks";
 import { PageHero } from "@/components/PageHero/PageHero";
 import { Box, Divider, Flex, Image, Spinner, Text } from "@chakra-ui/react";
-import ProcessList from "../../components/ProcessList/ProcessList";
+import ProcessList, {
+  MyProcessListType,
+} from "../../components/ProcessList/ProcessList";
 
 type Props = {};
 
 const AboutPage = (props: Props) => {
   const { loading, data } = GetAboutPageQuery();
   const { aboutPage } = data || {};
-  const { pageHero, myProcess } = aboutPage || {};
+  const {
+    pageHero,
+    myProcess,
+    myProcessSection,
+    contactSectionTitle,
+    pageContactSection,
+  } = aboutPage || {};
 
   if (loading)
     return (
@@ -53,15 +64,22 @@ const AboutPage = (props: Props) => {
                 maxW="411px"
               />
             </Box>
-            {myProcess?.showList && (
+            {myProcess?.showList && myProcessSection && (
               <Box flexBasis="50%">
-                <ProcessList />
+                <ProcessList list={myProcessSection as MyProcessListType[]} />
               </Box>
             )}
           </Flex>
 
           <Divider my="40px" />
         </>
+      )}
+
+      {pageContactSection && (
+        <ContactLinks
+          sectionTitle={contactSectionTitle || ""}
+          list={pageContactSection as ContactLinksType[]}
+        />
       )}
     </>
   );
