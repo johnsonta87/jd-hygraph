@@ -14,14 +14,14 @@ type Props = {};
 
 const ProcessList = (props: Props) => {
   const { loading, data } = GetAllProcessQuery();
-  const { processes } = data || {};
+  const { myProcessLists } = data || {};
 
   if (loading) return <Spinner size="xl" mx-auto />;
 
   return (
     <Box>
       <List spacing="40px">
-        {processes?.map((process) => {
+        {myProcessLists?.map((process) => {
           return (
             <ListItem key={process?.id}>
               <Flex justifyContent="start" alignItems="start">

@@ -1,29 +1,15 @@
 query GetAllProcess {
-  processes(
+  myProcessLists(
   stage: PUBLISHED
 ) {
-    ...ProcessFragmentFields
-  }
-}
-
-query GetMyProcessSection {
-  myProcessSection(where: { title: "My Process" }) {
-    title
-    showList
-    image {
+    id
+    name
+    content {
+      html
+    }
+    icon {
+      fileName
       url
     }
-  }
-}
-
-fragment ProcessFragmentFields on Process {
-  id
-  name
-  content {
-    html
-  }
-  icon {
-    fileName
-    url
   }
 }

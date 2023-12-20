@@ -8,11 +8,20 @@ const Fonts = () => (
   <Global
     styles={`
       @font-face {
+        font-family: 'Juana';
+        font-style: normal;
+        font-weight: 500;
+        font-display: swap;
+        src: url(/fonts/juana/juana-regular.woff) format('woff'),
+          url(/fonts/juana/juana-regular.woff2) format('woff2');
+      }
+      @font-face {
         font-family: 'FoundersGrotesk';
         font-style: normal;
         font-weight: 500;
         font-display: swap;
-        src: url(/fonts/founders/FoundersGrotesk-Regular.woff2) format('woff2');
+        src: url(/fonts/founders/FoundersGrotesk-Regular.woff) format('woff'),
+          url(/fonts/founders/FoundersGrotesk-Regular.woff2) format('woff2');
       }
       @font-face {
         font-family: 'Raleway';

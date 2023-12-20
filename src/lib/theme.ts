@@ -11,10 +11,14 @@ export const theme = extendTheme({
         fontFamily: "FoundersGrotesk, Raleway",
       },
       h1: {
+        fontFamily: "Juana",
         fontSize: "3rem",
+        lineHeight: "1.5em",
       },
       h2: {
+        fontFamily: "Juana",
         fontSize: "3rem",
+        lineHeight: "1.5em",
       },
       p: {
         fontSize: "1.125rem",
@@ -36,4 +40,8 @@ export const theme = extendTheme({
     xl: "80em", // ~1280px
     "2xl": "96em", // ~1536px
   },
+  fonts: {
+    heading: "Juana",
+    body: "FoundersGrotesk, Raleway",
+  }
 });

@@ -1,0 +1,26 @@
+query GetAboutPage {
+  aboutPage(where: {title: "About me"}) {
+    ...AboutPageMainFields
+  }
+}
+
+fragment AboutPageMainFields on AboutPage {
+  id
+  myProcess {
+    showList
+    title
+    image {
+      url
+      fileName
+    }
+  }
+  pageHero {
+    mainHeading
+    showcaseImage {
+      url
+    }
+    introSubheading {
+      html
+    }
+  }
+}

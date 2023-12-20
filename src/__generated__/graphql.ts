@@ -23,6 +23,457 @@ export type Scalars = {
   RichTextAST: any;
 };
 
+export type AboutPage = Entity & Node & {
+  /** The time the document was created */
+  createdAt: Scalars['DateTime'];
+  /** User that created this document */
+  createdBy?: Maybe<User>;
+  /** Get the document in other stages */
+  documentInStages: Array<AboutPage>;
+  /** List of AboutPage versions */
+  history: Array<Version>;
+  /** The unique identifier */
+  id: Scalars['ID'];
+  myProcess?: Maybe<MyProcessSection>;
+  pageHero?: Maybe<MainPageIntro>;
+  /** The time the document was published. Null on documents in draft stage. */
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  /** User that last published this document */
+  publishedBy?: Maybe<User>;
+  scheduledIn: Array<ScheduledOperation>;
+  /** System stage field */
+  stage: Stage;
+  title?: Maybe<Scalars['String']>;
+  /** The time the document was updated */
+  updatedAt: Scalars['DateTime'];
+  /** User that last updated this document */
+  updatedBy?: Maybe<User>;
+};
+
+
+export type AboutPageCreatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
+export type AboutPageDocumentInStagesArgs = {
+  includeCurrent?: Scalars['Boolean'];
+  inheritLocale?: Scalars['Boolean'];
+  stages?: Array<Stage>;
+};
+
+
+export type AboutPageHistoryArgs = {
+  limit?: Scalars['Int'];
+  skip?: Scalars['Int'];
+  stageOverride?: InputMaybe<Stage>;
+};
+
+
+export type AboutPageMyProcessArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
+export type AboutPagePageHeroArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
+export type AboutPagePublishedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
+export type AboutPageScheduledInArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: InputMaybe<Array<Locale>>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ScheduledOperationWhereInput>;
+};
+
+
+export type AboutPageUpdatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+export type AboutPageConnectInput = {
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+  /** Document to connect */
+  where: AboutPageWhereUniqueInput;
+};
+
+/** A connection to a list of items. */
+export type AboutPageConnection = {
+  aggregate: Aggregate;
+  /** A list of edges. */
+  edges: Array<AboutPageEdge>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+export type AboutPageCreateInput = {
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  myProcess?: InputMaybe<MyProcessSectionCreateOneInlineInput>;
+  pageHero?: InputMaybe<MainPageIntroCreateOneInlineInput>;
+  title?: InputMaybe<Scalars['String']>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type AboutPageCreateManyInlineInput = {
+  /** Connect multiple existing AboutPage documents */
+  connect?: InputMaybe<Array<AboutPageWhereUniqueInput>>;
+  /** Create and connect multiple existing AboutPage documents */
+  create?: InputMaybe<Array<AboutPageCreateInput>>;
+};
+
+export type AboutPageCreateOneInlineInput = {
+  /** Connect one existing AboutPage document */
+  connect?: InputMaybe<AboutPageWhereUniqueInput>;
+  /** Create and connect one AboutPage document */
+  create?: InputMaybe<AboutPageCreateInput>;
+};
+
+/** An edge in a connection. */
+export type AboutPageEdge = {
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String'];
+  /** The item at the end of the edge. */
+  node: AboutPage;
+};
+
+/** Identifies documents */
+export type AboutPageManyWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<AboutPageWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<AboutPageWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<AboutPageWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  createdAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** Any other value that exists and is not equal to the given value. */
+  createdAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  createdBy?: InputMaybe<UserWhereInput>;
+  documentInStages_every?: InputMaybe<AboutPageWhereStageInput>;
+  documentInStages_none?: InputMaybe<AboutPageWhereStageInput>;
+  documentInStages_some?: InputMaybe<AboutPageWhereStageInput>;
+  id?: InputMaybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  id_not?: InputMaybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>;
+  myProcess?: InputMaybe<MyProcessSectionWhereInput>;
+  pageHero?: InputMaybe<MainPageIntroWhereInput>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  publishedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** Any other value that exists and is not equal to the given value. */
+  publishedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  publishedBy?: InputMaybe<UserWhereInput>;
+  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  title?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  title_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  title_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  title_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  title_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  title_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  title_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  title_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  title_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  title_starts_with?: InputMaybe<Scalars['String']>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  updatedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** Any other value that exists and is not equal to the given value. */
+  updatedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  updatedBy?: InputMaybe<UserWhereInput>;
+};
+
+export enum AboutPageOrderByInput {
+  CREATEDAT_ASC = 'createdAt_ASC',
+  CREATEDAT_DESC = 'createdAt_DESC',
+  ID_ASC = 'id_ASC',
+  ID_DESC = 'id_DESC',
+  PUBLISHEDAT_ASC = 'publishedAt_ASC',
+  PUBLISHEDAT_DESC = 'publishedAt_DESC',
+  TITLE_ASC = 'title_ASC',
+  TITLE_DESC = 'title_DESC',
+  UPDATEDAT_ASC = 'updatedAt_ASC',
+  UPDATEDAT_DESC = 'updatedAt_DESC'
+}
+
+export type AboutPageUpdateInput = {
+  myProcess?: InputMaybe<MyProcessSectionUpdateOneInlineInput>;
+  pageHero?: InputMaybe<MainPageIntroUpdateOneInlineInput>;
+  title?: InputMaybe<Scalars['String']>;
+};
+
+export type AboutPageUpdateManyInlineInput = {
+  /** Connect multiple existing AboutPage documents */
+  connect?: InputMaybe<Array<AboutPageConnectInput>>;
+  /** Create and connect multiple AboutPage documents */
+  create?: InputMaybe<Array<AboutPageCreateInput>>;
+  /** Delete multiple AboutPage documents */
+  delete?: InputMaybe<Array<AboutPageWhereUniqueInput>>;
+  /** Disconnect multiple AboutPage documents */
+  disconnect?: InputMaybe<Array<AboutPageWhereUniqueInput>>;
+  /** Override currently-connected documents with multiple existing AboutPage documents */
+  set?: InputMaybe<Array<AboutPageWhereUniqueInput>>;
+  /** Update multiple AboutPage documents */
+  update?: InputMaybe<Array<AboutPageUpdateWithNestedWhereUniqueInput>>;
+  /** Upsert multiple AboutPage documents */
+  upsert?: InputMaybe<Array<AboutPageUpsertWithNestedWhereUniqueInput>>;
+};
+
+export type AboutPageUpdateManyInput = {
+  /** No fields in updateMany data input */
+  _?: InputMaybe<Scalars['String']>;
+};
+
+export type AboutPageUpdateManyWithNestedWhereInput = {
+  /** Update many input */
+  data: AboutPageUpdateManyInput;
+  /** Document search */
+  where: AboutPageWhereInput;
+};
+
+export type AboutPageUpdateOneInlineInput = {
+  /** Connect existing AboutPage document */
+  connect?: InputMaybe<AboutPageWhereUniqueInput>;
+  /** Create and connect one AboutPage document */
+  create?: InputMaybe<AboutPageCreateInput>;
+  /** Delete currently connected AboutPage document */
+  delete?: InputMaybe<Scalars['Boolean']>;
+  /** Disconnect currently connected AboutPage document */
+  disconnect?: InputMaybe<Scalars['Boolean']>;
+  /** Update single AboutPage document */
+  update?: InputMaybe<AboutPageUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single AboutPage document */
+  upsert?: InputMaybe<AboutPageUpsertWithNestedWhereUniqueInput>;
+};
+
+export type AboutPageUpdateWithNestedWhereUniqueInput = {
+  /** Document to update */
+  data: AboutPageUpdateInput;
+  /** Unique document search */
+  where: AboutPageWhereUniqueInput;
+};
+
+export type AboutPageUpsertInput = {
+  /** Create document if it didn't exist */
+  create: AboutPageCreateInput;
+  /** Update document if it exists */
+  update: AboutPageUpdateInput;
+};
+
+export type AboutPageUpsertWithNestedWhereUniqueInput = {
+  /** Upsert data */
+  data: AboutPageUpsertInput;
+  /** Unique document search */
+  where: AboutPageWhereUniqueInput;
+};
+
+/** This contains a set of filters that can be used to compare values internally */
+export type AboutPageWhereComparatorInput = {
+  /** This field can be used to request to check if the entry is outdated by internal comparison */
+  outdated_to?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Identifies documents */
+export type AboutPageWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<AboutPageWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<AboutPageWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<AboutPageWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  createdAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** Any other value that exists and is not equal to the given value. */
+  createdAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  createdBy?: InputMaybe<UserWhereInput>;
+  documentInStages_every?: InputMaybe<AboutPageWhereStageInput>;
+  documentInStages_none?: InputMaybe<AboutPageWhereStageInput>;
+  documentInStages_some?: InputMaybe<AboutPageWhereStageInput>;
+  id?: InputMaybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  id_not?: InputMaybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>;
+  myProcess?: InputMaybe<MyProcessSectionWhereInput>;
+  pageHero?: InputMaybe<MainPageIntroWhereInput>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  publishedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** Any other value that exists and is not equal to the given value. */
+  publishedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  publishedBy?: InputMaybe<UserWhereInput>;
+  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  title?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  title_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  title_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  title_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  title_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  title_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  title_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  title_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  title_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  title_starts_with?: InputMaybe<Scalars['String']>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  updatedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** Any other value that exists and is not equal to the given value. */
+  updatedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  updatedBy?: InputMaybe<UserWhereInput>;
+};
+
+/** The document in stages filter allows specifying a stage entry to cross compare the same document between different stages */
+export type AboutPageWhereStageInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<AboutPageWhereStageInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<AboutPageWhereStageInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<AboutPageWhereStageInput>>;
+  /** This field contains fields which can be set as true or false to specify an internal comparison */
+  compareWithParent?: InputMaybe<AboutPageWhereComparatorInput>;
+  /** Specify the stage to compare with */
+  stage?: InputMaybe<Stage>;
+};
+
+/** References AboutPage record uniquely */
+export type AboutPageWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']>;
+  title?: InputMaybe<Scalars['String']>;
+};
+
 export type Aggregate = {
   count: Scalars['Int'];
 };
@@ -43,10 +494,9 @@ export type Asset = Entity & Node & {
   height?: Maybe<Scalars['Float']>;
   /** List of Asset versions */
   history: Array<Version>;
-  iconProcess: Array<Process>;
+  iconMyProcessList: Array<MyProcessList>;
   /** The unique identifier */
   id: Scalars['ID'];
-  imageMyProcessSection: Array<MyProcessSection>;
   /** System Locale field */
   locale: Locale;
   /** Get the other localizations for this document */
@@ -104,30 +554,16 @@ export type AssetHistoryArgs = {
 
 
 /** Asset system model */
-export type AssetIconProcessArgs = {
+export type AssetIconMyProcessListArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Int']>;
   forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   last?: InputMaybe<Scalars['Int']>;
   locales?: InputMaybe<Array<Locale>>;
-  orderBy?: InputMaybe<ProcessOrderByInput>;
+  orderBy?: InputMaybe<MyProcessListOrderByInput>;
   skip?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<ProcessWhereInput>;
-};
-
-
-/** Asset system model */
-export type AssetImageMyProcessSectionArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
-  last?: InputMaybe<Scalars['Int']>;
-  locales?: InputMaybe<Array<Locale>>;
-  orderBy?: InputMaybe<MyProcessSectionOrderByInput>;
-  skip?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<MyProcessSectionWhereInput>;
+  where?: InputMaybe<MyProcessListWhereInput>;
 };
 
 
@@ -217,7 +653,7 @@ export type AssetCreateInput = {
   fileName: Scalars['String'];
   handle: Scalars['String'];
   height?: InputMaybe<Scalars['Float']>;
-  iconProcess?: InputMaybe<ProcessCreateManyInlineInput>;
+  iconMyProcessList?: InputMaybe<MyProcessListCreateManyInlineInput>;
   imageMyProcessSection?: InputMaybe<MyProcessSectionCreateManyInlineInput>;
   /** Inline mutations for managing document localizations excluding the default locale */
   localizations?: InputMaybe<AssetCreateLocalizationsInput>;
@@ -302,9 +738,9 @@ export type AssetManyWhereInput = {
   documentInStages_every?: InputMaybe<AssetWhereStageInput>;
   documentInStages_none?: InputMaybe<AssetWhereStageInput>;
   documentInStages_some?: InputMaybe<AssetWhereStageInput>;
-  iconProcess_every?: InputMaybe<ProcessWhereInput>;
-  iconProcess_none?: InputMaybe<ProcessWhereInput>;
-  iconProcess_some?: InputMaybe<ProcessWhereInput>;
+  iconMyProcessList_every?: InputMaybe<MyProcessListWhereInput>;
+  iconMyProcessList_none?: InputMaybe<MyProcessListWhereInput>;
+  iconMyProcessList_some?: InputMaybe<MyProcessListWhereInput>;
   id?: InputMaybe<Scalars['ID']>;
   /** All values containing the given string. */
   id_contains?: InputMaybe<Scalars['ID']>;
@@ -324,9 +760,6 @@ export type AssetManyWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars['ID']>;
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']>;
-  imageMyProcessSection_every?: InputMaybe<MyProcessSectionWhereInput>;
-  imageMyProcessSection_none?: InputMaybe<MyProcessSectionWhereInput>;
-  imageMyProcessSection_some?: InputMaybe<MyProcessSectionWhereInput>;
   publishedAt?: InputMaybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
@@ -402,7 +835,7 @@ export type AssetUpdateInput = {
   fileName?: InputMaybe<Scalars['String']>;
   handle?: InputMaybe<Scalars['String']>;
   height?: InputMaybe<Scalars['Float']>;
-  iconProcess?: InputMaybe<ProcessUpdateManyInlineInput>;
+  iconMyProcessList?: InputMaybe<MyProcessListUpdateManyInlineInput>;
   imageMyProcessSection?: InputMaybe<MyProcessSectionUpdateManyInlineInput>;
   /** Manage document localizations */
   localizations?: InputMaybe<AssetUpdateLocalizationsInput>;
@@ -619,9 +1052,9 @@ export type AssetWhereInput = {
   height_not?: InputMaybe<Scalars['Float']>;
   /** All values that are not contained in given list. */
   height_not_in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>;
-  iconProcess_every?: InputMaybe<ProcessWhereInput>;
-  iconProcess_none?: InputMaybe<ProcessWhereInput>;
-  iconProcess_some?: InputMaybe<ProcessWhereInput>;
+  iconMyProcessList_every?: InputMaybe<MyProcessListWhereInput>;
+  iconMyProcessList_none?: InputMaybe<MyProcessListWhereInput>;
+  iconMyProcessList_some?: InputMaybe<MyProcessListWhereInput>;
   id?: InputMaybe<Scalars['ID']>;
   /** All values containing the given string. */
   id_contains?: InputMaybe<Scalars['ID']>;
@@ -641,9 +1074,6 @@ export type AssetWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars['ID']>;
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']>;
-  imageMyProcessSection_every?: InputMaybe<MyProcessSectionWhereInput>;
-  imageMyProcessSection_none?: InputMaybe<MyProcessSectionWhereInput>;
-  imageMyProcessSection_some?: InputMaybe<MyProcessSectionWhereInput>;
   mimeType?: InputMaybe<Scalars['String']>;
   /** All values containing the given string. */
   mimeType_contains?: InputMaybe<Scalars['String']>;
@@ -854,14 +1284,15 @@ export type Entity = {
 
 /** This enumeration holds all typenames that implement the Entity interface. Components and models implement the Entity interface. */
 export enum EntityTypeName {
+  ABOUTPAGE = 'AboutPage',
   /** Asset system model */
   ASSET = 'Asset',
   HOMEPAGE = 'Homepage',
   MAINPAGEINTRO = 'MainPageIntro',
+  MYPROCESSLIST = 'MyProcessList',
   MYPROCESSSECTION = 'MyProcessSection',
   PORTFOLIO = 'Portfolio',
   PORTFOLIOCATEGORY = 'PortfolioCategory',
-  PROCESS = 'Process',
   /** Scheduled Operation system model */
   SCHEDULEDOPERATION = 'ScheduledOperation',
   /** Scheduled Release system model */
@@ -1574,13 +2005,15 @@ export enum MainPageIntroOrderByInput {
   MAINHEADING_DESC = 'mainHeading_DESC'
 }
 
-export type MainPageIntroParent = Homepage;
+export type MainPageIntroParent = AboutPage | Homepage;
 
 export type MainPageIntroParentConnectInput = {
+  AboutPage?: InputMaybe<AboutPageConnectInput>;
   Homepage?: InputMaybe<HomepageConnectInput>;
 };
 
 export type MainPageIntroParentCreateInput = {
+  AboutPage?: InputMaybe<AboutPageCreateInput>;
   Homepage?: InputMaybe<HomepageCreateInput>;
 };
 
@@ -1599,6 +2032,7 @@ export type MainPageIntroParentCreateOneInlineInput = {
 };
 
 export type MainPageIntroParentUpdateInput = {
+  AboutPage?: InputMaybe<AboutPageUpdateInput>;
   Homepage?: InputMaybe<HomepageUpdateInput>;
 };
 
@@ -1620,6 +2054,7 @@ export type MainPageIntroParentUpdateManyInlineInput = {
 };
 
 export type MainPageIntroParentUpdateManyWithNestedWhereInput = {
+  AboutPage?: InputMaybe<AboutPageUpdateManyWithNestedWhereInput>;
   Homepage?: InputMaybe<HomepageUpdateManyWithNestedWhereInput>;
 };
 
@@ -1639,18 +2074,22 @@ export type MainPageIntroParentUpdateOneInlineInput = {
 };
 
 export type MainPageIntroParentUpdateWithNestedWhereUniqueInput = {
+  AboutPage?: InputMaybe<AboutPageUpdateWithNestedWhereUniqueInput>;
   Homepage?: InputMaybe<HomepageUpdateWithNestedWhereUniqueInput>;
 };
 
 export type MainPageIntroParentUpsertWithNestedWhereUniqueInput = {
+  AboutPage?: InputMaybe<AboutPageUpsertWithNestedWhereUniqueInput>;
   Homepage?: InputMaybe<HomepageUpsertWithNestedWhereUniqueInput>;
 };
 
 export type MainPageIntroParentWhereInput = {
+  AboutPage?: InputMaybe<AboutPageWhereInput>;
   Homepage?: InputMaybe<HomepageWhereInput>;
 };
 
 export type MainPageIntroParentWhereUniqueInput = {
+  AboutPage?: InputMaybe<AboutPageWhereUniqueInput>;
   Homepage?: InputMaybe<HomepageWhereUniqueInput>;
 };
 
@@ -1790,6 +2229,8 @@ export type MainPageIntroWhereUniqueInput = {
 };
 
 export type Mutation = {
+  /** Create one aboutPage */
+  createAboutPage?: Maybe<AboutPage>;
   /**
    * Create one asset
    * @deprecated Asset mutations will be overhauled soon
@@ -1797,22 +2238,29 @@ export type Mutation = {
   createAsset?: Maybe<Asset>;
   /** Create one homepage */
   createHomepage?: Maybe<Homepage>;
-  /** Create one myProcessSection */
-  createMyProcessSection?: Maybe<MyProcessSection>;
+  /** Create one myProcessList */
+  createMyProcessList?: Maybe<MyProcessList>;
   /** Create one portfolio */
   createPortfolio?: Maybe<Portfolio>;
   /** Create one portfolioCategory */
   createPortfolioCategory?: Maybe<PortfolioCategory>;
-  /** Create one process */
-  createProcess?: Maybe<Process>;
   /** Create one scheduledRelease */
   createScheduledRelease?: Maybe<ScheduledRelease>;
   /** Create one service */
   createService?: Maybe<Service>;
+  /** Delete one aboutPage from _all_ existing stages. Returns deleted document. */
+  deleteAboutPage?: Maybe<AboutPage>;
   /** Delete one asset from _all_ existing stages. Returns deleted document. */
   deleteAsset?: Maybe<Asset>;
   /** Delete one homepage from _all_ existing stages. Returns deleted document. */
   deleteHomepage?: Maybe<Homepage>;
+  /**
+   * Delete many AboutPage documents
+   * @deprecated Please use the new paginated many mutation (deleteManyAboutPagesConnection)
+   */
+  deleteManyAboutPages: BatchPayload;
+  /** Delete many AboutPage documents, return deleted documents */
+  deleteManyAboutPagesConnection: AboutPageConnection;
   /**
    * Delete many Asset documents
    * @deprecated Please use the new paginated many mutation (deleteManyAssetsConnection)
@@ -1828,12 +2276,12 @@ export type Mutation = {
   /** Delete many Homepage documents, return deleted documents */
   deleteManyHomepagesConnection: HomepageConnection;
   /**
-   * Delete many MyProcessSection documents
-   * @deprecated Please use the new paginated many mutation (deleteManyMyProcessSectionsConnection)
+   * Delete many MyProcessList documents
+   * @deprecated Please use the new paginated many mutation (deleteManyMyProcessListsConnection)
    */
-  deleteManyMyProcessSections: BatchPayload;
-  /** Delete many MyProcessSection documents, return deleted documents */
-  deleteManyMyProcessSectionsConnection: MyProcessSectionConnection;
+  deleteManyMyProcessLists: BatchPayload;
+  /** Delete many MyProcessList documents, return deleted documents */
+  deleteManyMyProcessListsConnection: MyProcessListConnection;
   /**
    * Delete many PortfolioCategory documents
    * @deprecated Please use the new paginated many mutation (deleteManyPortfolioCategoriesConnection)
@@ -1849,37 +2297,37 @@ export type Mutation = {
   /** Delete many Portfolio documents, return deleted documents */
   deleteManyPortfoliosConnection: PortfolioConnection;
   /**
-   * Delete many Process documents
-   * @deprecated Please use the new paginated many mutation (deleteManyProcessesConnection)
-   */
-  deleteManyProcesses: BatchPayload;
-  /** Delete many Process documents, return deleted documents */
-  deleteManyProcessesConnection: ProcessConnection;
-  /**
    * Delete many Service documents
    * @deprecated Please use the new paginated many mutation (deleteManyServicesConnection)
    */
   deleteManyServices: BatchPayload;
   /** Delete many Service documents, return deleted documents */
   deleteManyServicesConnection: ServiceConnection;
-  /** Delete one myProcessSection from _all_ existing stages. Returns deleted document. */
-  deleteMyProcessSection?: Maybe<MyProcessSection>;
+  /** Delete one myProcessList from _all_ existing stages. Returns deleted document. */
+  deleteMyProcessList?: Maybe<MyProcessList>;
   /** Delete one portfolio from _all_ existing stages. Returns deleted document. */
   deletePortfolio?: Maybe<Portfolio>;
   /** Delete one portfolioCategory from _all_ existing stages. Returns deleted document. */
   deletePortfolioCategory?: Maybe<PortfolioCategory>;
-  /** Delete one process from _all_ existing stages. Returns deleted document. */
-  deleteProcess?: Maybe<Process>;
   /** Delete and return scheduled operation */
   deleteScheduledOperation?: Maybe<ScheduledOperation>;
   /** Delete one scheduledRelease from _all_ existing stages. Returns deleted document. */
   deleteScheduledRelease?: Maybe<ScheduledRelease>;
   /** Delete one service from _all_ existing stages. Returns deleted document. */
   deleteService?: Maybe<Service>;
+  /** Publish one aboutPage */
+  publishAboutPage?: Maybe<AboutPage>;
   /** Publish one asset */
   publishAsset?: Maybe<Asset>;
   /** Publish one homepage */
   publishHomepage?: Maybe<Homepage>;
+  /**
+   * Publish many AboutPage documents
+   * @deprecated Please use the new paginated many mutation (publishManyAboutPagesConnection)
+   */
+  publishManyAboutPages: BatchPayload;
+  /** Publish many AboutPage documents */
+  publishManyAboutPagesConnection: AboutPageConnection;
   /**
    * Publish many Asset documents
    * @deprecated Please use the new paginated many mutation (publishManyAssetsConnection)
@@ -1895,12 +2343,12 @@ export type Mutation = {
   /** Publish many Homepage documents */
   publishManyHomepagesConnection: HomepageConnection;
   /**
-   * Publish many MyProcessSection documents
-   * @deprecated Please use the new paginated many mutation (publishManyMyProcessSectionsConnection)
+   * Publish many MyProcessList documents
+   * @deprecated Please use the new paginated many mutation (publishManyMyProcessListsConnection)
    */
-  publishManyMyProcessSections: BatchPayload;
-  /** Publish many MyProcessSection documents */
-  publishManyMyProcessSectionsConnection: MyProcessSectionConnection;
+  publishManyMyProcessLists: BatchPayload;
+  /** Publish many MyProcessList documents */
+  publishManyMyProcessListsConnection: MyProcessListConnection;
   /**
    * Publish many PortfolioCategory documents
    * @deprecated Please use the new paginated many mutation (publishManyPortfolioCategoriesConnection)
@@ -1916,61 +2364,61 @@ export type Mutation = {
   /** Publish many Portfolio documents */
   publishManyPortfoliosConnection: PortfolioConnection;
   /**
-   * Publish many Process documents
-   * @deprecated Please use the new paginated many mutation (publishManyProcessesConnection)
-   */
-  publishManyProcesses: BatchPayload;
-  /** Publish many Process documents */
-  publishManyProcessesConnection: ProcessConnection;
-  /**
    * Publish many Service documents
    * @deprecated Please use the new paginated many mutation (publishManyServicesConnection)
    */
   publishManyServices: BatchPayload;
   /** Publish many Service documents */
   publishManyServicesConnection: ServiceConnection;
-  /** Publish one myProcessSection */
-  publishMyProcessSection?: Maybe<MyProcessSection>;
+  /** Publish one myProcessList */
+  publishMyProcessList?: Maybe<MyProcessList>;
   /** Publish one portfolio */
   publishPortfolio?: Maybe<Portfolio>;
   /** Publish one portfolioCategory */
   publishPortfolioCategory?: Maybe<PortfolioCategory>;
-  /** Publish one process */
-  publishProcess?: Maybe<Process>;
   /** Publish one service */
   publishService?: Maybe<Service>;
+  /** Schedule to publish one aboutPage */
+  schedulePublishAboutPage?: Maybe<AboutPage>;
   /** Schedule to publish one asset */
   schedulePublishAsset?: Maybe<Asset>;
   /** Schedule to publish one homepage */
   schedulePublishHomepage?: Maybe<Homepage>;
-  /** Schedule to publish one myProcessSection */
-  schedulePublishMyProcessSection?: Maybe<MyProcessSection>;
+  /** Schedule to publish one myProcessList */
+  schedulePublishMyProcessList?: Maybe<MyProcessList>;
   /** Schedule to publish one portfolio */
   schedulePublishPortfolio?: Maybe<Portfolio>;
   /** Schedule to publish one portfolioCategory */
   schedulePublishPortfolioCategory?: Maybe<PortfolioCategory>;
-  /** Schedule to publish one process */
-  schedulePublishProcess?: Maybe<Process>;
   /** Schedule to publish one service */
   schedulePublishService?: Maybe<Service>;
+  /** Unpublish one aboutPage from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  scheduleUnpublishAboutPage?: Maybe<AboutPage>;
   /** Unpublish one asset from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishAsset?: Maybe<Asset>;
   /** Unpublish one homepage from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishHomepage?: Maybe<Homepage>;
-  /** Unpublish one myProcessSection from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
-  scheduleUnpublishMyProcessSection?: Maybe<MyProcessSection>;
+  /** Unpublish one myProcessList from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  scheduleUnpublishMyProcessList?: Maybe<MyProcessList>;
   /** Unpublish one portfolio from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishPortfolio?: Maybe<Portfolio>;
   /** Unpublish one portfolioCategory from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishPortfolioCategory?: Maybe<PortfolioCategory>;
-  /** Unpublish one process from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
-  scheduleUnpublishProcess?: Maybe<Process>;
   /** Unpublish one service from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishService?: Maybe<Service>;
+  /** Unpublish one aboutPage from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  unpublishAboutPage?: Maybe<AboutPage>;
   /** Unpublish one asset from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishAsset?: Maybe<Asset>;
   /** Unpublish one homepage from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishHomepage?: Maybe<Homepage>;
+  /**
+   * Unpublish many AboutPage documents
+   * @deprecated Please use the new paginated many mutation (unpublishManyAboutPagesConnection)
+   */
+  unpublishManyAboutPages: BatchPayload;
+  /** Find many AboutPage documents that match criteria in specified stage and unpublish from target stages */
+  unpublishManyAboutPagesConnection: AboutPageConnection;
   /**
    * Unpublish many Asset documents
    * @deprecated Please use the new paginated many mutation (unpublishManyAssetsConnection)
@@ -1986,12 +2434,12 @@ export type Mutation = {
   /** Find many Homepage documents that match criteria in specified stage and unpublish from target stages */
   unpublishManyHomepagesConnection: HomepageConnection;
   /**
-   * Unpublish many MyProcessSection documents
-   * @deprecated Please use the new paginated many mutation (unpublishManyMyProcessSectionsConnection)
+   * Unpublish many MyProcessList documents
+   * @deprecated Please use the new paginated many mutation (unpublishManyMyProcessListsConnection)
    */
-  unpublishManyMyProcessSections: BatchPayload;
-  /** Find many MyProcessSection documents that match criteria in specified stage and unpublish from target stages */
-  unpublishManyMyProcessSectionsConnection: MyProcessSectionConnection;
+  unpublishManyMyProcessLists: BatchPayload;
+  /** Find many MyProcessList documents that match criteria in specified stage and unpublish from target stages */
+  unpublishManyMyProcessListsConnection: MyProcessListConnection;
   /**
    * Unpublish many PortfolioCategory documents
    * @deprecated Please use the new paginated many mutation (unpublishManyPortfolioCategoriesConnection)
@@ -2007,33 +2455,33 @@ export type Mutation = {
   /** Find many Portfolio documents that match criteria in specified stage and unpublish from target stages */
   unpublishManyPortfoliosConnection: PortfolioConnection;
   /**
-   * Unpublish many Process documents
-   * @deprecated Please use the new paginated many mutation (unpublishManyProcessesConnection)
-   */
-  unpublishManyProcesses: BatchPayload;
-  /** Find many Process documents that match criteria in specified stage and unpublish from target stages */
-  unpublishManyProcessesConnection: ProcessConnection;
-  /**
    * Unpublish many Service documents
    * @deprecated Please use the new paginated many mutation (unpublishManyServicesConnection)
    */
   unpublishManyServices: BatchPayload;
   /** Find many Service documents that match criteria in specified stage and unpublish from target stages */
   unpublishManyServicesConnection: ServiceConnection;
-  /** Unpublish one myProcessSection from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
-  unpublishMyProcessSection?: Maybe<MyProcessSection>;
+  /** Unpublish one myProcessList from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  unpublishMyProcessList?: Maybe<MyProcessList>;
   /** Unpublish one portfolio from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishPortfolio?: Maybe<Portfolio>;
   /** Unpublish one portfolioCategory from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishPortfolioCategory?: Maybe<PortfolioCategory>;
-  /** Unpublish one process from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
-  unpublishProcess?: Maybe<Process>;
   /** Unpublish one service from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishService?: Maybe<Service>;
+  /** Update one aboutPage */
+  updateAboutPage?: Maybe<AboutPage>;
   /** Update one asset */
   updateAsset?: Maybe<Asset>;
   /** Update one homepage */
   updateHomepage?: Maybe<Homepage>;
+  /**
+   * Update many aboutPages
+   * @deprecated Please use the new paginated many mutation (updateManyAboutPagesConnection)
+   */
+  updateManyAboutPages: BatchPayload;
+  /** Update many AboutPage documents */
+  updateManyAboutPagesConnection: AboutPageConnection;
   /**
    * Update many assets
    * @deprecated Please use the new paginated many mutation (updateManyAssetsConnection)
@@ -2049,12 +2497,12 @@ export type Mutation = {
   /** Update many Homepage documents */
   updateManyHomepagesConnection: HomepageConnection;
   /**
-   * Update many myProcessSections
-   * @deprecated Please use the new paginated many mutation (updateManyMyProcessSectionsConnection)
+   * Update many myProcessLists
+   * @deprecated Please use the new paginated many mutation (updateManyMyProcessListsConnection)
    */
-  updateManyMyProcessSections: BatchPayload;
-  /** Update many MyProcessSection documents */
-  updateManyMyProcessSectionsConnection: MyProcessSectionConnection;
+  updateManyMyProcessLists: BatchPayload;
+  /** Update many MyProcessList documents */
+  updateManyMyProcessListsConnection: MyProcessListConnection;
   /**
    * Update many portfolioCategories
    * @deprecated Please use the new paginated many mutation (updateManyPortfolioCategoriesConnection)
@@ -2070,45 +2518,41 @@ export type Mutation = {
   /** Update many Portfolio documents */
   updateManyPortfoliosConnection: PortfolioConnection;
   /**
-   * Update many processes
-   * @deprecated Please use the new paginated many mutation (updateManyProcessesConnection)
-   */
-  updateManyProcesses: BatchPayload;
-  /** Update many Process documents */
-  updateManyProcessesConnection: ProcessConnection;
-  /**
    * Update many services
    * @deprecated Please use the new paginated many mutation (updateManyServicesConnection)
    */
   updateManyServices: BatchPayload;
   /** Update many Service documents */
   updateManyServicesConnection: ServiceConnection;
-  /** Update one myProcessSection */
-  updateMyProcessSection?: Maybe<MyProcessSection>;
+  /** Update one myProcessList */
+  updateMyProcessList?: Maybe<MyProcessList>;
   /** Update one portfolio */
   updatePortfolio?: Maybe<Portfolio>;
   /** Update one portfolioCategory */
   updatePortfolioCategory?: Maybe<PortfolioCategory>;
-  /** Update one process */
-  updateProcess?: Maybe<Process>;
   /** Update one scheduledRelease */
   updateScheduledRelease?: Maybe<ScheduledRelease>;
   /** Update one service */
   updateService?: Maybe<Service>;
+  /** Upsert one aboutPage */
+  upsertAboutPage?: Maybe<AboutPage>;
   /** Upsert one asset */
   upsertAsset?: Maybe<Asset>;
   /** Upsert one homepage */
   upsertHomepage?: Maybe<Homepage>;
-  /** Upsert one myProcessSection */
-  upsertMyProcessSection?: Maybe<MyProcessSection>;
+  /** Upsert one myProcessList */
+  upsertMyProcessList?: Maybe<MyProcessList>;
   /** Upsert one portfolio */
   upsertPortfolio?: Maybe<Portfolio>;
   /** Upsert one portfolioCategory */
   upsertPortfolioCategory?: Maybe<PortfolioCategory>;
-  /** Upsert one process */
-  upsertProcess?: Maybe<Process>;
   /** Upsert one service */
   upsertService?: Maybe<Service>;
+};
+
+
+export type MutationCreateAboutPageArgs = {
+  data: AboutPageCreateInput;
 };
 
 
@@ -2122,8 +2566,8 @@ export type MutationCreateHomepageArgs = {
 };
 
 
-export type MutationCreateMyProcessSectionArgs = {
-  data: MyProcessSectionCreateInput;
+export type MutationCreateMyProcessListArgs = {
+  data: MyProcessListCreateInput;
 };
 
 
@@ -2137,11 +2581,6 @@ export type MutationCreatePortfolioCategoryArgs = {
 };
 
 
-export type MutationCreateProcessArgs = {
-  data: ProcessCreateInput;
-};
-
-
 export type MutationCreateScheduledReleaseArgs = {
   data: ScheduledReleaseCreateInput;
 };
@@ -2152,6 +2591,11 @@ export type MutationCreateServiceArgs = {
 };
 
 
+export type MutationDeleteAboutPageArgs = {
+  where: AboutPageWhereUniqueInput;
+};
+
+
 export type MutationDeleteAssetArgs = {
   where: AssetWhereUniqueInput;
 };
@@ -2159,6 +2603,21 @@ export type MutationDeleteAssetArgs = {
 
 export type MutationDeleteHomepageArgs = {
   where: HomepageWhereUniqueInput;
+};
+
+
+export type MutationDeleteManyAboutPagesArgs = {
+  where?: InputMaybe<AboutPageManyWhereInput>;
+};
+
+
+export type MutationDeleteManyAboutPagesConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<AboutPageManyWhereInput>;
 };
 
 
@@ -2192,18 +2651,18 @@ export type MutationDeleteManyHomepagesConnectionArgs = {
 };
 
 
-export type MutationDeleteManyMyProcessSectionsArgs = {
-  where?: InputMaybe<MyProcessSectionManyWhereInput>;
+export type MutationDeleteManyMyProcessListsArgs = {
+  where?: InputMaybe<MyProcessListManyWhereInput>;
 };
 
 
-export type MutationDeleteManyMyProcessSectionsConnectionArgs = {
+export type MutationDeleteManyMyProcessListsConnectionArgs = {
   after?: InputMaybe<Scalars['ID']>;
   before?: InputMaybe<Scalars['ID']>;
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
   skip?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<MyProcessSectionManyWhereInput>;
+  where?: InputMaybe<MyProcessListManyWhereInput>;
 };
 
 
@@ -2237,21 +2696,6 @@ export type MutationDeleteManyPortfoliosConnectionArgs = {
 };
 
 
-export type MutationDeleteManyProcessesArgs = {
-  where?: InputMaybe<ProcessManyWhereInput>;
-};
-
-
-export type MutationDeleteManyProcessesConnectionArgs = {
-  after?: InputMaybe<Scalars['ID']>;
-  before?: InputMaybe<Scalars['ID']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  skip?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<ProcessManyWhereInput>;
-};
-
-
 export type MutationDeleteManyServicesArgs = {
   where?: InputMaybe<ServiceManyWhereInput>;
 };
@@ -2267,8 +2711,8 @@ export type MutationDeleteManyServicesConnectionArgs = {
 };
 
 
-export type MutationDeleteMyProcessSectionArgs = {
-  where: MyProcessSectionWhereUniqueInput;
+export type MutationDeleteMyProcessListArgs = {
+  where: MyProcessListWhereUniqueInput;
 };
 
 
@@ -2279,11 +2723,6 @@ export type MutationDeletePortfolioArgs = {
 
 export type MutationDeletePortfolioCategoryArgs = {
   where: PortfolioCategoryWhereUniqueInput;
-};
-
-
-export type MutationDeleteProcessArgs = {
-  where: ProcessWhereUniqueInput;
 };
 
 
@@ -2302,6 +2741,12 @@ export type MutationDeleteServiceArgs = {
 };
 
 
+export type MutationPublishAboutPageArgs = {
+  to?: Array<Stage>;
+  where: AboutPageWhereUniqueInput;
+};
+
+
 export type MutationPublishAssetArgs = {
   locales?: InputMaybe<Array<Locale>>;
   publishBase?: InputMaybe<Scalars['Boolean']>;
@@ -2314,6 +2759,24 @@ export type MutationPublishAssetArgs = {
 export type MutationPublishHomepageArgs = {
   to?: Array<Stage>;
   where: HomepageWhereUniqueInput;
+};
+
+
+export type MutationPublishManyAboutPagesArgs = {
+  to?: Array<Stage>;
+  where?: InputMaybe<AboutPageManyWhereInput>;
+};
+
+
+export type MutationPublishManyAboutPagesConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  first?: InputMaybe<Scalars['Int']>;
+  from?: InputMaybe<Stage>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  to?: Array<Stage>;
+  where?: InputMaybe<AboutPageManyWhereInput>;
 };
 
 
@@ -2359,13 +2822,13 @@ export type MutationPublishManyHomepagesConnectionArgs = {
 };
 
 
-export type MutationPublishManyMyProcessSectionsArgs = {
+export type MutationPublishManyMyProcessListsArgs = {
   to?: Array<Stage>;
-  where?: InputMaybe<MyProcessSectionManyWhereInput>;
+  where?: InputMaybe<MyProcessListManyWhereInput>;
 };
 
 
-export type MutationPublishManyMyProcessSectionsConnectionArgs = {
+export type MutationPublishManyMyProcessListsConnectionArgs = {
   after?: InputMaybe<Scalars['ID']>;
   before?: InputMaybe<Scalars['ID']>;
   first?: InputMaybe<Scalars['Int']>;
@@ -2373,7 +2836,7 @@ export type MutationPublishManyMyProcessSectionsConnectionArgs = {
   last?: InputMaybe<Scalars['Int']>;
   skip?: InputMaybe<Scalars['Int']>;
   to?: Array<Stage>;
-  where?: InputMaybe<MyProcessSectionManyWhereInput>;
+  where?: InputMaybe<MyProcessListManyWhereInput>;
 };
 
 
@@ -2413,24 +2876,6 @@ export type MutationPublishManyPortfoliosConnectionArgs = {
 };
 
 
-export type MutationPublishManyProcessesArgs = {
-  to?: Array<Stage>;
-  where?: InputMaybe<ProcessManyWhereInput>;
-};
-
-
-export type MutationPublishManyProcessesConnectionArgs = {
-  after?: InputMaybe<Scalars['ID']>;
-  before?: InputMaybe<Scalars['ID']>;
-  first?: InputMaybe<Scalars['Int']>;
-  from?: InputMaybe<Stage>;
-  last?: InputMaybe<Scalars['Int']>;
-  skip?: InputMaybe<Scalars['Int']>;
-  to?: Array<Stage>;
-  where?: InputMaybe<ProcessManyWhereInput>;
-};
-
-
 export type MutationPublishManyServicesArgs = {
   to?: Array<Stage>;
   where?: InputMaybe<ServiceManyWhereInput>;
@@ -2449,9 +2894,9 @@ export type MutationPublishManyServicesConnectionArgs = {
 };
 
 
-export type MutationPublishMyProcessSectionArgs = {
+export type MutationPublishMyProcessListArgs = {
   to?: Array<Stage>;
-  where: MyProcessSectionWhereUniqueInput;
+  where: MyProcessListWhereUniqueInput;
 };
 
 
@@ -2467,15 +2912,17 @@ export type MutationPublishPortfolioCategoryArgs = {
 };
 
 
-export type MutationPublishProcessArgs = {
-  to?: Array<Stage>;
-  where: ProcessWhereUniqueInput;
-};
-
-
 export type MutationPublishServiceArgs = {
   to?: Array<Stage>;
   where: ServiceWhereUniqueInput;
+};
+
+
+export type MutationSchedulePublishAboutPageArgs = {
+  releaseAt?: InputMaybe<Scalars['DateTime']>;
+  releaseId?: InputMaybe<Scalars['String']>;
+  to?: Array<Stage>;
+  where: AboutPageWhereUniqueInput;
 };
 
 
@@ -2498,11 +2945,11 @@ export type MutationSchedulePublishHomepageArgs = {
 };
 
 
-export type MutationSchedulePublishMyProcessSectionArgs = {
+export type MutationSchedulePublishMyProcessListArgs = {
   releaseAt?: InputMaybe<Scalars['DateTime']>;
   releaseId?: InputMaybe<Scalars['String']>;
   to?: Array<Stage>;
-  where: MyProcessSectionWhereUniqueInput;
+  where: MyProcessListWhereUniqueInput;
 };
 
 
@@ -2522,19 +2969,19 @@ export type MutationSchedulePublishPortfolioCategoryArgs = {
 };
 
 
-export type MutationSchedulePublishProcessArgs = {
-  releaseAt?: InputMaybe<Scalars['DateTime']>;
-  releaseId?: InputMaybe<Scalars['String']>;
-  to?: Array<Stage>;
-  where: ProcessWhereUniqueInput;
-};
-
-
 export type MutationSchedulePublishServiceArgs = {
   releaseAt?: InputMaybe<Scalars['DateTime']>;
   releaseId?: InputMaybe<Scalars['String']>;
   to?: Array<Stage>;
   where: ServiceWhereUniqueInput;
+};
+
+
+export type MutationScheduleUnpublishAboutPageArgs = {
+  from?: Array<Stage>;
+  releaseAt?: InputMaybe<Scalars['DateTime']>;
+  releaseId?: InputMaybe<Scalars['String']>;
+  where: AboutPageWhereUniqueInput;
 };
 
 
@@ -2556,11 +3003,11 @@ export type MutationScheduleUnpublishHomepageArgs = {
 };
 
 
-export type MutationScheduleUnpublishMyProcessSectionArgs = {
+export type MutationScheduleUnpublishMyProcessListArgs = {
   from?: Array<Stage>;
   releaseAt?: InputMaybe<Scalars['DateTime']>;
   releaseId?: InputMaybe<Scalars['String']>;
-  where: MyProcessSectionWhereUniqueInput;
+  where: MyProcessListWhereUniqueInput;
 };
 
 
@@ -2580,19 +3027,17 @@ export type MutationScheduleUnpublishPortfolioCategoryArgs = {
 };
 
 
-export type MutationScheduleUnpublishProcessArgs = {
-  from?: Array<Stage>;
-  releaseAt?: InputMaybe<Scalars['DateTime']>;
-  releaseId?: InputMaybe<Scalars['String']>;
-  where: ProcessWhereUniqueInput;
-};
-
-
 export type MutationScheduleUnpublishServiceArgs = {
   from?: Array<Stage>;
   releaseAt?: InputMaybe<Scalars['DateTime']>;
   releaseId?: InputMaybe<Scalars['String']>;
   where: ServiceWhereUniqueInput;
+};
+
+
+export type MutationUnpublishAboutPageArgs = {
+  from?: Array<Stage>;
+  where: AboutPageWhereUniqueInput;
 };
 
 
@@ -2607,6 +3052,24 @@ export type MutationUnpublishAssetArgs = {
 export type MutationUnpublishHomepageArgs = {
   from?: Array<Stage>;
   where: HomepageWhereUniqueInput;
+};
+
+
+export type MutationUnpublishManyAboutPagesArgs = {
+  from?: Array<Stage>;
+  where?: InputMaybe<AboutPageManyWhereInput>;
+};
+
+
+export type MutationUnpublishManyAboutPagesConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  first?: InputMaybe<Scalars['Int']>;
+  from?: Array<Stage>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  stage?: InputMaybe<Stage>;
+  where?: InputMaybe<AboutPageManyWhereInput>;
 };
 
 
@@ -2650,13 +3113,13 @@ export type MutationUnpublishManyHomepagesConnectionArgs = {
 };
 
 
-export type MutationUnpublishManyMyProcessSectionsArgs = {
+export type MutationUnpublishManyMyProcessListsArgs = {
   from?: Array<Stage>;
-  where?: InputMaybe<MyProcessSectionManyWhereInput>;
+  where?: InputMaybe<MyProcessListManyWhereInput>;
 };
 
 
-export type MutationUnpublishManyMyProcessSectionsConnectionArgs = {
+export type MutationUnpublishManyMyProcessListsConnectionArgs = {
   after?: InputMaybe<Scalars['ID']>;
   before?: InputMaybe<Scalars['ID']>;
   first?: InputMaybe<Scalars['Int']>;
@@ -2664,7 +3127,7 @@ export type MutationUnpublishManyMyProcessSectionsConnectionArgs = {
   last?: InputMaybe<Scalars['Int']>;
   skip?: InputMaybe<Scalars['Int']>;
   stage?: InputMaybe<Stage>;
-  where?: InputMaybe<MyProcessSectionManyWhereInput>;
+  where?: InputMaybe<MyProcessListManyWhereInput>;
 };
 
 
@@ -2704,24 +3167,6 @@ export type MutationUnpublishManyPortfoliosConnectionArgs = {
 };
 
 
-export type MutationUnpublishManyProcessesArgs = {
-  from?: Array<Stage>;
-  where?: InputMaybe<ProcessManyWhereInput>;
-};
-
-
-export type MutationUnpublishManyProcessesConnectionArgs = {
-  after?: InputMaybe<Scalars['ID']>;
-  before?: InputMaybe<Scalars['ID']>;
-  first?: InputMaybe<Scalars['Int']>;
-  from?: Array<Stage>;
-  last?: InputMaybe<Scalars['Int']>;
-  skip?: InputMaybe<Scalars['Int']>;
-  stage?: InputMaybe<Stage>;
-  where?: InputMaybe<ProcessManyWhereInput>;
-};
-
-
 export type MutationUnpublishManyServicesArgs = {
   from?: Array<Stage>;
   where?: InputMaybe<ServiceManyWhereInput>;
@@ -2740,9 +3185,9 @@ export type MutationUnpublishManyServicesConnectionArgs = {
 };
 
 
-export type MutationUnpublishMyProcessSectionArgs = {
+export type MutationUnpublishMyProcessListArgs = {
   from?: Array<Stage>;
-  where: MyProcessSectionWhereUniqueInput;
+  where: MyProcessListWhereUniqueInput;
 };
 
 
@@ -2758,15 +3203,15 @@ export type MutationUnpublishPortfolioCategoryArgs = {
 };
 
 
-export type MutationUnpublishProcessArgs = {
-  from?: Array<Stage>;
-  where: ProcessWhereUniqueInput;
-};
-
-
 export type MutationUnpublishServiceArgs = {
   from?: Array<Stage>;
   where: ServiceWhereUniqueInput;
+};
+
+
+export type MutationUpdateAboutPageArgs = {
+  data: AboutPageUpdateInput;
+  where: AboutPageWhereUniqueInput;
 };
 
 
@@ -2779,6 +3224,23 @@ export type MutationUpdateAssetArgs = {
 export type MutationUpdateHomepageArgs = {
   data: HomepageUpdateInput;
   where: HomepageWhereUniqueInput;
+};
+
+
+export type MutationUpdateManyAboutPagesArgs = {
+  data: AboutPageUpdateManyInput;
+  where?: InputMaybe<AboutPageManyWhereInput>;
+};
+
+
+export type MutationUpdateManyAboutPagesConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  data: AboutPageUpdateManyInput;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<AboutPageManyWhereInput>;
 };
 
 
@@ -2816,20 +3278,20 @@ export type MutationUpdateManyHomepagesConnectionArgs = {
 };
 
 
-export type MutationUpdateManyMyProcessSectionsArgs = {
-  data: MyProcessSectionUpdateManyInput;
-  where?: InputMaybe<MyProcessSectionManyWhereInput>;
+export type MutationUpdateManyMyProcessListsArgs = {
+  data: MyProcessListUpdateManyInput;
+  where?: InputMaybe<MyProcessListManyWhereInput>;
 };
 
 
-export type MutationUpdateManyMyProcessSectionsConnectionArgs = {
+export type MutationUpdateManyMyProcessListsConnectionArgs = {
   after?: InputMaybe<Scalars['ID']>;
   before?: InputMaybe<Scalars['ID']>;
-  data: MyProcessSectionUpdateManyInput;
+  data: MyProcessListUpdateManyInput;
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
   skip?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<MyProcessSectionManyWhereInput>;
+  where?: InputMaybe<MyProcessListManyWhereInput>;
 };
 
 
@@ -2867,23 +3329,6 @@ export type MutationUpdateManyPortfoliosConnectionArgs = {
 };
 
 
-export type MutationUpdateManyProcessesArgs = {
-  data: ProcessUpdateManyInput;
-  where?: InputMaybe<ProcessManyWhereInput>;
-};
-
-
-export type MutationUpdateManyProcessesConnectionArgs = {
-  after?: InputMaybe<Scalars['ID']>;
-  before?: InputMaybe<Scalars['ID']>;
-  data: ProcessUpdateManyInput;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  skip?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<ProcessManyWhereInput>;
-};
-
-
 export type MutationUpdateManyServicesArgs = {
   data: ServiceUpdateManyInput;
   where?: InputMaybe<ServiceManyWhereInput>;
@@ -2901,9 +3346,9 @@ export type MutationUpdateManyServicesConnectionArgs = {
 };
 
 
-export type MutationUpdateMyProcessSectionArgs = {
-  data: MyProcessSectionUpdateInput;
-  where: MyProcessSectionWhereUniqueInput;
+export type MutationUpdateMyProcessListArgs = {
+  data: MyProcessListUpdateInput;
+  where: MyProcessListWhereUniqueInput;
 };
 
 
@@ -2919,12 +3364,6 @@ export type MutationUpdatePortfolioCategoryArgs = {
 };
 
 
-export type MutationUpdateProcessArgs = {
-  data: ProcessUpdateInput;
-  where: ProcessWhereUniqueInput;
-};
-
-
 export type MutationUpdateScheduledReleaseArgs = {
   data: ScheduledReleaseUpdateInput;
   where: ScheduledReleaseWhereUniqueInput;
@@ -2934,6 +3373,12 @@ export type MutationUpdateScheduledReleaseArgs = {
 export type MutationUpdateServiceArgs = {
   data: ServiceUpdateInput;
   where: ServiceWhereUniqueInput;
+};
+
+
+export type MutationUpsertAboutPageArgs = {
+  upsert: AboutPageUpsertInput;
+  where: AboutPageWhereUniqueInput;
 };
 
 
@@ -2949,9 +3394,9 @@ export type MutationUpsertHomepageArgs = {
 };
 
 
-export type MutationUpsertMyProcessSectionArgs = {
-  upsert: MyProcessSectionUpsertInput;
-  where: MyProcessSectionWhereUniqueInput;
+export type MutationUpsertMyProcessListArgs = {
+  upsert: MyProcessListUpsertInput;
+  where: MyProcessListWhereUniqueInput;
 };
 
 
@@ -2967,38 +3412,32 @@ export type MutationUpsertPortfolioCategoryArgs = {
 };
 
 
-export type MutationUpsertProcessArgs = {
-  upsert: ProcessUpsertInput;
-  where: ProcessWhereUniqueInput;
-};
-
-
 export type MutationUpsertServiceArgs = {
   upsert: ServiceUpsertInput;
   where: ServiceWhereUniqueInput;
 };
 
-export type MyProcessSection = Entity & Node & {
+export type MyProcessList = Entity & Node & {
+  content?: Maybe<RichText>;
   /** The time the document was created */
   createdAt: Scalars['DateTime'];
   /** User that created this document */
   createdBy?: Maybe<User>;
   /** Get the document in other stages */
-  documentInStages: Array<MyProcessSection>;
-  /** List of MyProcessSection versions */
+  documentInStages: Array<MyProcessList>;
+  /** List of MyProcessList versions */
   history: Array<Version>;
+  icon?: Maybe<Asset>;
   /** The unique identifier */
   id: Scalars['ID'];
-  image?: Maybe<Asset>;
+  name: Scalars['String'];
   /** The time the document was published. Null on documents in draft stage. */
   publishedAt?: Maybe<Scalars['DateTime']>;
   /** User that last published this document */
   publishedBy?: Maybe<User>;
   scheduledIn: Array<ScheduledOperation>;
-  showList?: Maybe<Scalars['Boolean']>;
   /** System stage field */
   stage: Stage;
-  title: Scalars['String'];
   /** The time the document was updated */
   updatedAt: Scalars['DateTime'];
   /** User that last updated this document */
@@ -3006,39 +3445,39 @@ export type MyProcessSection = Entity & Node & {
 };
 
 
-export type MyProcessSectionCreatedByArgs = {
+export type MyProcessListCreatedByArgs = {
   forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   locales?: InputMaybe<Array<Locale>>;
 };
 
 
-export type MyProcessSectionDocumentInStagesArgs = {
+export type MyProcessListDocumentInStagesArgs = {
   includeCurrent?: Scalars['Boolean'];
   inheritLocale?: Scalars['Boolean'];
   stages?: Array<Stage>;
 };
 
 
-export type MyProcessSectionHistoryArgs = {
+export type MyProcessListHistoryArgs = {
   limit?: Scalars['Int'];
   skip?: Scalars['Int'];
   stageOverride?: InputMaybe<Stage>;
 };
 
 
-export type MyProcessSectionImageArgs = {
+export type MyProcessListIconArgs = {
   forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   locales?: InputMaybe<Array<Locale>>;
 };
 
 
-export type MyProcessSectionPublishedByArgs = {
+export type MyProcessListPublishedByArgs = {
   forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   locales?: InputMaybe<Array<Locale>>;
 };
 
 
-export type MyProcessSectionScheduledInArgs = {
+export type MyProcessListScheduledInArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Int']>;
@@ -3050,7 +3489,388 @@ export type MyProcessSectionScheduledInArgs = {
 };
 
 
-export type MyProcessSectionUpdatedByArgs = {
+export type MyProcessListUpdatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+export type MyProcessListConnectInput = {
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+  /** Document to connect */
+  where: MyProcessListWhereUniqueInput;
+};
+
+/** A connection to a list of items. */
+export type MyProcessListConnection = {
+  aggregate: Aggregate;
+  /** A list of edges. */
+  edges: Array<MyProcessListEdge>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+export type MyProcessListCreateInput = {
+  content?: InputMaybe<Scalars['RichTextAST']>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  icon?: InputMaybe<AssetCreateOneInlineInput>;
+  name: Scalars['String'];
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type MyProcessListCreateManyInlineInput = {
+  /** Connect multiple existing MyProcessList documents */
+  connect?: InputMaybe<Array<MyProcessListWhereUniqueInput>>;
+  /** Create and connect multiple existing MyProcessList documents */
+  create?: InputMaybe<Array<MyProcessListCreateInput>>;
+};
+
+export type MyProcessListCreateOneInlineInput = {
+  /** Connect one existing MyProcessList document */
+  connect?: InputMaybe<MyProcessListWhereUniqueInput>;
+  /** Create and connect one MyProcessList document */
+  create?: InputMaybe<MyProcessListCreateInput>;
+};
+
+/** An edge in a connection. */
+export type MyProcessListEdge = {
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String'];
+  /** The item at the end of the edge. */
+  node: MyProcessList;
+};
+
+/** Identifies documents */
+export type MyProcessListManyWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<MyProcessListWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<MyProcessListWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<MyProcessListWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  createdAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** Any other value that exists and is not equal to the given value. */
+  createdAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  createdBy?: InputMaybe<UserWhereInput>;
+  documentInStages_every?: InputMaybe<MyProcessListWhereStageInput>;
+  documentInStages_none?: InputMaybe<MyProcessListWhereStageInput>;
+  documentInStages_some?: InputMaybe<MyProcessListWhereStageInput>;
+  icon?: InputMaybe<AssetWhereInput>;
+  id?: InputMaybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  id_not?: InputMaybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>;
+  name?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  name_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  name_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  name_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  name_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  name_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  name_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  name_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  name_starts_with?: InputMaybe<Scalars['String']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  publishedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** Any other value that exists and is not equal to the given value. */
+  publishedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  publishedBy?: InputMaybe<UserWhereInput>;
+  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  updatedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** Any other value that exists and is not equal to the given value. */
+  updatedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  updatedBy?: InputMaybe<UserWhereInput>;
+};
+
+export enum MyProcessListOrderByInput {
+  CREATEDAT_ASC = 'createdAt_ASC',
+  CREATEDAT_DESC = 'createdAt_DESC',
+  ID_ASC = 'id_ASC',
+  ID_DESC = 'id_DESC',
+  NAME_ASC = 'name_ASC',
+  NAME_DESC = 'name_DESC',
+  PUBLISHEDAT_ASC = 'publishedAt_ASC',
+  PUBLISHEDAT_DESC = 'publishedAt_DESC',
+  UPDATEDAT_ASC = 'updatedAt_ASC',
+  UPDATEDAT_DESC = 'updatedAt_DESC'
+}
+
+export type MyProcessListUpdateInput = {
+  content?: InputMaybe<Scalars['RichTextAST']>;
+  icon?: InputMaybe<AssetUpdateOneInlineInput>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
+export type MyProcessListUpdateManyInlineInput = {
+  /** Connect multiple existing MyProcessList documents */
+  connect?: InputMaybe<Array<MyProcessListConnectInput>>;
+  /** Create and connect multiple MyProcessList documents */
+  create?: InputMaybe<Array<MyProcessListCreateInput>>;
+  /** Delete multiple MyProcessList documents */
+  delete?: InputMaybe<Array<MyProcessListWhereUniqueInput>>;
+  /** Disconnect multiple MyProcessList documents */
+  disconnect?: InputMaybe<Array<MyProcessListWhereUniqueInput>>;
+  /** Override currently-connected documents with multiple existing MyProcessList documents */
+  set?: InputMaybe<Array<MyProcessListWhereUniqueInput>>;
+  /** Update multiple MyProcessList documents */
+  update?: InputMaybe<Array<MyProcessListUpdateWithNestedWhereUniqueInput>>;
+  /** Upsert multiple MyProcessList documents */
+  upsert?: InputMaybe<Array<MyProcessListUpsertWithNestedWhereUniqueInput>>;
+};
+
+export type MyProcessListUpdateManyInput = {
+  content?: InputMaybe<Scalars['RichTextAST']>;
+};
+
+export type MyProcessListUpdateManyWithNestedWhereInput = {
+  /** Update many input */
+  data: MyProcessListUpdateManyInput;
+  /** Document search */
+  where: MyProcessListWhereInput;
+};
+
+export type MyProcessListUpdateOneInlineInput = {
+  /** Connect existing MyProcessList document */
+  connect?: InputMaybe<MyProcessListWhereUniqueInput>;
+  /** Create and connect one MyProcessList document */
+  create?: InputMaybe<MyProcessListCreateInput>;
+  /** Delete currently connected MyProcessList document */
+  delete?: InputMaybe<Scalars['Boolean']>;
+  /** Disconnect currently connected MyProcessList document */
+  disconnect?: InputMaybe<Scalars['Boolean']>;
+  /** Update single MyProcessList document */
+  update?: InputMaybe<MyProcessListUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single MyProcessList document */
+  upsert?: InputMaybe<MyProcessListUpsertWithNestedWhereUniqueInput>;
+};
+
+export type MyProcessListUpdateWithNestedWhereUniqueInput = {
+  /** Document to update */
+  data: MyProcessListUpdateInput;
+  /** Unique document search */
+  where: MyProcessListWhereUniqueInput;
+};
+
+export type MyProcessListUpsertInput = {
+  /** Create document if it didn't exist */
+  create: MyProcessListCreateInput;
+  /** Update document if it exists */
+  update: MyProcessListUpdateInput;
+};
+
+export type MyProcessListUpsertWithNestedWhereUniqueInput = {
+  /** Upsert data */
+  data: MyProcessListUpsertInput;
+  /** Unique document search */
+  where: MyProcessListWhereUniqueInput;
+};
+
+/** This contains a set of filters that can be used to compare values internally */
+export type MyProcessListWhereComparatorInput = {
+  /** This field can be used to request to check if the entry is outdated by internal comparison */
+  outdated_to?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Identifies documents */
+export type MyProcessListWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<MyProcessListWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<MyProcessListWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<MyProcessListWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  createdAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** Any other value that exists and is not equal to the given value. */
+  createdAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  createdBy?: InputMaybe<UserWhereInput>;
+  documentInStages_every?: InputMaybe<MyProcessListWhereStageInput>;
+  documentInStages_none?: InputMaybe<MyProcessListWhereStageInput>;
+  documentInStages_some?: InputMaybe<MyProcessListWhereStageInput>;
+  icon?: InputMaybe<AssetWhereInput>;
+  id?: InputMaybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  id_not?: InputMaybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>;
+  name?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  name_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  name_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  name_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  name_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  name_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  name_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  name_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  name_starts_with?: InputMaybe<Scalars['String']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  publishedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** Any other value that exists and is not equal to the given value. */
+  publishedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  publishedBy?: InputMaybe<UserWhereInput>;
+  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  updatedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** Any other value that exists and is not equal to the given value. */
+  updatedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  updatedBy?: InputMaybe<UserWhereInput>;
+};
+
+/** The document in stages filter allows specifying a stage entry to cross compare the same document between different stages */
+export type MyProcessListWhereStageInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<MyProcessListWhereStageInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<MyProcessListWhereStageInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<MyProcessListWhereStageInput>>;
+  /** This field contains fields which can be set as true or false to specify an internal comparison */
+  compareWithParent?: InputMaybe<MyProcessListWhereComparatorInput>;
+  /** Specify the stage to compare with */
+  stage?: InputMaybe<Stage>;
+};
+
+/** References MyProcessList record uniquely */
+export type MyProcessListWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
+export type MyProcessSection = Entity & {
+  /** The unique identifier */
+  id: Scalars['ID'];
+  image?: Maybe<Asset>;
+  showList?: Maybe<Scalars['Boolean']>;
+  /** System stage field */
+  stage: Stage;
+  title: Scalars['String'];
+};
+
+
+export type MyProcessSectionImageArgs = {
   forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   locales?: InputMaybe<Array<Locale>>;
 };
@@ -3072,25 +3892,26 @@ export type MyProcessSectionConnection = {
 };
 
 export type MyProcessSectionCreateInput = {
-  createdAt?: InputMaybe<Scalars['DateTime']>;
   image?: InputMaybe<AssetCreateOneInlineInput>;
   showList?: InputMaybe<Scalars['Boolean']>;
   title: Scalars['String'];
-  updatedAt?: InputMaybe<Scalars['DateTime']>;
 };
 
 export type MyProcessSectionCreateManyInlineInput = {
-  /** Connect multiple existing MyProcessSection documents */
-  connect?: InputMaybe<Array<MyProcessSectionWhereUniqueInput>>;
   /** Create and connect multiple existing MyProcessSection documents */
   create?: InputMaybe<Array<MyProcessSectionCreateInput>>;
 };
 
 export type MyProcessSectionCreateOneInlineInput = {
-  /** Connect one existing MyProcessSection document */
-  connect?: InputMaybe<MyProcessSectionWhereUniqueInput>;
   /** Create and connect one MyProcessSection document */
   create?: InputMaybe<MyProcessSectionCreateInput>;
+};
+
+export type MyProcessSectionCreateWithPositionInput = {
+  /** Document to create */
+  data: MyProcessSectionCreateInput;
+  /** Position in the list of existing component instances, will default to appending at the end of list */
+  position?: InputMaybe<ConnectPositionInput>;
 };
 
 /** An edge in a connection. */
@@ -3111,25 +3932,6 @@ export type MyProcessSectionManyWhereInput = {
   OR?: InputMaybe<Array<MyProcessSectionWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']>;
-  createdAt?: InputMaybe<Scalars['DateTime']>;
-  /** All values greater than the given value. */
-  createdAt_gt?: InputMaybe<Scalars['DateTime']>;
-  /** All values greater than or equal the given value. */
-  createdAt_gte?: InputMaybe<Scalars['DateTime']>;
-  /** All values that are contained in given list. */
-  createdAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
-  /** All values less than the given value. */
-  createdAt_lt?: InputMaybe<Scalars['DateTime']>;
-  /** All values less than or equal the given value. */
-  createdAt_lte?: InputMaybe<Scalars['DateTime']>;
-  /** Any other value that exists and is not equal to the given value. */
-  createdAt_not?: InputMaybe<Scalars['DateTime']>;
-  /** All values that are not contained in given list. */
-  createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
-  createdBy?: InputMaybe<UserWhereInput>;
-  documentInStages_every?: InputMaybe<MyProcessSectionWhereStageInput>;
-  documentInStages_none?: InputMaybe<MyProcessSectionWhereStageInput>;
-  documentInStages_some?: InputMaybe<MyProcessSectionWhereStageInput>;
   id?: InputMaybe<Scalars['ID']>;
   /** All values containing the given string. */
   id_contains?: InputMaybe<Scalars['ID']>;
@@ -3150,25 +3952,6 @@ export type MyProcessSectionManyWhereInput = {
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']>;
   image?: InputMaybe<AssetWhereInput>;
-  publishedAt?: InputMaybe<Scalars['DateTime']>;
-  /** All values greater than the given value. */
-  publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
-  /** All values greater than or equal the given value. */
-  publishedAt_gte?: InputMaybe<Scalars['DateTime']>;
-  /** All values that are contained in given list. */
-  publishedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
-  /** All values less than the given value. */
-  publishedAt_lt?: InputMaybe<Scalars['DateTime']>;
-  /** All values less than or equal the given value. */
-  publishedAt_lte?: InputMaybe<Scalars['DateTime']>;
-  /** Any other value that exists and is not equal to the given value. */
-  publishedAt_not?: InputMaybe<Scalars['DateTime']>;
-  /** All values that are not contained in given list. */
-  publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
-  publishedBy?: InputMaybe<UserWhereInput>;
-  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
-  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
-  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
   showList?: InputMaybe<Scalars['Boolean']>;
   /** Any other value that exists and is not equal to the given value. */
   showList_not?: InputMaybe<Scalars['Boolean']>;
@@ -3191,38 +3974,96 @@ export type MyProcessSectionManyWhereInput = {
   title_not_starts_with?: InputMaybe<Scalars['String']>;
   /** All values starting with the given string. */
   title_starts_with?: InputMaybe<Scalars['String']>;
-  updatedAt?: InputMaybe<Scalars['DateTime']>;
-  /** All values greater than the given value. */
-  updatedAt_gt?: InputMaybe<Scalars['DateTime']>;
-  /** All values greater than or equal the given value. */
-  updatedAt_gte?: InputMaybe<Scalars['DateTime']>;
-  /** All values that are contained in given list. */
-  updatedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
-  /** All values less than the given value. */
-  updatedAt_lt?: InputMaybe<Scalars['DateTime']>;
-  /** All values less than or equal the given value. */
-  updatedAt_lte?: InputMaybe<Scalars['DateTime']>;
-  /** Any other value that exists and is not equal to the given value. */
-  updatedAt_not?: InputMaybe<Scalars['DateTime']>;
-  /** All values that are not contained in given list. */
-  updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
-  updatedBy?: InputMaybe<UserWhereInput>;
 };
 
 export enum MyProcessSectionOrderByInput {
-  CREATEDAT_ASC = 'createdAt_ASC',
-  CREATEDAT_DESC = 'createdAt_DESC',
   ID_ASC = 'id_ASC',
   ID_DESC = 'id_DESC',
-  PUBLISHEDAT_ASC = 'publishedAt_ASC',
-  PUBLISHEDAT_DESC = 'publishedAt_DESC',
   SHOWLIST_ASC = 'showList_ASC',
   SHOWLIST_DESC = 'showList_DESC',
   TITLE_ASC = 'title_ASC',
-  TITLE_DESC = 'title_DESC',
-  UPDATEDAT_ASC = 'updatedAt_ASC',
-  UPDATEDAT_DESC = 'updatedAt_DESC'
+  TITLE_DESC = 'title_DESC'
 }
+
+export type MyProcessSectionParent = AboutPage;
+
+export type MyProcessSectionParentConnectInput = {
+  AboutPage?: InputMaybe<AboutPageConnectInput>;
+};
+
+export type MyProcessSectionParentCreateInput = {
+  AboutPage?: InputMaybe<AboutPageCreateInput>;
+};
+
+export type MyProcessSectionParentCreateManyInlineInput = {
+  /** Connect multiple existing MyProcessSectionParent documents */
+  connect?: InputMaybe<Array<MyProcessSectionParentWhereUniqueInput>>;
+  /** Create and connect multiple existing MyProcessSectionParent documents */
+  create?: InputMaybe<Array<MyProcessSectionParentCreateInput>>;
+};
+
+export type MyProcessSectionParentCreateOneInlineInput = {
+  /** Connect one existing MyProcessSectionParent document */
+  connect?: InputMaybe<MyProcessSectionParentWhereUniqueInput>;
+  /** Create and connect one MyProcessSectionParent document */
+  create?: InputMaybe<MyProcessSectionParentCreateInput>;
+};
+
+export type MyProcessSectionParentUpdateInput = {
+  AboutPage?: InputMaybe<AboutPageUpdateInput>;
+};
+
+export type MyProcessSectionParentUpdateManyInlineInput = {
+  /** Connect multiple existing MyProcessSectionParent documents */
+  connect?: InputMaybe<Array<MyProcessSectionParentConnectInput>>;
+  /** Create and connect multiple MyProcessSectionParent documents */
+  create?: InputMaybe<Array<MyProcessSectionParentCreateInput>>;
+  /** Delete multiple MyProcessSectionParent documents */
+  delete?: InputMaybe<Array<MyProcessSectionParentWhereUniqueInput>>;
+  /** Disconnect multiple MyProcessSectionParent documents */
+  disconnect?: InputMaybe<Array<MyProcessSectionParentWhereUniqueInput>>;
+  /** Override currently-connected documents with multiple existing MyProcessSectionParent documents */
+  set?: InputMaybe<Array<MyProcessSectionParentWhereUniqueInput>>;
+  /** Update multiple MyProcessSectionParent documents */
+  update?: InputMaybe<Array<MyProcessSectionParentUpdateWithNestedWhereUniqueInput>>;
+  /** Upsert multiple MyProcessSectionParent documents */
+  upsert?: InputMaybe<Array<MyProcessSectionParentUpsertWithNestedWhereUniqueInput>>;
+};
+
+export type MyProcessSectionParentUpdateManyWithNestedWhereInput = {
+  AboutPage?: InputMaybe<AboutPageUpdateManyWithNestedWhereInput>;
+};
+
+export type MyProcessSectionParentUpdateOneInlineInput = {
+  /** Connect existing MyProcessSectionParent document */
+  connect?: InputMaybe<MyProcessSectionParentWhereUniqueInput>;
+  /** Create and connect one MyProcessSectionParent document */
+  create?: InputMaybe<MyProcessSectionParentCreateInput>;
+  /** Delete currently connected MyProcessSectionParent document */
+  delete?: InputMaybe<Scalars['Boolean']>;
+  /** Disconnect currently connected MyProcessSectionParent document */
+  disconnect?: InputMaybe<Scalars['Boolean']>;
+  /** Update single MyProcessSectionParent document */
+  update?: InputMaybe<MyProcessSectionParentUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single MyProcessSectionParent document */
+  upsert?: InputMaybe<MyProcessSectionParentUpsertWithNestedWhereUniqueInput>;
+};
+
+export type MyProcessSectionParentUpdateWithNestedWhereUniqueInput = {
+  AboutPage?: InputMaybe<AboutPageUpdateWithNestedWhereUniqueInput>;
+};
+
+export type MyProcessSectionParentUpsertWithNestedWhereUniqueInput = {
+  AboutPage?: InputMaybe<AboutPageUpsertWithNestedWhereUniqueInput>;
+};
+
+export type MyProcessSectionParentWhereInput = {
+  AboutPage?: InputMaybe<AboutPageWhereInput>;
+};
+
+export type MyProcessSectionParentWhereUniqueInput = {
+  AboutPage?: InputMaybe<AboutPageWhereUniqueInput>;
+};
 
 export type MyProcessSectionUpdateInput = {
   image?: InputMaybe<AssetUpdateOneInlineInput>;
@@ -3231,20 +4072,14 @@ export type MyProcessSectionUpdateInput = {
 };
 
 export type MyProcessSectionUpdateManyInlineInput = {
-  /** Connect multiple existing MyProcessSection documents */
-  connect?: InputMaybe<Array<MyProcessSectionConnectInput>>;
-  /** Create and connect multiple MyProcessSection documents */
-  create?: InputMaybe<Array<MyProcessSectionCreateInput>>;
+  /** Create and connect multiple MyProcessSection component instances */
+  create?: InputMaybe<Array<MyProcessSectionCreateWithPositionInput>>;
   /** Delete multiple MyProcessSection documents */
   delete?: InputMaybe<Array<MyProcessSectionWhereUniqueInput>>;
-  /** Disconnect multiple MyProcessSection documents */
-  disconnect?: InputMaybe<Array<MyProcessSectionWhereUniqueInput>>;
-  /** Override currently-connected documents with multiple existing MyProcessSection documents */
-  set?: InputMaybe<Array<MyProcessSectionWhereUniqueInput>>;
-  /** Update multiple MyProcessSection documents */
-  update?: InputMaybe<Array<MyProcessSectionUpdateWithNestedWhereUniqueInput>>;
-  /** Upsert multiple MyProcessSection documents */
-  upsert?: InputMaybe<Array<MyProcessSectionUpsertWithNestedWhereUniqueInput>>;
+  /** Update multiple MyProcessSection component instances */
+  update?: InputMaybe<Array<MyProcessSectionUpdateWithNestedWhereUniqueAndPositionInput>>;
+  /** Upsert multiple MyProcessSection component instances */
+  upsert?: InputMaybe<Array<MyProcessSectionUpsertWithNestedWhereUniqueAndPositionInput>>;
 };
 
 export type MyProcessSectionUpdateManyInput = {
@@ -3259,18 +4094,23 @@ export type MyProcessSectionUpdateManyWithNestedWhereInput = {
 };
 
 export type MyProcessSectionUpdateOneInlineInput = {
-  /** Connect existing MyProcessSection document */
-  connect?: InputMaybe<MyProcessSectionWhereUniqueInput>;
   /** Create and connect one MyProcessSection document */
   create?: InputMaybe<MyProcessSectionCreateInput>;
   /** Delete currently connected MyProcessSection document */
   delete?: InputMaybe<Scalars['Boolean']>;
-  /** Disconnect currently connected MyProcessSection document */
-  disconnect?: InputMaybe<Scalars['Boolean']>;
   /** Update single MyProcessSection document */
   update?: InputMaybe<MyProcessSectionUpdateWithNestedWhereUniqueInput>;
   /** Upsert single MyProcessSection document */
   upsert?: InputMaybe<MyProcessSectionUpsertWithNestedWhereUniqueInput>;
+};
+
+export type MyProcessSectionUpdateWithNestedWhereUniqueAndPositionInput = {
+  /** Document to update */
+  data?: InputMaybe<MyProcessSectionUpdateInput>;
+  /** Position in the list of existing component instances, will default to appending at the end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+  /** Unique component instance search */
+  where: MyProcessSectionWhereUniqueInput;
 };
 
 export type MyProcessSectionUpdateWithNestedWhereUniqueInput = {
@@ -3287,17 +4127,20 @@ export type MyProcessSectionUpsertInput = {
   update: MyProcessSectionUpdateInput;
 };
 
+export type MyProcessSectionUpsertWithNestedWhereUniqueAndPositionInput = {
+  /** Document to upsert */
+  data?: InputMaybe<MyProcessSectionUpsertInput>;
+  /** Position in the list of existing component instances, will default to appending at the end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+  /** Unique component instance search */
+  where: MyProcessSectionWhereUniqueInput;
+};
+
 export type MyProcessSectionUpsertWithNestedWhereUniqueInput = {
   /** Upsert data */
   data: MyProcessSectionUpsertInput;
   /** Unique document search */
   where: MyProcessSectionWhereUniqueInput;
-};
-
-/** This contains a set of filters that can be used to compare values internally */
-export type MyProcessSectionWhereComparatorInput = {
-  /** This field can be used to request to check if the entry is outdated by internal comparison */
-  outdated_to?: InputMaybe<Scalars['Boolean']>;
 };
 
 /** Identifies documents */
@@ -3310,25 +4153,6 @@ export type MyProcessSectionWhereInput = {
   OR?: InputMaybe<Array<MyProcessSectionWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']>;
-  createdAt?: InputMaybe<Scalars['DateTime']>;
-  /** All values greater than the given value. */
-  createdAt_gt?: InputMaybe<Scalars['DateTime']>;
-  /** All values greater than or equal the given value. */
-  createdAt_gte?: InputMaybe<Scalars['DateTime']>;
-  /** All values that are contained in given list. */
-  createdAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
-  /** All values less than the given value. */
-  createdAt_lt?: InputMaybe<Scalars['DateTime']>;
-  /** All values less than or equal the given value. */
-  createdAt_lte?: InputMaybe<Scalars['DateTime']>;
-  /** Any other value that exists and is not equal to the given value. */
-  createdAt_not?: InputMaybe<Scalars['DateTime']>;
-  /** All values that are not contained in given list. */
-  createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
-  createdBy?: InputMaybe<UserWhereInput>;
-  documentInStages_every?: InputMaybe<MyProcessSectionWhereStageInput>;
-  documentInStages_none?: InputMaybe<MyProcessSectionWhereStageInput>;
-  documentInStages_some?: InputMaybe<MyProcessSectionWhereStageInput>;
   id?: InputMaybe<Scalars['ID']>;
   /** All values containing the given string. */
   id_contains?: InputMaybe<Scalars['ID']>;
@@ -3349,25 +4173,6 @@ export type MyProcessSectionWhereInput = {
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']>;
   image?: InputMaybe<AssetWhereInput>;
-  publishedAt?: InputMaybe<Scalars['DateTime']>;
-  /** All values greater than the given value. */
-  publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
-  /** All values greater than or equal the given value. */
-  publishedAt_gte?: InputMaybe<Scalars['DateTime']>;
-  /** All values that are contained in given list. */
-  publishedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
-  /** All values less than the given value. */
-  publishedAt_lt?: InputMaybe<Scalars['DateTime']>;
-  /** All values less than or equal the given value. */
-  publishedAt_lte?: InputMaybe<Scalars['DateTime']>;
-  /** Any other value that exists and is not equal to the given value. */
-  publishedAt_not?: InputMaybe<Scalars['DateTime']>;
-  /** All values that are not contained in given list. */
-  publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
-  publishedBy?: InputMaybe<UserWhereInput>;
-  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
-  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
-  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
   showList?: InputMaybe<Scalars['Boolean']>;
   /** Any other value that exists and is not equal to the given value. */
   showList_not?: InputMaybe<Scalars['Boolean']>;
@@ -3390,36 +4195,6 @@ export type MyProcessSectionWhereInput = {
   title_not_starts_with?: InputMaybe<Scalars['String']>;
   /** All values starting with the given string. */
   title_starts_with?: InputMaybe<Scalars['String']>;
-  updatedAt?: InputMaybe<Scalars['DateTime']>;
-  /** All values greater than the given value. */
-  updatedAt_gt?: InputMaybe<Scalars['DateTime']>;
-  /** All values greater than or equal the given value. */
-  updatedAt_gte?: InputMaybe<Scalars['DateTime']>;
-  /** All values that are contained in given list. */
-  updatedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
-  /** All values less than the given value. */
-  updatedAt_lt?: InputMaybe<Scalars['DateTime']>;
-  /** All values less than or equal the given value. */
-  updatedAt_lte?: InputMaybe<Scalars['DateTime']>;
-  /** Any other value that exists and is not equal to the given value. */
-  updatedAt_not?: InputMaybe<Scalars['DateTime']>;
-  /** All values that are not contained in given list. */
-  updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
-  updatedBy?: InputMaybe<UserWhereInput>;
-};
-
-/** The document in stages filter allows specifying a stage entry to cross compare the same document between different stages */
-export type MyProcessSectionWhereStageInput = {
-  /** Logical AND on all given filters. */
-  AND?: InputMaybe<Array<MyProcessSectionWhereStageInput>>;
-  /** Logical NOT on all given filters combined by AND. */
-  NOT?: InputMaybe<Array<MyProcessSectionWhereStageInput>>;
-  /** Logical OR on all given filters. */
-  OR?: InputMaybe<Array<MyProcessSectionWhereStageInput>>;
-  /** This field contains fields which can be set as true or false to specify an internal comparison */
-  compareWithParent?: InputMaybe<MyProcessSectionWhereComparatorInput>;
-  /** Specify the stage to compare with */
-  stage?: InputMaybe<Stage>;
 };
 
 /** References MyProcessSection record uniquely */
@@ -4420,448 +5195,6 @@ export type PortfolioWhereUniqueInput = {
   slug?: InputMaybe<Scalars['String']>;
 };
 
-export type Process = Entity & Node & {
-  content?: Maybe<RichText>;
-  /** The time the document was created */
-  createdAt: Scalars['DateTime'];
-  /** User that created this document */
-  createdBy?: Maybe<User>;
-  /** Get the document in other stages */
-  documentInStages: Array<Process>;
-  /** List of Process versions */
-  history: Array<Version>;
-  icon?: Maybe<Asset>;
-  /** The unique identifier */
-  id: Scalars['ID'];
-  name: Scalars['String'];
-  /** The time the document was published. Null on documents in draft stage. */
-  publishedAt?: Maybe<Scalars['DateTime']>;
-  /** User that last published this document */
-  publishedBy?: Maybe<User>;
-  scheduledIn: Array<ScheduledOperation>;
-  /** System stage field */
-  stage: Stage;
-  /** The time the document was updated */
-  updatedAt: Scalars['DateTime'];
-  /** User that last updated this document */
-  updatedBy?: Maybe<User>;
-};
-
-
-export type ProcessCreatedByArgs = {
-  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
-  locales?: InputMaybe<Array<Locale>>;
-};
-
-
-export type ProcessDocumentInStagesArgs = {
-  includeCurrent?: Scalars['Boolean'];
-  inheritLocale?: Scalars['Boolean'];
-  stages?: Array<Stage>;
-};
-
-
-export type ProcessHistoryArgs = {
-  limit?: Scalars['Int'];
-  skip?: Scalars['Int'];
-  stageOverride?: InputMaybe<Stage>;
-};
-
-
-export type ProcessIconArgs = {
-  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
-  locales?: InputMaybe<Array<Locale>>;
-};
-
-
-export type ProcessPublishedByArgs = {
-  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
-  locales?: InputMaybe<Array<Locale>>;
-};
-
-
-export type ProcessScheduledInArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
-  last?: InputMaybe<Scalars['Int']>;
-  locales?: InputMaybe<Array<Locale>>;
-  skip?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<ScheduledOperationWhereInput>;
-};
-
-
-export type ProcessUpdatedByArgs = {
-  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
-  locales?: InputMaybe<Array<Locale>>;
-};
-
-export type ProcessConnectInput = {
-  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
-  position?: InputMaybe<ConnectPositionInput>;
-  /** Document to connect */
-  where: ProcessWhereUniqueInput;
-};
-
-/** A connection to a list of items. */
-export type ProcessConnection = {
-  aggregate: Aggregate;
-  /** A list of edges. */
-  edges: Array<ProcessEdge>;
-  /** Information to aid in pagination. */
-  pageInfo: PageInfo;
-};
-
-export type ProcessCreateInput = {
-  content?: InputMaybe<Scalars['RichTextAST']>;
-  createdAt?: InputMaybe<Scalars['DateTime']>;
-  icon?: InputMaybe<AssetCreateOneInlineInput>;
-  name: Scalars['String'];
-  updatedAt?: InputMaybe<Scalars['DateTime']>;
-};
-
-export type ProcessCreateManyInlineInput = {
-  /** Connect multiple existing Process documents */
-  connect?: InputMaybe<Array<ProcessWhereUniqueInput>>;
-  /** Create and connect multiple existing Process documents */
-  create?: InputMaybe<Array<ProcessCreateInput>>;
-};
-
-export type ProcessCreateOneInlineInput = {
-  /** Connect one existing Process document */
-  connect?: InputMaybe<ProcessWhereUniqueInput>;
-  /** Create and connect one Process document */
-  create?: InputMaybe<ProcessCreateInput>;
-};
-
-/** An edge in a connection. */
-export type ProcessEdge = {
-  /** A cursor for use in pagination. */
-  cursor: Scalars['String'];
-  /** The item at the end of the edge. */
-  node: Process;
-};
-
-/** Identifies documents */
-export type ProcessManyWhereInput = {
-  /** Logical AND on all given filters. */
-  AND?: InputMaybe<Array<ProcessWhereInput>>;
-  /** Logical NOT on all given filters combined by AND. */
-  NOT?: InputMaybe<Array<ProcessWhereInput>>;
-  /** Logical OR on all given filters. */
-  OR?: InputMaybe<Array<ProcessWhereInput>>;
-  /** Contains search across all appropriate fields. */
-  _search?: InputMaybe<Scalars['String']>;
-  createdAt?: InputMaybe<Scalars['DateTime']>;
-  /** All values greater than the given value. */
-  createdAt_gt?: InputMaybe<Scalars['DateTime']>;
-  /** All values greater than or equal the given value. */
-  createdAt_gte?: InputMaybe<Scalars['DateTime']>;
-  /** All values that are contained in given list. */
-  createdAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
-  /** All values less than the given value. */
-  createdAt_lt?: InputMaybe<Scalars['DateTime']>;
-  /** All values less than or equal the given value. */
-  createdAt_lte?: InputMaybe<Scalars['DateTime']>;
-  /** Any other value that exists and is not equal to the given value. */
-  createdAt_not?: InputMaybe<Scalars['DateTime']>;
-  /** All values that are not contained in given list. */
-  createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
-  createdBy?: InputMaybe<UserWhereInput>;
-  documentInStages_every?: InputMaybe<ProcessWhereStageInput>;
-  documentInStages_none?: InputMaybe<ProcessWhereStageInput>;
-  documentInStages_some?: InputMaybe<ProcessWhereStageInput>;
-  icon?: InputMaybe<AssetWhereInput>;
-  id?: InputMaybe<Scalars['ID']>;
-  /** All values containing the given string. */
-  id_contains?: InputMaybe<Scalars['ID']>;
-  /** All values ending with the given string. */
-  id_ends_with?: InputMaybe<Scalars['ID']>;
-  /** All values that are contained in given list. */
-  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  id_not?: InputMaybe<Scalars['ID']>;
-  /** All values not containing the given string. */
-  id_not_contains?: InputMaybe<Scalars['ID']>;
-  /** All values not ending with the given string */
-  id_not_ends_with?: InputMaybe<Scalars['ID']>;
-  /** All values that are not contained in given list. */
-  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** All values not starting with the given string. */
-  id_not_starts_with?: InputMaybe<Scalars['ID']>;
-  /** All values starting with the given string. */
-  id_starts_with?: InputMaybe<Scalars['ID']>;
-  name?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  name_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  name_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  name_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  name_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  name_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  name_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  name_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  name_starts_with?: InputMaybe<Scalars['String']>;
-  publishedAt?: InputMaybe<Scalars['DateTime']>;
-  /** All values greater than the given value. */
-  publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
-  /** All values greater than or equal the given value. */
-  publishedAt_gte?: InputMaybe<Scalars['DateTime']>;
-  /** All values that are contained in given list. */
-  publishedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
-  /** All values less than the given value. */
-  publishedAt_lt?: InputMaybe<Scalars['DateTime']>;
-  /** All values less than or equal the given value. */
-  publishedAt_lte?: InputMaybe<Scalars['DateTime']>;
-  /** Any other value that exists and is not equal to the given value. */
-  publishedAt_not?: InputMaybe<Scalars['DateTime']>;
-  /** All values that are not contained in given list. */
-  publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
-  publishedBy?: InputMaybe<UserWhereInput>;
-  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
-  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
-  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
-  updatedAt?: InputMaybe<Scalars['DateTime']>;
-  /** All values greater than the given value. */
-  updatedAt_gt?: InputMaybe<Scalars['DateTime']>;
-  /** All values greater than or equal the given value. */
-  updatedAt_gte?: InputMaybe<Scalars['DateTime']>;
-  /** All values that are contained in given list. */
-  updatedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
-  /** All values less than the given value. */
-  updatedAt_lt?: InputMaybe<Scalars['DateTime']>;
-  /** All values less than or equal the given value. */
-  updatedAt_lte?: InputMaybe<Scalars['DateTime']>;
-  /** Any other value that exists and is not equal to the given value. */
-  updatedAt_not?: InputMaybe<Scalars['DateTime']>;
-  /** All values that are not contained in given list. */
-  updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
-  updatedBy?: InputMaybe<UserWhereInput>;
-};
-
-export enum ProcessOrderByInput {
-  CREATEDAT_ASC = 'createdAt_ASC',
-  CREATEDAT_DESC = 'createdAt_DESC',
-  ID_ASC = 'id_ASC',
-  ID_DESC = 'id_DESC',
-  NAME_ASC = 'name_ASC',
-  NAME_DESC = 'name_DESC',
-  PUBLISHEDAT_ASC = 'publishedAt_ASC',
-  PUBLISHEDAT_DESC = 'publishedAt_DESC',
-  UPDATEDAT_ASC = 'updatedAt_ASC',
-  UPDATEDAT_DESC = 'updatedAt_DESC'
-}
-
-export type ProcessUpdateInput = {
-  content?: InputMaybe<Scalars['RichTextAST']>;
-  icon?: InputMaybe<AssetUpdateOneInlineInput>;
-  name?: InputMaybe<Scalars['String']>;
-};
-
-export type ProcessUpdateManyInlineInput = {
-  /** Connect multiple existing Process documents */
-  connect?: InputMaybe<Array<ProcessConnectInput>>;
-  /** Create and connect multiple Process documents */
-  create?: InputMaybe<Array<ProcessCreateInput>>;
-  /** Delete multiple Process documents */
-  delete?: InputMaybe<Array<ProcessWhereUniqueInput>>;
-  /** Disconnect multiple Process documents */
-  disconnect?: InputMaybe<Array<ProcessWhereUniqueInput>>;
-  /** Override currently-connected documents with multiple existing Process documents */
-  set?: InputMaybe<Array<ProcessWhereUniqueInput>>;
-  /** Update multiple Process documents */
-  update?: InputMaybe<Array<ProcessUpdateWithNestedWhereUniqueInput>>;
-  /** Upsert multiple Process documents */
-  upsert?: InputMaybe<Array<ProcessUpsertWithNestedWhereUniqueInput>>;
-};
-
-export type ProcessUpdateManyInput = {
-  content?: InputMaybe<Scalars['RichTextAST']>;
-};
-
-export type ProcessUpdateManyWithNestedWhereInput = {
-  /** Update many input */
-  data: ProcessUpdateManyInput;
-  /** Document search */
-  where: ProcessWhereInput;
-};
-
-export type ProcessUpdateOneInlineInput = {
-  /** Connect existing Process document */
-  connect?: InputMaybe<ProcessWhereUniqueInput>;
-  /** Create and connect one Process document */
-  create?: InputMaybe<ProcessCreateInput>;
-  /** Delete currently connected Process document */
-  delete?: InputMaybe<Scalars['Boolean']>;
-  /** Disconnect currently connected Process document */
-  disconnect?: InputMaybe<Scalars['Boolean']>;
-  /** Update single Process document */
-  update?: InputMaybe<ProcessUpdateWithNestedWhereUniqueInput>;
-  /** Upsert single Process document */
-  upsert?: InputMaybe<ProcessUpsertWithNestedWhereUniqueInput>;
-};
-
-export type ProcessUpdateWithNestedWhereUniqueInput = {
-  /** Document to update */
-  data: ProcessUpdateInput;
-  /** Unique document search */
-  where: ProcessWhereUniqueInput;
-};
-
-export type ProcessUpsertInput = {
-  /** Create document if it didn't exist */
-  create: ProcessCreateInput;
-  /** Update document if it exists */
-  update: ProcessUpdateInput;
-};
-
-export type ProcessUpsertWithNestedWhereUniqueInput = {
-  /** Upsert data */
-  data: ProcessUpsertInput;
-  /** Unique document search */
-  where: ProcessWhereUniqueInput;
-};
-
-/** This contains a set of filters that can be used to compare values internally */
-export type ProcessWhereComparatorInput = {
-  /** This field can be used to request to check if the entry is outdated by internal comparison */
-  outdated_to?: InputMaybe<Scalars['Boolean']>;
-};
-
-/** Identifies documents */
-export type ProcessWhereInput = {
-  /** Logical AND on all given filters. */
-  AND?: InputMaybe<Array<ProcessWhereInput>>;
-  /** Logical NOT on all given filters combined by AND. */
-  NOT?: InputMaybe<Array<ProcessWhereInput>>;
-  /** Logical OR on all given filters. */
-  OR?: InputMaybe<Array<ProcessWhereInput>>;
-  /** Contains search across all appropriate fields. */
-  _search?: InputMaybe<Scalars['String']>;
-  createdAt?: InputMaybe<Scalars['DateTime']>;
-  /** All values greater than the given value. */
-  createdAt_gt?: InputMaybe<Scalars['DateTime']>;
-  /** All values greater than or equal the given value. */
-  createdAt_gte?: InputMaybe<Scalars['DateTime']>;
-  /** All values that are contained in given list. */
-  createdAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
-  /** All values less than the given value. */
-  createdAt_lt?: InputMaybe<Scalars['DateTime']>;
-  /** All values less than or equal the given value. */
-  createdAt_lte?: InputMaybe<Scalars['DateTime']>;
-  /** Any other value that exists and is not equal to the given value. */
-  createdAt_not?: InputMaybe<Scalars['DateTime']>;
-  /** All values that are not contained in given list. */
-  createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
-  createdBy?: InputMaybe<UserWhereInput>;
-  documentInStages_every?: InputMaybe<ProcessWhereStageInput>;
-  documentInStages_none?: InputMaybe<ProcessWhereStageInput>;
-  documentInStages_some?: InputMaybe<ProcessWhereStageInput>;
-  icon?: InputMaybe<AssetWhereInput>;
-  id?: InputMaybe<Scalars['ID']>;
-  /** All values containing the given string. */
-  id_contains?: InputMaybe<Scalars['ID']>;
-  /** All values ending with the given string. */
-  id_ends_with?: InputMaybe<Scalars['ID']>;
-  /** All values that are contained in given list. */
-  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  id_not?: InputMaybe<Scalars['ID']>;
-  /** All values not containing the given string. */
-  id_not_contains?: InputMaybe<Scalars['ID']>;
-  /** All values not ending with the given string */
-  id_not_ends_with?: InputMaybe<Scalars['ID']>;
-  /** All values that are not contained in given list. */
-  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** All values not starting with the given string. */
-  id_not_starts_with?: InputMaybe<Scalars['ID']>;
-  /** All values starting with the given string. */
-  id_starts_with?: InputMaybe<Scalars['ID']>;
-  name?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  name_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  name_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  name_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Any other value that exists and is not equal to the given value. */
-  name_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  name_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  name_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** All values not starting with the given string. */
-  name_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  name_starts_with?: InputMaybe<Scalars['String']>;
-  publishedAt?: InputMaybe<Scalars['DateTime']>;
-  /** All values greater than the given value. */
-  publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
-  /** All values greater than or equal the given value. */
-  publishedAt_gte?: InputMaybe<Scalars['DateTime']>;
-  /** All values that are contained in given list. */
-  publishedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
-  /** All values less than the given value. */
-  publishedAt_lt?: InputMaybe<Scalars['DateTime']>;
-  /** All values less than or equal the given value. */
-  publishedAt_lte?: InputMaybe<Scalars['DateTime']>;
-  /** Any other value that exists and is not equal to the given value. */
-  publishedAt_not?: InputMaybe<Scalars['DateTime']>;
-  /** All values that are not contained in given list. */
-  publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
-  publishedBy?: InputMaybe<UserWhereInput>;
-  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
-  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
-  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
-  updatedAt?: InputMaybe<Scalars['DateTime']>;
-  /** All values greater than the given value. */
-  updatedAt_gt?: InputMaybe<Scalars['DateTime']>;
-  /** All values greater than or equal the given value. */
-  updatedAt_gte?: InputMaybe<Scalars['DateTime']>;
-  /** All values that are contained in given list. */
-  updatedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
-  /** All values less than the given value. */
-  updatedAt_lt?: InputMaybe<Scalars['DateTime']>;
-  /** All values less than or equal the given value. */
-  updatedAt_lte?: InputMaybe<Scalars['DateTime']>;
-  /** Any other value that exists and is not equal to the given value. */
-  updatedAt_not?: InputMaybe<Scalars['DateTime']>;
-  /** All values that are not contained in given list. */
-  updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
-  updatedBy?: InputMaybe<UserWhereInput>;
-};
-
-/** The document in stages filter allows specifying a stage entry to cross compare the same document between different stages */
-export type ProcessWhereStageInput = {
-  /** Logical AND on all given filters. */
-  AND?: InputMaybe<Array<ProcessWhereStageInput>>;
-  /** Logical NOT on all given filters combined by AND. */
-  NOT?: InputMaybe<Array<ProcessWhereStageInput>>;
-  /** Logical OR on all given filters. */
-  OR?: InputMaybe<Array<ProcessWhereStageInput>>;
-  /** This field contains fields which can be set as true or false to specify an internal comparison */
-  compareWithParent?: InputMaybe<ProcessWhereComparatorInput>;
-  /** Specify the stage to compare with */
-  stage?: InputMaybe<Stage>;
-};
-
-/** References Process record uniquely */
-export type ProcessWhereUniqueInput = {
-  id?: InputMaybe<Scalars['ID']>;
-  name?: InputMaybe<Scalars['String']>;
-};
-
 export type PublishLocaleInput = {
   /** Locales to publish */
   locale: Locale;
@@ -4870,6 +5203,14 @@ export type PublishLocaleInput = {
 };
 
 export type Query = {
+  /** Retrieve a single aboutPage */
+  aboutPage?: Maybe<AboutPage>;
+  /** Retrieve document version */
+  aboutPageVersion?: Maybe<DocumentVersion>;
+  /** Retrieve multiple aboutPages */
+  aboutPages: Array<AboutPage>;
+  /** Retrieve multiple aboutPages using the Relay connection interface */
+  aboutPagesConnection: AboutPageConnection;
   /** Retrieve a single asset */
   asset?: Maybe<Asset>;
   /** Retrieve document version */
@@ -4888,14 +5229,14 @@ export type Query = {
   homepages: Array<Homepage>;
   /** Retrieve multiple homepages using the Relay connection interface */
   homepagesConnection: HomepageConnection;
-  /** Retrieve a single myProcessSection */
-  myProcessSection?: Maybe<MyProcessSection>;
+  /** Retrieve a single myProcessList */
+  myProcessList?: Maybe<MyProcessList>;
   /** Retrieve document version */
-  myProcessSectionVersion?: Maybe<DocumentVersion>;
-  /** Retrieve multiple myProcessSections */
-  myProcessSections: Array<MyProcessSection>;
-  /** Retrieve multiple myProcessSections using the Relay connection interface */
-  myProcessSectionsConnection: MyProcessSectionConnection;
+  myProcessListVersion?: Maybe<DocumentVersion>;
+  /** Retrieve multiple myProcessLists */
+  myProcessLists: Array<MyProcessList>;
+  /** Retrieve multiple myProcessLists using the Relay connection interface */
+  myProcessListsConnection: MyProcessListConnection;
   /** Fetches an object given its ID */
   node?: Maybe<Node>;
   /** Retrieve a single portfolio */
@@ -4914,14 +5255,6 @@ export type Query = {
   portfolios: Array<Portfolio>;
   /** Retrieve multiple portfolios using the Relay connection interface */
   portfoliosConnection: PortfolioConnection;
-  /** Retrieve a single process */
-  process?: Maybe<Process>;
-  /** Retrieve document version */
-  processVersion?: Maybe<DocumentVersion>;
-  /** Retrieve multiple processes */
-  processes: Array<Process>;
-  /** Retrieve multiple processes using the Relay connection interface */
-  processesConnection: ProcessConnection;
   /** Retrieve a single scheduledOperation */
   scheduledOperation?: Maybe<ScheduledOperation>;
   /** Retrieve multiple scheduledOperations */
@@ -4948,6 +5281,44 @@ export type Query = {
   users: Array<User>;
   /** Retrieve multiple users using the Relay connection interface */
   usersConnection: UserConnection;
+};
+
+
+export type QueryAboutPageArgs = {
+  locales?: Array<Locale>;
+  stage?: Stage;
+  where: AboutPageWhereUniqueInput;
+};
+
+
+export type QueryAboutPageVersionArgs = {
+  where: VersionWhereInput;
+};
+
+
+export type QueryAboutPagesArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: Array<Locale>;
+  orderBy?: InputMaybe<AboutPageOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  stage?: Stage;
+  where?: InputMaybe<AboutPageWhereInput>;
+};
+
+
+export type QueryAboutPagesConnectionArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: Array<Locale>;
+  orderBy?: InputMaybe<AboutPageOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  stage?: Stage;
+  where?: InputMaybe<AboutPageWhereInput>;
 };
 
 
@@ -5032,41 +5403,41 @@ export type QueryHomepagesConnectionArgs = {
 };
 
 
-export type QueryMyProcessSectionArgs = {
+export type QueryMyProcessListArgs = {
   locales?: Array<Locale>;
   stage?: Stage;
-  where: MyProcessSectionWhereUniqueInput;
+  where: MyProcessListWhereUniqueInput;
 };
 
 
-export type QueryMyProcessSectionVersionArgs = {
+export type QueryMyProcessListVersionArgs = {
   where: VersionWhereInput;
 };
 
 
-export type QueryMyProcessSectionsArgs = {
+export type QueryMyProcessListsArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
   locales?: Array<Locale>;
-  orderBy?: InputMaybe<MyProcessSectionOrderByInput>;
+  orderBy?: InputMaybe<MyProcessListOrderByInput>;
   skip?: InputMaybe<Scalars['Int']>;
   stage?: Stage;
-  where?: InputMaybe<MyProcessSectionWhereInput>;
+  where?: InputMaybe<MyProcessListWhereInput>;
 };
 
 
-export type QueryMyProcessSectionsConnectionArgs = {
+export type QueryMyProcessListsConnectionArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
   locales?: Array<Locale>;
-  orderBy?: InputMaybe<MyProcessSectionOrderByInput>;
+  orderBy?: InputMaybe<MyProcessListOrderByInput>;
   skip?: InputMaybe<Scalars['Int']>;
   stage?: Stage;
-  where?: InputMaybe<MyProcessSectionWhereInput>;
+  where?: InputMaybe<MyProcessListWhereInput>;
 };
 
 
@@ -5150,44 +5521,6 @@ export type QueryPortfoliosConnectionArgs = {
   skip?: InputMaybe<Scalars['Int']>;
   stage?: Stage;
   where?: InputMaybe<PortfolioWhereInput>;
-};
-
-
-export type QueryProcessArgs = {
-  locales?: Array<Locale>;
-  stage?: Stage;
-  where: ProcessWhereUniqueInput;
-};
-
-
-export type QueryProcessVersionArgs = {
-  where: VersionWhereInput;
-};
-
-
-export type QueryProcessesArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  locales?: Array<Locale>;
-  orderBy?: InputMaybe<ProcessOrderByInput>;
-  skip?: InputMaybe<Scalars['Int']>;
-  stage?: Stage;
-  where?: InputMaybe<ProcessWhereInput>;
-};
-
-
-export type QueryProcessesConnectionArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  locales?: Array<Locale>;
-  orderBy?: InputMaybe<ProcessOrderByInput>;
-  skip?: InputMaybe<Scalars['Int']>;
-  stage?: Stage;
-  where?: InputMaybe<ProcessWhereInput>;
 };
 
 
@@ -5436,7 +5769,7 @@ export type ScheduledOperationUpdatedByArgs = {
   locales?: InputMaybe<Array<Locale>>;
 };
 
-export type ScheduledOperationAffectedDocument = Asset | Homepage | MyProcessSection | Portfolio | PortfolioCategory | Process | Service;
+export type ScheduledOperationAffectedDocument = AboutPage | Asset | Homepage | MyProcessList | Portfolio | PortfolioCategory | Service;
 
 export type ScheduledOperationConnectInput = {
   /** Allow to specify document position in list of connected documents, will default to appending at end of list */
@@ -7644,6 +7977,13 @@ export enum _SystemDateTimeFieldVariation {
   LOCALIZATION = 'localization'
 }
 
+export type GetAboutPageQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetAboutPageQuery = { aboutPage?: { id: string, myProcess?: { showList?: boolean | null, title: string, image?: { url: string, fileName: string } | null } | null, pageHero?: { mainHeading?: string | null, showcaseImage?: { url: string } | null, introSubheading?: { html: string } | null } | null } | null };
+
+export type AboutPageMainFieldsFragment = { id: string, myProcess?: { showList?: boolean | null, title: string, image?: { url: string, fileName: string } | null } | null, pageHero?: { mainHeading?: string | null, showcaseImage?: { url: string } | null, introSubheading?: { html: string } | null } | null };
+
 export type GetHomepageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -7673,14 +8013,7 @@ export type PortfolioFragmentFieldsFragment = { id: string, slug?: string | null
 export type GetAllProcessQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetAllProcessQuery = { processes: Array<{ id: string, name: string, content?: { html: string } | null, icon?: { fileName: string, url: string } | null }> };
-
-export type GetMyProcessSectionQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type GetMyProcessSectionQuery = { myProcessSection?: { title: string, showList?: boolean | null, image?: { url: string } | null } | null };
-
-export type ProcessFragmentFieldsFragment = { id: string, name: string, content?: { html: string } | null, icon?: { fileName: string, url: string } | null };
+export type GetAllProcessQuery = { myProcessLists: Array<{ id: string, name: string, content?: { html: string } | null, icon?: { fileName: string, url: string } | null }> };
 
 export type GetAllServicesQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -7689,6 +8022,28 @@ export type GetAllServicesQuery = { services: Array<{ name?: string | null, port
 
 export type ServicesFragmentFieldsFragment = { name?: string | null, portfolioCategory?: { id: string, name: string } | null };
 
+export const AboutPageMainFieldsFragmentDoc = gql`
+    fragment AboutPageMainFields on AboutPage {
+  id
+  myProcess {
+    showList
+    title
+    image {
+      url
+      fileName
+    }
+  }
+  pageHero {
+    mainHeading
+    showcaseImage {
+      url
+    }
+    introSubheading {
+      html
+    }
+  }
+}
+    `;
 export const HomepageFragmentFieldsFragmentDoc = gql`
     fragment HomepageFragmentFields on Homepage {
   slug
@@ -7729,19 +8084,6 @@ export const PortfolioFragmentFieldsFragmentDoc = gql`
   }
 }
     `;
-export const ProcessFragmentFieldsFragmentDoc = gql`
-    fragment ProcessFragmentFields on Process {
-  id
-  name
-  content {
-    html
-  }
-  icon {
-    fileName
-    url
-  }
-}
-    `;
 export const ServicesFragmentFieldsFragmentDoc = gql`
     fragment ServicesFragmentFields on Service {
   name
@@ -7751,6 +8093,40 @@ export const ServicesFragmentFieldsFragmentDoc = gql`
   }
 }
     `;
+export const GetAboutPageDocument = gql`
+    query GetAboutPage {
+  aboutPage(where: {title: "About me"}) {
+    ...AboutPageMainFields
+  }
+}
+    ${AboutPageMainFieldsFragmentDoc}`;
+
+/**
+ * __useGetAboutPageQuery__
+ *
+ * To run a query within a React component, call `useGetAboutPageQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetAboutPageQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetAboutPageQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetAboutPageQuery(baseOptions?: Apollo.QueryHookOptions<GetAboutPageQuery, GetAboutPageQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetAboutPageQuery, GetAboutPageQueryVariables>(GetAboutPageDocument, options);
+      }
+export function useGetAboutPageLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetAboutPageQuery, GetAboutPageQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetAboutPageQuery, GetAboutPageQueryVariables>(GetAboutPageDocument, options);
+        }
+export type GetAboutPageQueryHookResult = ReturnType<typeof useGetAboutPageQuery>;
+export type GetAboutPageLazyQueryHookResult = ReturnType<typeof useGetAboutPageLazyQuery>;
+export type GetAboutPageQueryResult = Apollo.QueryResult<GetAboutPageQuery, GetAboutPageQueryVariables>;
 export const GetHomepageDocument = gql`
     query GetHomepage {
   homepage(where: {title: "Homepage"}, stage: PUBLISHED) {
@@ -7895,11 +8271,19 @@ export type GetPortfolioCategoriesLazyQueryHookResult = ReturnType<typeof useGet
 export type GetPortfolioCategoriesQueryResult = Apollo.QueryResult<GetPortfolioCategoriesQuery, GetPortfolioCategoriesQueryVariables>;
 export const GetAllProcessDocument = gql`
     query GetAllProcess {
-  processes(stage: PUBLISHED) {
-    ...ProcessFragmentFields
+  myProcessLists(stage: PUBLISHED) {
+    id
+    name
+    content {
+      html
+    }
+    icon {
+      fileName
+      url
+    }
   }
 }
-    ${ProcessFragmentFieldsFragmentDoc}`;
+    `;
 
 /**
  * __useGetAllProcessQuery__
@@ -7927,44 +8311,6 @@ export function useGetAllProcessLazyQuery(baseOptions?: Apollo.LazyQueryHookOpti
 export type GetAllProcessQueryHookResult = ReturnType<typeof useGetAllProcessQuery>;
 export type GetAllProcessLazyQueryHookResult = ReturnType<typeof useGetAllProcessLazyQuery>;
 export type GetAllProcessQueryResult = Apollo.QueryResult<GetAllProcessQuery, GetAllProcessQueryVariables>;
-export const GetMyProcessSectionDocument = gql`
-    query GetMyProcessSection {
-  myProcessSection(where: {title: "My Process"}) {
-    title
-    showList
-    image {
-      url
-    }
-  }
-}
-    `;
-
-/**
- * __useGetMyProcessSectionQuery__
- *
- * To run a query within a React component, call `useGetMyProcessSectionQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetMyProcessSectionQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetMyProcessSectionQuery({
- *   variables: {
- *   },
- * });
- */
-export function useGetMyProcessSectionQuery(baseOptions?: Apollo.QueryHookOptions<GetMyProcessSectionQuery, GetMyProcessSectionQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetMyProcessSectionQuery, GetMyProcessSectionQueryVariables>(GetMyProcessSectionDocument, options);
-      }
-export function useGetMyProcessSectionLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetMyProcessSectionQuery, GetMyProcessSectionQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetMyProcessSectionQuery, GetMyProcessSectionQueryVariables>(GetMyProcessSectionDocument, options);
-        }
-export type GetMyProcessSectionQueryHookResult = ReturnType<typeof useGetMyProcessSectionQuery>;
-export type GetMyProcessSectionLazyQueryHookResult = ReturnType<typeof useGetMyProcessSectionLazyQuery>;
-export type GetMyProcessSectionQueryResult = Apollo.QueryResult<GetMyProcessSectionQuery, GetMyProcessSectionQueryVariables>;
 export const GetAllServicesDocument = gql`
     query GetAllServices {
   services(first: 20, orderBy: createdAt_ASC, stage: PUBLISHED) {
