@@ -1,0 +1,20 @@
+query GetAllProcess {
+  processes(
+  stage: PUBLISHED
+) {
+    ...ProcessFragmentFields
+  }
+}
+
+
+fragment ProcessFragmentFields on Process {
+  id
+  name
+  content {
+    html
+  }
+  icon {
+    fileName
+    url
+  }
+}

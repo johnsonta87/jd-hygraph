@@ -12,7 +12,7 @@ export const NavbarContainer = ({ children, ...props }: Props) => {
       px={0}
       py={4}
       w="100%"
-      mb={24}
+      mb="78px"
       bg="white"
       boxShadow="lg"
       {...props}

@@ -19,6 +19,15 @@ query GetPortfoliosByCategory(
   }
 }
 
+query GetPortfolioCategories {
+  portfolioCategories(
+  stage: PUBLISHED
+) {
+    id
+    name
+  }
+}
+
 
 fragment PortfolioFragmentFields on Portfolio {
   id

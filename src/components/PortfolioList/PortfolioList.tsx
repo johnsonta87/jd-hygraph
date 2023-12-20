@@ -6,9 +6,10 @@ import BaseImageCaption from "../Image/BaseImageCaption";
 type Props = {
   category: string;
   variant: "primary" | "secondary";
+  hideCategoryName?: boolean;
 };
 
-export function PortfolioList({ category, variant }: Props) {
+export function PortfolioList({ category, variant, hideCategoryName }: Props) {
   const { loading, data } = GetPortfoliosByCategoryQuery({
     variables: { portfolioCategory: category },
   });
@@ -31,7 +32,10 @@ export function PortfolioList({ category, variant }: Props) {
                   title={p.title || ""}
                   caption={p.title || ""}
                   year={p.year || ""}
-                  category={p.portfolioCategory?.name || ""}
+                  category={
+                    hideCategoryName ? "" : p.portfolioCategory?.name || ""
+                  }
+                  height="369px"
                 />
               </GridItem>
             ))}
@@ -51,6 +55,7 @@ export function PortfolioList({ category, variant }: Props) {
                   title={portfolios[0].title || ""}
                   caption={portfolios[0].title || ""}
                   year={portfolios[0].year || ""}
+                  height="510px"
                 />
               </GridItem>
             )}
@@ -64,6 +69,7 @@ export function PortfolioList({ category, variant }: Props) {
                     title={p.title || ""}
                     caption={p.title || ""}
                     year={p.year || ""}
+                    height="243px"
                   />
                 </GridItem>
               ))}
