@@ -130,7 +130,11 @@ const PortfolioSwitcher = ({ variant }: Props) => {
             </Text>
             <Box w="100%" mb="54px" flexBasis="50%">
               <Tabs>
-                <TabList borderColor="clay">
+                <TabList
+                  borderColor="clay"
+                  display="flex"
+                  justifyContent="space-evenly"
+                >
                   <Tab
                     as="button"
                     textTransform="uppercase"
