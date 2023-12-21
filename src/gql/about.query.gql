@@ -1,19 +1,15 @@
 query GetAboutPage {
-  aboutPage(where: {title: "About me"}) {
+  aboutPage(
+    where: {
+      title: "About me"
+    }
+  ) {
     ...AboutPageMainFields
   }
 }
 
 fragment AboutPageMainFields on AboutPage {
   id
-  myProcess {
-    showList
-    title
-    image {
-      url
-      fileName
-    }
-  }
   pageHero {
     mainHeading
     showcaseImage {
@@ -23,7 +19,15 @@ fragment AboutPageMainFields on AboutPage {
       html
     }
   }
-  myProcessSection {
+  servicesList(first: 12) {
+    title
+    portfolioCategory {
+      id
+      name
+    }
+  }
+  processTitle
+  myProcessSection(first: 9) {
     id
     name
     icon {

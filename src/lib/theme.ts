@@ -9,6 +9,7 @@ export const theme = extendTheme({
         height: "100%",
         fontSize: "1.125rem",
         fontFamily: "FoundersGrotesk, Raleway",
+        fontWeight: "300",
       },
       '&::-webkit-scrollbar': {
         width: '10px',
@@ -36,7 +37,7 @@ export const theme = extendTheme({
       },
       p: {
         fontSize: "1.125rem",
-        letterSpacing: "2px",
+        fontWeight: "300",
       },
     }),
   },

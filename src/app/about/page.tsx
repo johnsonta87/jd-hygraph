@@ -1,21 +1,14 @@
 "use client";
 import { useGetAboutPageQuery as GetAboutPageQuery } from "@/__generated__/graphql";
+import { ServicesList, ServicesListType } from "@/components";
 import ContactLinks, {
   ContactLinksType,
 } from "@/components/ContactLinks/ContactLinks";
 import { PageHero } from "@/components/PageHero/PageHero";
-import {
-  Box,
-  Container,
-  Divider,
-  Flex,
-  Image,
-  Spinner,
-  Text,
-} from "@chakra-ui/react";
 import ProcessList, {
   MyProcessListType,
-} from "../../components/ProcessList/ProcessList";
+} from "@/components/ProcessList/ProcessList";
+import { Container, Divider, Flex, Spinner } from "@chakra-ui/react";
 
 type Props = {};
 
@@ -24,7 +17,7 @@ const AboutPage = (props: Props) => {
   const { aboutPage } = data || {};
   const {
     pageHero,
-    myProcess,
+    servicesList,
     myProcessSection,
     contactSectionTitle,
     pageContactSection,
@@ -51,33 +44,21 @@ const AboutPage = (props: Props) => {
         image={pageHero?.showcaseImage?.url || ""}
       />
 
-      {myProcess?.title && (
+      {servicesList && (
         <>
           <Divider my="40px" />
-          <Text as="h2" mb="8">
-            {myProcess?.title}
-          </Text>
+          <ServicesList
+            heading="What I do"
+            list={servicesList as ServicesListType[]}
+          />
         </>
       )}
-      {myProcess?.image && (
+
+      <Divider my="40px" />
+
+      {myProcessSection && (
         <>
-          <Flex justifyContent="space-between" alignItems="start">
-            <Box>
-              <Image
-                src={myProcess?.image?.url || ""}
-                alt={`${myProcess?.title || ""} image`}
-                objectFit="cover"
-                objectPosition="center"
-                w="100%"
-                maxW="411px"
-              />
-            </Box>
-            {myProcess?.showList && myProcessSection && (
-              <Box flexBasis="50%">
-                <ProcessList list={myProcessSection as MyProcessListType[]} />
-              </Box>
-            )}
-          </Flex>
+          <ProcessList list={myProcessSection as MyProcessListType[]} />
 
           <Divider my="40px" />
         </>

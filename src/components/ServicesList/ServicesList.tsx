@@ -1,25 +1,19 @@
-import { useGetAllServicesQuery as GetAllServicesQuery } from "@/__generated__/graphql";
-import {
-  Box,
-  Flex,
-  Grid,
-  GridItem,
-  List,
-  Spinner,
-  Text,
-} from "@chakra-ui/react";
+import { Box, Flex, Grid, GridItem, List, Text } from "@chakra-ui/react";
+
+export type ServicesListType = {
+  title?: string;
+  portfolioCategory?: {
+    id: string;
+    name: string;
+  };
+};
 
 type Props = {
+  list: ServicesListType[];
   heading?: string;
 };
 
-export function ServicesList({ heading }: Props) {
-  const { loading, error, data } = GetAllServicesQuery();
-  const { services } = data || {};
-
-  if (loading) return <Spinner size="xl" />;
-  if (error) return `Error! ${error}`;
-
+export function ServicesList({ list, heading }: Props) {
   return (
     <Grid
       templateAreas={`"side main"`}
@@ -35,39 +29,33 @@ export function ServicesList({ heading }: Props) {
       </GridItem>
 
       <GridItem area={"main"}>
-        <Flex w="100%" gap={6} justifyContent="end">
+        <Flex w="100%" gap={32} justifyContent="end">
           {/* Product design list */}
           <Box>
-            <Text textTransform="uppercase" fontSize="large" mb={2}>
+            <Text fontSize="21px" textTransform="uppercase" color="clay" mb={2}>
               Product Design
             </Text>
-            {services &&
-              services
-                .filter(
-                  (value) => value.portfolioCategory?.name === "Product design"
-                )
-                .map((s, index: number) => (
-                  <List key={index}>
-                    <Text>/ {s.name}</Text>
-                  </List>
-                ))}
+            {list
+              .filter((value) => value.portfolioCategory?.name === "Product")
+              .map((s, index: number) => (
+                <List key={index}>
+                  <Text>{s.title}</Text>
+                </List>
+              ))}
           </Box>
 
           {/* Branding design list */}
           <Box>
-            <Text textTransform="uppercase" fontSize="large" mb={2}>
+            <Text fontSize="21px" textTransform="uppercase" color="clay" mb={2}>
               Branding Design
             </Text>
-            {services &&
-              services
-                .filter(
-                  (value) => value.portfolioCategory?.name === "Branding design"
-                )
-                .map((s, index: number) => (
-                  <List key={index}>
-                    <Text>/ {s.name}</Text>
-                  </List>
-                ))}
+            {list
+              .filter((value) => value.portfolioCategory?.name === "Branding")
+              .map((s, index: number) => (
+                <List key={index}>
+                  <Text>{s.title}</Text>
+                </List>
+              ))}
           </Box>
         </Flex>
       </GridItem>

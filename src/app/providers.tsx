@@ -23,6 +23,16 @@ const Fonts = () => (
         src: url(/fonts/founders/FoundersGrotesk-Regular.woff) format('woff'),
           url(/fonts/founders/FoundersGrotesk-Regular.woff2) format('woff2');
       }
+      }
+      @font-face {
+        font-family: 'FoundersGrotesk';
+        font-style: normal;
+        font-weight: 300;
+        font-display: swap;
+        src: url(/fonts/founders/FoundersGrotesk-Light-300.otf) format('otf'),
+          url(/fonts/founders/FoundersGrotesk-Light.woff) format('woff'),
+          url(/fonts/founders/FoundersGrotesk-Light.woff2) format('woff2');
+      }
       @font-face {
         font-family: 'Raleway';
         font-style: normal;

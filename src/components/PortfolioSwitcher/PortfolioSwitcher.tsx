@@ -133,7 +133,7 @@ const PortfolioSwitcher = ({ variant }: Props) => {
                 <TabList
                   borderColor="clay"
                   display="flex"
-                  justifyContent="space-evenly"
+                  justifyContent="space-between"
                 >
                   <Tab
                     as="button"
@@ -153,7 +153,10 @@ const PortfolioSwitcher = ({ variant }: Props) => {
                       _selected={{ color: "clay" }}
                       onClick={() => setCategory(listItem.name)}
                     >
-                      {listItem.name}
+                      {listItem.name}{" "}
+                      <Box ml={2} display={{ base: "none", md: "block" }}>
+                        design
+                      </Box>
                     </Tab>
                   ))}
                 </TabList>

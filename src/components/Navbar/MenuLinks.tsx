@@ -19,7 +19,6 @@ export function MenuLinks({ isOpen, ...props }: Props) {
         pt={[4, 4, 0, 0]}
       >
         <MenuItem to="/">Home</MenuItem>
-        <MenuItem to="/portfolio">Portfolio</MenuItem>
         <MenuItem to="/about">About me</MenuItem>
         <MenuItem to="/contact">Contact</MenuItem>
       </Stack>

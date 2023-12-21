@@ -1,15 +1,14 @@
 "use client";
 import { useGetHomepageQuery as GetHomepageQuery } from "@/__generated__/graphql";
-import { ServicesList } from "@/components";
 import { PageHero } from "@/components/PageHero/PageHero";
 import PortfolioSwitcher from "@/components/PortfolioSwitcher/PortfolioSwitcher";
-import { Container, Divider, Flex, Image, Spinner } from "@chakra-ui/react";
+import { Container, Flex, Image, Spinner } from "@chakra-ui/react";
 import { NextPage } from "next";
 
 const Home: NextPage = () => {
   const { loading, data } = GetHomepageQuery();
   const { homepage } = data || {};
-  const { general, services, variant, bannerImage } = homepage || {};
+  const { general, variant, bannerImage } = homepage || {};
 
   if (loading)
     return (
@@ -43,16 +42,6 @@ const Home: NextPage = () => {
           subtitle={general?.introSubheading?.html || ""}
           image={general?.showcaseImage?.url || ""}
         />
-
-        {variant === "primary" && (
-          <>
-            <Divider my="40px" />
-            {services?.showListOfServices && (
-              <ServicesList heading={services.title || ""} />
-            )}
-            <Divider my="40px" />
-          </>
-        )}
 
         <PortfolioSwitcher variant={variant || "primary"} />
       </Container>

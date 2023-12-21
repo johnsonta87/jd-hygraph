@@ -30,7 +30,7 @@ const ContactLinks = ({ list, sectionTitle }: Props) => {
         </Text>
       )}
 
-      <List display="flex" alignItems="center" gap={24}>
+      <List display="flex" flexDirection="column" alignItems="start" gap={4}>
         {list &&
           list?.map((listItem) => (
             <ListItem key={listItem.id}>

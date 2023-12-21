@@ -39,7 +39,11 @@ const ProcessList = ({ list }: Props) => {
                   alignItems="start"
                 >
                   <Box mb="12px">
-                    <Text fontSize="1.313rem" textTransform="uppercase">
+                    <Text
+                      fontSize="1.313rem"
+                      color="clay"
+                      textTransform="uppercase"
+                    >
                       {listItem.name}
                     </Text>
                   </Box>
