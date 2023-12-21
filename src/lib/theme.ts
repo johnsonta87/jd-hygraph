@@ -23,17 +23,17 @@ export const theme = extendTheme({
       },
       h1: {
         fontFamily: "Juana",
-        fontSize: "3rem",
+        fontSize: { base: "2rem", md: "3rem" },
         lineHeight: "1.5em",
       },
       h2: {
         fontFamily: "Juana",
-        fontSize: "3rem",
+        fontSize: { base: "2rem", md: "3rem" },
         lineHeight: "1.5em",
       },
       h3: {
         fontFamily: "Juana",
-        fontSize: "1.5rem",
+        fontSize: { base: "2rem", md: "1.5rem" },
       },
       p: {
         fontSize: "1.125rem",

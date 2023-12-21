@@ -18,6 +18,7 @@ const AboutPage = (props: Props) => {
   const {
     pageHero,
     servicesList,
+    processTitle,
     myProcessSection,
     contactSectionTitle,
     pageContactSection,
@@ -58,7 +59,10 @@ const AboutPage = (props: Props) => {
 
       {myProcessSection && (
         <>
-          <ProcessList list={myProcessSection as MyProcessListType[]} />
+          <ProcessList
+            heading={processTitle || ""}
+            list={myProcessSection as MyProcessListType[]}
+          />
 
           <Divider my="40px" />
         </>

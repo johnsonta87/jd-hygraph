@@ -16,22 +16,26 @@ type Props = {
 export function ServicesList({ list, heading }: Props) {
   return (
     <Grid
-      templateAreas={`"side main"`}
-      gridTemplateColumns={"260px 1fr"}
-      gap={{ base: "6", md: "12" }}
+      gridTemplateColumns={{ base: "1fr", lg: "50% 1fr" }}
+      gap={{ base: "16px", md: "32px" }}
     >
-      <GridItem area={"side"}>
+      <GridItem>
         {heading && (
-          <Text as="h3" fontSize="lg">
+          <Text as="h3" fontSize="24px">
             {heading}
           </Text>
         )}
       </GridItem>
 
-      <GridItem area={"main"}>
-        <Flex w="100%" gap={32} justifyContent="end">
+      <GridItem>
+        <Flex
+          w="100%"
+          flexDirection={{ base: "column", sm: "row" }}
+          gap={{ base: "8", md: "32" }}
+          justifyContent={{ base: "flex-start", md: "end" }}
+        >
           {/* Product design list */}
-          <Box>
+          <Box flexBasis={{ base: "50%", md: "100%" }}>
             <Text fontSize="21px" textTransform="uppercase" color="clay" mb={2}>
               Product Design
             </Text>
@@ -45,7 +49,7 @@ export function ServicesList({ list, heading }: Props) {
           </Box>
 
           {/* Branding design list */}
-          <Box>
+          <Box flexBasis={{ base: "50%", md: "100%" }}>
             <Text fontSize="21px" textTransform="uppercase" color="clay" mb={2}>
               Branding Design
             </Text>

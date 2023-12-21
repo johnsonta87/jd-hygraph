@@ -43,7 +43,7 @@ const Home: NextPage = () => {
           image={general?.showcaseImage?.url || ""}
         />
 
-        <PortfolioSwitcher variant={variant || "primary"} />
+        <PortfolioSwitcher />
       </Container>
     </>
   );

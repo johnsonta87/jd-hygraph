@@ -48,7 +48,13 @@ export function PageHero({
     );
 
   return (
-    <Flex w="100%" align="center" justify="space-between" gap={12}>
+    <Flex
+      w="100%"
+      flexDirection={{ base: "column", md: "row" }}
+      align="center"
+      justify="space-between"
+      gap={12}
+    >
       <Box flexBasis="50%">
         {title && (
           <Text as="h1" mb="12px">
@@ -63,7 +69,11 @@ export function PageHero({
           />
         )}
       </Box>
-      <Box>{image && title && <Image src={image} alt={title} />}</Box>
+      {image && title && (
+        <Box>
+          <Image src={image} alt={title} />
+        </Box>
+      )}
     </Flex>
   );
 }
