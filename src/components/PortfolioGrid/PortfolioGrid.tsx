@@ -35,6 +35,7 @@ export function PortfolioGrid({ list, category }: Props) {
         .map((p) => (
           <GridItem key={p.id}>
             <PortfolioImage
+              link={`/portfolio/${p.slug}`}
               src={p.showcaseImage?.url || ""}
               title={p.title || ""}
               caption={p.title}

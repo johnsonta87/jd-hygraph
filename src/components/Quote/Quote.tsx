@@ -1,12 +1,13 @@
 import { Box, Flex, Image, Text } from "@chakra-ui/react";
+import { ContentType } from "../../types/";
 
 type Props = {
-  text: string;
+  content: ContentType;
   hideIcon?: boolean;
 };
 
-export function Quote({ text, hideIcon }: Props) {
-  if (!text) return;
+export function Quote({ content, hideIcon }: Props) {
+  if (!content) return;
 
   return (
     <Flex
@@ -22,12 +23,12 @@ export function Quote({ text, hideIcon }: Props) {
     >
       {!hideIcon && (
         <Box as="div" mr="2.25rem" top="-2.25rem" position="relative">
-          <Image src="/svgs/quote.svg" alt="Quote icon" />
+          <Image width="150px" src="/svgs/quote.svg" alt="Quote icon" />
         </Box>
       )}
 
       <Text as="p" display="inline-block" ml="2">
-        {text}
+        {content.html}
       </Text>
     </Flex>
   );

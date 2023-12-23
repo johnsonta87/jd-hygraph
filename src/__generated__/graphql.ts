@@ -798,6 +798,7 @@ export type AssetCreateInput = {
   height?: InputMaybe<Scalars['Float']>;
   iconContactLink?: InputMaybe<ContactLinkCreateManyInlineInput>;
   iconMyProcessList?: InputMaybe<MyProcessListCreateManyInlineInput>;
+  imageFullWidthImage?: InputMaybe<FullWidthImageCreateManyInlineInput>;
   imageMyProcessSection?: InputMaybe<MyProcessSectionCreateManyInlineInput>;
   /** Inline mutations for managing document localizations excluding the default locale */
   localizations?: InputMaybe<AssetCreateLocalizationsInput>;
@@ -983,6 +984,7 @@ export type AssetUpdateInput = {
   height?: InputMaybe<Scalars['Float']>;
   iconContactLink?: InputMaybe<ContactLinkUpdateManyInlineInput>;
   iconMyProcessList?: InputMaybe<MyProcessListUpdateManyInlineInput>;
+  imageFullWidthImage?: InputMaybe<FullWidthImageUpdateManyInlineInput>;
   imageMyProcessSection?: InputMaybe<MyProcessSectionUpdateManyInlineInput>;
   /** Manage document localizations */
   localizations?: InputMaybe<AssetUpdateLocalizationsInput>;
@@ -1757,6 +1759,295 @@ export type ContactLinkWhereUniqueInput = {
   title?: InputMaybe<Scalars['String']>;
 };
 
+export type Divider = Entity & {
+  enable?: Maybe<Scalars['Boolean']>;
+  /** The unique identifier */
+  id: Scalars['ID'];
+  /** System stage field */
+  stage: Stage;
+};
+
+export type DividerConnectInput = {
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+  /** Document to connect */
+  where: DividerWhereUniqueInput;
+};
+
+/** A connection to a list of items. */
+export type DividerConnection = {
+  aggregate: Aggregate;
+  /** A list of edges. */
+  edges: Array<DividerEdge>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+export type DividerCreateInput = {
+  enable?: InputMaybe<Scalars['Boolean']>;
+};
+
+export type DividerCreateManyInlineInput = {
+  /** Create and connect multiple existing Divider documents */
+  create?: InputMaybe<Array<DividerCreateInput>>;
+};
+
+export type DividerCreateOneInlineInput = {
+  /** Create and connect one Divider document */
+  create?: InputMaybe<DividerCreateInput>;
+};
+
+export type DividerCreateWithPositionInput = {
+  /** Document to create */
+  data: DividerCreateInput;
+  /** Position in the list of existing component instances, will default to appending at the end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+};
+
+/** An edge in a connection. */
+export type DividerEdge = {
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String'];
+  /** The item at the end of the edge. */
+  node: Divider;
+};
+
+/** Identifies documents */
+export type DividerManyWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<DividerWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<DividerWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<DividerWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>;
+  enable?: InputMaybe<Scalars['Boolean']>;
+  /** Any other value that exists and is not equal to the given value. */
+  enable_not?: InputMaybe<Scalars['Boolean']>;
+  id?: InputMaybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  id_not?: InputMaybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>;
+};
+
+export enum DividerOrderByInput {
+  ENABLE_ASC = 'enable_ASC',
+  ENABLE_DESC = 'enable_DESC',
+  ID_ASC = 'id_ASC',
+  ID_DESC = 'id_DESC'
+}
+
+export type DividerParent = Portfolio;
+
+export type DividerParentConnectInput = {
+  Portfolio?: InputMaybe<PortfolioConnectInput>;
+};
+
+export type DividerParentCreateInput = {
+  Portfolio?: InputMaybe<PortfolioCreateInput>;
+};
+
+export type DividerParentCreateManyInlineInput = {
+  /** Connect multiple existing DividerParent documents */
+  connect?: InputMaybe<Array<DividerParentWhereUniqueInput>>;
+  /** Create and connect multiple existing DividerParent documents */
+  create?: InputMaybe<Array<DividerParentCreateInput>>;
+};
+
+export type DividerParentCreateOneInlineInput = {
+  /** Connect one existing DividerParent document */
+  connect?: InputMaybe<DividerParentWhereUniqueInput>;
+  /** Create and connect one DividerParent document */
+  create?: InputMaybe<DividerParentCreateInput>;
+};
+
+export type DividerParentUpdateInput = {
+  Portfolio?: InputMaybe<PortfolioUpdateInput>;
+};
+
+export type DividerParentUpdateManyInlineInput = {
+  /** Connect multiple existing DividerParent documents */
+  connect?: InputMaybe<Array<DividerParentConnectInput>>;
+  /** Create and connect multiple DividerParent documents */
+  create?: InputMaybe<Array<DividerParentCreateInput>>;
+  /** Delete multiple DividerParent documents */
+  delete?: InputMaybe<Array<DividerParentWhereUniqueInput>>;
+  /** Disconnect multiple DividerParent documents */
+  disconnect?: InputMaybe<Array<DividerParentWhereUniqueInput>>;
+  /** Override currently-connected documents with multiple existing DividerParent documents */
+  set?: InputMaybe<Array<DividerParentWhereUniqueInput>>;
+  /** Update multiple DividerParent documents */
+  update?: InputMaybe<Array<DividerParentUpdateWithNestedWhereUniqueInput>>;
+  /** Upsert multiple DividerParent documents */
+  upsert?: InputMaybe<Array<DividerParentUpsertWithNestedWhereUniqueInput>>;
+};
+
+export type DividerParentUpdateManyWithNestedWhereInput = {
+  Portfolio?: InputMaybe<PortfolioUpdateManyWithNestedWhereInput>;
+};
+
+export type DividerParentUpdateOneInlineInput = {
+  /** Connect existing DividerParent document */
+  connect?: InputMaybe<DividerParentWhereUniqueInput>;
+  /** Create and connect one DividerParent document */
+  create?: InputMaybe<DividerParentCreateInput>;
+  /** Delete currently connected DividerParent document */
+  delete?: InputMaybe<Scalars['Boolean']>;
+  /** Disconnect currently connected DividerParent document */
+  disconnect?: InputMaybe<Scalars['Boolean']>;
+  /** Update single DividerParent document */
+  update?: InputMaybe<DividerParentUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single DividerParent document */
+  upsert?: InputMaybe<DividerParentUpsertWithNestedWhereUniqueInput>;
+};
+
+export type DividerParentUpdateWithNestedWhereUniqueInput = {
+  Portfolio?: InputMaybe<PortfolioUpdateWithNestedWhereUniqueInput>;
+};
+
+export type DividerParentUpsertWithNestedWhereUniqueInput = {
+  Portfolio?: InputMaybe<PortfolioUpsertWithNestedWhereUniqueInput>;
+};
+
+export type DividerParentWhereInput = {
+  Portfolio?: InputMaybe<PortfolioWhereInput>;
+};
+
+export type DividerParentWhereUniqueInput = {
+  Portfolio?: InputMaybe<PortfolioWhereUniqueInput>;
+};
+
+export type DividerUpdateInput = {
+  enable?: InputMaybe<Scalars['Boolean']>;
+};
+
+export type DividerUpdateManyInlineInput = {
+  /** Create and connect multiple Divider component instances */
+  create?: InputMaybe<Array<DividerCreateWithPositionInput>>;
+  /** Delete multiple Divider documents */
+  delete?: InputMaybe<Array<DividerWhereUniqueInput>>;
+  /** Update multiple Divider component instances */
+  update?: InputMaybe<Array<DividerUpdateWithNestedWhereUniqueAndPositionInput>>;
+  /** Upsert multiple Divider component instances */
+  upsert?: InputMaybe<Array<DividerUpsertWithNestedWhereUniqueAndPositionInput>>;
+};
+
+export type DividerUpdateManyInput = {
+  enable?: InputMaybe<Scalars['Boolean']>;
+};
+
+export type DividerUpdateManyWithNestedWhereInput = {
+  /** Update many input */
+  data: DividerUpdateManyInput;
+  /** Document search */
+  where: DividerWhereInput;
+};
+
+export type DividerUpdateOneInlineInput = {
+  /** Create and connect one Divider document */
+  create?: InputMaybe<DividerCreateInput>;
+  /** Delete currently connected Divider document */
+  delete?: InputMaybe<Scalars['Boolean']>;
+  /** Update single Divider document */
+  update?: InputMaybe<DividerUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single Divider document */
+  upsert?: InputMaybe<DividerUpsertWithNestedWhereUniqueInput>;
+};
+
+export type DividerUpdateWithNestedWhereUniqueAndPositionInput = {
+  /** Document to update */
+  data?: InputMaybe<DividerUpdateInput>;
+  /** Position in the list of existing component instances, will default to appending at the end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+  /** Unique component instance search */
+  where: DividerWhereUniqueInput;
+};
+
+export type DividerUpdateWithNestedWhereUniqueInput = {
+  /** Document to update */
+  data: DividerUpdateInput;
+  /** Unique document search */
+  where: DividerWhereUniqueInput;
+};
+
+export type DividerUpsertInput = {
+  /** Create document if it didn't exist */
+  create: DividerCreateInput;
+  /** Update document if it exists */
+  update: DividerUpdateInput;
+};
+
+export type DividerUpsertWithNestedWhereUniqueAndPositionInput = {
+  /** Document to upsert */
+  data?: InputMaybe<DividerUpsertInput>;
+  /** Position in the list of existing component instances, will default to appending at the end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+  /** Unique component instance search */
+  where: DividerWhereUniqueInput;
+};
+
+export type DividerUpsertWithNestedWhereUniqueInput = {
+  /** Upsert data */
+  data: DividerUpsertInput;
+  /** Unique document search */
+  where: DividerWhereUniqueInput;
+};
+
+/** Identifies documents */
+export type DividerWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<DividerWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<DividerWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<DividerWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>;
+  enable?: InputMaybe<Scalars['Boolean']>;
+  /** Any other value that exists and is not equal to the given value. */
+  enable_not?: InputMaybe<Scalars['Boolean']>;
+  id?: InputMaybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  id_not?: InputMaybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>;
+};
+
+/** References Divider record uniquely */
+export type DividerWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']>;
+};
+
 export enum DocumentFileTypes {
   DOC = 'doc',
   DOCX = 'docx',
@@ -1834,18 +2125,23 @@ export enum EntityTypeName {
   /** Asset system model */
   ASSET = 'Asset',
   CONTACTLINK = 'ContactLink',
+  DIVIDER = 'Divider',
+  FULLWIDTHIMAGE = 'FullWidthImage',
   HOMEPAGE = 'Homepage',
   MAINPAGEINTRO = 'MainPageIntro',
   MYPROCESSLIST = 'MyProcessList',
   MYPROCESSSECTION = 'MyProcessSection',
+  OVERVIEW = 'Overview',
   PORTFOLIO = 'Portfolio',
   PORTFOLIOCATEGORY = 'PortfolioCategory',
+  QUOTE = 'Quote',
   /** Scheduled Operation system model */
   SCHEDULEDOPERATION = 'ScheduledOperation',
   /** Scheduled Release system model */
   SCHEDULEDRELEASE = 'ScheduledRelease',
   SERVICE = 'Service',
   SERVICESLIST = 'ServicesList',
+  TEXTBLOCK = 'TextBlock',
   /** User system model */
   USER = 'User'
 }
@@ -1858,6 +2154,296 @@ export type EntityWhereInput = {
   stage: Stage;
   /** The Type name of an object */
   typename: EntityTypeName;
+};
+
+export type FullWidthImage = Entity & {
+  /** The unique identifier */
+  id: Scalars['ID'];
+  image?: Maybe<Asset>;
+  /** System stage field */
+  stage: Stage;
+};
+
+
+export type FullWidthImageImageArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+export type FullWidthImageConnectInput = {
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+  /** Document to connect */
+  where: FullWidthImageWhereUniqueInput;
+};
+
+/** A connection to a list of items. */
+export type FullWidthImageConnection = {
+  aggregate: Aggregate;
+  /** A list of edges. */
+  edges: Array<FullWidthImageEdge>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+export type FullWidthImageCreateInput = {
+  image?: InputMaybe<AssetCreateOneInlineInput>;
+};
+
+export type FullWidthImageCreateManyInlineInput = {
+  /** Create and connect multiple existing FullWidthImage documents */
+  create?: InputMaybe<Array<FullWidthImageCreateInput>>;
+};
+
+export type FullWidthImageCreateOneInlineInput = {
+  /** Create and connect one FullWidthImage document */
+  create?: InputMaybe<FullWidthImageCreateInput>;
+};
+
+export type FullWidthImageCreateWithPositionInput = {
+  /** Document to create */
+  data: FullWidthImageCreateInput;
+  /** Position in the list of existing component instances, will default to appending at the end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+};
+
+/** An edge in a connection. */
+export type FullWidthImageEdge = {
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String'];
+  /** The item at the end of the edge. */
+  node: FullWidthImage;
+};
+
+/** Identifies documents */
+export type FullWidthImageManyWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<FullWidthImageWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<FullWidthImageWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<FullWidthImageWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  id_not?: InputMaybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>;
+  image?: InputMaybe<AssetWhereInput>;
+};
+
+export enum FullWidthImageOrderByInput {
+  ID_ASC = 'id_ASC',
+  ID_DESC = 'id_DESC'
+}
+
+export type FullWidthImageParent = Portfolio;
+
+export type FullWidthImageParentConnectInput = {
+  Portfolio?: InputMaybe<PortfolioConnectInput>;
+};
+
+export type FullWidthImageParentCreateInput = {
+  Portfolio?: InputMaybe<PortfolioCreateInput>;
+};
+
+export type FullWidthImageParentCreateManyInlineInput = {
+  /** Connect multiple existing FullWidthImageParent documents */
+  connect?: InputMaybe<Array<FullWidthImageParentWhereUniqueInput>>;
+  /** Create and connect multiple existing FullWidthImageParent documents */
+  create?: InputMaybe<Array<FullWidthImageParentCreateInput>>;
+};
+
+export type FullWidthImageParentCreateOneInlineInput = {
+  /** Connect one existing FullWidthImageParent document */
+  connect?: InputMaybe<FullWidthImageParentWhereUniqueInput>;
+  /** Create and connect one FullWidthImageParent document */
+  create?: InputMaybe<FullWidthImageParentCreateInput>;
+};
+
+export type FullWidthImageParentUpdateInput = {
+  Portfolio?: InputMaybe<PortfolioUpdateInput>;
+};
+
+export type FullWidthImageParentUpdateManyInlineInput = {
+  /** Connect multiple existing FullWidthImageParent documents */
+  connect?: InputMaybe<Array<FullWidthImageParentConnectInput>>;
+  /** Create and connect multiple FullWidthImageParent documents */
+  create?: InputMaybe<Array<FullWidthImageParentCreateInput>>;
+  /** Delete multiple FullWidthImageParent documents */
+  delete?: InputMaybe<Array<FullWidthImageParentWhereUniqueInput>>;
+  /** Disconnect multiple FullWidthImageParent documents */
+  disconnect?: InputMaybe<Array<FullWidthImageParentWhereUniqueInput>>;
+  /** Override currently-connected documents with multiple existing FullWidthImageParent documents */
+  set?: InputMaybe<Array<FullWidthImageParentWhereUniqueInput>>;
+  /** Update multiple FullWidthImageParent documents */
+  update?: InputMaybe<Array<FullWidthImageParentUpdateWithNestedWhereUniqueInput>>;
+  /** Upsert multiple FullWidthImageParent documents */
+  upsert?: InputMaybe<Array<FullWidthImageParentUpsertWithNestedWhereUniqueInput>>;
+};
+
+export type FullWidthImageParentUpdateManyWithNestedWhereInput = {
+  Portfolio?: InputMaybe<PortfolioUpdateManyWithNestedWhereInput>;
+};
+
+export type FullWidthImageParentUpdateOneInlineInput = {
+  /** Connect existing FullWidthImageParent document */
+  connect?: InputMaybe<FullWidthImageParentWhereUniqueInput>;
+  /** Create and connect one FullWidthImageParent document */
+  create?: InputMaybe<FullWidthImageParentCreateInput>;
+  /** Delete currently connected FullWidthImageParent document */
+  delete?: InputMaybe<Scalars['Boolean']>;
+  /** Disconnect currently connected FullWidthImageParent document */
+  disconnect?: InputMaybe<Scalars['Boolean']>;
+  /** Update single FullWidthImageParent document */
+  update?: InputMaybe<FullWidthImageParentUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single FullWidthImageParent document */
+  upsert?: InputMaybe<FullWidthImageParentUpsertWithNestedWhereUniqueInput>;
+};
+
+export type FullWidthImageParentUpdateWithNestedWhereUniqueInput = {
+  Portfolio?: InputMaybe<PortfolioUpdateWithNestedWhereUniqueInput>;
+};
+
+export type FullWidthImageParentUpsertWithNestedWhereUniqueInput = {
+  Portfolio?: InputMaybe<PortfolioUpsertWithNestedWhereUniqueInput>;
+};
+
+export type FullWidthImageParentWhereInput = {
+  Portfolio?: InputMaybe<PortfolioWhereInput>;
+};
+
+export type FullWidthImageParentWhereUniqueInput = {
+  Portfolio?: InputMaybe<PortfolioWhereUniqueInput>;
+};
+
+export type FullWidthImageUpdateInput = {
+  image?: InputMaybe<AssetUpdateOneInlineInput>;
+};
+
+export type FullWidthImageUpdateManyInlineInput = {
+  /** Create and connect multiple FullWidthImage component instances */
+  create?: InputMaybe<Array<FullWidthImageCreateWithPositionInput>>;
+  /** Delete multiple FullWidthImage documents */
+  delete?: InputMaybe<Array<FullWidthImageWhereUniqueInput>>;
+  /** Update multiple FullWidthImage component instances */
+  update?: InputMaybe<Array<FullWidthImageUpdateWithNestedWhereUniqueAndPositionInput>>;
+  /** Upsert multiple FullWidthImage component instances */
+  upsert?: InputMaybe<Array<FullWidthImageUpsertWithNestedWhereUniqueAndPositionInput>>;
+};
+
+export type FullWidthImageUpdateManyInput = {
+  /** No fields in updateMany data input */
+  _?: InputMaybe<Scalars['String']>;
+};
+
+export type FullWidthImageUpdateManyWithNestedWhereInput = {
+  /** Update many input */
+  data: FullWidthImageUpdateManyInput;
+  /** Document search */
+  where: FullWidthImageWhereInput;
+};
+
+export type FullWidthImageUpdateOneInlineInput = {
+  /** Create and connect one FullWidthImage document */
+  create?: InputMaybe<FullWidthImageCreateInput>;
+  /** Delete currently connected FullWidthImage document */
+  delete?: InputMaybe<Scalars['Boolean']>;
+  /** Update single FullWidthImage document */
+  update?: InputMaybe<FullWidthImageUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single FullWidthImage document */
+  upsert?: InputMaybe<FullWidthImageUpsertWithNestedWhereUniqueInput>;
+};
+
+export type FullWidthImageUpdateWithNestedWhereUniqueAndPositionInput = {
+  /** Document to update */
+  data?: InputMaybe<FullWidthImageUpdateInput>;
+  /** Position in the list of existing component instances, will default to appending at the end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+  /** Unique component instance search */
+  where: FullWidthImageWhereUniqueInput;
+};
+
+export type FullWidthImageUpdateWithNestedWhereUniqueInput = {
+  /** Document to update */
+  data: FullWidthImageUpdateInput;
+  /** Unique document search */
+  where: FullWidthImageWhereUniqueInput;
+};
+
+export type FullWidthImageUpsertInput = {
+  /** Create document if it didn't exist */
+  create: FullWidthImageCreateInput;
+  /** Update document if it exists */
+  update: FullWidthImageUpdateInput;
+};
+
+export type FullWidthImageUpsertWithNestedWhereUniqueAndPositionInput = {
+  /** Document to upsert */
+  data?: InputMaybe<FullWidthImageUpsertInput>;
+  /** Position in the list of existing component instances, will default to appending at the end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+  /** Unique component instance search */
+  where: FullWidthImageWhereUniqueInput;
+};
+
+export type FullWidthImageUpsertWithNestedWhereUniqueInput = {
+  /** Upsert data */
+  data: FullWidthImageUpsertInput;
+  /** Unique document search */
+  where: FullWidthImageWhereUniqueInput;
+};
+
+/** Identifies documents */
+export type FullWidthImageWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<FullWidthImageWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<FullWidthImageWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<FullWidthImageWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  id_not?: InputMaybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>;
+  image?: InputMaybe<AssetWhereInput>;
+};
+
+/** References FullWidthImage record uniquely */
+export type FullWidthImageWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']>;
 };
 
 export type Homepage = Entity & Node & {
@@ -4410,6 +4996,415 @@ export type Node = {
   stage: Stage;
 };
 
+export type Overview = Entity & {
+  /** The unique identifier */
+  id: Scalars['ID'];
+  output?: Maybe<Scalars['String']>;
+  role?: Maybe<Scalars['String']>;
+  skillsMethods?: Maybe<Scalars['String']>;
+  /** System stage field */
+  stage: Stage;
+};
+
+export type OverviewConnectInput = {
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+  /** Document to connect */
+  where: OverviewWhereUniqueInput;
+};
+
+/** A connection to a list of items. */
+export type OverviewConnection = {
+  aggregate: Aggregate;
+  /** A list of edges. */
+  edges: Array<OverviewEdge>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+export type OverviewCreateInput = {
+  output?: InputMaybe<Scalars['String']>;
+  role?: InputMaybe<Scalars['String']>;
+  skillsMethods?: InputMaybe<Scalars['String']>;
+};
+
+export type OverviewCreateManyInlineInput = {
+  /** Create and connect multiple existing Overview documents */
+  create?: InputMaybe<Array<OverviewCreateInput>>;
+};
+
+export type OverviewCreateOneInlineInput = {
+  /** Create and connect one Overview document */
+  create?: InputMaybe<OverviewCreateInput>;
+};
+
+export type OverviewCreateWithPositionInput = {
+  /** Document to create */
+  data: OverviewCreateInput;
+  /** Position in the list of existing component instances, will default to appending at the end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+};
+
+/** An edge in a connection. */
+export type OverviewEdge = {
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String'];
+  /** The item at the end of the edge. */
+  node: Overview;
+};
+
+/** Identifies documents */
+export type OverviewManyWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<OverviewWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<OverviewWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<OverviewWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  id_not?: InputMaybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>;
+  output?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  output_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  output_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  output_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  output_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  output_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  output_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  output_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  output_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  output_starts_with?: InputMaybe<Scalars['String']>;
+  role?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  role_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  role_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  role_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  role_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  role_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  role_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  role_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  role_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  role_starts_with?: InputMaybe<Scalars['String']>;
+  skillsMethods?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  skillsMethods_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  skillsMethods_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  skillsMethods_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  skillsMethods_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  skillsMethods_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  skillsMethods_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  skillsMethods_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  skillsMethods_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  skillsMethods_starts_with?: InputMaybe<Scalars['String']>;
+};
+
+export enum OverviewOrderByInput {
+  ID_ASC = 'id_ASC',
+  ID_DESC = 'id_DESC',
+  OUTPUT_ASC = 'output_ASC',
+  OUTPUT_DESC = 'output_DESC',
+  ROLE_ASC = 'role_ASC',
+  ROLE_DESC = 'role_DESC',
+  SKILLSMETHODS_ASC = 'skillsMethods_ASC',
+  SKILLSMETHODS_DESC = 'skillsMethods_DESC'
+}
+
+export type OverviewParent = Portfolio;
+
+export type OverviewParentConnectInput = {
+  Portfolio?: InputMaybe<PortfolioConnectInput>;
+};
+
+export type OverviewParentCreateInput = {
+  Portfolio?: InputMaybe<PortfolioCreateInput>;
+};
+
+export type OverviewParentCreateManyInlineInput = {
+  /** Connect multiple existing OverviewParent documents */
+  connect?: InputMaybe<Array<OverviewParentWhereUniqueInput>>;
+  /** Create and connect multiple existing OverviewParent documents */
+  create?: InputMaybe<Array<OverviewParentCreateInput>>;
+};
+
+export type OverviewParentCreateOneInlineInput = {
+  /** Connect one existing OverviewParent document */
+  connect?: InputMaybe<OverviewParentWhereUniqueInput>;
+  /** Create and connect one OverviewParent document */
+  create?: InputMaybe<OverviewParentCreateInput>;
+};
+
+export type OverviewParentUpdateInput = {
+  Portfolio?: InputMaybe<PortfolioUpdateInput>;
+};
+
+export type OverviewParentUpdateManyInlineInput = {
+  /** Connect multiple existing OverviewParent documents */
+  connect?: InputMaybe<Array<OverviewParentConnectInput>>;
+  /** Create and connect multiple OverviewParent documents */
+  create?: InputMaybe<Array<OverviewParentCreateInput>>;
+  /** Delete multiple OverviewParent documents */
+  delete?: InputMaybe<Array<OverviewParentWhereUniqueInput>>;
+  /** Disconnect multiple OverviewParent documents */
+  disconnect?: InputMaybe<Array<OverviewParentWhereUniqueInput>>;
+  /** Override currently-connected documents with multiple existing OverviewParent documents */
+  set?: InputMaybe<Array<OverviewParentWhereUniqueInput>>;
+  /** Update multiple OverviewParent documents */
+  update?: InputMaybe<Array<OverviewParentUpdateWithNestedWhereUniqueInput>>;
+  /** Upsert multiple OverviewParent documents */
+  upsert?: InputMaybe<Array<OverviewParentUpsertWithNestedWhereUniqueInput>>;
+};
+
+export type OverviewParentUpdateManyWithNestedWhereInput = {
+  Portfolio?: InputMaybe<PortfolioUpdateManyWithNestedWhereInput>;
+};
+
+export type OverviewParentUpdateOneInlineInput = {
+  /** Connect existing OverviewParent document */
+  connect?: InputMaybe<OverviewParentWhereUniqueInput>;
+  /** Create and connect one OverviewParent document */
+  create?: InputMaybe<OverviewParentCreateInput>;
+  /** Delete currently connected OverviewParent document */
+  delete?: InputMaybe<Scalars['Boolean']>;
+  /** Disconnect currently connected OverviewParent document */
+  disconnect?: InputMaybe<Scalars['Boolean']>;
+  /** Update single OverviewParent document */
+  update?: InputMaybe<OverviewParentUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single OverviewParent document */
+  upsert?: InputMaybe<OverviewParentUpsertWithNestedWhereUniqueInput>;
+};
+
+export type OverviewParentUpdateWithNestedWhereUniqueInput = {
+  Portfolio?: InputMaybe<PortfolioUpdateWithNestedWhereUniqueInput>;
+};
+
+export type OverviewParentUpsertWithNestedWhereUniqueInput = {
+  Portfolio?: InputMaybe<PortfolioUpsertWithNestedWhereUniqueInput>;
+};
+
+export type OverviewParentWhereInput = {
+  Portfolio?: InputMaybe<PortfolioWhereInput>;
+};
+
+export type OverviewParentWhereUniqueInput = {
+  Portfolio?: InputMaybe<PortfolioWhereUniqueInput>;
+};
+
+export type OverviewUpdateInput = {
+  output?: InputMaybe<Scalars['String']>;
+  role?: InputMaybe<Scalars['String']>;
+  skillsMethods?: InputMaybe<Scalars['String']>;
+};
+
+export type OverviewUpdateManyInlineInput = {
+  /** Create and connect multiple Overview component instances */
+  create?: InputMaybe<Array<OverviewCreateWithPositionInput>>;
+  /** Delete multiple Overview documents */
+  delete?: InputMaybe<Array<OverviewWhereUniqueInput>>;
+  /** Update multiple Overview component instances */
+  update?: InputMaybe<Array<OverviewUpdateWithNestedWhereUniqueAndPositionInput>>;
+  /** Upsert multiple Overview component instances */
+  upsert?: InputMaybe<Array<OverviewUpsertWithNestedWhereUniqueAndPositionInput>>;
+};
+
+export type OverviewUpdateManyInput = {
+  output?: InputMaybe<Scalars['String']>;
+  role?: InputMaybe<Scalars['String']>;
+  skillsMethods?: InputMaybe<Scalars['String']>;
+};
+
+export type OverviewUpdateManyWithNestedWhereInput = {
+  /** Update many input */
+  data: OverviewUpdateManyInput;
+  /** Document search */
+  where: OverviewWhereInput;
+};
+
+export type OverviewUpdateOneInlineInput = {
+  /** Create and connect one Overview document */
+  create?: InputMaybe<OverviewCreateInput>;
+  /** Delete currently connected Overview document */
+  delete?: InputMaybe<Scalars['Boolean']>;
+  /** Update single Overview document */
+  update?: InputMaybe<OverviewUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single Overview document */
+  upsert?: InputMaybe<OverviewUpsertWithNestedWhereUniqueInput>;
+};
+
+export type OverviewUpdateWithNestedWhereUniqueAndPositionInput = {
+  /** Document to update */
+  data?: InputMaybe<OverviewUpdateInput>;
+  /** Position in the list of existing component instances, will default to appending at the end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+  /** Unique component instance search */
+  where: OverviewWhereUniqueInput;
+};
+
+export type OverviewUpdateWithNestedWhereUniqueInput = {
+  /** Document to update */
+  data: OverviewUpdateInput;
+  /** Unique document search */
+  where: OverviewWhereUniqueInput;
+};
+
+export type OverviewUpsertInput = {
+  /** Create document if it didn't exist */
+  create: OverviewCreateInput;
+  /** Update document if it exists */
+  update: OverviewUpdateInput;
+};
+
+export type OverviewUpsertWithNestedWhereUniqueAndPositionInput = {
+  /** Document to upsert */
+  data?: InputMaybe<OverviewUpsertInput>;
+  /** Position in the list of existing component instances, will default to appending at the end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+  /** Unique component instance search */
+  where: OverviewWhereUniqueInput;
+};
+
+export type OverviewUpsertWithNestedWhereUniqueInput = {
+  /** Upsert data */
+  data: OverviewUpsertInput;
+  /** Unique document search */
+  where: OverviewWhereUniqueInput;
+};
+
+/** Identifies documents */
+export type OverviewWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<OverviewWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<OverviewWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<OverviewWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  id_not?: InputMaybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>;
+  output?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  output_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  output_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  output_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  output_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  output_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  output_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  output_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  output_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  output_starts_with?: InputMaybe<Scalars['String']>;
+  role?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  role_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  role_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  role_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  role_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  role_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  role_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  role_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  role_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  role_starts_with?: InputMaybe<Scalars['String']>;
+  skillsMethods?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  skillsMethods_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  skillsMethods_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  skillsMethods_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  skillsMethods_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  skillsMethods_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  skillsMethods_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  skillsMethods_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  skillsMethods_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  skillsMethods_starts_with?: InputMaybe<Scalars['String']>;
+};
+
+/** References Overview record uniquely */
+export type OverviewWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']>;
+};
+
 /** Information about pagination in a connection. */
 export type PageInfo = {
   /** When paginating forwards, the cursor to continue. */
@@ -4435,6 +5430,9 @@ export type Portfolio = Entity & Node & {
   history: Array<Version>;
   /** The unique identifier */
   id: Scalars['ID'];
+  introduction?: Maybe<RichText>;
+  overview?: Maybe<Overview>;
+  pageContent: Array<PortfoliopageContentUnion>;
   portfolioCategory?: Maybe<PortfolioCategory>;
   /** The time the document was published. Null on documents in draft stage. */
   publishedAt?: Maybe<Scalars['DateTime']>;
@@ -4471,6 +5469,23 @@ export type PortfolioHistoryArgs = {
   limit?: Scalars['Int'];
   skip?: Scalars['Int'];
   stageOverride?: InputMaybe<Stage>;
+};
+
+
+export type PortfolioOverviewArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
+export type PortfolioPageContentArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: InputMaybe<Array<Locale>>;
+  skip?: InputMaybe<Scalars['Int']>;
 };
 
 
@@ -4962,6 +5977,9 @@ export type PortfolioConnection = {
 
 export type PortfolioCreateInput = {
   createdAt?: InputMaybe<Scalars['DateTime']>;
+  introduction?: InputMaybe<Scalars['RichTextAST']>;
+  overview?: InputMaybe<OverviewCreateOneInlineInput>;
+  pageContent?: InputMaybe<PortfoliopageContentUnionCreateManyInlineInput>;
   portfolioCategory?: InputMaybe<PortfolioCategoryCreateOneInlineInput>;
   showcaseImage?: InputMaybe<AssetCreateOneInlineInput>;
   slug?: InputMaybe<Scalars['String']>;
@@ -5040,6 +6058,11 @@ export type PortfolioManyWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars['ID']>;
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']>;
+  overview?: InputMaybe<OverviewWhereInput>;
+  /** All values in which the union is empty. */
+  pageContent_empty?: InputMaybe<Scalars['Boolean']>;
+  /** Matches if the modular component contains at least one connection to the item provided to the filter */
+  pageContent_some?: InputMaybe<PortfoliopageContentUnionWhereInput>;
   portfolioCategory?: InputMaybe<PortfolioCategoryWhereInput>;
   publishedAt?: InputMaybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
@@ -5154,6 +6177,9 @@ export enum PortfolioOrderByInput {
 }
 
 export type PortfolioUpdateInput = {
+  introduction?: InputMaybe<Scalars['RichTextAST']>;
+  overview?: InputMaybe<OverviewUpdateOneInlineInput>;
+  pageContent?: InputMaybe<PortfoliopageContentUnionUpdateManyInlineInput>;
   portfolioCategory?: InputMaybe<PortfolioCategoryUpdateOneInlineInput>;
   showcaseImage?: InputMaybe<AssetUpdateOneInlineInput>;
   slug?: InputMaybe<Scalars['String']>;
@@ -5179,6 +6205,7 @@ export type PortfolioUpdateManyInlineInput = {
 };
 
 export type PortfolioUpdateManyInput = {
+  introduction?: InputMaybe<Scalars['RichTextAST']>;
   title?: InputMaybe<Scalars['String']>;
   year?: InputMaybe<Scalars['String']>;
 };
@@ -5280,6 +6307,11 @@ export type PortfolioWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars['ID']>;
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']>;
+  overview?: InputMaybe<OverviewWhereInput>;
+  /** All values in which the union is empty. */
+  pageContent_empty?: InputMaybe<Scalars['Boolean']>;
+  /** Matches if the modular component contains at least one connection to the item provided to the filter */
+  pageContent_some?: InputMaybe<PortfoliopageContentUnionWhereInput>;
   portfolioCategory?: InputMaybe<PortfolioCategoryWhereInput>;
   publishedAt?: InputMaybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
@@ -5394,6 +6426,117 @@ export type PortfolioWhereStageInput = {
 export type PortfolioWhereUniqueInput = {
   id?: InputMaybe<Scalars['ID']>;
   slug?: InputMaybe<Scalars['String']>;
+};
+
+export type PortfoliopageContentUnion = Divider | FullWidthImage | Quote | TextBlock;
+
+export type PortfoliopageContentUnionConnectInput = {
+  Divider?: InputMaybe<DividerConnectInput>;
+  FullWidthImage?: InputMaybe<FullWidthImageConnectInput>;
+  Quote?: InputMaybe<QuoteConnectInput>;
+  TextBlock?: InputMaybe<TextBlockConnectInput>;
+};
+
+export type PortfoliopageContentUnionCreateInput = {
+  Divider?: InputMaybe<DividerCreateInput>;
+  FullWidthImage?: InputMaybe<FullWidthImageCreateInput>;
+  Quote?: InputMaybe<QuoteCreateInput>;
+  TextBlock?: InputMaybe<TextBlockCreateInput>;
+};
+
+export type PortfoliopageContentUnionCreateManyInlineInput = {
+  /** Create and connect multiple existing PortfoliopageContentUnion documents */
+  create?: InputMaybe<Array<PortfoliopageContentUnionCreateInput>>;
+};
+
+export type PortfoliopageContentUnionCreateOneInlineInput = {
+  /** Create and connect one PortfoliopageContentUnion document */
+  create?: InputMaybe<PortfoliopageContentUnionCreateInput>;
+};
+
+export type PortfoliopageContentUnionCreateWithPositionInput = {
+  Divider?: InputMaybe<DividerCreateWithPositionInput>;
+  FullWidthImage?: InputMaybe<FullWidthImageCreateWithPositionInput>;
+  Quote?: InputMaybe<QuoteCreateWithPositionInput>;
+  TextBlock?: InputMaybe<TextBlockCreateWithPositionInput>;
+};
+
+export type PortfoliopageContentUnionUpdateInput = {
+  Divider?: InputMaybe<DividerUpdateInput>;
+  FullWidthImage?: InputMaybe<FullWidthImageUpdateInput>;
+  Quote?: InputMaybe<QuoteUpdateInput>;
+  TextBlock?: InputMaybe<TextBlockUpdateInput>;
+};
+
+export type PortfoliopageContentUnionUpdateManyInlineInput = {
+  /** Create and connect multiple PortfoliopageContentUnion component instances */
+  create?: InputMaybe<Array<PortfoliopageContentUnionCreateWithPositionInput>>;
+  /** Delete multiple PortfoliopageContentUnion documents */
+  delete?: InputMaybe<Array<PortfoliopageContentUnionWhereUniqueInput>>;
+  /** Update multiple PortfoliopageContentUnion component instances */
+  update?: InputMaybe<Array<PortfoliopageContentUnionUpdateWithNestedWhereUniqueAndPositionInput>>;
+  /** Upsert multiple PortfoliopageContentUnion component instances */
+  upsert?: InputMaybe<Array<PortfoliopageContentUnionUpsertWithNestedWhereUniqueAndPositionInput>>;
+};
+
+export type PortfoliopageContentUnionUpdateManyWithNestedWhereInput = {
+  Divider?: InputMaybe<DividerUpdateManyWithNestedWhereInput>;
+  FullWidthImage?: InputMaybe<FullWidthImageUpdateManyWithNestedWhereInput>;
+  Quote?: InputMaybe<QuoteUpdateManyWithNestedWhereInput>;
+  TextBlock?: InputMaybe<TextBlockUpdateManyWithNestedWhereInput>;
+};
+
+export type PortfoliopageContentUnionUpdateOneInlineInput = {
+  /** Create and connect one PortfoliopageContentUnion document */
+  create?: InputMaybe<PortfoliopageContentUnionCreateInput>;
+  /** Delete currently connected PortfoliopageContentUnion document */
+  delete?: InputMaybe<Scalars['Boolean']>;
+  /** Update single PortfoliopageContentUnion document */
+  update?: InputMaybe<PortfoliopageContentUnionUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single PortfoliopageContentUnion document */
+  upsert?: InputMaybe<PortfoliopageContentUnionUpsertWithNestedWhereUniqueInput>;
+};
+
+export type PortfoliopageContentUnionUpdateWithNestedWhereUniqueAndPositionInput = {
+  Divider?: InputMaybe<DividerUpdateWithNestedWhereUniqueAndPositionInput>;
+  FullWidthImage?: InputMaybe<FullWidthImageUpdateWithNestedWhereUniqueAndPositionInput>;
+  Quote?: InputMaybe<QuoteUpdateWithNestedWhereUniqueAndPositionInput>;
+  TextBlock?: InputMaybe<TextBlockUpdateWithNestedWhereUniqueAndPositionInput>;
+};
+
+export type PortfoliopageContentUnionUpdateWithNestedWhereUniqueInput = {
+  Divider?: InputMaybe<DividerUpdateWithNestedWhereUniqueInput>;
+  FullWidthImage?: InputMaybe<FullWidthImageUpdateWithNestedWhereUniqueInput>;
+  Quote?: InputMaybe<QuoteUpdateWithNestedWhereUniqueInput>;
+  TextBlock?: InputMaybe<TextBlockUpdateWithNestedWhereUniqueInput>;
+};
+
+export type PortfoliopageContentUnionUpsertWithNestedWhereUniqueAndPositionInput = {
+  Divider?: InputMaybe<DividerUpsertWithNestedWhereUniqueAndPositionInput>;
+  FullWidthImage?: InputMaybe<FullWidthImageUpsertWithNestedWhereUniqueAndPositionInput>;
+  Quote?: InputMaybe<QuoteUpsertWithNestedWhereUniqueAndPositionInput>;
+  TextBlock?: InputMaybe<TextBlockUpsertWithNestedWhereUniqueAndPositionInput>;
+};
+
+export type PortfoliopageContentUnionUpsertWithNestedWhereUniqueInput = {
+  Divider?: InputMaybe<DividerUpsertWithNestedWhereUniqueInput>;
+  FullWidthImage?: InputMaybe<FullWidthImageUpsertWithNestedWhereUniqueInput>;
+  Quote?: InputMaybe<QuoteUpsertWithNestedWhereUniqueInput>;
+  TextBlock?: InputMaybe<TextBlockUpsertWithNestedWhereUniqueInput>;
+};
+
+export type PortfoliopageContentUnionWhereInput = {
+  Divider?: InputMaybe<DividerWhereInput>;
+  FullWidthImage?: InputMaybe<FullWidthImageWhereInput>;
+  Quote?: InputMaybe<QuoteWhereInput>;
+  TextBlock?: InputMaybe<TextBlockWhereInput>;
+};
+
+export type PortfoliopageContentUnionWhereUniqueInput = {
+  Divider?: InputMaybe<DividerWhereUniqueInput>;
+  FullWidthImage?: InputMaybe<FullWidthImageWhereUniqueInput>;
+  Quote?: InputMaybe<QuoteWhereUniqueInput>;
+  TextBlock?: InputMaybe<TextBlockWhereUniqueInput>;
 };
 
 export type PublishLocaleInput = {
@@ -5813,6 +6956,331 @@ export type QueryUsersConnectionArgs = {
   skip?: InputMaybe<Scalars['Int']>;
   stage?: Stage;
   where?: InputMaybe<UserWhereInput>;
+};
+
+export type Quote = Entity & {
+  author?: Maybe<Scalars['String']>;
+  /** The unique identifier */
+  id: Scalars['ID'];
+  quoteText?: Maybe<RichText>;
+  /** System stage field */
+  stage: Stage;
+};
+
+export type QuoteConnectInput = {
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+  /** Document to connect */
+  where: QuoteWhereUniqueInput;
+};
+
+/** A connection to a list of items. */
+export type QuoteConnection = {
+  aggregate: Aggregate;
+  /** A list of edges. */
+  edges: Array<QuoteEdge>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+export type QuoteCreateInput = {
+  author?: InputMaybe<Scalars['String']>;
+  quoteText?: InputMaybe<Scalars['RichTextAST']>;
+};
+
+export type QuoteCreateManyInlineInput = {
+  /** Create and connect multiple existing Quote documents */
+  create?: InputMaybe<Array<QuoteCreateInput>>;
+};
+
+export type QuoteCreateOneInlineInput = {
+  /** Create and connect one Quote document */
+  create?: InputMaybe<QuoteCreateInput>;
+};
+
+export type QuoteCreateWithPositionInput = {
+  /** Document to create */
+  data: QuoteCreateInput;
+  /** Position in the list of existing component instances, will default to appending at the end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+};
+
+/** An edge in a connection. */
+export type QuoteEdge = {
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String'];
+  /** The item at the end of the edge. */
+  node: Quote;
+};
+
+/** Identifies documents */
+export type QuoteManyWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<QuoteWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<QuoteWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<QuoteWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>;
+  author?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  author_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  author_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  author_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  author_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  author_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  author_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  author_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  author_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  author_starts_with?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  id_not?: InputMaybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>;
+};
+
+export enum QuoteOrderByInput {
+  AUTHOR_ASC = 'author_ASC',
+  AUTHOR_DESC = 'author_DESC',
+  ID_ASC = 'id_ASC',
+  ID_DESC = 'id_DESC'
+}
+
+export type QuoteParent = Portfolio;
+
+export type QuoteParentConnectInput = {
+  Portfolio?: InputMaybe<PortfolioConnectInput>;
+};
+
+export type QuoteParentCreateInput = {
+  Portfolio?: InputMaybe<PortfolioCreateInput>;
+};
+
+export type QuoteParentCreateManyInlineInput = {
+  /** Connect multiple existing QuoteParent documents */
+  connect?: InputMaybe<Array<QuoteParentWhereUniqueInput>>;
+  /** Create and connect multiple existing QuoteParent documents */
+  create?: InputMaybe<Array<QuoteParentCreateInput>>;
+};
+
+export type QuoteParentCreateOneInlineInput = {
+  /** Connect one existing QuoteParent document */
+  connect?: InputMaybe<QuoteParentWhereUniqueInput>;
+  /** Create and connect one QuoteParent document */
+  create?: InputMaybe<QuoteParentCreateInput>;
+};
+
+export type QuoteParentUpdateInput = {
+  Portfolio?: InputMaybe<PortfolioUpdateInput>;
+};
+
+export type QuoteParentUpdateManyInlineInput = {
+  /** Connect multiple existing QuoteParent documents */
+  connect?: InputMaybe<Array<QuoteParentConnectInput>>;
+  /** Create and connect multiple QuoteParent documents */
+  create?: InputMaybe<Array<QuoteParentCreateInput>>;
+  /** Delete multiple QuoteParent documents */
+  delete?: InputMaybe<Array<QuoteParentWhereUniqueInput>>;
+  /** Disconnect multiple QuoteParent documents */
+  disconnect?: InputMaybe<Array<QuoteParentWhereUniqueInput>>;
+  /** Override currently-connected documents with multiple existing QuoteParent documents */
+  set?: InputMaybe<Array<QuoteParentWhereUniqueInput>>;
+  /** Update multiple QuoteParent documents */
+  update?: InputMaybe<Array<QuoteParentUpdateWithNestedWhereUniqueInput>>;
+  /** Upsert multiple QuoteParent documents */
+  upsert?: InputMaybe<Array<QuoteParentUpsertWithNestedWhereUniqueInput>>;
+};
+
+export type QuoteParentUpdateManyWithNestedWhereInput = {
+  Portfolio?: InputMaybe<PortfolioUpdateManyWithNestedWhereInput>;
+};
+
+export type QuoteParentUpdateOneInlineInput = {
+  /** Connect existing QuoteParent document */
+  connect?: InputMaybe<QuoteParentWhereUniqueInput>;
+  /** Create and connect one QuoteParent document */
+  create?: InputMaybe<QuoteParentCreateInput>;
+  /** Delete currently connected QuoteParent document */
+  delete?: InputMaybe<Scalars['Boolean']>;
+  /** Disconnect currently connected QuoteParent document */
+  disconnect?: InputMaybe<Scalars['Boolean']>;
+  /** Update single QuoteParent document */
+  update?: InputMaybe<QuoteParentUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single QuoteParent document */
+  upsert?: InputMaybe<QuoteParentUpsertWithNestedWhereUniqueInput>;
+};
+
+export type QuoteParentUpdateWithNestedWhereUniqueInput = {
+  Portfolio?: InputMaybe<PortfolioUpdateWithNestedWhereUniqueInput>;
+};
+
+export type QuoteParentUpsertWithNestedWhereUniqueInput = {
+  Portfolio?: InputMaybe<PortfolioUpsertWithNestedWhereUniqueInput>;
+};
+
+export type QuoteParentWhereInput = {
+  Portfolio?: InputMaybe<PortfolioWhereInput>;
+};
+
+export type QuoteParentWhereUniqueInput = {
+  Portfolio?: InputMaybe<PortfolioWhereUniqueInput>;
+};
+
+export type QuoteUpdateInput = {
+  author?: InputMaybe<Scalars['String']>;
+  quoteText?: InputMaybe<Scalars['RichTextAST']>;
+};
+
+export type QuoteUpdateManyInlineInput = {
+  /** Create and connect multiple Quote component instances */
+  create?: InputMaybe<Array<QuoteCreateWithPositionInput>>;
+  /** Delete multiple Quote documents */
+  delete?: InputMaybe<Array<QuoteWhereUniqueInput>>;
+  /** Update multiple Quote component instances */
+  update?: InputMaybe<Array<QuoteUpdateWithNestedWhereUniqueAndPositionInput>>;
+  /** Upsert multiple Quote component instances */
+  upsert?: InputMaybe<Array<QuoteUpsertWithNestedWhereUniqueAndPositionInput>>;
+};
+
+export type QuoteUpdateManyInput = {
+  author?: InputMaybe<Scalars['String']>;
+  quoteText?: InputMaybe<Scalars['RichTextAST']>;
+};
+
+export type QuoteUpdateManyWithNestedWhereInput = {
+  /** Update many input */
+  data: QuoteUpdateManyInput;
+  /** Document search */
+  where: QuoteWhereInput;
+};
+
+export type QuoteUpdateOneInlineInput = {
+  /** Create and connect one Quote document */
+  create?: InputMaybe<QuoteCreateInput>;
+  /** Delete currently connected Quote document */
+  delete?: InputMaybe<Scalars['Boolean']>;
+  /** Update single Quote document */
+  update?: InputMaybe<QuoteUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single Quote document */
+  upsert?: InputMaybe<QuoteUpsertWithNestedWhereUniqueInput>;
+};
+
+export type QuoteUpdateWithNestedWhereUniqueAndPositionInput = {
+  /** Document to update */
+  data?: InputMaybe<QuoteUpdateInput>;
+  /** Position in the list of existing component instances, will default to appending at the end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+  /** Unique component instance search */
+  where: QuoteWhereUniqueInput;
+};
+
+export type QuoteUpdateWithNestedWhereUniqueInput = {
+  /** Document to update */
+  data: QuoteUpdateInput;
+  /** Unique document search */
+  where: QuoteWhereUniqueInput;
+};
+
+export type QuoteUpsertInput = {
+  /** Create document if it didn't exist */
+  create: QuoteCreateInput;
+  /** Update document if it exists */
+  update: QuoteUpdateInput;
+};
+
+export type QuoteUpsertWithNestedWhereUniqueAndPositionInput = {
+  /** Document to upsert */
+  data?: InputMaybe<QuoteUpsertInput>;
+  /** Position in the list of existing component instances, will default to appending at the end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+  /** Unique component instance search */
+  where: QuoteWhereUniqueInput;
+};
+
+export type QuoteUpsertWithNestedWhereUniqueInput = {
+  /** Upsert data */
+  data: QuoteUpsertInput;
+  /** Unique document search */
+  where: QuoteWhereUniqueInput;
+};
+
+/** Identifies documents */
+export type QuoteWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<QuoteWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<QuoteWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<QuoteWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>;
+  author?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  author_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  author_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  author_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  author_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  author_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  author_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  author_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  author_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  author_starts_with?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  id_not?: InputMaybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>;
+};
+
+/** References Quote record uniquely */
+export type QuoteWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']>;
 };
 
 /** Representing a RGBA color value: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#rgb()_and_rgba() */
@@ -7636,6 +9104,331 @@ export enum SystemDateTimeFieldVariation {
   LOCALIZATION = 'LOCALIZATION'
 }
 
+export type TextBlock = Entity & {
+  content?: Maybe<RichText>;
+  heading?: Maybe<Scalars['String']>;
+  /** The unique identifier */
+  id: Scalars['ID'];
+  /** System stage field */
+  stage: Stage;
+};
+
+export type TextBlockConnectInput = {
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+  /** Document to connect */
+  where: TextBlockWhereUniqueInput;
+};
+
+/** A connection to a list of items. */
+export type TextBlockConnection = {
+  aggregate: Aggregate;
+  /** A list of edges. */
+  edges: Array<TextBlockEdge>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+export type TextBlockCreateInput = {
+  content?: InputMaybe<Scalars['RichTextAST']>;
+  heading?: InputMaybe<Scalars['String']>;
+};
+
+export type TextBlockCreateManyInlineInput = {
+  /** Create and connect multiple existing TextBlock documents */
+  create?: InputMaybe<Array<TextBlockCreateInput>>;
+};
+
+export type TextBlockCreateOneInlineInput = {
+  /** Create and connect one TextBlock document */
+  create?: InputMaybe<TextBlockCreateInput>;
+};
+
+export type TextBlockCreateWithPositionInput = {
+  /** Document to create */
+  data: TextBlockCreateInput;
+  /** Position in the list of existing component instances, will default to appending at the end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+};
+
+/** An edge in a connection. */
+export type TextBlockEdge = {
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String'];
+  /** The item at the end of the edge. */
+  node: TextBlock;
+};
+
+/** Identifies documents */
+export type TextBlockManyWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<TextBlockWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<TextBlockWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<TextBlockWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>;
+  heading?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  heading_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  heading_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  heading_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  heading_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  heading_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  heading_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  heading_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  heading_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  heading_starts_with?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  id_not?: InputMaybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>;
+};
+
+export enum TextBlockOrderByInput {
+  HEADING_ASC = 'heading_ASC',
+  HEADING_DESC = 'heading_DESC',
+  ID_ASC = 'id_ASC',
+  ID_DESC = 'id_DESC'
+}
+
+export type TextBlockParent = Portfolio;
+
+export type TextBlockParentConnectInput = {
+  Portfolio?: InputMaybe<PortfolioConnectInput>;
+};
+
+export type TextBlockParentCreateInput = {
+  Portfolio?: InputMaybe<PortfolioCreateInput>;
+};
+
+export type TextBlockParentCreateManyInlineInput = {
+  /** Connect multiple existing TextBlockParent documents */
+  connect?: InputMaybe<Array<TextBlockParentWhereUniqueInput>>;
+  /** Create and connect multiple existing TextBlockParent documents */
+  create?: InputMaybe<Array<TextBlockParentCreateInput>>;
+};
+
+export type TextBlockParentCreateOneInlineInput = {
+  /** Connect one existing TextBlockParent document */
+  connect?: InputMaybe<TextBlockParentWhereUniqueInput>;
+  /** Create and connect one TextBlockParent document */
+  create?: InputMaybe<TextBlockParentCreateInput>;
+};
+
+export type TextBlockParentUpdateInput = {
+  Portfolio?: InputMaybe<PortfolioUpdateInput>;
+};
+
+export type TextBlockParentUpdateManyInlineInput = {
+  /** Connect multiple existing TextBlockParent documents */
+  connect?: InputMaybe<Array<TextBlockParentConnectInput>>;
+  /** Create and connect multiple TextBlockParent documents */
+  create?: InputMaybe<Array<TextBlockParentCreateInput>>;
+  /** Delete multiple TextBlockParent documents */
+  delete?: InputMaybe<Array<TextBlockParentWhereUniqueInput>>;
+  /** Disconnect multiple TextBlockParent documents */
+  disconnect?: InputMaybe<Array<TextBlockParentWhereUniqueInput>>;
+  /** Override currently-connected documents with multiple existing TextBlockParent documents */
+  set?: InputMaybe<Array<TextBlockParentWhereUniqueInput>>;
+  /** Update multiple TextBlockParent documents */
+  update?: InputMaybe<Array<TextBlockParentUpdateWithNestedWhereUniqueInput>>;
+  /** Upsert multiple TextBlockParent documents */
+  upsert?: InputMaybe<Array<TextBlockParentUpsertWithNestedWhereUniqueInput>>;
+};
+
+export type TextBlockParentUpdateManyWithNestedWhereInput = {
+  Portfolio?: InputMaybe<PortfolioUpdateManyWithNestedWhereInput>;
+};
+
+export type TextBlockParentUpdateOneInlineInput = {
+  /** Connect existing TextBlockParent document */
+  connect?: InputMaybe<TextBlockParentWhereUniqueInput>;
+  /** Create and connect one TextBlockParent document */
+  create?: InputMaybe<TextBlockParentCreateInput>;
+  /** Delete currently connected TextBlockParent document */
+  delete?: InputMaybe<Scalars['Boolean']>;
+  /** Disconnect currently connected TextBlockParent document */
+  disconnect?: InputMaybe<Scalars['Boolean']>;
+  /** Update single TextBlockParent document */
+  update?: InputMaybe<TextBlockParentUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single TextBlockParent document */
+  upsert?: InputMaybe<TextBlockParentUpsertWithNestedWhereUniqueInput>;
+};
+
+export type TextBlockParentUpdateWithNestedWhereUniqueInput = {
+  Portfolio?: InputMaybe<PortfolioUpdateWithNestedWhereUniqueInput>;
+};
+
+export type TextBlockParentUpsertWithNestedWhereUniqueInput = {
+  Portfolio?: InputMaybe<PortfolioUpsertWithNestedWhereUniqueInput>;
+};
+
+export type TextBlockParentWhereInput = {
+  Portfolio?: InputMaybe<PortfolioWhereInput>;
+};
+
+export type TextBlockParentWhereUniqueInput = {
+  Portfolio?: InputMaybe<PortfolioWhereUniqueInput>;
+};
+
+export type TextBlockUpdateInput = {
+  content?: InputMaybe<Scalars['RichTextAST']>;
+  heading?: InputMaybe<Scalars['String']>;
+};
+
+export type TextBlockUpdateManyInlineInput = {
+  /** Create and connect multiple TextBlock component instances */
+  create?: InputMaybe<Array<TextBlockCreateWithPositionInput>>;
+  /** Delete multiple TextBlock documents */
+  delete?: InputMaybe<Array<TextBlockWhereUniqueInput>>;
+  /** Update multiple TextBlock component instances */
+  update?: InputMaybe<Array<TextBlockUpdateWithNestedWhereUniqueAndPositionInput>>;
+  /** Upsert multiple TextBlock component instances */
+  upsert?: InputMaybe<Array<TextBlockUpsertWithNestedWhereUniqueAndPositionInput>>;
+};
+
+export type TextBlockUpdateManyInput = {
+  content?: InputMaybe<Scalars['RichTextAST']>;
+  heading?: InputMaybe<Scalars['String']>;
+};
+
+export type TextBlockUpdateManyWithNestedWhereInput = {
+  /** Update many input */
+  data: TextBlockUpdateManyInput;
+  /** Document search */
+  where: TextBlockWhereInput;
+};
+
+export type TextBlockUpdateOneInlineInput = {
+  /** Create and connect one TextBlock document */
+  create?: InputMaybe<TextBlockCreateInput>;
+  /** Delete currently connected TextBlock document */
+  delete?: InputMaybe<Scalars['Boolean']>;
+  /** Update single TextBlock document */
+  update?: InputMaybe<TextBlockUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single TextBlock document */
+  upsert?: InputMaybe<TextBlockUpsertWithNestedWhereUniqueInput>;
+};
+
+export type TextBlockUpdateWithNestedWhereUniqueAndPositionInput = {
+  /** Document to update */
+  data?: InputMaybe<TextBlockUpdateInput>;
+  /** Position in the list of existing component instances, will default to appending at the end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+  /** Unique component instance search */
+  where: TextBlockWhereUniqueInput;
+};
+
+export type TextBlockUpdateWithNestedWhereUniqueInput = {
+  /** Document to update */
+  data: TextBlockUpdateInput;
+  /** Unique document search */
+  where: TextBlockWhereUniqueInput;
+};
+
+export type TextBlockUpsertInput = {
+  /** Create document if it didn't exist */
+  create: TextBlockCreateInput;
+  /** Update document if it exists */
+  update: TextBlockUpdateInput;
+};
+
+export type TextBlockUpsertWithNestedWhereUniqueAndPositionInput = {
+  /** Document to upsert */
+  data?: InputMaybe<TextBlockUpsertInput>;
+  /** Position in the list of existing component instances, will default to appending at the end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+  /** Unique component instance search */
+  where: TextBlockWhereUniqueInput;
+};
+
+export type TextBlockUpsertWithNestedWhereUniqueInput = {
+  /** Upsert data */
+  data: TextBlockUpsertInput;
+  /** Unique document search */
+  where: TextBlockWhereUniqueInput;
+};
+
+/** Identifies documents */
+export type TextBlockWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<TextBlockWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<TextBlockWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<TextBlockWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>;
+  heading?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  heading_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  heading_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  heading_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  heading_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  heading_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  heading_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  heading_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  heading_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  heading_starts_with?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  id_not?: InputMaybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>;
+};
+
+/** References TextBlock record uniquely */
+export type TextBlockWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']>;
+};
+
 export type UnpublishLocaleInput = {
   /** Locales to unpublish */
   locale: Locale;
@@ -8145,6 +9938,15 @@ export type GetHomepageQuery = { homepage?: { slug?: string | null, title?: stri
 
 export type HomepageFragmentFieldsFragment = { slug?: string | null, title?: string | null, variant: HomepageVariant, bannerImage?: { url: string } | null, general?: { mainHeading?: string | null, introSubheading?: { html: string } | null, showcaseImage?: { url: string, fileName: string } | null } | null };
 
+export type GetPortoflioQueryVariables = Exact<{
+  slug: Scalars['String'];
+}>;
+
+
+export type GetPortoflioQuery = { portfolio?: { id: string, title?: string | null, slug?: string | null, year?: string | null, overview?: { skillsMethods?: string | null, role?: string | null, output?: string | null } | null, showcaseImage?: { url: string } | null, introduction?: { html: string } | null, pageContent: Array<{ id: string, enable?: boolean | null } | { id: string, image?: { url: string, fileName: string } | null } | { id: string, author?: string | null, quoteText?: { html: string } | null } | { id: string, heading?: string | null, content?: { html: string } | null }>, portfolioCategory?: { name: string } | null } | null };
+
+export type PortfolioPageFragmentFieldsFragment = { id: string, title?: string | null, slug?: string | null, year?: string | null, overview?: { skillsMethods?: string | null, role?: string | null, output?: string | null } | null, showcaseImage?: { url: string } | null, introduction?: { html: string } | null, pageContent: Array<{ id: string, enable?: boolean | null } | { id: string, image?: { url: string, fileName: string } | null } | { id: string, author?: string | null, quoteText?: { html: string } | null } | { id: string, heading?: string | null, content?: { html: string } | null }>, portfolioCategory?: { name: string } | null };
+
 export type GetAllPortfoliosQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -8237,6 +10039,55 @@ export const HomepageFragmentFieldsFragmentDoc = gql`
       fileName
     }
   }
+}
+    `;
+export const PortfolioPageFragmentFieldsFragmentDoc = gql`
+    fragment PortfolioPageFragmentFields on Portfolio {
+  id
+  overview {
+    skillsMethods
+    role
+    output
+  }
+  showcaseImage {
+    url
+  }
+  introduction {
+    html
+  }
+  pageContent(first: 20) {
+    ... on Divider {
+      id
+      enable
+    }
+    ... on FullWidthImage {
+      id
+      image {
+        url
+        fileName
+      }
+    }
+    ... on Quote {
+      id
+      quoteText {
+        html
+      }
+      author
+    }
+    ... on TextBlock {
+      id
+      heading
+      content {
+        html
+      }
+    }
+  }
+  portfolioCategory {
+    name
+  }
+  title
+  slug
+  year
 }
     `;
 export const PortfolioFragmentFieldsFragmentDoc = gql`
@@ -8334,6 +10185,41 @@ export function useGetHomepageLazyQuery(baseOptions?: Apollo.LazyQueryHookOption
 export type GetHomepageQueryHookResult = ReturnType<typeof useGetHomepageQuery>;
 export type GetHomepageLazyQueryHookResult = ReturnType<typeof useGetHomepageLazyQuery>;
 export type GetHomepageQueryResult = Apollo.QueryResult<GetHomepageQuery, GetHomepageQueryVariables>;
+export const GetPortoflioDocument = gql`
+    query GetPortoflio($slug: String!) {
+  portfolio(where: {slug: $slug}) {
+    ...PortfolioPageFragmentFields
+  }
+}
+    ${PortfolioPageFragmentFieldsFragmentDoc}`;
+
+/**
+ * __useGetPortoflioQuery__
+ *
+ * To run a query within a React component, call `useGetPortoflioQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetPortoflioQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetPortoflioQuery({
+ *   variables: {
+ *      slug: // value for 'slug'
+ *   },
+ * });
+ */
+export function useGetPortoflioQuery(baseOptions: Apollo.QueryHookOptions<GetPortoflioQuery, GetPortoflioQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetPortoflioQuery, GetPortoflioQueryVariables>(GetPortoflioDocument, options);
+      }
+export function useGetPortoflioLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetPortoflioQuery, GetPortoflioQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetPortoflioQuery, GetPortoflioQueryVariables>(GetPortoflioDocument, options);
+        }
+export type GetPortoflioQueryHookResult = ReturnType<typeof useGetPortoflioQuery>;
+export type GetPortoflioLazyQueryHookResult = ReturnType<typeof useGetPortoflioLazyQuery>;
+export type GetPortoflioQueryResult = Apollo.QueryResult<GetPortoflioQuery, GetPortoflioQueryVariables>;
 export const GetAllPortfoliosDocument = gql`
     query GetAllPortfolios {
   portfolios(orderBy: createdAt_ASC, stage: PUBLISHED) {

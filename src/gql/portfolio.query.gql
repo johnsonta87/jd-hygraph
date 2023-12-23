@@ -1,0 +1,55 @@
+query GetPortoflio(
+  $slug: String!
+) {
+  portfolio(where: {slug: $slug}) {
+    ...PortfolioPageFragmentFields
+  }
+}
+
+fragment PortfolioPageFragmentFields on Portfolio {
+  id
+  overview {
+    skillsMethods
+    role
+    output
+  }
+  showcaseImage {
+    url
+  }
+  introduction {
+    html
+  }
+  pageContent(first: 20) {
+    ... on Divider {
+      id
+      enable
+    }
+    ... on FullWidthImage {
+      id
+      image {
+        url
+        fileName
+      }
+    }
+    ... on Quote {
+      id
+      quoteText {
+        html
+      }
+      author
+    }
+    ... on TextBlock {
+      id
+      heading
+      content {
+        html
+      }
+    }
+  }
+  portfolioCategory {
+    name
+  }
+  title
+  slug
+  year
+}

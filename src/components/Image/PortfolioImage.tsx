@@ -1,18 +1,26 @@
-import { Box, Flex, Image, Text } from "@chakra-ui/react";
+import { Box, Flex, Image, Link, Text } from "@chakra-ui/react";
 
 type Props = {
   title: string;
   src: string;
+  link: string;
   caption?: string;
   year?: string;
   category?: string;
 };
 
-const PortfolioImage = ({ title, src, caption, year, category }: Props) => {
+const PortfolioImage = ({
+  title,
+  src,
+  link,
+  caption,
+  year,
+  category,
+}: Props) => {
   if (!src && !title) return;
 
   return (
-    <Box>
+    <Link href={link}>
       <Box h={{ base: "223px", md: "421px", lg: "369px" }}>
         <Image
           boxSize={{ base: "100%", md: "100%" }}
@@ -48,7 +56,7 @@ const PortfolioImage = ({ title, src, caption, year, category }: Props) => {
           )}
         </Flex>
       )}
-    </Box>
+    </Link>
   );
 };
 

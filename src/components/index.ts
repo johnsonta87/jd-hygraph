@@ -12,3 +12,4 @@ export * from "./PortfolioGrid/PortfolioGrid";
 export * from "./PortfolioSwitcher/PortfolioSwitcher";
 export * from "./Quote/Quote";
 export * from "./ServicesList/ServicesList";
+export * from "./TextBlock/TextBlock";
