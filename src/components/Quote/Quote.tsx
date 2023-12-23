@@ -1,8 +1,8 @@
+import { RichText } from "@/__generated__/graphql";
 import { Box, Flex, Image } from "@chakra-ui/react";
-import { ContentType } from "../../types/";
 
 type Props = {
-  content: ContentType;
+  content: RichText;
   hideIcon?: boolean;
 };
 

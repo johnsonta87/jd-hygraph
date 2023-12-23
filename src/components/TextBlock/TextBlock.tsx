@@ -1,9 +1,9 @@
+import { RichText } from "@/__generated__/graphql";
 import { Grid, GridItem, Text } from "@chakra-ui/react";
-import { ContentType } from "../../types/";
 
 type Props = {
   heading: boolean;
-  content: ContentType;
+  content: RichText;
 };
 
 export function TextBlock({ heading, content }: Props) {

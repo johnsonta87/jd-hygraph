@@ -1,6 +1,9 @@
 "use client";
 
-import { useGetPortoflioQuery as GetPortoflioQuery } from "@/__generated__/graphql";
+import {
+  useGetPortoflioQuery as GetPortoflioQuery,
+  Portfolio,
+} from "@/__generated__/graphql";
 import { Quote, TextBlock } from "@/components";
 import {
   Box,
@@ -22,7 +25,7 @@ export default function Page({ params }: { params: { slug: string } }) {
   });
   const { portfolio } = data || {};
   const { year, title, overview, showcaseImage, introduction, pageContent } =
-    portfolio || {};
+    (portfolio as Portfolio) || {};
 
   if (loading)
     return (
@@ -109,31 +112,35 @@ export default function Page({ params }: { params: { slug: string } }) {
             />
           )}
 
-          {pageContent?.map((content) => (
-            <>
-              {content?.__typename === "TextBlock" && (
-                <TextBlock
-                  heading={content.heading}
-                  content={content.content}
-                />
-              )}
+          {pageContent?.map((content: any) => {
+            const { __typename } = content;
 
-              {content?.__typename === "Quote" && (
-                <Quote content={content.quoteText} />
-              )}
+            return (
+              <>
+                {__typename === "TextBlock" && (
+                  <TextBlock
+                    heading={content.heading}
+                    content={content.content}
+                  />
+                )}
 
-              {content?.__typename === "FullWidthImage" && (
-                <Image
-                  width="100%"
-                  mb="50px"
-                  src={content.image.url}
-                  alt={content.fileName || ""}
-                />
-              )}
+                {__typename === "Quote" && (
+                  <Quote content={content.quoteText} />
+                )}
 
-              {content?.__typename === "Divider" && <Divider mb="60px" />}
-            </>
-          ))}
+                {__typename === "FullWidthImage" && (
+                  <Image
+                    width="100%"
+                    mb="50px"
+                    src={content.image.url}
+                    alt={content.fileName || ""}
+                  />
+                )}
+
+                {__typename === "Divider" && <Divider mb="60px" />}
+              </>
+            );
+          })}
         </GridItem>
       </Grid>
     </Container>
