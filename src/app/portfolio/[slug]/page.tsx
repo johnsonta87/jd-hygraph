@@ -34,27 +34,61 @@ export default function Page({ params }: { params: { slug: string } }) {
     return notFound();
   }
 
-  console.log(pageContent);
   return (
     <Container maxW="1274px">
+      <Grid
+        templateAreas={`"headingSide headingMain"`}
+        gridTemplateColumns={"260px 1fr"}
+        gap={{ base: "6", md: "65px" }}
+      >
+        <GridItem area={"headingSide"}>
+          {year && <Text mt="20px">{year}</Text>}
+        </GridItem>
+
+        <GridItem area={"headingMain"}>
+          <Text as="h1" mb="58px">
+            {title}
+          </Text>
+        </GridItem>
+      </Grid>
+
       <Grid
         templateAreas={`"side main"`}
         gridTemplateColumns={"260px 1fr"}
         gap={{ base: "6", md: "65px" }}
       >
-        <GridItem area={"side"}>
-          {year && <Text>{year}</Text>}
-          <Divider my="1em" />
-          <Text>Role</Text>
-          {overview && <Text>{overview.role}</Text>}
-          <Divider my="1em" />
-          {overview && <Text>{overview.skillsMethods}</Text>}
-        </GridItem>
+        {overview && (
+          <GridItem area={"side"}>
+            {overview.role && (
+              <>
+                <Divider mb="1em" />
+                <Text fontSize="14px" textTransform="uppercase">
+                  Role
+                </Text>
+                <Text>{overview.role}</Text>
+              </>
+            )}
+            {overview.output && (
+              <>
+                <Divider mb="1em" />
+                <Text fontSize="14px" textTransform="uppercase">
+                  Output
+                </Text>
+                <Text>{overview.output}</Text>
+              </>
+            )}
+            {overview.skillsMethods && (
+              <>
+                <Divider my="1em" />
+                <Text fontSize="14px" textTransform="uppercase">
+                  skills & methods
+                </Text>
+                <Text>{overview.skillsMethods}</Text>
+              </>
+            )}
+          </GridItem>
+        )}
         <GridItem area={"main"}>
-          <Text as="h1" mb="58px">
-            {title}
-          </Text>
-
           {showcaseImage && (
             <Image
               width="100%"

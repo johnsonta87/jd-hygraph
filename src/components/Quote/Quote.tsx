@@ -1,4 +1,4 @@
-import { Box, Flex, Image, Text } from "@chakra-ui/react";
+import { Box, Flex, Image } from "@chakra-ui/react";
 import { ContentType } from "../../types/";
 
 type Props = {
@@ -10,26 +10,20 @@ export function Quote({ content, hideIcon }: Props) {
   if (!content) return;
 
   return (
-    <Flex
-      as="blockquote"
-      color="gray.500"
-      fontSize="xl"
-      fontWeight="medium"
-      lineHeight="tall"
-      maxW="2xl"
-      mx="auto"
-      mt="10"
-      textAlign="center"
-    >
+    <Flex as="blockquote" fontSize="xl" mb="60px" maxW="60%" mx="auto">
       {!hideIcon && (
-        <Box as="div" mr="2.25rem" top="-2.25rem" position="relative">
+        <Box as="div" mr="2.25rem" position="relative">
           <Image width="150px" src="/svgs/quote.svg" alt="Quote icon" />
         </Box>
       )}
 
-      <Text as="p" display="inline-block" ml="2">
-        {content.html}
-      </Text>
+      <Box
+        display="inline-block"
+        ml="2"
+        fontFamily="Juana"
+        fontSize="24px"
+        dangerouslySetInnerHTML={{ __html: content.html }}
+      />
     </Flex>
   );
 }

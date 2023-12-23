@@ -16,7 +16,11 @@ export function TextBlock({ heading, content }: Props) {
       gap={{ base: "6", md: "65px" }}
     >
       <GridItem area={"textSide"}>
-        {heading && <Text textTransform="uppercase">{heading}</Text>}
+        {heading && (
+          <Text fontSize="14px" textTransform="uppercase">
+            {heading}
+          </Text>
+        )}
       </GridItem>
       <GridItem area={"textMain"}>
         <Text mb="60px" dangerouslySetInnerHTML={{ __html: content.html }} />

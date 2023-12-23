@@ -38,6 +38,7 @@ export const theme = extendTheme({
       p: {
         fontSize: "1.125rem",
         fontWeight: "300",
+        lineHeight: "27px"
       },
     }),
   },
