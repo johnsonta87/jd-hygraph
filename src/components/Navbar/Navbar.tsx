@@ -1,4 +1,6 @@
 "use client";
+import { Box } from "@chakra-ui/react";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import BaseLogo from "../Image/BaseLogo";
 import { MenuLinks } from "./MenuLinks";
@@ -9,12 +11,13 @@ type Props = {};
 
 export const Navbar = (props: Props) => {
   const [isOpen, setIsOpen] = useState(false);
+  const router = usePathname();
 
   const toggle = () => setIsOpen(!isOpen);
 
   return (
     <NavbarContainer {...props}>
-      <BaseLogo text="Jenny Diep" />
+      {router !== "/" ? <BaseLogo text="Jenny Diep" /> : <Box />}
       <MenuToggle toggle={toggle} isOpen={isOpen} />
       <MenuLinks isOpen={isOpen} />
     </NavbarContainer>
