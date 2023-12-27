@@ -1361,6 +1361,7 @@ export type ConnectPositionInput = {
 };
 
 export type ContactLink = Entity & {
+  emailLink?: Maybe<Scalars['String']>;
   file?: Maybe<Asset>;
   icon?: Maybe<Asset>;
   /** The unique identifier */
@@ -1401,6 +1402,7 @@ export type ContactLinkConnection = {
 };
 
 export type ContactLinkCreateInput = {
+  emailLink?: InputMaybe<Scalars['String']>;
   file?: InputMaybe<AssetCreateOneInlineInput>;
   icon?: InputMaybe<AssetCreateOneInlineInput>;
   isExternal?: InputMaybe<Scalars['Boolean']>;
@@ -1443,6 +1445,25 @@ export type ContactLinkManyWhereInput = {
   OR?: InputMaybe<Array<ContactLinkWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']>;
+  emailLink?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  emailLink_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  emailLink_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  emailLink_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  emailLink_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  emailLink_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  emailLink_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  emailLink_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  emailLink_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  emailLink_starts_with?: InputMaybe<Scalars['String']>;
   file?: InputMaybe<AssetWhereInput>;
   icon?: InputMaybe<AssetWhereInput>;
   id?: InputMaybe<Scalars['ID']>;
@@ -1508,6 +1529,8 @@ export type ContactLinkManyWhereInput = {
 };
 
 export enum ContactLinkOrderByInput {
+  EMAILLINK_ASC = 'emailLink_ASC',
+  EMAILLINK_DESC = 'emailLink_DESC',
   ID_ASC = 'id_ASC',
   ID_DESC = 'id_DESC',
   ISEXTERNAL_ASC = 'isExternal_ASC',
@@ -1518,14 +1541,16 @@ export enum ContactLinkOrderByInput {
   TITLE_DESC = 'title_DESC'
 }
 
-export type ContactLinkParent = AboutPage;
+export type ContactLinkParent = AboutPage | ContactPage;
 
 export type ContactLinkParentConnectInput = {
   AboutPage?: InputMaybe<AboutPageConnectInput>;
+  ContactPage?: InputMaybe<ContactPageConnectInput>;
 };
 
 export type ContactLinkParentCreateInput = {
   AboutPage?: InputMaybe<AboutPageCreateInput>;
+  ContactPage?: InputMaybe<ContactPageCreateInput>;
 };
 
 export type ContactLinkParentCreateManyInlineInput = {
@@ -1544,6 +1569,7 @@ export type ContactLinkParentCreateOneInlineInput = {
 
 export type ContactLinkParentUpdateInput = {
   AboutPage?: InputMaybe<AboutPageUpdateInput>;
+  ContactPage?: InputMaybe<ContactPageUpdateInput>;
 };
 
 export type ContactLinkParentUpdateManyInlineInput = {
@@ -1565,6 +1591,7 @@ export type ContactLinkParentUpdateManyInlineInput = {
 
 export type ContactLinkParentUpdateManyWithNestedWhereInput = {
   AboutPage?: InputMaybe<AboutPageUpdateManyWithNestedWhereInput>;
+  ContactPage?: InputMaybe<ContactPageUpdateManyWithNestedWhereInput>;
 };
 
 export type ContactLinkParentUpdateOneInlineInput = {
@@ -1584,21 +1611,26 @@ export type ContactLinkParentUpdateOneInlineInput = {
 
 export type ContactLinkParentUpdateWithNestedWhereUniqueInput = {
   AboutPage?: InputMaybe<AboutPageUpdateWithNestedWhereUniqueInput>;
+  ContactPage?: InputMaybe<ContactPageUpdateWithNestedWhereUniqueInput>;
 };
 
 export type ContactLinkParentUpsertWithNestedWhereUniqueInput = {
   AboutPage?: InputMaybe<AboutPageUpsertWithNestedWhereUniqueInput>;
+  ContactPage?: InputMaybe<ContactPageUpsertWithNestedWhereUniqueInput>;
 };
 
 export type ContactLinkParentWhereInput = {
   AboutPage?: InputMaybe<AboutPageWhereInput>;
+  ContactPage?: InputMaybe<ContactPageWhereInput>;
 };
 
 export type ContactLinkParentWhereUniqueInput = {
   AboutPage?: InputMaybe<AboutPageWhereUniqueInput>;
+  ContactPage?: InputMaybe<ContactPageWhereUniqueInput>;
 };
 
 export type ContactLinkUpdateInput = {
+  emailLink?: InputMaybe<Scalars['String']>;
   file?: InputMaybe<AssetUpdateOneInlineInput>;
   icon?: InputMaybe<AssetUpdateOneInlineInput>;
   isExternal?: InputMaybe<Scalars['Boolean']>;
@@ -1688,6 +1720,25 @@ export type ContactLinkWhereInput = {
   OR?: InputMaybe<Array<ContactLinkWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']>;
+  emailLink?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  emailLink_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  emailLink_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  emailLink_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  emailLink_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  emailLink_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  emailLink_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  emailLink_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  emailLink_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  emailLink_starts_with?: InputMaybe<Scalars['String']>;
   file?: InputMaybe<AssetWhereInput>;
   icon?: InputMaybe<AssetWhereInput>;
   id?: InputMaybe<Scalars['ID']>;
@@ -1754,8 +1805,562 @@ export type ContactLinkWhereInput = {
 
 /** References ContactLink record uniquely */
 export type ContactLinkWhereUniqueInput = {
+  emailLink?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['ID']>;
   link?: InputMaybe<Scalars['String']>;
+  title?: InputMaybe<Scalars['String']>;
+};
+
+export type ContactPage = Entity & Node & {
+  contactLinks: Array<ContactLink>;
+  contactMainHeading?: Maybe<Scalars['String']>;
+  /** The time the document was created */
+  createdAt: Scalars['DateTime'];
+  /** User that created this document */
+  createdBy?: Maybe<User>;
+  /** Get the document in other stages */
+  documentInStages: Array<ContactPage>;
+  enableForm?: Maybe<Scalars['Boolean']>;
+  /** List of ContactPage versions */
+  history: Array<Version>;
+  /** The unique identifier */
+  id: Scalars['ID'];
+  /** The time the document was published. Null on documents in draft stage. */
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  /** User that last published this document */
+  publishedBy?: Maybe<User>;
+  scheduledIn: Array<ScheduledOperation>;
+  slug?: Maybe<Scalars['String']>;
+  /** System stage field */
+  stage: Stage;
+  subheading?: Maybe<RichText>;
+  title: Scalars['String'];
+  /** The time the document was updated */
+  updatedAt: Scalars['DateTime'];
+  /** User that last updated this document */
+  updatedBy?: Maybe<User>;
+};
+
+
+export type ContactPageContactLinksArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: InputMaybe<Array<Locale>>;
+  orderBy?: InputMaybe<ContactLinkOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ContactLinkWhereInput>;
+};
+
+
+export type ContactPageCreatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
+export type ContactPageDocumentInStagesArgs = {
+  includeCurrent?: Scalars['Boolean'];
+  inheritLocale?: Scalars['Boolean'];
+  stages?: Array<Stage>;
+};
+
+
+export type ContactPageHistoryArgs = {
+  limit?: Scalars['Int'];
+  skip?: Scalars['Int'];
+  stageOverride?: InputMaybe<Stage>;
+};
+
+
+export type ContactPagePublishedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
+export type ContactPageScheduledInArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: InputMaybe<Array<Locale>>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ScheduledOperationWhereInput>;
+};
+
+
+export type ContactPageUpdatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+export type ContactPageConnectInput = {
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+  /** Document to connect */
+  where: ContactPageWhereUniqueInput;
+};
+
+/** A connection to a list of items. */
+export type ContactPageConnection = {
+  aggregate: Aggregate;
+  /** A list of edges. */
+  edges: Array<ContactPageEdge>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+export type ContactPageCreateInput = {
+  contactLinks?: InputMaybe<ContactLinkCreateManyInlineInput>;
+  contactMainHeading?: InputMaybe<Scalars['String']>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  enableForm?: InputMaybe<Scalars['Boolean']>;
+  slug?: InputMaybe<Scalars['String']>;
+  subheading?: InputMaybe<Scalars['RichTextAST']>;
+  title: Scalars['String'];
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type ContactPageCreateManyInlineInput = {
+  /** Connect multiple existing ContactPage documents */
+  connect?: InputMaybe<Array<ContactPageWhereUniqueInput>>;
+  /** Create and connect multiple existing ContactPage documents */
+  create?: InputMaybe<Array<ContactPageCreateInput>>;
+};
+
+export type ContactPageCreateOneInlineInput = {
+  /** Connect one existing ContactPage document */
+  connect?: InputMaybe<ContactPageWhereUniqueInput>;
+  /** Create and connect one ContactPage document */
+  create?: InputMaybe<ContactPageCreateInput>;
+};
+
+/** An edge in a connection. */
+export type ContactPageEdge = {
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String'];
+  /** The item at the end of the edge. */
+  node: ContactPage;
+};
+
+/** Identifies documents */
+export type ContactPageManyWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<ContactPageWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<ContactPageWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<ContactPageWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>;
+  contactLinks_every?: InputMaybe<ContactLinkWhereInput>;
+  contactLinks_none?: InputMaybe<ContactLinkWhereInput>;
+  contactLinks_some?: InputMaybe<ContactLinkWhereInput>;
+  contactMainHeading?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  contactMainHeading_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  contactMainHeading_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  contactMainHeading_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  contactMainHeading_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  contactMainHeading_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  contactMainHeading_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  contactMainHeading_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  contactMainHeading_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  contactMainHeading_starts_with?: InputMaybe<Scalars['String']>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  createdAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** Any other value that exists and is not equal to the given value. */
+  createdAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  createdBy?: InputMaybe<UserWhereInput>;
+  documentInStages_every?: InputMaybe<ContactPageWhereStageInput>;
+  documentInStages_none?: InputMaybe<ContactPageWhereStageInput>;
+  documentInStages_some?: InputMaybe<ContactPageWhereStageInput>;
+  enableForm?: InputMaybe<Scalars['Boolean']>;
+  /** Any other value that exists and is not equal to the given value. */
+  enableForm_not?: InputMaybe<Scalars['Boolean']>;
+  id?: InputMaybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  id_not?: InputMaybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  publishedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** Any other value that exists and is not equal to the given value. */
+  publishedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  publishedBy?: InputMaybe<UserWhereInput>;
+  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  slug?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  slug_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  slug_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  slug_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  slug_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  slug_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  slug_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  slug_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  slug_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  slug_starts_with?: InputMaybe<Scalars['String']>;
+  title?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  title_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  title_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  title_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  title_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  title_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  title_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  title_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  title_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  title_starts_with?: InputMaybe<Scalars['String']>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  updatedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** Any other value that exists and is not equal to the given value. */
+  updatedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  updatedBy?: InputMaybe<UserWhereInput>;
+};
+
+export enum ContactPageOrderByInput {
+  CONTACTMAINHEADING_ASC = 'contactMainHeading_ASC',
+  CONTACTMAINHEADING_DESC = 'contactMainHeading_DESC',
+  CREATEDAT_ASC = 'createdAt_ASC',
+  CREATEDAT_DESC = 'createdAt_DESC',
+  ENABLEFORM_ASC = 'enableForm_ASC',
+  ENABLEFORM_DESC = 'enableForm_DESC',
+  ID_ASC = 'id_ASC',
+  ID_DESC = 'id_DESC',
+  PUBLISHEDAT_ASC = 'publishedAt_ASC',
+  PUBLISHEDAT_DESC = 'publishedAt_DESC',
+  SLUG_ASC = 'slug_ASC',
+  SLUG_DESC = 'slug_DESC',
+  TITLE_ASC = 'title_ASC',
+  TITLE_DESC = 'title_DESC',
+  UPDATEDAT_ASC = 'updatedAt_ASC',
+  UPDATEDAT_DESC = 'updatedAt_DESC'
+}
+
+export type ContactPageUpdateInput = {
+  contactLinks?: InputMaybe<ContactLinkUpdateManyInlineInput>;
+  contactMainHeading?: InputMaybe<Scalars['String']>;
+  enableForm?: InputMaybe<Scalars['Boolean']>;
+  slug?: InputMaybe<Scalars['String']>;
+  subheading?: InputMaybe<Scalars['RichTextAST']>;
+  title?: InputMaybe<Scalars['String']>;
+};
+
+export type ContactPageUpdateManyInlineInput = {
+  /** Connect multiple existing ContactPage documents */
+  connect?: InputMaybe<Array<ContactPageConnectInput>>;
+  /** Create and connect multiple ContactPage documents */
+  create?: InputMaybe<Array<ContactPageCreateInput>>;
+  /** Delete multiple ContactPage documents */
+  delete?: InputMaybe<Array<ContactPageWhereUniqueInput>>;
+  /** Disconnect multiple ContactPage documents */
+  disconnect?: InputMaybe<Array<ContactPageWhereUniqueInput>>;
+  /** Override currently-connected documents with multiple existing ContactPage documents */
+  set?: InputMaybe<Array<ContactPageWhereUniqueInput>>;
+  /** Update multiple ContactPage documents */
+  update?: InputMaybe<Array<ContactPageUpdateWithNestedWhereUniqueInput>>;
+  /** Upsert multiple ContactPage documents */
+  upsert?: InputMaybe<Array<ContactPageUpsertWithNestedWhereUniqueInput>>;
+};
+
+export type ContactPageUpdateManyInput = {
+  contactMainHeading?: InputMaybe<Scalars['String']>;
+  enableForm?: InputMaybe<Scalars['Boolean']>;
+  subheading?: InputMaybe<Scalars['RichTextAST']>;
+};
+
+export type ContactPageUpdateManyWithNestedWhereInput = {
+  /** Update many input */
+  data: ContactPageUpdateManyInput;
+  /** Document search */
+  where: ContactPageWhereInput;
+};
+
+export type ContactPageUpdateOneInlineInput = {
+  /** Connect existing ContactPage document */
+  connect?: InputMaybe<ContactPageWhereUniqueInput>;
+  /** Create and connect one ContactPage document */
+  create?: InputMaybe<ContactPageCreateInput>;
+  /** Delete currently connected ContactPage document */
+  delete?: InputMaybe<Scalars['Boolean']>;
+  /** Disconnect currently connected ContactPage document */
+  disconnect?: InputMaybe<Scalars['Boolean']>;
+  /** Update single ContactPage document */
+  update?: InputMaybe<ContactPageUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single ContactPage document */
+  upsert?: InputMaybe<ContactPageUpsertWithNestedWhereUniqueInput>;
+};
+
+export type ContactPageUpdateWithNestedWhereUniqueInput = {
+  /** Document to update */
+  data: ContactPageUpdateInput;
+  /** Unique document search */
+  where: ContactPageWhereUniqueInput;
+};
+
+export type ContactPageUpsertInput = {
+  /** Create document if it didn't exist */
+  create: ContactPageCreateInput;
+  /** Update document if it exists */
+  update: ContactPageUpdateInput;
+};
+
+export type ContactPageUpsertWithNestedWhereUniqueInput = {
+  /** Upsert data */
+  data: ContactPageUpsertInput;
+  /** Unique document search */
+  where: ContactPageWhereUniqueInput;
+};
+
+/** This contains a set of filters that can be used to compare values internally */
+export type ContactPageWhereComparatorInput = {
+  /** This field can be used to request to check if the entry is outdated by internal comparison */
+  outdated_to?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Identifies documents */
+export type ContactPageWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<ContactPageWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<ContactPageWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<ContactPageWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>;
+  contactLinks_every?: InputMaybe<ContactLinkWhereInput>;
+  contactLinks_none?: InputMaybe<ContactLinkWhereInput>;
+  contactLinks_some?: InputMaybe<ContactLinkWhereInput>;
+  contactMainHeading?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  contactMainHeading_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  contactMainHeading_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  contactMainHeading_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  contactMainHeading_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  contactMainHeading_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  contactMainHeading_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  contactMainHeading_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  contactMainHeading_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  contactMainHeading_starts_with?: InputMaybe<Scalars['String']>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  createdAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** Any other value that exists and is not equal to the given value. */
+  createdAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  createdBy?: InputMaybe<UserWhereInput>;
+  documentInStages_every?: InputMaybe<ContactPageWhereStageInput>;
+  documentInStages_none?: InputMaybe<ContactPageWhereStageInput>;
+  documentInStages_some?: InputMaybe<ContactPageWhereStageInput>;
+  enableForm?: InputMaybe<Scalars['Boolean']>;
+  /** Any other value that exists and is not equal to the given value. */
+  enableForm_not?: InputMaybe<Scalars['Boolean']>;
+  id?: InputMaybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  id_not?: InputMaybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  publishedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** Any other value that exists and is not equal to the given value. */
+  publishedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  publishedBy?: InputMaybe<UserWhereInput>;
+  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  slug?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  slug_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  slug_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  slug_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  slug_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  slug_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  slug_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  slug_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  slug_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  slug_starts_with?: InputMaybe<Scalars['String']>;
+  title?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  title_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  title_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  title_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  title_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  title_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  title_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  title_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  title_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  title_starts_with?: InputMaybe<Scalars['String']>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  /** All values less than the given value. */
+  updatedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** Any other value that exists and is not equal to the given value. */
+  updatedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  updatedBy?: InputMaybe<UserWhereInput>;
+};
+
+/** The document in stages filter allows specifying a stage entry to cross compare the same document between different stages */
+export type ContactPageWhereStageInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<ContactPageWhereStageInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<ContactPageWhereStageInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<ContactPageWhereStageInput>>;
+  /** This field contains fields which can be set as true or false to specify an internal comparison */
+  compareWithParent?: InputMaybe<ContactPageWhereComparatorInput>;
+  /** Specify the stage to compare with */
+  stage?: InputMaybe<Stage>;
+};
+
+/** References ContactPage record uniquely */
+export type ContactPageWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']>;
+  slug?: InputMaybe<Scalars['String']>;
   title?: InputMaybe<Scalars['String']>;
 };
 
@@ -2125,6 +2730,7 @@ export enum EntityTypeName {
   /** Asset system model */
   ASSET = 'Asset',
   CONTACTLINK = 'ContactLink',
+  CONTACTPAGE = 'ContactPage',
   DIVIDER = 'Divider',
   FULLWIDTHIMAGE = 'FullWidthImage',
   HOMEPAGE = 'Homepage',
@@ -3369,6 +3975,8 @@ export type Mutation = {
    * @deprecated Asset mutations will be overhauled soon
    */
   createAsset?: Maybe<Asset>;
+  /** Create one contactPage */
+  createContactPage?: Maybe<ContactPage>;
   /** Create one homepage */
   createHomepage?: Maybe<Homepage>;
   /** Create one portfolio */
@@ -3383,6 +3991,8 @@ export type Mutation = {
   deleteAboutPage?: Maybe<AboutPage>;
   /** Delete one asset from _all_ existing stages. Returns deleted document. */
   deleteAsset?: Maybe<Asset>;
+  /** Delete one contactPage from _all_ existing stages. Returns deleted document. */
+  deleteContactPage?: Maybe<ContactPage>;
   /** Delete one homepage from _all_ existing stages. Returns deleted document. */
   deleteHomepage?: Maybe<Homepage>;
   /**
@@ -3399,6 +4009,13 @@ export type Mutation = {
   deleteManyAssets: BatchPayload;
   /** Delete many Asset documents, return deleted documents */
   deleteManyAssetsConnection: AssetConnection;
+  /**
+   * Delete many ContactPage documents
+   * @deprecated Please use the new paginated many mutation (deleteManyContactPagesConnection)
+   */
+  deleteManyContactPages: BatchPayload;
+  /** Delete many ContactPage documents, return deleted documents */
+  deleteManyContactPagesConnection: ContactPageConnection;
   /**
    * Delete many Homepage documents
    * @deprecated Please use the new paginated many mutation (deleteManyHomepagesConnection)
@@ -3441,6 +4058,8 @@ export type Mutation = {
   publishAboutPage?: Maybe<AboutPage>;
   /** Publish one asset */
   publishAsset?: Maybe<Asset>;
+  /** Publish one contactPage */
+  publishContactPage?: Maybe<ContactPage>;
   /** Publish one homepage */
   publishHomepage?: Maybe<Homepage>;
   /**
@@ -3457,6 +4076,13 @@ export type Mutation = {
   publishManyAssets: BatchPayload;
   /** Publish many Asset documents */
   publishManyAssetsConnection: AssetConnection;
+  /**
+   * Publish many ContactPage documents
+   * @deprecated Please use the new paginated many mutation (publishManyContactPagesConnection)
+   */
+  publishManyContactPages: BatchPayload;
+  /** Publish many ContactPage documents */
+  publishManyContactPagesConnection: ContactPageConnection;
   /**
    * Publish many Homepage documents
    * @deprecated Please use the new paginated many mutation (publishManyHomepagesConnection)
@@ -3495,6 +4121,8 @@ export type Mutation = {
   schedulePublishAboutPage?: Maybe<AboutPage>;
   /** Schedule to publish one asset */
   schedulePublishAsset?: Maybe<Asset>;
+  /** Schedule to publish one contactPage */
+  schedulePublishContactPage?: Maybe<ContactPage>;
   /** Schedule to publish one homepage */
   schedulePublishHomepage?: Maybe<Homepage>;
   /** Schedule to publish one portfolio */
@@ -3507,6 +4135,8 @@ export type Mutation = {
   scheduleUnpublishAboutPage?: Maybe<AboutPage>;
   /** Unpublish one asset from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishAsset?: Maybe<Asset>;
+  /** Unpublish one contactPage from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  scheduleUnpublishContactPage?: Maybe<ContactPage>;
   /** Unpublish one homepage from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishHomepage?: Maybe<Homepage>;
   /** Unpublish one portfolio from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
@@ -3519,6 +4149,8 @@ export type Mutation = {
   unpublishAboutPage?: Maybe<AboutPage>;
   /** Unpublish one asset from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishAsset?: Maybe<Asset>;
+  /** Unpublish one contactPage from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  unpublishContactPage?: Maybe<ContactPage>;
   /** Unpublish one homepage from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishHomepage?: Maybe<Homepage>;
   /**
@@ -3535,6 +4167,13 @@ export type Mutation = {
   unpublishManyAssets: BatchPayload;
   /** Find many Asset documents that match criteria in specified stage and unpublish from target stages */
   unpublishManyAssetsConnection: AssetConnection;
+  /**
+   * Unpublish many ContactPage documents
+   * @deprecated Please use the new paginated many mutation (unpublishManyContactPagesConnection)
+   */
+  unpublishManyContactPages: BatchPayload;
+  /** Find many ContactPage documents that match criteria in specified stage and unpublish from target stages */
+  unpublishManyContactPagesConnection: ContactPageConnection;
   /**
    * Unpublish many Homepage documents
    * @deprecated Please use the new paginated many mutation (unpublishManyHomepagesConnection)
@@ -3573,6 +4212,8 @@ export type Mutation = {
   updateAboutPage?: Maybe<AboutPage>;
   /** Update one asset */
   updateAsset?: Maybe<Asset>;
+  /** Update one contactPage */
+  updateContactPage?: Maybe<ContactPage>;
   /** Update one homepage */
   updateHomepage?: Maybe<Homepage>;
   /**
@@ -3589,6 +4230,13 @@ export type Mutation = {
   updateManyAssets: BatchPayload;
   /** Update many Asset documents */
   updateManyAssetsConnection: AssetConnection;
+  /**
+   * Update many contactPages
+   * @deprecated Please use the new paginated many mutation (updateManyContactPagesConnection)
+   */
+  updateManyContactPages: BatchPayload;
+  /** Update many ContactPage documents */
+  updateManyContactPagesConnection: ContactPageConnection;
   /**
    * Update many homepages
    * @deprecated Please use the new paginated many mutation (updateManyHomepagesConnection)
@@ -3629,6 +4277,8 @@ export type Mutation = {
   upsertAboutPage?: Maybe<AboutPage>;
   /** Upsert one asset */
   upsertAsset?: Maybe<Asset>;
+  /** Upsert one contactPage */
+  upsertContactPage?: Maybe<ContactPage>;
   /** Upsert one homepage */
   upsertHomepage?: Maybe<Homepage>;
   /** Upsert one portfolio */
@@ -3647,6 +4297,11 @@ export type MutationCreateAboutPageArgs = {
 
 export type MutationCreateAssetArgs = {
   data: AssetCreateInput;
+};
+
+
+export type MutationCreateContactPageArgs = {
+  data: ContactPageCreateInput;
 };
 
 
@@ -3685,6 +4340,11 @@ export type MutationDeleteAssetArgs = {
 };
 
 
+export type MutationDeleteContactPageArgs = {
+  where: ContactPageWhereUniqueInput;
+};
+
+
 export type MutationDeleteHomepageArgs = {
   where: HomepageWhereUniqueInput;
 };
@@ -3717,6 +4377,21 @@ export type MutationDeleteManyAssetsConnectionArgs = {
   last?: InputMaybe<Scalars['Int']>;
   skip?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<AssetManyWhereInput>;
+};
+
+
+export type MutationDeleteManyContactPagesArgs = {
+  where?: InputMaybe<ContactPageManyWhereInput>;
+};
+
+
+export type MutationDeleteManyContactPagesConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ContactPageManyWhereInput>;
 };
 
 
@@ -3820,6 +4495,12 @@ export type MutationPublishAssetArgs = {
 };
 
 
+export type MutationPublishContactPageArgs = {
+  to?: Array<Stage>;
+  where: ContactPageWhereUniqueInput;
+};
+
+
 export type MutationPublishHomepageArgs = {
   to?: Array<Stage>;
   where: HomepageWhereUniqueInput;
@@ -3865,6 +4546,24 @@ export type MutationPublishManyAssetsConnectionArgs = {
   to?: Array<Stage>;
   where?: InputMaybe<AssetManyWhereInput>;
   withDefaultLocale?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+export type MutationPublishManyContactPagesArgs = {
+  to?: Array<Stage>;
+  where?: InputMaybe<ContactPageManyWhereInput>;
+};
+
+
+export type MutationPublishManyContactPagesConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  first?: InputMaybe<Scalars['Int']>;
+  from?: InputMaybe<Stage>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  to?: Array<Stage>;
+  where?: InputMaybe<ContactPageManyWhereInput>;
 };
 
 
@@ -3977,6 +4676,14 @@ export type MutationSchedulePublishAssetArgs = {
 };
 
 
+export type MutationSchedulePublishContactPageArgs = {
+  releaseAt?: InputMaybe<Scalars['DateTime']>;
+  releaseId?: InputMaybe<Scalars['String']>;
+  to?: Array<Stage>;
+  where: ContactPageWhereUniqueInput;
+};
+
+
 export type MutationSchedulePublishHomepageArgs = {
   releaseAt?: InputMaybe<Scalars['DateTime']>;
   releaseId?: InputMaybe<Scalars['String']>;
@@ -4027,6 +4734,14 @@ export type MutationScheduleUnpublishAssetArgs = {
 };
 
 
+export type MutationScheduleUnpublishContactPageArgs = {
+  from?: Array<Stage>;
+  releaseAt?: InputMaybe<Scalars['DateTime']>;
+  releaseId?: InputMaybe<Scalars['String']>;
+  where: ContactPageWhereUniqueInput;
+};
+
+
 export type MutationScheduleUnpublishHomepageArgs = {
   from?: Array<Stage>;
   releaseAt?: InputMaybe<Scalars['DateTime']>;
@@ -4073,6 +4788,12 @@ export type MutationUnpublishAssetArgs = {
 };
 
 
+export type MutationUnpublishContactPageArgs = {
+  from?: Array<Stage>;
+  where: ContactPageWhereUniqueInput;
+};
+
+
 export type MutationUnpublishHomepageArgs = {
   from?: Array<Stage>;
   where: HomepageWhereUniqueInput;
@@ -4116,6 +4837,24 @@ export type MutationUnpublishManyAssetsConnectionArgs = {
   stage?: InputMaybe<Stage>;
   unpublishBase?: InputMaybe<Scalars['Boolean']>;
   where?: InputMaybe<AssetManyWhereInput>;
+};
+
+
+export type MutationUnpublishManyContactPagesArgs = {
+  from?: Array<Stage>;
+  where?: InputMaybe<ContactPageManyWhereInput>;
+};
+
+
+export type MutationUnpublishManyContactPagesConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  first?: InputMaybe<Scalars['Int']>;
+  from?: Array<Stage>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  stage?: InputMaybe<Stage>;
+  where?: InputMaybe<ContactPageManyWhereInput>;
 };
 
 
@@ -4221,6 +4960,12 @@ export type MutationUpdateAssetArgs = {
 };
 
 
+export type MutationUpdateContactPageArgs = {
+  data: ContactPageUpdateInput;
+  where: ContactPageWhereUniqueInput;
+};
+
+
 export type MutationUpdateHomepageArgs = {
   data: HomepageUpdateInput;
   where: HomepageWhereUniqueInput;
@@ -4258,6 +5003,23 @@ export type MutationUpdateManyAssetsConnectionArgs = {
   last?: InputMaybe<Scalars['Int']>;
   skip?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<AssetManyWhereInput>;
+};
+
+
+export type MutationUpdateManyContactPagesArgs = {
+  data: ContactPageUpdateManyInput;
+  where?: InputMaybe<ContactPageManyWhereInput>;
+};
+
+
+export type MutationUpdateManyContactPagesConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  data: ContactPageUpdateManyInput;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ContactPageManyWhereInput>;
 };
 
 
@@ -4362,6 +5124,12 @@ export type MutationUpsertAboutPageArgs = {
 export type MutationUpsertAssetArgs = {
   upsert: AssetUpsertInput;
   where: AssetWhereUniqueInput;
+};
+
+
+export type MutationUpsertContactPageArgs = {
+  upsert: ContactPageUpsertInput;
+  where: ContactPageWhereUniqueInput;
 };
 
 
@@ -6563,6 +7331,14 @@ export type Query = {
   assets: Array<Asset>;
   /** Retrieve multiple assets using the Relay connection interface */
   assetsConnection: AssetConnection;
+  /** Retrieve a single contactPage */
+  contactPage?: Maybe<ContactPage>;
+  /** Retrieve document version */
+  contactPageVersion?: Maybe<DocumentVersion>;
+  /** Retrieve multiple contactPages */
+  contactPages: Array<ContactPage>;
+  /** Retrieve multiple contactPages using the Relay connection interface */
+  contactPagesConnection: ContactPageConnection;
   /** Fetches an object given its ID */
   entities?: Maybe<Array<Entity>>;
   /** Retrieve a single homepage */
@@ -6693,6 +7469,44 @@ export type QueryAssetsConnectionArgs = {
   skip?: InputMaybe<Scalars['Int']>;
   stage?: Stage;
   where?: InputMaybe<AssetWhereInput>;
+};
+
+
+export type QueryContactPageArgs = {
+  locales?: Array<Locale>;
+  stage?: Stage;
+  where: ContactPageWhereUniqueInput;
+};
+
+
+export type QueryContactPageVersionArgs = {
+  where: VersionWhereInput;
+};
+
+
+export type QueryContactPagesArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: Array<Locale>;
+  orderBy?: InputMaybe<ContactPageOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  stage?: Stage;
+  where?: InputMaybe<ContactPageWhereInput>;
+};
+
+
+export type QueryContactPagesConnectionArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: Array<Locale>;
+  orderBy?: InputMaybe<ContactPageOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  stage?: Stage;
+  where?: InputMaybe<ContactPageWhereInput>;
 };
 
 
@@ -7392,7 +8206,7 @@ export type ScheduledOperationUpdatedByArgs = {
   locales?: InputMaybe<Array<Locale>>;
 };
 
-export type ScheduledOperationAffectedDocument = AboutPage | Asset | Homepage | Portfolio | PortfolioCategory | Service;
+export type ScheduledOperationAffectedDocument = AboutPage | Asset | ContactPage | Homepage | Portfolio | PortfolioCategory | Service;
 
 export type ScheduledOperationConnectInput = {
   /** Allow to specify document position in list of connected documents, will default to appending at end of list */
@@ -9931,6 +10745,13 @@ export type GetAboutPageQuery = { aboutPage?: { id: string, processTitle?: strin
 
 export type AboutPageMainFieldsFragment = { id: string, processTitle?: string | null, contactSectionTitle?: string | null, pageHero?: { mainHeading?: string | null, showcaseImage?: { url: string } | null, introSubheading?: { html: string } | null } | null, servicesList: Array<{ title?: string | null, portfolioCategory?: { id: string, name: string } | null }>, myProcessSection: Array<{ id: string, name: string, icon?: { url: string, fileName: string } | null, content?: { html: string } | null }>, pageContactSection: Array<{ id: string, title: string, link?: string | null, isExternal?: boolean | null, file?: { fileName: string, url: string } | null, icon?: { url: string, fileName: string } | null }> };
 
+export type GetContactPageQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetContactPageQuery = { contactPage?: { contactMainHeading?: string | null, enableForm?: boolean | null, title: string, contactLinks: Array<{ emailLink?: string | null, isExternal?: boolean | null, link?: string | null, title: string, file?: { url: string } | null }>, subheading?: { html: string } | null } | null };
+
+export type ContactPageMainFieldsFragment = { contactMainHeading?: string | null, enableForm?: boolean | null, title: string, contactLinks: Array<{ emailLink?: string | null, isExternal?: boolean | null, link?: string | null, title: string, file?: { url: string } | null }>, subheading?: { html: string } | null };
+
 export type GetHomepageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -10018,6 +10839,25 @@ export const AboutPageMainFieldsFragmentDoc = gql`
       fileName
     }
     isExternal
+  }
+}
+    `;
+export const ContactPageMainFieldsFragmentDoc = gql`
+    fragment ContactPageMainFields on ContactPage {
+  contactMainHeading
+  contactLinks {
+    emailLink
+    isExternal
+    link
+    title
+    file {
+      url
+    }
+  }
+  enableForm
+  title
+  subheading {
+    html
   }
 }
     `;
@@ -10151,6 +10991,40 @@ export function useGetAboutPageLazyQuery(baseOptions?: Apollo.LazyQueryHookOptio
 export type GetAboutPageQueryHookResult = ReturnType<typeof useGetAboutPageQuery>;
 export type GetAboutPageLazyQueryHookResult = ReturnType<typeof useGetAboutPageLazyQuery>;
 export type GetAboutPageQueryResult = Apollo.QueryResult<GetAboutPageQuery, GetAboutPageQueryVariables>;
+export const GetContactPageDocument = gql`
+    query GetContactPage {
+  contactPage(where: {title: "Contact"}) {
+    ...ContactPageMainFields
+  }
+}
+    ${ContactPageMainFieldsFragmentDoc}`;
+
+/**
+ * __useGetContactPageQuery__
+ *
+ * To run a query within a React component, call `useGetContactPageQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetContactPageQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetContactPageQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetContactPageQuery(baseOptions?: Apollo.QueryHookOptions<GetContactPageQuery, GetContactPageQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetContactPageQuery, GetContactPageQueryVariables>(GetContactPageDocument, options);
+      }
+export function useGetContactPageLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetContactPageQuery, GetContactPageQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetContactPageQuery, GetContactPageQueryVariables>(GetContactPageDocument, options);
+        }
+export type GetContactPageQueryHookResult = ReturnType<typeof useGetContactPageQuery>;
+export type GetContactPageLazyQueryHookResult = ReturnType<typeof useGetContactPageLazyQuery>;
+export type GetContactPageQueryResult = Apollo.QueryResult<GetContactPageQuery, GetContactPageQueryVariables>;
 export const GetHomepageDocument = gql`
     query GetHomepage {
   homepage(where: {title: "Homepage"}, stage: PUBLISHED) {

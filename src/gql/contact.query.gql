@@ -1,0 +1,27 @@
+query GetContactPage {
+  contactPage(
+    where: {
+      title: "Contact"
+    }
+  ) {
+    ...ContactPageMainFields
+  }
+}
+
+fragment ContactPageMainFields on ContactPage {
+  contactMainHeading
+  contactLinks {
+    emailLink
+    isExternal
+    link
+    title
+    file {
+      url
+    }
+  }
+  enableForm
+  title
+  subheading {
+    html
+  }
+}
