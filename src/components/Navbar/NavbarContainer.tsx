@@ -17,6 +17,7 @@ export const NavbarContainer = ({ children, ...props }: Props) => {
       boxShadow="lg"
       position="sticky"
       top="0"
+      zIndex="999"
       {...props}
     >
       <Container maxW="1274px">
