@@ -28,8 +28,6 @@ export const Navbar = (props: Props) => {
     };
   }, []);
 
-  console.log(scrollPosition);
-
   return (
     <NavbarContainer {...props}>
       {router !== "/" ? (
