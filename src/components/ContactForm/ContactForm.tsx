@@ -8,7 +8,10 @@ import {
   FormLabel,
   Input,
   Textarea,
+  useToast,
 } from "@chakra-ui/react";
+import emailjs from "@emailjs/browser";
+import { useRef } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 type Inputs = {
@@ -20,17 +23,55 @@ type Inputs = {
 type Props = {};
 
 const ContactForm = ({}: Props) => {
+  const toast = useToast();
   const {
     register,
     handleSubmit,
     watch,
-    formState: { errors, isSubmitting },
+    formState: { errors, isSubmitting, isSubmitSuccessful },
   } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  const form = useRef<HTMLFormElement>(null);
+  const onSubmit: SubmitHandler<Inputs> = (data) => {
+    emailjs
+      .sendForm(
+        process.env.NEXT_PUBLIC_SERVICE_ID || "",
+        process.env.NEXT_PUBLIC_TEMPLATE_ID || "",
+        form.current || "",
+        process.env.NEXT_PUBLIC_EMAILJS_KEY
+      )
+      .then(
+        (result) => {
+          toast({
+            status: "success",
+            duration: 7000,
+            isClosable: true,
+            position: "bottom-left",
+            render: () => (
+              <Box color="white" p={3} bg="clay">
+                Thank you {data.name}! Your message has been sent.
+              </Box>
+            ),
+          });
+        },
+        (error) => {
+          toast({
+            status: "error",
+            duration: 7000,
+            isClosable: true,
+            position: "bottom-left",
+            render: () => (
+              <Box color="white" p={3} bg="clay">
+                Sorry, your message failed to send.
+              </Box>
+            ),
+          });
+        }
+      );
+  };
 
   return (
     <Box>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form ref={form} onSubmit={handleSubmit(onSubmit)}>
         <FormControl isInvalid={Boolean(errors.name)}>
           <FormLabel fontSize="1rem">Name</FormLabel>
           <Input

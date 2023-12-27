@@ -14,7 +14,12 @@ export function Footer({ ...props }: Props) {
           {...props}
         >
           <Box>
-            <Flex flexDirection="column">
+            <Flex
+              flexDirection="column"
+              fontSize="18px"
+              fontWeight="400"
+              textDecoration="underline"
+            >
               <Link
                 href="https://ca.linkedin.com/in/jenny-diep-design"
                 isExternal
@@ -25,7 +30,9 @@ export function Footer({ ...props }: Props) {
             </Flex>
           </Box>
 
-          <Link href="/">jennydiep.com</Link>
+          <Link href="/" fontFamily="Juana" fontSize="24px">
+            jennydiep.com
+          </Link>
         </Flex>
       </Container>
     </Box>
