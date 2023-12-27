@@ -37,6 +37,8 @@ const ContactLinks = ({ list, sectionTitle }: Props) => {
               <Link
                 display="flex"
                 alignItems="center"
+                fontSize="21px"
+                textDecoration="underline"
                 gap={4}
                 href={listItem.link || listItem.file?.url}
                 isExternal={listItem.isExternal}

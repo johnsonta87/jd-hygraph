@@ -17,7 +17,7 @@ export function ServicesList({ list, heading }: Props) {
   return (
     <Grid
       gridTemplateColumns={{ base: "1fr", lg: "50% 1fr" }}
-      gap={{ base: "16px", md: "32px" }}
+      gap={{ base: "16px", md: "24px" }}
     >
       <GridItem>
         {heading && (

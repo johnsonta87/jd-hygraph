@@ -50,14 +50,14 @@ export function PageHero({
   return (
     <Flex
       w="100%"
-      flexDirection={{ base: "column", md: "row" }}
-      align="center"
+      flexDirection={{ base: "column", lg: "row" }}
+      align="start"
       justify="space-between"
-      gap={12}
+      gap={{ base: "32px", md: "60px" }}
     >
       <Box flexBasis="50%">
         {title && (
-          <Text as="h1" mb="12px">
+          <Text as="h1" mb="12px" mr={{ md: "10%" }}>
             {title}
           </Text>
         )}
@@ -65,6 +65,7 @@ export function PageHero({
           <Text
             as="div"
             fontSize="md"
+            mr={{ md: "10%" }}
             dangerouslySetInnerHTML={{ __html: subtitle }}
           />
         )}
