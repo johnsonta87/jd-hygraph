@@ -14,6 +14,7 @@ const MenuItem = ({ children, isLast, to = "/", isActive, ...rest }: Props) => {
       href={to}
       display="block"
       textDecoration={isActive ? "underline" : ""}
+      fontWeight={isActive ? "400" : "300"}
       {...rest}
     >
       {children}

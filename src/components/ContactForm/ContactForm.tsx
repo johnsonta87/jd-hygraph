@@ -29,7 +29,7 @@ const ContactForm = ({}: Props) => {
   const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
 
   return (
-    <Box position="relative" top="-1em">
+    <Box>
       <form onSubmit={handleSubmit(onSubmit)}>
         <FormControl isInvalid={Boolean(errors.name)}>
           <FormLabel fontSize="1rem">Name</FormLabel>
@@ -38,7 +38,7 @@ const ContactForm = ({}: Props) => {
             {...register("name", { required: true })}
             bg="white"
             borderRadius="0"
-            borderColor={errors.name ? "red.500" : "#888"}
+            borderColor={errors.name ? "red.500" : "#ddd"}
           />
           {errors.name && (
             <FormErrorMessage>Name is required.</FormErrorMessage>
@@ -52,7 +52,7 @@ const ContactForm = ({}: Props) => {
             {...register("email", { required: true })}
             bg="white"
             borderRadius="0"
-            borderColor={errors.email ? "red.500" : "#888"}
+            borderColor={errors.email ? "red.500" : "#ddd"}
           />
           {errors.email && (
             <FormErrorMessage>Email is required.</FormErrorMessage>
@@ -65,7 +65,7 @@ const ContactForm = ({}: Props) => {
             {...register("message", { required: true })}
             bg="white"
             borderRadius="0"
-            borderColor={errors.message ? "red.500" : "#888"}
+            borderColor={errors.message ? "red.500" : "#ddd"}
           />
           {errors.message && (
             <FormErrorMessage>Message is required.</FormErrorMessage>

@@ -28,9 +28,9 @@ const ContactPage = (props: Props) => {
       <Flex
         w="100%"
         flexDirection={{ base: "column", md: "row" }}
-        align="center"
+        align="start"
         justify="space-between"
-        gap={12}
+        gap={{ base: "24px", md: "128px" }}
       >
         <Box flexBasis={{ base: "100%", md: "50%" }}>
           {contactMainHeading && (

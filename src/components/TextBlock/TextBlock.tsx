@@ -11,8 +11,10 @@ export function TextBlock({ heading, content }: Props) {
 
   return (
     <Grid
+      display={{ base: "flex", md: "grid" }}
+      flexDirection={{ base: "column", md: "row" }}
       templateAreas={`"textSide textMain"`}
-      gridTemplateColumns={"195px 1fr"}
+      gridTemplateColumns={{ base: "1fr", md: "195px 1fr" }}
       gap={{ base: "6", md: "65px" }}
     >
       <GridItem area={"textSide"}>
@@ -28,7 +30,11 @@ export function TextBlock({ heading, content }: Props) {
         )}
       </GridItem>
       <GridItem area={"textMain"}>
-        <Text mb="60px" dangerouslySetInnerHTML={{ __html: content.html }} />
+        <Text
+          as="div"
+          mb="60px"
+          dangerouslySetInnerHTML={{ __html: content.html }}
+        />
       </GridItem>
     </Grid>
   );
