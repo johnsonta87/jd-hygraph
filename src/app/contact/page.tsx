@@ -1,5 +1,6 @@
 "use client";
 import { useGetContactPageQuery as GetContactPageQuery } from "@/__generated__/graphql";
+import ContactForm from "@/components/ContactForm/ContactForm";
 import { Box, Container, Flex, Link, Spinner, Text } from "@chakra-ui/react";
 
 type Props = {};
@@ -23,7 +24,7 @@ const ContactPage = (props: Props) => {
     );
 
   return (
-    <Container maxW="1274px" color="black">
+    <Container maxW="1274px" color="black" minH="calc(100vh - 300px)">
       <Flex
         w="100%"
         flexDirection={{ base: "column", md: "row" }}
@@ -31,7 +32,7 @@ const ContactPage = (props: Props) => {
         justify="space-between"
         gap={12}
       >
-        <Box flexBasis="50%">
+        <Box flexBasis={{ base: "100%", md: "50%" }}>
           {contactMainHeading && (
             <Text as="h1" mb="12px">
               {contactMainHeading}
@@ -55,7 +56,9 @@ const ContactPage = (props: Props) => {
                   <br />
                   <Link
                     href={
-                      link.emailLink ? `mailto:${link?.emailLink}` : link?.link
+                      link.emailLink
+                        ? `mailto:${link?.emailLink}`
+                        : link?.link || ""
                     }
                     target={link?.isExternal ? "_blank" : "self"}
                   >
@@ -66,7 +69,11 @@ const ContactPage = (props: Props) => {
             </Flex>
           )}
         </Box>
-        {enableForm && <Box></Box>}
+        {enableForm && (
+          <Box flexBasis={{ base: "100%", md: "50%" }} w="100%">
+            <ContactForm />
+          </Box>
+        )}
       </Flex>
     </Container>
   );

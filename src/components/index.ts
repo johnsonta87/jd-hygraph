@@ -1,3 +1,4 @@
+export * from "./ContactForm/ContactForm";
 export * from "./ContactLinks/ContactLinks";
 export * from "./Footer/Footer";
 export * from "./Image/BaseImageCaption";

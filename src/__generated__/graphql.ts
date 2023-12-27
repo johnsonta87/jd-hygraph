@@ -10748,9 +10748,9 @@ export type AboutPageMainFieldsFragment = { id: string, processTitle?: string | 
 export type GetContactPageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetContactPageQuery = { contactPage?: { contactMainHeading?: string | null, enableForm?: boolean | null, title: string, contactLinks: Array<{ emailLink?: string | null, isExternal?: boolean | null, link?: string | null, title: string, file?: { url: string } | null }>, subheading?: { html: string } | null } | null };
+export type GetContactPageQuery = { contactPage?: { id: string, contactMainHeading?: string | null, enableForm?: boolean | null, title: string, contactLinks: Array<{ id: string, emailLink?: string | null, isExternal?: boolean | null, link?: string | null, title: string, file?: { url: string } | null }>, subheading?: { html: string } | null } | null };
 
-export type ContactPageMainFieldsFragment = { contactMainHeading?: string | null, enableForm?: boolean | null, title: string, contactLinks: Array<{ emailLink?: string | null, isExternal?: boolean | null, link?: string | null, title: string, file?: { url: string } | null }>, subheading?: { html: string } | null };
+export type ContactPageMainFieldsFragment = { id: string, contactMainHeading?: string | null, enableForm?: boolean | null, title: string, contactLinks: Array<{ id: string, emailLink?: string | null, isExternal?: boolean | null, link?: string | null, title: string, file?: { url: string } | null }>, subheading?: { html: string } | null };
 
 export type GetHomepageQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -10844,8 +10844,10 @@ export const AboutPageMainFieldsFragmentDoc = gql`
     `;
 export const ContactPageMainFieldsFragmentDoc = gql`
     fragment ContactPageMainFields on ContactPage {
+  id
   contactMainHeading
   contactLinks {
+    id
     emailLink
     isExternal
     link

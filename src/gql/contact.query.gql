@@ -9,8 +9,10 @@ query GetContactPage {
 }
 
 fragment ContactPageMainFields on ContactPage {
+  id
   contactMainHeading
   contactLinks {
+    id
     emailLink
     isExternal
     link
