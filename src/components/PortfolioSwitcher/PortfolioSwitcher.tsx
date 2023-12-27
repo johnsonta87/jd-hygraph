@@ -50,6 +50,7 @@ const PortfolioSwitcher = (props: Props) => {
             >
               <Tab
                 as="button"
+                fontSize="14px"
                 textTransform="uppercase"
                 letterSpacing="5px"
                 _selected={{ color: "clay" }}
@@ -61,6 +62,7 @@ const PortfolioSwitcher = (props: Props) => {
                 <Tab
                   key={listItem.id}
                   as="button"
+                  fontSize="14px"
                   textTransform="uppercase"
                   letterSpacing="5px"
                   _selected={{ color: "clay" }}

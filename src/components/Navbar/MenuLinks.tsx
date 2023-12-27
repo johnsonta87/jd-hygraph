@@ -1,9 +1,12 @@
 import { Box, Stack } from "@chakra-ui/react";
+import { usePathname } from "next/navigation";
 import MenuItem from "./MenuItem";
 
 type Props = { isOpen?: boolean };
 
 export function MenuLinks({ isOpen, ...props }: Props) {
+  const router = usePathname();
+
   return (
     <Box
       display={{ base: isOpen ? "block" : "none", md: "block" }}
@@ -18,9 +21,15 @@ export function MenuLinks({ isOpen, ...props }: Props) {
         fontSize="1.125rem"
         pt={[4, 4, 0, 0]}
       >
-        <MenuItem to="/">Home</MenuItem>
-        <MenuItem to="/about">About me</MenuItem>
-        <MenuItem to="/contact">Contact</MenuItem>
+        <MenuItem isActive={router === "/"} to="/">
+          Home
+        </MenuItem>
+        <MenuItem isActive={router === "/about"} to="/about">
+          About me
+        </MenuItem>
+        <MenuItem isActive={router === "/contact"} to="/contact">
+          Contact
+        </MenuItem>
       </Stack>
     </Box>
   );

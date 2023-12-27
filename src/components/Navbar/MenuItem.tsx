@@ -4,11 +4,18 @@ type Props = {
   children?: React.ReactNode;
   isLast?: boolean;
   to?: string;
+  isActive?: boolean;
 };
 
-const MenuItem = ({ children, isLast, to = "/", ...rest }: Props) => {
+const MenuItem = ({ children, isLast, to = "/", isActive, ...rest }: Props) => {
   return (
-    <Link as="a" href={to} display="block" {...rest}>
+    <Link
+      as="a"
+      href={to}
+      display="block"
+      textDecoration={isActive ? "underline" : ""}
+      {...rest}
+    >
       {children}
     </Link>
   );

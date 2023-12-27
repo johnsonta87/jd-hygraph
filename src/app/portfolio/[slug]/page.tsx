@@ -4,7 +4,7 @@ import {
   useGetPortoflioQuery as GetPortoflioQuery,
   Portfolio,
 } from "@/__generated__/graphql";
-import { Quote, TextBlock } from "@/components";
+import { OverviewItem, Quote, TextBlock } from "@/components";
 import {
   Box,
   Container,
@@ -40,54 +40,52 @@ export default function Page({ params }: { params: { slug: string } }) {
   return (
     <Container maxW="1274px">
       <Grid
+        display={{ base: "flex", lg: "grid" }}
+        flexDirection={{ base: "column" }}
         templateAreas={`"headingSide headingMain"`}
-        gridTemplateColumns={"260px 1fr"}
-        gap={{ base: "6", md: "65px" }}
+        gridTemplateColumns={{ base: "1fr", lg: "260px 1fr" }}
+        gap={{ base: "0", lg: "65px" }}
+        marginBottom={{ base: "24px", lg: "0" }}
       >
-        <GridItem area={"headingSide"}>
-          {year && <Text mt="20px">{year}</Text>}
-        </GridItem>
+        {year && (
+          <GridItem area={"headingSide"} order={{ base: 2, lg: 1 }}>
+            <Text mt="20px">{year}</Text>
+          </GridItem>
+        )}
 
-        <GridItem area={"headingMain"}>
-          <Text as="h1" mb="58px">
-            {title}
-          </Text>
-        </GridItem>
+        {title && (
+          <GridItem area={"headingMain"} order={{ base: 1, lg: 2 }}>
+            <Text as="h1" mb={{ base: "0", lg: "58px" }}>
+              {title}
+            </Text>
+          </GridItem>
+        )}
       </Grid>
 
       <Grid
+        display={{ base: "block", lg: "grid" }}
         templateAreas={`"side main"`}
         gridTemplateColumns={"260px 1fr"}
         gap={{ base: "6", md: "65px" }}
       >
         {overview && (
-          <GridItem area={"side"}>
+          <GridItem
+            display={{ base: "flex", lg: "block" }}
+            flexDirection={{ base: "column", sm: "row" }}
+            gap={{ base: "0", sm: "24px" }}
+            area={"side"}
+          >
             {overview.role && (
-              <>
-                <Divider mb="1em" />
-                <Text fontSize="14px" textTransform="uppercase">
-                  Role
-                </Text>
-                <Text>{overview.role}</Text>
-              </>
+              <OverviewItem role="Role" overview={overview.role} />
             )}
             {overview.output && (
-              <>
-                <Divider mb="1em" />
-                <Text fontSize="14px" textTransform="uppercase">
-                  Output
-                </Text>
-                <Text>{overview.output}</Text>
-              </>
+              <OverviewItem role="Output" overview={overview.output} />
             )}
             {overview.skillsMethods && (
-              <>
-                <Divider my="1em" />
-                <Text fontSize="14px" textTransform="uppercase">
-                  skills & methods
-                </Text>
-                <Text>{overview.skillsMethods}</Text>
-              </>
+              <OverviewItem
+                role="skills & methods"
+                overview={overview.skillsMethods}
+              />
             )}
           </GridItem>
         )}

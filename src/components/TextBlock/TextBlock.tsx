@@ -17,7 +17,12 @@ export function TextBlock({ heading, content }: Props) {
     >
       <GridItem area={"textSide"}>
         {heading && (
-          <Text fontSize="14px" textTransform="uppercase">
+          <Text
+            fontSize="14px"
+            lineHeight="21px"
+            maxW="75%"
+            textTransform="uppercase"
+          >
             {heading}
           </Text>
         )}

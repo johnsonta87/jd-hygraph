@@ -6,6 +6,7 @@ export * from "./Image/PortfolioImage";
 export * from "./List/BaseList";
 export * from "./Navbar/HamburgerIcon";
 export * from "./Navbar/Navbar";
+export * from "./OverviewItem/OverviewItem";
 export * from "./PageGrids/CustomColumns";
 export * from "./PageHero/PageHero";
 export * from "./PortfolioGrid/PortfolioGrid";

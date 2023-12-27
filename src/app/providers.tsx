@@ -23,7 +23,6 @@ const Fonts = () => (
         src: url(/fonts/founders/FoundersGrotesk-Regular.woff) format('woff'),
           url(/fonts/founders/FoundersGrotesk-Regular.woff2) format('woff2');
       }
-      }
       @font-face {
         font-family: 'FoundersGrotesk';
         font-style: normal;
