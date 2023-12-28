@@ -9,6 +9,7 @@ import {
   Box,
   Container,
   Divider,
+  Flex,
   Grid,
   GridItem,
   Image,
@@ -37,9 +38,14 @@ export default function Page({ params }: { params: { slug: string } }) {
 
   if (loading)
     return (
-      <Container maxW="1274px">
-        <Spinner size="xl" />
-      </Container>
+      <Flex
+        w="100%"
+        h="calc(100vh - 335px)"
+        justifyContent="center"
+        alignItems="center"
+      >
+        <Spinner size="xl" mx="auto" />
+      </Flex>
     );
   if (!portfolio) {
     return notFound();
