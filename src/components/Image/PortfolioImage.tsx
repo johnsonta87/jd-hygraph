@@ -41,7 +41,7 @@ const PortfolioImage = ({
           fontSize="1rem"
         >
           {caption && (
-            <Text as="span" lineHeight={4}>
+            <Text as="span" lineHeight={4} flexBasis="60%">
               {caption} {shortHeading && ` - ${shortHeading}`}
             </Text>
           )}

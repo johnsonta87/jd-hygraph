@@ -30,7 +30,12 @@ export function Footer({ ...props }: Props) {
             </Flex>
           </Box>
 
-          <Link href="/" fontFamily="Juana" fontSize="24px">
+          <Link
+            href="/"
+            fontFamily="Juana"
+            fontSize={{ base: "16px", md: "24px" }}
+            display={{ base: "none", sm: "block" }}
+          >
             jennydiep.com
           </Link>
         </Flex>

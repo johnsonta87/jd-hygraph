@@ -52,6 +52,9 @@ export const theme = extendTheme({
       'ol li::marker': {
         fontWeight: "700",
         color: "#A9452F"
+      },
+      a: {
+        transition: "all 0.2s ease-in-out",
       }
     }),
   },
