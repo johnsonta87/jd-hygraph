@@ -7,6 +7,7 @@ type Props = {
   caption?: string;
   year?: string;
   category?: string;
+  shortHeading?: string;
 };
 
 const PortfolioImage = ({
@@ -16,6 +17,7 @@ const PortfolioImage = ({
   caption,
   year,
   category,
+  shortHeading,
 }: Props) => {
   if (!src && !title) return;
 
@@ -40,7 +42,7 @@ const PortfolioImage = ({
         >
           {caption && (
             <Text as="span" lineHeight={4}>
-              {caption}
+              {caption} {shortHeading && ` - ${shortHeading}`}
             </Text>
           )}
           {category ? (

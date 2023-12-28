@@ -13,13 +13,14 @@ fragment PortfolioPageFragmentFields on Portfolio {
     role
     output
   }
+  shortHeading
   showcaseImage {
     url
   }
   introduction {
     html
   }
-  pageContent(first: 20) {
+  pageContent(first: 50) {
     ... on Divider {
       id
       enable
@@ -40,6 +41,7 @@ fragment PortfolioPageFragmentFields on Portfolio {
     }
     ... on TextBlock {
       id
+      coloredHeading
       heading
       content {
         html

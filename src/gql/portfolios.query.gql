@@ -36,6 +36,7 @@ fragment PortfolioFragmentFields on Portfolio {
   title
   updatedAt
   year
+  shortHeading
   showcaseImage {
     id
     fileName

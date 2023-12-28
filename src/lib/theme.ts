@@ -40,6 +40,9 @@ export const theme = extendTheme({
         fontWeight: "300",
         lineHeight: "27px"
       },
+      strong: {
+        color: "clay"
+      }
     }),
   },
   colors: {
@@ -60,5 +63,5 @@ export const theme = extendTheme({
   fonts: {
     heading: "Juana",
     body: "FoundersGrotesk, Raleway",
-  }
+  },
 });

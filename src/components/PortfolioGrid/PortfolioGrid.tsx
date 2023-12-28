@@ -8,6 +8,7 @@ export type allPortfoliosType = {
   title?: string;
   updatedAt: any;
   year?: string;
+  shortHeading?: string;
   showcaseImage?: {
     url: string;
   };
@@ -40,6 +41,7 @@ export function PortfolioGrid({ list, category }: Props) {
               title={p.title || ""}
               caption={p.title}
               year={p.year}
+              shortHeading={p.shortHeading}
               category={`${
                 p.portfolioCategory?.name === "Art direction"
                   ? p.portfolioCategory?.name

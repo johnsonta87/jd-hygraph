@@ -1,5 +1,5 @@
 import { RichText } from "@/__generated__/graphql";
-import { Box, Flex, Image } from "@chakra-ui/react";
+import { Box, Flex, Grid, GridItem, Image } from "@chakra-ui/react";
 
 type Props = {
   content: RichText;
@@ -10,30 +10,32 @@ export function Quote({ content, hideIcon }: Props) {
   if (!content) return;
 
   return (
-    <Flex
-      as="blockquote"
-      fontSize="xl"
-      mb="60px"
-      maxW={{ base: "100%", md: "60%" }}
-      mx="auto"
+    <Grid
+      display={{ base: "flex", md: "grid" }}
+      templateAreas={`"textSide textMain"`}
+      gridTemplateColumns={{ base: "1fr", md: "195px 1fr" }}
+      gap={{ base: "6", md: "65px" }}
+      mb={{ base: "6", md: "60px" }}
     >
-      {!hideIcon && (
+      <GridItem area={"textSide"}>
+        {!hideIcon && (
+          <Flex
+            justifyContent={{ base: "start", md: "end" }}
+            as="div"
+            position="relative"
+          >
+            <Image maxWidth="150px" src="/svgs/quote.svg" alt="Quote icon" />
+          </Flex>
+        )}
+      </GridItem>
+      <GridItem area={"textMain"}>
         <Box
-          as="div"
-          mr={{ base: "1.25rem", md: "2.25rem" }}
-          position="relative"
-        >
-          <Image width="150px" src="/svgs/quote.svg" alt="Quote icon" />
-        </Box>
-      )}
-
-      <Box
-        display="inline-block"
-        ml="2"
-        fontFamily="Juana"
-        fontSize={{ base: "18px", md: "24px" }}
-        dangerouslySetInnerHTML={{ __html: content.html }}
-      />
-    </Flex>
+          display="inline-block"
+          fontFamily="Juana"
+          fontSize={{ base: "18px", md: "24px" }}
+          dangerouslySetInnerHTML={{ __html: content.html }}
+        />
+      </GridItem>
+    </Grid>
   );
 }

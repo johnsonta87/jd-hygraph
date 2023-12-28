@@ -16,6 +16,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { notFound } from "next/navigation";
+import { Fragment } from "react";
 
 export default function Page({ params }: { params: { slug: string } }) {
   const { loading, data } = GetPortoflioQuery({
@@ -24,8 +25,15 @@ export default function Page({ params }: { params: { slug: string } }) {
     },
   });
   const { portfolio } = data || {};
-  const { year, title, overview, showcaseImage, introduction, pageContent } =
-    (portfolio as Portfolio) || {};
+  const {
+    year,
+    title,
+    shortHeading,
+    overview,
+    showcaseImage,
+    introduction,
+    pageContent,
+  } = (portfolio as Portfolio) || {};
 
   if (loading)
     return (
@@ -55,9 +63,15 @@ export default function Page({ params }: { params: { slug: string } }) {
 
         {title && (
           <GridItem area={"headingMain"} order={{ base: 1, lg: 2 }}>
-            <Text as="h1" mb={{ base: "0", lg: "58px" }}>
+            <Text as="h1" mb={{ base: "0", lg: shortHeading ? "0" : "58px" }}>
               {title}
             </Text>
+
+            {shortHeading && (
+              <Text as="h2" fontSize="32px" mb={{ base: "0", lg: "58px" }}>
+                {shortHeading}
+              </Text>
+            )}
           </GridItem>
         )}
       </Grid>
@@ -110,13 +124,14 @@ export default function Page({ params }: { params: { slug: string } }) {
             />
           )}
 
-          {pageContent?.map((content: any) => {
+          {pageContent?.map((content: any, index: number) => {
             const { __typename } = content;
 
             return (
-              <>
+              <Fragment key={index}>
                 {__typename === "TextBlock" && (
                   <TextBlock
+                    coloredHeading={content.coloredHeading}
                     heading={content.heading}
                     content={content.content}
                   />
@@ -136,7 +151,7 @@ export default function Page({ params }: { params: { slug: string } }) {
                 )}
 
                 {__typename === "Divider" && <Divider mb="60px" />}
-              </>
+              </Fragment>
             );
           })}
         </GridItem>

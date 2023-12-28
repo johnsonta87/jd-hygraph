@@ -2,11 +2,12 @@ import { RichText } from "@/__generated__/graphql";
 import { Grid, GridItem, Text } from "@chakra-ui/react";
 
 type Props = {
+  coloredHeading?: string;
   heading: boolean;
   content: RichText;
 };
 
-export function TextBlock({ heading, content }: Props) {
+export function TextBlock({ coloredHeading, heading, content }: Props) {
   if (!content) return;
 
   return (
@@ -18,9 +19,21 @@ export function TextBlock({ heading, content }: Props) {
       gap={{ base: "6", md: "65px" }}
     >
       <GridItem area={"textSide"}>
+        {coloredHeading && (
+          <Text
+            fontSize="14px"
+            lineHeight="21px"
+            fontWeight="700"
+            mb="0"
+            color="clay"
+          >
+            {coloredHeading}
+          </Text>
+        )}
         {heading && (
           <Text
             fontSize="14px"
+            fontWeight="500"
             lineHeight="21px"
             maxW="75%"
             textTransform="uppercase"
