@@ -41,7 +41,17 @@ export const theme = extendTheme({
         lineHeight: "27px"
       },
       strong: {
-        color: "clay"
+        color: "#A9452F"
+      },
+      ol: {
+        marginLeft: "1rem",
+      },
+      li: {
+        paddingLeft: "0.5rem",
+      },
+      'ol li::marker': {
+        fontWeight: "700",
+        color: "#A9452F"
       }
     }),
   },

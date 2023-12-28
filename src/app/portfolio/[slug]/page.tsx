@@ -108,7 +108,7 @@ export default function Page({ params }: { params: { slug: string } }) {
             <Image
               width="100%"
               mb="60px"
-              src={showcaseImage.url}
+              src={showcaseImage?.url}
               alt={title || ""}
             />
           )}
@@ -137,16 +137,16 @@ export default function Page({ params }: { params: { slug: string } }) {
                   />
                 )}
 
-                {__typename === "Quote" && (
+                {__typename === "Quote" && content.quoteText && (
                   <Quote content={content.quoteText} />
                 )}
 
-                {__typename === "FullWidthImage" && (
+                {__typename === "FullWidthImage" && content.image && (
                   <Image
                     width="100%"
                     mb="50px"
-                    src={content.image.url}
-                    alt={content.fileName || ""}
+                    src={content.image?.url}
+                    alt={content?.fileName || ""}
                   />
                 )}
 
