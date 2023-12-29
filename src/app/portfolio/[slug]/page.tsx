@@ -74,7 +74,11 @@ export default function Page({ params }: { params: { slug: string } }) {
             </Text>
 
             {shortHeading && (
-              <Text as="h2" fontSize="32px" mb={{ base: "0", lg: "58px" }}>
+              <Text
+                as="h2"
+                fontSize={{ base: "24", md: "32px" }}
+                mb={{ base: "0", lg: "58px" }}
+              >
                 {shortHeading}
               </Text>
             )}
