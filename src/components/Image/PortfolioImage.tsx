@@ -41,12 +41,20 @@ const PortfolioImage = ({
           fontSize="1rem"
         >
           {caption && (
-            <Text as="span" lineHeight={4} flexBasis="60%">
+            <Text
+              as="span"
+              lineHeight={{ base: "21px", md: "24px" }}
+              flexBasis="60%"
+            >
               {caption} {shortHeading && ` - ${shortHeading}`}
             </Text>
           )}
           {category ? (
-            <Text as="span" lineHeight={4} textAlign="right">
+            <Text
+              as="span"
+              lineHeight={{ base: "21px", md: "27px" }}
+              textAlign="right"
+            >
               {category}
               <br />
               {year}
