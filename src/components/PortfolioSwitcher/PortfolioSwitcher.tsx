@@ -53,7 +53,7 @@ const PortfolioSwitcher = (props: Props) => {
                 fontSize="14px"
                 textTransform="uppercase"
                 px="0.35em"
-                letterSpacing={{ sm: "5px" }}
+                letterSpacing={{ base: "2px", sm: "5px" }}
                 _selected={{ color: "clay" }}
                 onClick={() => setCategory("All")}
               >
@@ -66,7 +66,7 @@ const PortfolioSwitcher = (props: Props) => {
                   fontSize="14px"
                   textTransform="uppercase"
                   px="0.35em"
-                  letterSpacing={{ sm: "5px" }}
+                  letterSpacing={{ base: "2px", sm: "5px" }}
                   _selected={{ color: "clay" }}
                   onClick={() => setCategory(listItem.name)}
                 >
