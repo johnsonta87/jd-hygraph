@@ -36,7 +36,7 @@ const PortfolioImage = ({
         <Flex
           justifyContent="space-between"
           alignItems="start"
-          pt="0.75rem "
+          pt="0.75rem"
           px="8px"
           fontSize="1rem"
         >
