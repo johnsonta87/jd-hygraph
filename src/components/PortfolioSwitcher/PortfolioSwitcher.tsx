@@ -41,7 +41,7 @@ const PortfolioSwitcher = (props: Props) => {
         <Text as="h2" mb={{ base: "24px", md: "40px" }} flexBasis="50%">
           Portfolio
         </Text>
-        <Box w="100%" mb="54px" flexBasis="50%">
+        <Box w="100%" mb={{ base: "32px", md: "54px" }} flexBasis="50%">
           <Tabs>
             <TabList
               borderColor="clay"
