@@ -17,7 +17,7 @@ export function OverviewItem({ role, overview }: Props) {
       flexBasis="100%"
     >
       <Divider mb="12px" />
-      <Text fontSize="14px" textTransform="uppercase">
+      <Text fontSize="14px" fontWeight="400" textTransform="uppercase">
         {role}
       </Text>
       <Text mb="32px">{overview}</Text>
