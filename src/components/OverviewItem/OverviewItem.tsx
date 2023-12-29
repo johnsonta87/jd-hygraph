@@ -17,10 +17,12 @@ export function OverviewItem({ role, overview }: Props) {
       flexBasis="100%"
     >
       <Divider mb="12px" />
-      <Text fontSize="14px" fontWeight="400" textTransform="uppercase">
+      <Text w="100%" fontSize="14px" fontWeight="400" textTransform="uppercase">
         {role}
       </Text>
-      <Text mb="32px">{overview}</Text>
+      <Text w="100%" mb="32px">
+        {overview}
+      </Text>
     </Flex>
   );
 }
