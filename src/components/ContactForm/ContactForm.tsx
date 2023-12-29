@@ -86,7 +86,7 @@ const ContactForm = ({}: Props) => {
           )}
         </FormControl>
 
-        <FormControl isInvalid={Boolean(errors.email)}>
+        <FormControl isInvalid={Boolean(errors.email)} mt="24px">
           <FormLabel fontSize="1rem">Email</FormLabel>
           <Input
             type="email"
@@ -100,7 +100,7 @@ const ContactForm = ({}: Props) => {
           )}
         </FormControl>
 
-        <FormControl isInvalid={Boolean(errors.message)}>
+        <FormControl isInvalid={Boolean(errors.message)} mt="24px">
           <FormLabel fontSize="1rem">Message</FormLabel>
           <Textarea
             {...register("message", { required: true })}
@@ -114,7 +114,6 @@ const ContactForm = ({}: Props) => {
         </FormControl>
 
         <Button
-          mt={4}
           isLoading={isSubmitting}
           type="submit"
           bg="clay"
@@ -123,6 +122,7 @@ const ContactForm = ({}: Props) => {
           textTransform="uppercase"
           fontWeight={400}
           fontSize="1rem"
+          mt="24px"
           p="12px 24px"
         >
           Submit
