@@ -46,7 +46,7 @@ const PortfolioImage = ({
             </Text>
           )}
           {category ? (
-            <Text as="span" textAlign="right">
+            <Text as="span" lineHeight={4} textAlign="right">
               {category}
               <br />
               {year}
