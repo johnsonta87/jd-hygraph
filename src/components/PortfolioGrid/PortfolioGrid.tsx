@@ -26,7 +26,7 @@ export function PortfolioGrid({ list, category }: Props) {
   return (
     <Grid
       gridTemplateColumns={{ base: "1fr", lg: "50% 1fr" }}
-      gap={{ base: "6", md: "32px" }}
+      gap={{ base: "6", md: "19px" }}
     >
       {list
         .filter((l) => {

@@ -29,7 +29,7 @@ export function PageHero({
           align="start"
           justify="space-between"
           flexDirection="row"
-          gap={{ base: "1em", md: 12 }}
+          gap={{ base: "1em", md: "19px" }}
         >
           <Box w="100%" flexBasis={{ base: "20%", md: "50%" }}>
             <Divider mt="10px" />
