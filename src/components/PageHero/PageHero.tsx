@@ -28,13 +28,13 @@ export function PageHero({
           w="100%"
           align="start"
           justify="space-between"
-          flexDirection={{ base: "column", md: "row" }}
-          gap={12}
+          flexDirection="row"
+          gap={{ base: "1em", md: 12 }}
         >
-          <Box w="100%" flexBasis="50%">
+          <Box w="100%" flexBasis={{ base: "20%", md: "50%" }}>
             <Divider mt="10px" />
           </Box>
-          <Box flexBasis="50%">
+          <Box flexBasis={{ base: "80%", md: "50%" }}>
             {subtitle && (
               <Text
                 as="div"
