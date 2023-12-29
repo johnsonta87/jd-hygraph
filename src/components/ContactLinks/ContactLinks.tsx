@@ -25,37 +25,38 @@ const ContactLinks = ({ list, sectionTitle }: Props) => {
   return (
     <Box>
       {sectionTitle && (
-        <Text as="h2" mb="47px">
+        <Text as="h2" mb="40px">
           {sectionTitle}
         </Text>
       )}
 
-      <List display="flex" flexDirection="column" alignItems="start" gap={4}>
-        {list &&
-          list?.map((listItem) => (
-            <ListItem key={listItem.id}>
+      {list && (
+        <List display="flex" flexDirection="column" alignItems="start" gap={4}>
+          {list?.map((listItem) => (
+            <ListItem key={listItem?.id}>
               <Link
                 display="flex"
                 alignItems="center"
                 fontSize="21px"
                 textDecoration="underline"
-                gap={4}
-                href={listItem.link || listItem.file?.url}
+                gap="12px"
+                href={listItem?.link || listItem.file?.url}
                 isExternal={listItem.isExternal}
               >
                 {listItem.icon?.url && (
                   <Image
                     borderRadius="full"
                     boxSize="48px"
-                    src={listItem.icon.url}
-                    alt={`${listItem.title} icon`}
+                    src={listItem.icon?.url}
+                    alt={`${listItem?.title} icon`}
                   />
                 )}
-                {listItem.title}
+                {listItem?.title}
               </Link>
             </ListItem>
           ))}
-      </List>
+        </List>
+      )}
     </Box>
   );
 };

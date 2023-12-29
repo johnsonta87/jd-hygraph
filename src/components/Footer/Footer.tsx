@@ -13,22 +13,21 @@ export function Footer({ ...props }: Props) {
           w="100%"
           {...props}
         >
-          <Box>
-            <Flex
-              flexDirection="column"
-              fontSize="18px"
-              fontWeight="400"
-              textDecoration="underline"
+          <Flex
+            flexDirection="column"
+            fontSize="18px"
+            fontWeight="400"
+            textDecoration="underline"
+            gap="12px"
+          >
+            <Link
+              href="https://ca.linkedin.com/in/jenny-diep-design"
+              isExternal
             >
-              <Link
-                href="https://ca.linkedin.com/in/jenny-diep-design"
-                isExternal
-              >
-                LinkedIn
-              </Link>
-              <Link href="mailto:jendiep88@gmail.com">jendiep88@gmail.com</Link>
-            </Flex>
-          </Box>
+              LinkedIn
+            </Link>
+            <Link href="mailto:jendiep88@gmail.com">jendiep88@gmail.com</Link>
+          </Flex>
 
           <Link
             href="/"
