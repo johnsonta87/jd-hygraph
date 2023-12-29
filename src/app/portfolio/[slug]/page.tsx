@@ -117,7 +117,7 @@ export default function Page({ params }: { params: { slug: string } }) {
           {showcaseImage && (
             <Image
               width="100%"
-              mb="60px"
+              mb={{ base: "40px", md: "60px" }}
               src={showcaseImage?.url}
               alt={title || ""}
             />
@@ -128,7 +128,7 @@ export default function Page({ params }: { params: { slug: string } }) {
               fontFamily="Juana"
               fontSize="24px"
               lineHeight="27px"
-              mb="60px"
+              mb={{ base: "40px", md: "60px" }}
               maxWidth={{ base: "100%", md: "60%" }}
               dangerouslySetInnerHTML={{ __html: introduction.html }}
             />
@@ -154,13 +154,15 @@ export default function Page({ params }: { params: { slug: string } }) {
                 {__typename === "FullWidthImage" && content.image && (
                   <Image
                     width="100%"
-                    mb="50px"
+                    mb={{ base: "40px", md: "60px" }}
                     src={content.image?.url}
                     alt={content?.fileName || ""}
                   />
                 )}
 
-                {__typename === "Divider" && <Divider mb="60px" />}
+                {__typename === "Divider" && (
+                  <Divider mb={{ base: "40px", md: "60px" }} />
+                )}
               </Fragment>
             );
           })}

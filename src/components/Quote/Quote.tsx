@@ -15,7 +15,7 @@ export function Quote({ content, hideIcon }: Props) {
       templateAreas={`"textSide textMain"`}
       gridTemplateColumns={{ base: "1fr", md: "195px 1fr" }}
       gap={{ base: "6", md: "65px" }}
-      mb={{ base: "6", md: "60px" }}
+      mb={{ base: "40px", md: "60px" }}
     >
       <GridItem area={"textSide"}>
         {!hideIcon && (
@@ -24,7 +24,11 @@ export function Quote({ content, hideIcon }: Props) {
             as="div"
             position="relative"
           >
-            <Image maxWidth="150px" src="/svgs/quote.svg" alt="Quote icon" />
+            <Image
+              maxWidth={{ base: "75px", md: "60px" }}
+              src="/svgs/quote.svg"
+              alt="Quote icon"
+            />
           </Flex>
         )}
       </GridItem>
