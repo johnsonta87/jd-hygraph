@@ -36,7 +36,7 @@ const PortfolioSwitcher = (props: Props) => {
         align={{ base: "flex-start", md: "center" }}
         justify="space-between"
         flexDirection={{ base: "column", md: "row" }}
-        gap={{ base: "23px", md: 12 }}
+        gap={{ base: "0", md: 12 }}
       >
         <Text as="h2" mb={{ base: "24px", md: "40px" }} flexBasis="50%">
           Portfolio
@@ -53,6 +53,7 @@ const PortfolioSwitcher = (props: Props) => {
                 fontSize="14px"
                 textTransform="uppercase"
                 px="0.35em"
+                pt="0"
                 letterSpacing={{ base: "2px", sm: "5px" }}
                 _selected={{ color: "clay" }}
                 onClick={() => setCategory("All")}
@@ -66,6 +67,7 @@ const PortfolioSwitcher = (props: Props) => {
                   fontSize="14px"
                   textTransform="uppercase"
                   px="0.35em"
+                  pt="0"
                   letterSpacing={{ base: "2px", sm: "5px" }}
                   _selected={{ color: "clay" }}
                   onClick={() => setCategory(listItem.name)}
