@@ -12,7 +12,7 @@ type Props = {};
 export const Navbar = (props: Props) => {
   const [scrollPosition, setScrollPosition] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
-  const router = usePathname();
+  const pathName = usePathname();
   const toggle = () => setIsOpen(!isOpen);
 
   const handleScroll = () => {
@@ -30,10 +30,14 @@ export const Navbar = (props: Props) => {
 
   return (
     <NavbarContainer
-      bgColor={scrollPosition >= 60 ? "#F8F8F6" : "white"}
+      bgColor={
+        pathName !== "/about" && pathName !== "/contact" && scrollPosition >= 60
+          ? "#F8F8F6"
+          : "white"
+      }
       {...props}
     >
-      {router !== "/" ? (
+      {pathName !== "/" ? (
         <BaseLogo text="Jenny Diep" />
       ) : (
         <Box
