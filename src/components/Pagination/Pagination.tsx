@@ -19,6 +19,8 @@ export function Pagination({ enable, currentPortfolio }: Props) {
     },
   });
   const { portfolios } = data || {};
+
+  // for setting navigation links
   const itemIndex =
     portfolios?.findIndex((p) => p.slug === currentPortfolio) || 0;
   const prev = portfolios && portfolios[itemIndex - 1];
