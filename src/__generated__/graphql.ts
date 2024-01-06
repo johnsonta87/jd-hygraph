@@ -6201,7 +6201,7 @@ export type Portfolio = Entity & Node & {
   introduction?: Maybe<Scalars['String']>;
   overview?: Maybe<Overview>;
   pageContent: Array<PortfoliopageContentUnion>;
-  portfolioCategory?: Maybe<PortfolioCategory>;
+  portfolioCategories: Array<PortfolioCategory>;
   /** The time the document was published. Null on documents in draft stage. */
   publishedAt?: Maybe<Scalars['DateTime']>;
   /** User that last published this document */
@@ -6258,9 +6258,16 @@ export type PortfolioPageContentArgs = {
 };
 
 
-export type PortfolioPortfolioCategoryArgs = {
+export type PortfolioPortfolioCategoriesArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
   forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  last?: InputMaybe<Scalars['Int']>;
   locales?: InputMaybe<Array<Locale>>;
+  orderBy?: InputMaybe<PortfolioCategoryOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<PortfolioCategoryWhereInput>;
 };
 
 
@@ -6380,8 +6387,8 @@ export type PortfolioCategoryConnection = {
 
 export type PortfolioCategoryCreateInput = {
   clq9z7z23ge0001um9uo59m39?: InputMaybe<ServiceCreateManyInlineInput>;
-  clq9z8ptbge2r01umeziobiey?: InputMaybe<PortfolioCreateManyInlineInput>;
   clqefos6ogt1y01t80c5q30oq?: InputMaybe<ServicesListCreateManyInlineInput>;
+  clr2c31exb79j01tc0z6r2bhn?: InputMaybe<PortfolioCreateManyInlineInput>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   name: Scalars['String'];
   updatedAt?: InputMaybe<Scalars['DateTime']>;
@@ -6528,8 +6535,8 @@ export enum PortfolioCategoryOrderByInput {
 
 export type PortfolioCategoryUpdateInput = {
   clq9z7z23ge0001um9uo59m39?: InputMaybe<ServiceUpdateManyInlineInput>;
-  clq9z8ptbge2r01umeziobiey?: InputMaybe<PortfolioUpdateManyInlineInput>;
   clqefos6ogt1y01t80c5q30oq?: InputMaybe<ServicesListUpdateManyInlineInput>;
+  clr2c31exb79j01tc0z6r2bhn?: InputMaybe<PortfolioUpdateManyInlineInput>;
   name?: InputMaybe<Scalars['String']>;
 };
 
@@ -6749,7 +6756,7 @@ export type PortfolioCreateInput = {
   introduction?: InputMaybe<Scalars['String']>;
   overview?: InputMaybe<OverviewCreateOneInlineInput>;
   pageContent?: InputMaybe<PortfoliopageContentUnionCreateManyInlineInput>;
-  portfolioCategory?: InputMaybe<PortfolioCategoryCreateOneInlineInput>;
+  portfolioCategories?: InputMaybe<PortfolioCategoryCreateManyInlineInput>;
   shortHeading?: InputMaybe<Scalars['String']>;
   showcaseImage?: InputMaybe<AssetCreateOneInlineInput>;
   slug?: InputMaybe<Scalars['String']>;
@@ -6852,7 +6859,9 @@ export type PortfolioManyWhereInput = {
   pageContent_empty?: InputMaybe<Scalars['Boolean']>;
   /** Matches if the modular component contains at least one connection to the item provided to the filter */
   pageContent_some?: InputMaybe<PortfoliopageContentUnionWhereInput>;
-  portfolioCategory?: InputMaybe<PortfolioCategoryWhereInput>;
+  portfolioCategories_every?: InputMaybe<PortfolioCategoryWhereInput>;
+  portfolioCategories_none?: InputMaybe<PortfolioCategoryWhereInput>;
+  portfolioCategories_some?: InputMaybe<PortfolioCategoryWhereInput>;
   publishedAt?: InputMaybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
@@ -6992,7 +7001,7 @@ export type PortfolioUpdateInput = {
   introduction?: InputMaybe<Scalars['String']>;
   overview?: InputMaybe<OverviewUpdateOneInlineInput>;
   pageContent?: InputMaybe<PortfoliopageContentUnionUpdateManyInlineInput>;
-  portfolioCategory?: InputMaybe<PortfolioCategoryUpdateOneInlineInput>;
+  portfolioCategories?: InputMaybe<PortfolioCategoryUpdateManyInlineInput>;
   shortHeading?: InputMaybe<Scalars['String']>;
   showcaseImage?: InputMaybe<AssetUpdateOneInlineInput>;
   slug?: InputMaybe<Scalars['String']>;
@@ -7145,7 +7154,9 @@ export type PortfolioWhereInput = {
   pageContent_empty?: InputMaybe<Scalars['Boolean']>;
   /** Matches if the modular component contains at least one connection to the item provided to the filter */
   pageContent_some?: InputMaybe<PortfoliopageContentUnionWhereInput>;
-  portfolioCategory?: InputMaybe<PortfolioCategoryWhereInput>;
+  portfolioCategories_every?: InputMaybe<PortfolioCategoryWhereInput>;
+  portfolioCategories_none?: InputMaybe<PortfolioCategoryWhereInput>;
+  portfolioCategories_some?: InputMaybe<PortfolioCategoryWhereInput>;
   publishedAt?: InputMaybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
@@ -10892,28 +10903,28 @@ export type GetPortoflioQueryVariables = Exact<{
 }>;
 
 
-export type GetPortoflioQuery = { portfolio?: { id: string, shortHeading?: string | null, introduction?: string | null, title?: string | null, slug?: string | null, year?: string | null, overview?: { skillsMethods?: string | null, role?: string | null, output?: string | null } | null, showcaseImage?: { url: string } | null, pageContent: Array<{ id: string, enable?: boolean | null } | { id: string, image?: { url: string, fileName: string } | null } | { id: string, author?: string | null, quoteText?: { html: string } | null } | { id: string, coloredHeading?: string | null, heading?: string | null, content?: { html: string } | null }>, portfolioCategory?: { name: string } | null } | null };
+export type GetPortoflioQuery = { portfolio?: { id: string, shortHeading?: string | null, introduction?: string | null, title?: string | null, slug?: string | null, year?: string | null, overview?: { skillsMethods?: string | null, role?: string | null, output?: string | null } | null, showcaseImage?: { url: string } | null, pageContent: Array<{ id: string, enable?: boolean | null } | { id: string, image?: { url: string, fileName: string } | null } | { id: string, author?: string | null, quoteText?: { html: string } | null } | { id: string, coloredHeading?: string | null, heading?: string | null, content?: { html: string } | null }>, portfolioCategories: Array<{ name: string }> } | null };
 
-export type PortfolioPageFragmentFieldsFragment = { id: string, shortHeading?: string | null, introduction?: string | null, title?: string | null, slug?: string | null, year?: string | null, overview?: { skillsMethods?: string | null, role?: string | null, output?: string | null } | null, showcaseImage?: { url: string } | null, pageContent: Array<{ id: string, enable?: boolean | null } | { id: string, image?: { url: string, fileName: string } | null } | { id: string, author?: string | null, quoteText?: { html: string } | null } | { id: string, coloredHeading?: string | null, heading?: string | null, content?: { html: string } | null }>, portfolioCategory?: { name: string } | null };
+export type PortfolioPageFragmentFieldsFragment = { id: string, shortHeading?: string | null, introduction?: string | null, title?: string | null, slug?: string | null, year?: string | null, overview?: { skillsMethods?: string | null, role?: string | null, output?: string | null } | null, showcaseImage?: { url: string } | null, pageContent: Array<{ id: string, enable?: boolean | null } | { id: string, image?: { url: string, fileName: string } | null } | { id: string, author?: string | null, quoteText?: { html: string } | null } | { id: string, coloredHeading?: string | null, heading?: string | null, content?: { html: string } | null }>, portfolioCategories: Array<{ name: string }> };
 
 export type GetAllPortfoliosQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetAllPortfoliosQuery = { portfolios: Array<{ id: string, slug?: string | null, title?: string | null, updatedAt: any, year?: string | null, shortHeading?: string | null, showcaseImage?: { id: string, fileName: string, url: string } | null, portfolioCategory?: { id: string, name: string } | null }> };
-
-export type GetPortfoliosByCategoryQueryVariables = Exact<{
-  portfolioCategory: Scalars['String'];
-}>;
-
-
-export type GetPortfoliosByCategoryQuery = { portfolios: Array<{ id: string, slug?: string | null, title?: string | null, updatedAt: any, year?: string | null, shortHeading?: string | null, showcaseImage?: { id: string, fileName: string, url: string } | null, portfolioCategory?: { id: string, name: string } | null }> };
+export type GetAllPortfoliosQuery = { portfolios: Array<{ id: string, slug?: string | null, title?: string | null, updatedAt: any, year?: string | null, shortHeading?: string | null, showcaseImage?: { id: string, fileName: string, url: string } | null, portfolioCategories: Array<{ id: string, name: string }> }> };
 
 export type GetPortfolioCategoriesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetPortfolioCategoriesQuery = { portfolioCategories: Array<{ id: string, name: string }> };
 
-export type PortfolioFragmentFieldsFragment = { id: string, slug?: string | null, title?: string | null, updatedAt: any, year?: string | null, shortHeading?: string | null, showcaseImage?: { id: string, fileName: string, url: string } | null, portfolioCategory?: { id: string, name: string } | null };
+export type GetPortfoliosByCategoryNameQueryVariables = Exact<{
+  category: Scalars['String'];
+}>;
+
+
+export type GetPortfoliosByCategoryNameQuery = { portfolios: Array<{ title?: string | null, slug?: string | null, portfolioCategories: Array<{ name: string }> }> };
+
+export type PortfolioFragmentFieldsFragment = { id: string, slug?: string | null, title?: string | null, updatedAt: any, year?: string | null, shortHeading?: string | null, showcaseImage?: { id: string, fileName: string, url: string } | null, portfolioCategories: Array<{ id: string, name: string }> };
 
 export type GetAllServicesQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -11052,7 +11063,7 @@ export const PortfolioPageFragmentFieldsFragmentDoc = gql`
       }
     }
   }
-  portfolioCategory {
+  portfolioCategories {
     name
   }
   title
@@ -11073,7 +11084,7 @@ export const PortfolioFragmentFieldsFragmentDoc = gql`
     fileName
     url
   }
-  portfolioCategory {
+  portfolioCategories {
     id
     name
   }
@@ -11259,45 +11270,6 @@ export function useGetAllPortfoliosLazyQuery(baseOptions?: Apollo.LazyQueryHookO
 export type GetAllPortfoliosQueryHookResult = ReturnType<typeof useGetAllPortfoliosQuery>;
 export type GetAllPortfoliosLazyQueryHookResult = ReturnType<typeof useGetAllPortfoliosLazyQuery>;
 export type GetAllPortfoliosQueryResult = Apollo.QueryResult<GetAllPortfoliosQuery, GetAllPortfoliosQueryVariables>;
-export const GetPortfoliosByCategoryDocument = gql`
-    query GetPortfoliosByCategory($portfolioCategory: String!) {
-  portfolios(
-    where: {portfolioCategory: {name: $portfolioCategory}}
-    stage: PUBLISHED
-    orderBy: createdAt_ASC
-  ) {
-    ...PortfolioFragmentFields
-  }
-}
-    ${PortfolioFragmentFieldsFragmentDoc}`;
-
-/**
- * __useGetPortfoliosByCategoryQuery__
- *
- * To run a query within a React component, call `useGetPortfoliosByCategoryQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetPortfoliosByCategoryQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetPortfoliosByCategoryQuery({
- *   variables: {
- *      portfolioCategory: // value for 'portfolioCategory'
- *   },
- * });
- */
-export function useGetPortfoliosByCategoryQuery(baseOptions: Apollo.QueryHookOptions<GetPortfoliosByCategoryQuery, GetPortfoliosByCategoryQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetPortfoliosByCategoryQuery, GetPortfoliosByCategoryQueryVariables>(GetPortfoliosByCategoryDocument, options);
-      }
-export function useGetPortfoliosByCategoryLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetPortfoliosByCategoryQuery, GetPortfoliosByCategoryQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetPortfoliosByCategoryQuery, GetPortfoliosByCategoryQueryVariables>(GetPortfoliosByCategoryDocument, options);
-        }
-export type GetPortfoliosByCategoryQueryHookResult = ReturnType<typeof useGetPortfoliosByCategoryQuery>;
-export type GetPortfoliosByCategoryLazyQueryHookResult = ReturnType<typeof useGetPortfoliosByCategoryLazyQuery>;
-export type GetPortfoliosByCategoryQueryResult = Apollo.QueryResult<GetPortfoliosByCategoryQuery, GetPortfoliosByCategoryQueryVariables>;
 export const GetPortfolioCategoriesDocument = gql`
     query GetPortfolioCategories {
   portfolioCategories(first: 2, stage: PUBLISHED) {
@@ -11333,6 +11305,45 @@ export function useGetPortfolioCategoriesLazyQuery(baseOptions?: Apollo.LazyQuer
 export type GetPortfolioCategoriesQueryHookResult = ReturnType<typeof useGetPortfolioCategoriesQuery>;
 export type GetPortfolioCategoriesLazyQueryHookResult = ReturnType<typeof useGetPortfolioCategoriesLazyQuery>;
 export type GetPortfolioCategoriesQueryResult = Apollo.QueryResult<GetPortfolioCategoriesQuery, GetPortfolioCategoriesQueryVariables>;
+export const GetPortfoliosByCategoryNameDocument = gql`
+    query GetPortfoliosByCategoryName($category: String!) {
+  portfolios(where: {portfolioCategories_some: {name: $category}}) {
+    portfolioCategories {
+      name
+    }
+    title
+    slug
+  }
+}
+    `;
+
+/**
+ * __useGetPortfoliosByCategoryNameQuery__
+ *
+ * To run a query within a React component, call `useGetPortfoliosByCategoryNameQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetPortfoliosByCategoryNameQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetPortfoliosByCategoryNameQuery({
+ *   variables: {
+ *      category: // value for 'category'
+ *   },
+ * });
+ */
+export function useGetPortfoliosByCategoryNameQuery(baseOptions: Apollo.QueryHookOptions<GetPortfoliosByCategoryNameQuery, GetPortfoliosByCategoryNameQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetPortfoliosByCategoryNameQuery, GetPortfoliosByCategoryNameQueryVariables>(GetPortfoliosByCategoryNameDocument, options);
+      }
+export function useGetPortfoliosByCategoryNameLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetPortfoliosByCategoryNameQuery, GetPortfoliosByCategoryNameQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetPortfoliosByCategoryNameQuery, GetPortfoliosByCategoryNameQueryVariables>(GetPortfoliosByCategoryNameDocument, options);
+        }
+export type GetPortfoliosByCategoryNameQueryHookResult = ReturnType<typeof useGetPortfoliosByCategoryNameQuery>;
+export type GetPortfoliosByCategoryNameLazyQueryHookResult = ReturnType<typeof useGetPortfoliosByCategoryNameLazyQuery>;
+export type GetPortfoliosByCategoryNameQueryResult = Apollo.QueryResult<GetPortfoliosByCategoryNameQuery, GetPortfoliosByCategoryNameQueryVariables>;
 export const GetAllServicesDocument = gql`
     query GetAllServices {
   services(first: 20, orderBy: createdAt_ASC, stage: PUBLISHED) {

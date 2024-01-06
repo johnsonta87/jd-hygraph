@@ -31,6 +31,7 @@ export default function Page({ params }: { params: { slug: string } }) {
   const {
     year,
     title,
+    slug,
     shortHeading,
     overview,
     showcaseImage,
@@ -169,7 +170,7 @@ export default function Page({ params }: { params: { slug: string } }) {
             );
           })}
 
-          <Pagination enable />
+          {slug && <Pagination currentPortfolio={slug} enable />}
         </GridItem>
       </Grid>
     </Container>

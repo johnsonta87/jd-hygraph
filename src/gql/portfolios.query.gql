@@ -7,18 +7,6 @@ query GetAllPortfolios {
   }
 }
 
-query GetPortfoliosByCategory(
-  $portfolioCategory: String!
-) {
-  portfolios(
-    where:{ portfolioCategory: { name: $portfolioCategory}},
-    stage: PUBLISHED
-    orderBy: createdAt_ASC
-  ) {
-    ...PortfolioFragmentFields
-  }
-}
-
 query GetPortfolioCategories {
   portfolioCategories(
   first: 2
@@ -29,6 +17,19 @@ query GetPortfolioCategories {
   }
 }
 
+query GetPortfoliosByCategoryName(
+  $category: String!
+) {
+  portfolios(
+    where: {portfolioCategories_some: {name: $category}}
+) {
+    portfolioCategories {
+      name
+    }
+    title
+    slug
+  }
+}
 
 fragment PortfolioFragmentFields on Portfolio {
   id
@@ -42,7 +43,7 @@ fragment PortfolioFragmentFields on Portfolio {
     fileName
     url
   }
-  portfolioCategory {
+  portfolioCategories {
     id
     name
   }

@@ -46,7 +46,7 @@ fragment PortfolioPageFragmentFields on Portfolio {
       }
     }
   }
-  portfolioCategory {
+  portfolioCategories {
     name
   }
   title

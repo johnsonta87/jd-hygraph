@@ -2,6 +2,11 @@
 import { Grid, GridItem } from "@chakra-ui/react";
 import PortfolioImage from "../Image/PortfolioImage";
 
+type PortfolioCategoriesType = {
+  id: string;
+  name: string;
+};
+
 export type allPortfoliosType = {
   id: string;
   slug?: string;
@@ -12,9 +17,7 @@ export type allPortfoliosType = {
   showcaseImage?: {
     url: string;
   };
-  portfolioCategory?: {
-    name: string;
-  };
+  portfolioCategories?: PortfolioCategoriesType[];
 };
 
 type Props = {
@@ -30,6 +33,8 @@ export function PortfolioGrid({
   enableModal,
   activeCategory,
 }: Props) {
+  if (!list) return;
+
   return (
     <Grid
       gridTemplateColumns={{ base: "1fr", lg: "50% 1fr" }}
@@ -38,23 +43,22 @@ export function PortfolioGrid({
       {list
         .filter((l) => {
           if (category === "All") return l;
-          return l.portfolioCategory?.name === category;
+          if (!l.portfolioCategories) return;
+
+          return l.portfolioCategories.some((f) => f.name === category);
         })
         .map((p) => (
           <GridItem key={p.id}>
             <PortfolioImage
-              link={`/portfolio/${
-                p.slug
-              }?category=${activeCategory?.toLowerCase()}`}
+              link={`/portfolio/${p.slug}?category=${activeCategory}`}
               src={p.showcaseImage?.url || ""}
               title={p.title || ""}
               caption={p.title}
               year={p.year}
               shortHeading={p.shortHeading}
               category={`${
-                p.portfolioCategory?.name === "Art direction"
-                  ? p.portfolioCategory?.name
-                  : p.portfolioCategory?.name + " design"
+                p.portfolioCategories &&
+                p.portfolioCategories[0].name + " design"
               }`}
               enableModal={enableModal}
             />
