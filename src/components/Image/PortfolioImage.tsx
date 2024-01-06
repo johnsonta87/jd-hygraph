@@ -99,7 +99,12 @@ const PortfolioImage = ({
       )}
 
       <Modal isCentered isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay />
+        <ModalOverlay
+          bg="blackAlpha.300"
+          backdropFilter="blur(10px)"
+          backdropInvert="80%"
+          backdropBlur="2px"
+        />
         <ModalContent maxW="90%">
           <ModalCloseButton />
           <ModalBody p="0">
