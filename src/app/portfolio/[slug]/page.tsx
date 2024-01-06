@@ -18,7 +18,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { notFound } from "next/navigation";
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 
 export default function Page({ params }: { params: { slug: string } }) {
   const isMobile = useDetectMobile();
@@ -38,6 +38,10 @@ export default function Page({ params }: { params: { slug: string } }) {
     introduction,
     pageContent,
   } = (portfolio as Portfolio) || {};
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   if (loading)
     return (
