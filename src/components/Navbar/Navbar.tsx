@@ -30,7 +30,7 @@ export const Navbar = (props: Props) => {
 
   return (
     <NavbarContainer
-      bgColor={scrollPosition >= 60 ? "white" : "transparent"}
+      bgColor={scrollPosition >= 60 ? "#F8F8F6" : "white"}
       {...props}
     >
       {router !== "/" ? (

@@ -98,7 +98,7 @@ const PortfolioImage = ({
         </Link>
       )}
 
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal isCentered isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent maxW="90%">
           <ModalCloseButton />

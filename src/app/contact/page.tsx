@@ -23,6 +23,8 @@ const ContactPage = (props: Props) => {
       </Flex>
     );
 
+  console.log(contactLinks);
+
   return (
     <Container maxW="1274px" color="black" minH="calc(100vh - 300px)">
       <Flex

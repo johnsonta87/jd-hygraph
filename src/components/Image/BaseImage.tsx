@@ -29,7 +29,7 @@ const BaseImage = ({ title, src, enableModal }: Props) => {
       />
 
       {enableModal && (
-        <Modal isOpen={isOpen} onClose={onClose}>
+        <Modal isCentered isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
           <ModalContent maxW="90%">
             <ModalCloseButton />
