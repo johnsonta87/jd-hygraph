@@ -40,6 +40,7 @@ export default function Page({ params }: { params: { slug: string } }) {
   } = (portfolio as Portfolio) || {};
 
   useEffect(() => {
+    // to keep the scroll position at the top on render
     window.scrollTo(0, 0);
   }, []);
 
