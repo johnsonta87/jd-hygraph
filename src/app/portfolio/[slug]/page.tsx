@@ -6,6 +6,7 @@ import {
 } from "@/__generated__/graphql";
 import { OverviewItem, Quote, TextBlock } from "@/components";
 import BaseImage from "@/components/Image/BaseImage";
+import { useDetectMobile } from "@/hooks/useDetectMobile";
 import {
   Container,
   Divider,
@@ -16,9 +17,10 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { notFound } from "next/navigation";
-import { Fragment, useEffect, useState } from "react";
+import { Fragment } from "react";
 
 export default function Page({ params }: { params: { slug: string } }) {
+  const isMobile = useDetectMobile();
   const { loading, data } = GetPortoflioQuery({
     variables: {
       slug: params.slug.toLowerCase(),
@@ -34,20 +36,6 @@ export default function Page({ params }: { params: { slug: string } }) {
     introduction,
     pageContent,
   } = (portfolio as Portfolio) || {};
-
-  const [width, setWidth] = useState<number>(window.innerWidth);
-
-  function handleWindowSizeChange() {
-    setWidth(window.innerWidth);
-  }
-  useEffect(() => {
-    window.addEventListener("resize", handleWindowSizeChange);
-    return () => {
-      window.removeEventListener("resize", handleWindowSizeChange);
-    };
-  }, []);
-
-  const isMobile = width <= 768;
 
   if (loading)
     return (

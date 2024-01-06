@@ -2,28 +2,15 @@
 import { useGetHomepageQuery as GetHomepageQuery } from "@/__generated__/graphql";
 import { PageHero } from "@/components/PageHero/PageHero";
 import PortfolioSwitcher from "@/components/PortfolioSwitcher/PortfolioSwitcher";
+import { useDetectMobile } from "@/hooks/useDetectMobile";
 import { Container, Flex, Image, Spinner } from "@chakra-ui/react";
 import { NextPage } from "next";
-import { useEffect, useState } from "react";
 
 const Home: NextPage = () => {
+  const isMobile = useDetectMobile();
   const { loading, data } = GetHomepageQuery();
   const { homepage } = data || {};
   const { general, variant, bannerImage } = homepage || {};
-
-  const [width, setWidth] = useState<number>(window.innerWidth);
-
-  function handleWindowSizeChange() {
-    setWidth(window.innerWidth);
-  }
-  useEffect(() => {
-    window.addEventListener("resize", handleWindowSizeChange);
-    return () => {
-      window.removeEventListener("resize", handleWindowSizeChange);
-    };
-  }, []);
-
-  const isMobile = width <= 768;
 
   if (loading)
     return (

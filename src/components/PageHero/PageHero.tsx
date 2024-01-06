@@ -1,4 +1,6 @@
-import { Box, Divider, Flex, Image, Text } from "@chakra-ui/react";
+import { useDetectMobile } from "@/hooks/useDetectMobile";
+import { Box, Divider, Flex, Text } from "@chakra-ui/react";
+import BaseImage from "../Image/BaseImage";
 
 type Props = {
   variant: "primary" | "secondary";
@@ -15,6 +17,8 @@ export function PageHero({
   subtitle,
   image,
 }: Props) {
+  const isMobile = useDetectMobile();
+
   if (variant === "secondary")
     return (
       <>
@@ -72,7 +76,7 @@ export function PageHero({
       </Box>
       {image && title && (
         <Box>
-          <Image src={image} alt={title} />
+          <BaseImage src={image} title={title} enableModal={isMobile} />
         </Box>
       )}
     </Flex>
