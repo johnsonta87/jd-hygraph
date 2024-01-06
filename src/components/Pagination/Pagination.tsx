@@ -42,12 +42,14 @@ export function Pagination({ enable, currentPortfolio }: Props) {
     <Flex
       w="100%"
       flexDirection={{ base: "column", lg: "row" }}
-      align="center"
       justify="space-between"
       gap={{ base: "32px", md: "60px" }}
     >
       {prev && (
-        <Link href={`/portfolio/${prev.slug}?category=${currentCategory}`}>
+        <Link
+          href={`/portfolio/${prev.slug}?category=${currentCategory}`}
+          title="View previous"
+        >
           <Flex align="center">
             <Image src="/svgs/chevron-left.svg" alt="Previous Icon" />
             <Box>
@@ -64,7 +66,10 @@ export function Pagination({ enable, currentPortfolio }: Props) {
         </Link>
       )}
       {next && (
-        <Link href={`/portfolio/${next.slug}?category=${currentCategory}`}>
+        <Link
+          href={`/portfolio/${next.slug}?category=${currentCategory}`}
+          title="View next"
+        >
           <Flex align="center">
             <Box>
               <Text fontFamily="Juana" fontSize={{ base: "18px", md: "24px" }}>
