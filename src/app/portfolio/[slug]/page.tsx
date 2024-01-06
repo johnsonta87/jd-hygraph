@@ -5,19 +5,18 @@ import {
   Portfolio,
 } from "@/__generated__/graphql";
 import { OverviewItem, Quote, TextBlock } from "@/components";
+import BaseImage from "@/components/Image/BaseImage";
 import {
-  Box,
   Container,
   Divider,
   Flex,
   Grid,
   GridItem,
-  Image,
   Spinner,
   Text,
 } from "@chakra-ui/react";
 import { notFound } from "next/navigation";
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 
 export default function Page({ params }: { params: { slug: string } }) {
   const { loading, data } = GetPortoflioQuery({
@@ -35,6 +34,20 @@ export default function Page({ params }: { params: { slug: string } }) {
     introduction,
     pageContent,
   } = (portfolio as Portfolio) || {};
+
+  const [width, setWidth] = useState<number>(window.innerWidth);
+
+  function handleWindowSizeChange() {
+    setWidth(window.innerWidth);
+  }
+  useEffect(() => {
+    window.addEventListener("resize", handleWindowSizeChange);
+    return () => {
+      window.removeEventListener("resize", handleWindowSizeChange);
+    };
+  }, []);
+
+  const isMobile = width <= 768;
 
   if (loading)
     return (
@@ -115,23 +128,24 @@ export default function Page({ params }: { params: { slug: string } }) {
         )}
         <GridItem area={"main"}>
           {showcaseImage && (
-            <Image
-              width="100%"
-              mb={{ base: "40px", md: "60px" }}
+            <BaseImage
               src={showcaseImage?.url}
-              alt={title || ""}
+              title={title || ""}
+              enableModal={isMobile}
             />
           )}
 
           {introduction && (
-            <Box
+            <Text
+              as="p"
               fontFamily="Juana"
-              fontSize="24px"
+              fontSize={{ base: "18px", md: "24px" }}
               lineHeight="27px"
               mb={{ base: "40px", md: "60px" }}
               maxWidth={{ base: "100%", md: "60%" }}
-              dangerouslySetInnerHTML={{ __html: introduction.html }}
-            />
+            >
+              {introduction}
+            </Text>
           )}
 
           {pageContent?.map((content: any, index: number) => {
@@ -152,11 +166,10 @@ export default function Page({ params }: { params: { slug: string } }) {
                 )}
 
                 {__typename === "FullWidthImage" && content.image && (
-                  <Image
-                    width="100%"
-                    mb={{ base: "40px", md: "60px" }}
+                  <BaseImage
                     src={content.image?.url}
-                    alt={content?.fileName || ""}
+                    title={content?.fileName || ""}
+                    enableModal={isMobile}
                   />
                 )}
 

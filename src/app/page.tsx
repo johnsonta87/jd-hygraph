@@ -4,11 +4,26 @@ import { PageHero } from "@/components/PageHero/PageHero";
 import PortfolioSwitcher from "@/components/PortfolioSwitcher/PortfolioSwitcher";
 import { Container, Flex, Image, Spinner } from "@chakra-ui/react";
 import { NextPage } from "next";
+import { useEffect, useState } from "react";
 
 const Home: NextPage = () => {
   const { loading, data } = GetHomepageQuery();
   const { homepage } = data || {};
   const { general, variant, bannerImage } = homepage || {};
+
+  const [width, setWidth] = useState<number>(window.innerWidth);
+
+  function handleWindowSizeChange() {
+    setWidth(window.innerWidth);
+  }
+  useEffect(() => {
+    window.addEventListener("resize", handleWindowSizeChange);
+    return () => {
+      window.removeEventListener("resize", handleWindowSizeChange);
+    };
+  }, []);
+
+  const isMobile = width <= 768;
 
   if (loading)
     return (
@@ -43,7 +58,7 @@ const Home: NextPage = () => {
           image={general?.showcaseImage?.url || ""}
         />
 
-        <PortfolioSwitcher />
+        <PortfolioSwitcher enableModal={isMobile} />
       </Container>
     </>
   );

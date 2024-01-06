@@ -17,9 +17,7 @@ fragment PortfolioPageFragmentFields on Portfolio {
   showcaseImage {
     url
   }
-  introduction {
-    html
-  }
+  introduction
   pageContent(first: 50) {
     ... on Divider {
       id

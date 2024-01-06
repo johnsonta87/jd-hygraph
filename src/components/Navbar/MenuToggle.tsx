@@ -9,7 +9,13 @@ type Props = {
 const MenuToggle = ({ toggle, isOpen }: Props) => {
   return (
     <Box display={{ base: "block", md: "none" }} onClick={toggle}>
-      <Hamburger duration={0.4} toggled={isOpen} toggle={toggle} color="#000" />
+      <Hamburger
+        size={24}
+        duration={0.4}
+        toggled={isOpen}
+        toggle={toggle}
+        color="#000"
+      />
     </Box>
   );
 };

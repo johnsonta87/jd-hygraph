@@ -37,7 +37,7 @@ const AboutPage = (props: Props) => {
     );
 
   return (
-    <Container maxW="1274px" color="black">
+    <Container maxW="1274px" color="black" mb="172px">
       <PageHero
         variant="primary"
         title={pageHero?.mainHeading || ""}

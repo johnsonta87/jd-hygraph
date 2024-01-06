@@ -16,9 +16,11 @@ import {
 import { useState } from "react";
 import { PortfolioGrid, allPortfoliosType } from "..";
 
-type Props = {};
+type Props = {
+  enableModal?: boolean;
+};
 
-const PortfolioSwitcher = (props: Props) => {
+const PortfolioSwitcher = ({ enableModal }: Props) => {
   const { loading: allPortfoliosLoading, data: allPortfolios } =
     GetAllPortfoliosQuery();
   const { loading, data } = GetPortfolioCategoriesQuery();
@@ -52,10 +54,10 @@ const PortfolioSwitcher = (props: Props) => {
                 as="button"
                 fontSize="14px"
                 textTransform="uppercase"
-                px="0.35em"
+                px={{ base: "1.5em", md: "3em" }}
                 pt="0"
-                letterSpacing={{ base: "2px", sm: "5px" }}
                 _selected={{ color: "clay" }}
+                textAlign="center"
                 onClick={() => setCategory("All")}
               >
                 All
@@ -66,10 +68,10 @@ const PortfolioSwitcher = (props: Props) => {
                   as="button"
                   fontSize="14px"
                   textTransform="uppercase"
-                  px="0.35em"
+                  px={{ base: "1.5em", md: "3em" }}
                   pt="0"
-                  letterSpacing={{ base: "2px", sm: "5px" }}
                   _selected={{ color: "clay" }}
+                  textAlign="center"
                   onClick={() => setCategory(listItem.name)}
                 >
                   {listItem.name}{" "}
@@ -87,6 +89,7 @@ const PortfolioSwitcher = (props: Props) => {
       <PortfolioGrid
         list={portfolios as allPortfoliosType[]}
         category={category}
+        enableModal={enableModal}
       />
     </Box>
   );

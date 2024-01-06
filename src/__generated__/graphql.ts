@@ -6198,7 +6198,7 @@ export type Portfolio = Entity & Node & {
   history: Array<Version>;
   /** The unique identifier */
   id: Scalars['ID'];
-  introduction?: Maybe<RichText>;
+  introduction?: Maybe<Scalars['String']>;
   overview?: Maybe<Overview>;
   pageContent: Array<PortfoliopageContentUnion>;
   portfolioCategory?: Maybe<PortfolioCategory>;
@@ -6746,7 +6746,7 @@ export type PortfolioConnection = {
 
 export type PortfolioCreateInput = {
   createdAt?: InputMaybe<Scalars['DateTime']>;
-  introduction?: InputMaybe<Scalars['RichTextAST']>;
+  introduction?: InputMaybe<Scalars['String']>;
   overview?: InputMaybe<OverviewCreateOneInlineInput>;
   pageContent?: InputMaybe<PortfoliopageContentUnionCreateManyInlineInput>;
   portfolioCategory?: InputMaybe<PortfolioCategoryCreateOneInlineInput>;
@@ -6828,6 +6828,25 @@ export type PortfolioManyWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars['ID']>;
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']>;
+  introduction?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  introduction_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  introduction_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  introduction_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  introduction_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  introduction_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  introduction_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  introduction_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  introduction_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  introduction_starts_with?: InputMaybe<Scalars['String']>;
   overview?: InputMaybe<OverviewWhereInput>;
   /** All values in which the union is empty. */
   pageContent_empty?: InputMaybe<Scalars['Boolean']>;
@@ -6953,6 +6972,8 @@ export enum PortfolioOrderByInput {
   CREATEDAT_DESC = 'createdAt_DESC',
   ID_ASC = 'id_ASC',
   ID_DESC = 'id_DESC',
+  INTRODUCTION_ASC = 'introduction_ASC',
+  INTRODUCTION_DESC = 'introduction_DESC',
   PUBLISHEDAT_ASC = 'publishedAt_ASC',
   PUBLISHEDAT_DESC = 'publishedAt_DESC',
   SHORTHEADING_ASC = 'shortHeading_ASC',
@@ -6968,7 +6989,7 @@ export enum PortfolioOrderByInput {
 }
 
 export type PortfolioUpdateInput = {
-  introduction?: InputMaybe<Scalars['RichTextAST']>;
+  introduction?: InputMaybe<Scalars['String']>;
   overview?: InputMaybe<OverviewUpdateOneInlineInput>;
   pageContent?: InputMaybe<PortfoliopageContentUnionUpdateManyInlineInput>;
   portfolioCategory?: InputMaybe<PortfolioCategoryUpdateOneInlineInput>;
@@ -6997,7 +7018,7 @@ export type PortfolioUpdateManyInlineInput = {
 };
 
 export type PortfolioUpdateManyInput = {
-  introduction?: InputMaybe<Scalars['RichTextAST']>;
+  introduction?: InputMaybe<Scalars['String']>;
   shortHeading?: InputMaybe<Scalars['String']>;
   title?: InputMaybe<Scalars['String']>;
   year?: InputMaybe<Scalars['String']>;
@@ -7100,6 +7121,25 @@ export type PortfolioWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars['ID']>;
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']>;
+  introduction?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  introduction_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  introduction_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  introduction_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  introduction_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  introduction_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  introduction_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  introduction_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  introduction_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  introduction_starts_with?: InputMaybe<Scalars['String']>;
   overview?: InputMaybe<OverviewWhereInput>;
   /** All values in which the union is empty. */
   pageContent_empty?: InputMaybe<Scalars['Boolean']>;
@@ -10852,9 +10892,9 @@ export type GetPortoflioQueryVariables = Exact<{
 }>;
 
 
-export type GetPortoflioQuery = { portfolio?: { id: string, shortHeading?: string | null, title?: string | null, slug?: string | null, year?: string | null, overview?: { skillsMethods?: string | null, role?: string | null, output?: string | null } | null, showcaseImage?: { url: string } | null, introduction?: { html: string } | null, pageContent: Array<{ id: string, enable?: boolean | null } | { id: string, image?: { url: string, fileName: string } | null } | { id: string, author?: string | null, quoteText?: { html: string } | null } | { id: string, coloredHeading?: string | null, heading?: string | null, content?: { html: string } | null }>, portfolioCategory?: { name: string } | null } | null };
+export type GetPortoflioQuery = { portfolio?: { id: string, shortHeading?: string | null, introduction?: string | null, title?: string | null, slug?: string | null, year?: string | null, overview?: { skillsMethods?: string | null, role?: string | null, output?: string | null } | null, showcaseImage?: { url: string } | null, pageContent: Array<{ id: string, enable?: boolean | null } | { id: string, image?: { url: string, fileName: string } | null } | { id: string, author?: string | null, quoteText?: { html: string } | null } | { id: string, coloredHeading?: string | null, heading?: string | null, content?: { html: string } | null }>, portfolioCategory?: { name: string } | null } | null };
 
-export type PortfolioPageFragmentFieldsFragment = { id: string, shortHeading?: string | null, title?: string | null, slug?: string | null, year?: string | null, overview?: { skillsMethods?: string | null, role?: string | null, output?: string | null } | null, showcaseImage?: { url: string } | null, introduction?: { html: string } | null, pageContent: Array<{ id: string, enable?: boolean | null } | { id: string, image?: { url: string, fileName: string } | null } | { id: string, author?: string | null, quoteText?: { html: string } | null } | { id: string, coloredHeading?: string | null, heading?: string | null, content?: { html: string } | null }>, portfolioCategory?: { name: string } | null };
+export type PortfolioPageFragmentFieldsFragment = { id: string, shortHeading?: string | null, introduction?: string | null, title?: string | null, slug?: string | null, year?: string | null, overview?: { skillsMethods?: string | null, role?: string | null, output?: string | null } | null, showcaseImage?: { url: string } | null, pageContent: Array<{ id: string, enable?: boolean | null } | { id: string, image?: { url: string, fileName: string } | null } | { id: string, author?: string | null, quoteText?: { html: string } | null } | { id: string, coloredHeading?: string | null, heading?: string | null, content?: { html: string } | null }>, portfolioCategory?: { name: string } | null };
 
 export type GetAllPortfoliosQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -10983,9 +11023,7 @@ export const PortfolioPageFragmentFieldsFragmentDoc = gql`
   showcaseImage {
     url
   }
-  introduction {
-    html
-  }
+  introduction
   pageContent(first: 50) {
     ... on Divider {
       id

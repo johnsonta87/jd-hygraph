@@ -29,7 +29,10 @@ export const Navbar = (props: Props) => {
   }, []);
 
   return (
-    <NavbarContainer {...props}>
+    <NavbarContainer
+      bgColor={scrollPosition >= 100 ? "white" : "transparent"}
+      {...props}
+    >
       {router !== "/" ? (
         <BaseLogo text="Jenny Diep" />
       ) : (

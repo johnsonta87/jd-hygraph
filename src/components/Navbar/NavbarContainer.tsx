@@ -3,6 +3,7 @@ import { Box, Container, Flex } from "@chakra-ui/react";
 
 type Props = {
   children?: React.ReactNode;
+  bgColor?: string;
 };
 
 export const NavbarContainer = ({ children, ...props }: Props) => {
@@ -13,7 +14,7 @@ export const NavbarContainer = ({ children, ...props }: Props) => {
       py={4}
       w="100%"
       mb={{ base: "40px", md: "56px", lg: "78px" }}
-      bg="white"
+      bg={props.bgColor}
       boxShadow="lg"
       position="sticky"
       top="0"

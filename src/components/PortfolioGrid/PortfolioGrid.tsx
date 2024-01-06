@@ -20,9 +20,10 @@ export type allPortfoliosType = {
 type Props = {
   category: string;
   list: allPortfoliosType[];
+  enableModal?: boolean;
 };
 
-export function PortfolioGrid({ list, category }: Props) {
+export function PortfolioGrid({ list, category, enableModal }: Props) {
   return (
     <Grid
       gridTemplateColumns={{ base: "1fr", lg: "50% 1fr" }}
@@ -47,6 +48,7 @@ export function PortfolioGrid({ list, category }: Props) {
                   ? p.portfolioCategory?.name
                   : p.portfolioCategory?.name + " design"
               }`}
+              enableModal={enableModal}
             />
           </GridItem>
         ))}
