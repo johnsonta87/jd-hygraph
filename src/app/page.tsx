@@ -25,7 +25,7 @@ const Home: NextPage = () => {
     );
 
   return (
-    <>
+    <Container maxW="1274px" color="black">
       {bannerImage && (
         <Image
           src={bannerImage?.url || ""}
@@ -36,18 +36,16 @@ const Home: NextPage = () => {
         />
       )}
 
-      <Container maxW="1274px" color="black">
-        <PageHero
-          bannerImage={bannerImage?.url || ""}
-          variant={variant || "primary"}
-          title={general?.mainHeading || ""}
-          subtitle={general?.introSubheading?.html || ""}
-          image={general?.showcaseImage?.url || ""}
-        />
+      <PageHero
+        bannerImage={bannerImage?.url || ""}
+        variant={variant || "primary"}
+        title={general?.mainHeading || ""}
+        subtitle={general?.introSubheading?.html || ""}
+        image={general?.showcaseImage?.url || ""}
+      />
 
-        <PortfolioSwitcher enableModal={isMobile} />
-      </Container>
-    </>
+      <PortfolioSwitcher enableModal={isMobile} />
+    </Container>
   );
 };
 

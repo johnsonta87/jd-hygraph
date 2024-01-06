@@ -39,14 +39,27 @@ const PortfolioImage = ({
   return (
     <>
       <Box h={{ base: "223px", md: "421px", lg: "369px" }}>
-        <Image
-          boxSize={{ base: "100%", md: "100%" }}
-          objectFit="cover"
-          objectPosition="center"
-          src={src}
-          alt={title || "Image description"}
-          onClick={() => enableModal && onOpen()}
-        />
+        {enableModal ? (
+          <Image
+            boxSize={{ base: "100%", md: "100%" }}
+            objectFit="cover"
+            objectPosition="center"
+            src={src}
+            alt={title || "Image description"}
+            onClick={() => enableModal && onOpen()}
+          />
+        ) : (
+          <Link href={link}>
+            <Image
+              boxSize={{ base: "100%", md: "100%" }}
+              objectFit="cover"
+              objectPosition="center"
+              src={src}
+              alt={title || "Image description"}
+              onClick={() => enableModal && onOpen()}
+            />
+          </Link>
+        )}
       </Box>
       {caption && (
         <Link href={link}>
@@ -90,11 +103,13 @@ const PortfolioImage = ({
         <ModalContent maxW="90%">
           <ModalCloseButton />
           <ModalBody p="0">
-            <Image
-              src={src}
-              alt={title || "Image description"}
-              onClick={onOpen}
-            />
+            <Link href={link}>
+              <Image
+                src={src}
+                alt={title || "Image description"}
+                onClick={onOpen}
+              />
+            </Link>
           </ModalBody>
         </ModalContent>
       </Modal>
