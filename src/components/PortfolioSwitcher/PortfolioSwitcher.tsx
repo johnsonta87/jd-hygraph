@@ -90,6 +90,7 @@ const PortfolioSwitcher = ({ enableModal }: Props) => {
         list={portfolios as allPortfoliosType[]}
         category={category}
         enableModal={enableModal}
+        activeCategory={category}
       />
     </Box>
   );

@@ -9,6 +9,7 @@ export * from "./Navbar/Navbar";
 export * from "./OverviewItem/OverviewItem";
 export * from "./PageGrids/CustomColumns";
 export * from "./PageHero/PageHero";
+export * from "./Pagination/Pagination";
 export * from "./PortfolioGrid/PortfolioGrid";
 export * from "./PortfolioSwitcher/PortfolioSwitcher";
 export * from "./Quote/Quote";

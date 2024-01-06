@@ -21,9 +21,15 @@ type Props = {
   category: string;
   list: allPortfoliosType[];
   enableModal?: boolean;
+  activeCategory?: string;
 };
 
-export function PortfolioGrid({ list, category, enableModal }: Props) {
+export function PortfolioGrid({
+  list,
+  category,
+  enableModal,
+  activeCategory,
+}: Props) {
   return (
     <Grid
       gridTemplateColumns={{ base: "1fr", lg: "50% 1fr" }}
@@ -37,7 +43,9 @@ export function PortfolioGrid({ list, category, enableModal }: Props) {
         .map((p) => (
           <GridItem key={p.id}>
             <PortfolioImage
-              link={`/portfolio/${p.slug}`}
+              link={`/portfolio/${
+                p.slug
+              }?category=${activeCategory?.toLowerCase()}`}
               src={p.showcaseImage?.url || ""}
               title={p.title || ""}
               caption={p.title}

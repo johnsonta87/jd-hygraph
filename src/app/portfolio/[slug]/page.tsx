@@ -6,6 +6,7 @@ import {
 } from "@/__generated__/graphql";
 import { OverviewItem, Quote, TextBlock } from "@/components";
 import BaseImage from "@/components/Image/BaseImage";
+import { Pagination } from "@/components/Pagination/Pagination";
 import { useDetectMobile } from "@/hooks/useDetectMobile";
 import {
   Container,
@@ -167,6 +168,8 @@ export default function Page({ params }: { params: { slug: string } }) {
               </Fragment>
             );
           })}
+
+          <Pagination enable />
         </GridItem>
       </Grid>
     </Container>
