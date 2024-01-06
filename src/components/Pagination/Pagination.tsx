@@ -39,19 +39,20 @@ export function Pagination({ enable, currentPortfolio }: Props) {
     );
 
   return (
-    <Flex
-      w="100%"
-      flexDirection={{ base: "column", lg: "row" }}
-      justify="space-between"
-      gap={{ base: "32px", md: "60px" }}
-    >
+    <Flex w="100%" justify="space-between" gap={{ base: "32px", md: "60px" }}>
+      {!prev && <Box></Box>}
       {prev && (
         <Link
           href={`/portfolio/${prev.slug}?category=${currentCategory}`}
           title="View previous"
         >
           <Flex align="center">
-            <Image src="/svgs/chevron-left.svg" alt="Previous Icon" />
+            <Image
+              src="/svgs/chevron-left.svg"
+              alt="Previous Icon"
+              width={{ base: "24px", md: "48px" }}
+              mr="0.35em"
+            />
             <Box>
               <Text fontFamily="Juana" fontSize={{ base: "18px", md: "24px" }}>
                 Previous
@@ -70,7 +71,7 @@ export function Pagination({ enable, currentPortfolio }: Props) {
           href={`/portfolio/${next.slug}?category=${currentCategory}`}
           title="View next"
         >
-          <Flex align="center">
+          <Flex align="center" textAlign="right">
             <Box>
               <Text fontFamily="Juana" fontSize={{ base: "18px", md: "24px" }}>
                 Next
@@ -81,7 +82,12 @@ export function Pagination({ enable, currentPortfolio }: Props) {
                 </Text>
               )}
             </Box>
-            <Image src="/svgs/chevron-right.svg" alt="Next Icon" />
+            <Image
+              src="/svgs/chevron-right.svg"
+              alt="Next Icon"
+              width={{ base: "24px", md: "48px" }}
+              ml="0.35em"
+            />
           </Flex>
         </Link>
       )}
