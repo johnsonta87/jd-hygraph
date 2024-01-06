@@ -3,16 +3,20 @@
 import { useEffect, useState } from "react";
 
 export function useDetectMobile() {
-  const [width, setWidth] = useState<number>(window ? window.innerWidth : 0);
+  const windowInnerWidth = typeof window !== "undefined" ? window.innerWidth : 0;
+  const [width, setWidth] = useState<number>(typeof window !== "undefined" ? windowInnerWidth : 0);
 
   function handleWindowSizeChange() {
-    setWidth(window.innerWidth);
+    setWidth(windowInnerWidth);
   }
+
   useEffect(() => {
-    window.addEventListener("resize", handleWindowSizeChange);
-    return () => {
-      window.removeEventListener("resize", handleWindowSizeChange);
-    };
+    if(typeof window !== "undefined") {
+      window.addEventListener("resize", handleWindowSizeChange);
+      return () => {
+        window.removeEventListener("resize", handleWindowSizeChange);
+      };
+    }
   }, []);
 
   const isMobile = width <= 768;
