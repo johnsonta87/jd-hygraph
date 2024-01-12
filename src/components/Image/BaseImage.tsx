@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Image,
   Modal,
@@ -7,11 +9,27 @@ import {
   ModalOverlay,
   useDisclosure,
 } from "@chakra-ui/react";
+import {
+  TransformComponent,
+  TransformWrapper,
+  useControls,
+} from "react-zoom-pan-pinch";
 
 type Props = {
   title: string;
   src: string;
   enableModal?: boolean;
+};
+
+const Controls = () => {
+  const { zoomIn, zoomOut, resetTransform } = useControls();
+  return (
+    <>
+      <button onClick={() => zoomIn()}>Zoom In</button>
+      <button onClick={() => zoomOut()}>Zoom Out</button>
+      <button onClick={() => resetTransform()}>Reset</button>
+    </>
+  );
 };
 
 const BaseImage = ({ title, src, enableModal }: Props) => {
@@ -39,11 +57,15 @@ const BaseImage = ({ title, src, enableModal }: Props) => {
           <ModalContent maxW="90%">
             <ModalCloseButton />
             <ModalBody p="0">
-              <Image
-                src={src}
-                alt={title || "Image description"}
-                onClick={onOpen}
-              />
+              <TransformWrapper>
+                <TransformComponent>
+                  <Image
+                    src={src}
+                    alt={title || "Image description"}
+                    onClick={onOpen}
+                  />
+                </TransformComponent>
+              </TransformWrapper>
             </ModalBody>
           </ModalContent>
         </Modal>
