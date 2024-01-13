@@ -30,11 +30,8 @@ export const Navbar = (props: Props) => {
 
   return (
     <NavbarContainer
-      bgColor={
-        pathName !== "/about" && pathName !== "/contact" && scrollPosition >= 60
-          ? "#F8F8F6"
-          : "white"
-      }
+      pathName={pathName}
+      scrollPosition={scrollPosition}
       {...props}
     >
       {pathName !== "/" ? (

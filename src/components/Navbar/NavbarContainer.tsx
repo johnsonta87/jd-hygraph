@@ -2,11 +2,17 @@
 import { Box, Container, Flex } from "@chakra-ui/react";
 
 type Props = {
+  pathName: string;
+  scrollPosition: number;
   children?: React.ReactNode;
-  bgColor?: string;
 };
 
-export const NavbarContainer = ({ children, ...props }: Props) => {
+export const NavbarContainer = ({
+  pathName,
+  scrollPosition,
+  children,
+  ...props
+}: Props) => {
   return (
     <Box
       as="nav"
@@ -14,7 +20,20 @@ export const NavbarContainer = ({ children, ...props }: Props) => {
       py={4}
       w="100%"
       mb={{ base: "40px", md: "56px", lg: "78px" }}
-      bg={props.bgColor}
+      bg={{
+        base:
+          pathName !== "/about" &&
+          pathName !== "/contact" &&
+          scrollPosition >= 60
+            ? "white"
+            : "#F8F8F6",
+        md:
+          pathName !== "/about" &&
+          pathName !== "/contact" &&
+          scrollPosition >= 60
+            ? "#F8F8F6"
+            : "white",
+      }}
       boxShadow="lg"
       position="sticky"
       top="0"
