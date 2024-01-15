@@ -22,6 +22,7 @@ type Props = {
 };
 
 const Controls = () => {
+  // adds controls to the zoom
   const { zoomIn, zoomOut, resetTransform } = useControls();
   return (
     <>
