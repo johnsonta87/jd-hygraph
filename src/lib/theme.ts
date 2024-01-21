@@ -63,6 +63,7 @@ export const theme = extendTheme({
     white: "#fff",
     gray: "#949494",
     clay: "#A9452F",
+    green: "#617C50",
   },
   breakpoints: {
     base: "0em", // 0px

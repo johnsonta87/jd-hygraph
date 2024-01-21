@@ -3,9 +3,11 @@
 import {
   Box,
   Button,
+  Flex,
   FormControl,
   FormErrorMessage,
   FormLabel,
+  Image,
   Input,
   Textarea,
   useToast,
@@ -48,11 +50,29 @@ const ContactForm = ({}: Props) => {
             duration: 7000,
             isClosable: true,
             position: "top-left",
+            containerStyle: {
+              width: "100vw",
+              maxWidth: "100vw",
+              margin: "0",
+            },
             render: () => (
-              <Box color="white" p={3} bg="clay">
-                Thank you {data.name}! Your message was sent successfully. I’ll
-                be in touch soon!
-              </Box>
+              <Flex
+                width="100%"
+                alignItems="center"
+                mx="auto"
+                color="white"
+                p={3}
+                bg="green"
+              >
+                <Image
+                  src="/svgs/checkmark.svg"
+                  alt="check"
+                  width="22px"
+                  height="22px"
+                  mr={2}
+                />
+                Your message was sent successfully. We’ll be in touch soon!
+              </Flex>
             ),
           });
         },
