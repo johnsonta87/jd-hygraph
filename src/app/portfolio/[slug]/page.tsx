@@ -44,6 +44,7 @@ export default function Page({ params }: { params: { slug: string } }) {
     window.scrollTo(0, 0);
   }, []);
 
+  // loading state
   if (loading)
     return (
       <Flex
