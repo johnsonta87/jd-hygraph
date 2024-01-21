@@ -27,12 +27,7 @@ export const NavbarContainer = ({
           scrollPosition >= 60
             ? "white"
             : "#F8F8F6",
-        md:
-          pathName !== "/about" &&
-          pathName !== "/contact" &&
-          scrollPosition >= 60
-            ? "#F8F8F6"
-            : "white",
+        md: "white",
       }}
       boxShadow="lg"
       position="sticky"

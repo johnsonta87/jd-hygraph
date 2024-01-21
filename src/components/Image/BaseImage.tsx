@@ -42,6 +42,7 @@ const BaseImage = ({ title, src, enableModal }: Props) => {
       <Image
         width="100%"
         mb={{ base: "40px", md: "60px" }}
+        cursor={enableModal ? "pointer" : "default"}
         src={src}
         alt={title || ""}
         onClick={() => enableModal && onOpen()}
@@ -58,9 +59,11 @@ const BaseImage = ({ title, src, enableModal }: Props) => {
           <ModalContent maxW="90%">
             <ModalCloseButton />
             <ModalBody p="0">
-              <TransformWrapper>
-                <TransformComponent>
+              <TransformWrapper centerOnInit disablePadding smooth>
+                <TransformComponent wrapperStyle={{ width: "100%" }}>
                   <Image
+                    width="100%"
+                    cursor="pointer"
                     src={src}
                     alt={title || "Image description"}
                     onClick={onOpen}

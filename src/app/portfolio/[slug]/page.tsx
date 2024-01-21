@@ -126,7 +126,7 @@ export default function Page({ params }: { params: { slug: string } }) {
             <BaseImage
               src={showcaseImage?.url}
               title={title || ""}
-              enableModal={isMobile}
+              enableModal={true}
             />
           )}
 
@@ -164,7 +164,7 @@ export default function Page({ params }: { params: { slug: string } }) {
                   <BaseImage
                     src={content.image?.url}
                     title={content?.fileName || ""}
-                    enableModal={isMobile}
+                    enableModal={true}
                   />
                 )}
 

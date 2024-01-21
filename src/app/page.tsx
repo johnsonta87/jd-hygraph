@@ -2,12 +2,10 @@
 import { useGetHomepageQuery as GetHomepageQuery } from "@/__generated__/graphql";
 import { PageHero } from "@/components/PageHero/PageHero";
 import PortfolioSwitcher from "@/components/PortfolioSwitcher/PortfolioSwitcher";
-import { useDetectMobile } from "@/hooks/useDetectMobile";
 import { Container, Flex, Image, Spinner } from "@chakra-ui/react";
 import { NextPage } from "next";
 
 const Home: NextPage = () => {
-  const isMobile = useDetectMobile();
   const { loading, data } = GetHomepageQuery();
   const { homepage } = data || {};
   const { general, variant, bannerImage } = homepage || {};
@@ -44,7 +42,7 @@ const Home: NextPage = () => {
         image={general?.showcaseImage?.url || ""}
       />
 
-      <PortfolioSwitcher enableModal={isMobile} />
+      <PortfolioSwitcher enableModal={false} />
     </Container>
   );
 };

@@ -27,7 +27,7 @@ const ContactForm = ({}: Props) => {
   const {
     register,
     handleSubmit,
-    watch,
+    reset,
     formState: { errors, isSubmitting, isSubmitSuccessful },
   } = useForm<Inputs>();
   const form = useRef<HTMLFormElement>(null);
@@ -41,14 +41,17 @@ const ContactForm = ({}: Props) => {
       )
       .then(
         (result) => {
+          reset();
+          window.scrollTo(0, 0);
           toast({
             status: "success",
             duration: 7000,
             isClosable: true,
-            position: "bottom-left",
+            position: "top-left",
             render: () => (
               <Box color="white" p={3} bg="clay">
-                Thank you {data.name}! Your message has been sent.
+                Thank you {data.name}! Your message was sent successfully. I’ll
+                be in touch soon!
               </Box>
             ),
           });
@@ -125,7 +128,7 @@ const ContactForm = ({}: Props) => {
           mt="24px"
           p="12px 24px"
         >
-          Submit
+          {isSubmitting ? "Submitting" : "Submit"}
         </Button>
       </form>
     </Box>

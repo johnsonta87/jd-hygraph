@@ -61,6 +61,7 @@ const ContactPage = (props: Props) => {
                         : link?.link || ""
                     }
                     target={link?.isExternal ? "_blank" : "self"}
+                    textDecoration="underline"
                   >
                     {link?.link || link?.emailLink}
                   </Link>
