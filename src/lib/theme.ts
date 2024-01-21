@@ -12,14 +12,13 @@ export const theme = extendTheme({
         fontWeight: "300",
       },
       '&::-webkit-scrollbar': {
-        width: '10px',
+        width: '12px',
       },
       '&::-webkit-scrollbar-track': {
-        width: '10px',
+        width: '12px',
       },
       '&::-webkit-scrollbar-thumb': {
-        background: "#000",
-        borderRadius: '6px',
+        background: "#A9452F",
       },
       h1: {
         fontFamily: "Juana",
